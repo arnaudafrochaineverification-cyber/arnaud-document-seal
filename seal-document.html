@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08783e">
+
+  <title>Document Seal Administration | ARNAUD TRUST</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f7f4;
+      color: #26352b;
+    }
+
+    header {
+      background: #08783e;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      border-bottom: 5px solid #d7ae43;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    header p {
+      margin: 5px 0;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 25px auto;
+      padding: 0 14px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      margin-bottom: 20px;
+      border: 1px solid #dce6df;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+    }
+
+    h2 {
+      color: #08783e;
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 7px;
+    }
+
+    input, textarea, select {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #b9c9be;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      background: white;
+    }
+
+    textarea {
+      min-height: 85px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #08783e;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    .secondary {
+      background: #344b3b;
+    }
+
+    .message {
+      padding: 13px;
+      margin-top: 15px;
+      border-radius: 8px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .success {
+      background: #e7f6eb;
+      color: #155d30;
+    }
+
+    .error {
+      background: #fff0f0;
+      color: #a11c1c;
+    }
+
+    .pending {
+      background: #fff5dc;
+      color: #755400;
+    }
+
+    .muted {
+      color: #647168;
+      line-height: 1.6;
+    }
+
+    #applicationSection,
+    #logoutButton {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #657168;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+  <p><strong>Document Seal Administration</strong></p>
+  <p>African Roots, Global Vision.</p>
+</header>
+
+<main>
+
+  <section class="card">
+    <h2>Administrator Login</h2>
+
+    <p class="muted">
+      Sign in with an authorised account to register a document
+      for review. Public visitors cannot use this page to approve
+      official documents.
+    </p>
+
+    <form id="loginForm">
+
+      <label for="email">Administrator Email</label>
+      <input
+        id="email"
+        type="email"
+        autocomplete="username"
+        placeholder="Enter your authorised email"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        placeholder="Enter your password"
+        required
+      >
+
+      <button id="loginButton" type="submit">
+        Sign In
+      </button>
+
+    </form>
+
+    <button id="logoutButton" class="secondary" type="button">
+      Sign Out
+    </button>
+
+    <div
+      id="loginMessage"
+      class="message"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></div>
+  </section>
+
+
+  <section class="card" id="applicationSection">
+
+    <h2>Register a Document</h2>
+
+    <div class="message pending">
+      New registrations are saved as PENDING REVIEW.
+      Submitting a document does not mean it has been approved
+      or officially sealed.
+    </div>
+
+    <form id="documentForm">
+
+      <label for="documentTitle">Document Title</label>
+      <input
+        id="documentTitle"
+        type="text"
+        maxlength="150"
+        placeholder="Example: Business Compliance Certificate"
+        required
+      >
+
+      <label for="issuedTo">Document Issued To</label>
+      <input
+        id="issuedTo"
+        type="text"
+        maxlength="150"
+        placeholder="Individual or organisation name"
+        required
+      >
+
+      <label for="originalNumber">
+        Existing Document Number (if available)
+      </label>
+      <input
+        id="originalNumber"
+        type="text"
+        maxlength="120"
+        placeholder="Enter existing document number"
+      >
+
+      <label for="documentCategory">Document Category</label>
+      <select id="documentCategory" required>
+        <option value="">Choose a category</option>
+        <option value="Business">Business Document</option>
+        <option value="Corporate">Corporate Document</option>
+        <option value="Professional">Professional Document</option>
+        <option value="Compliance">Compliance Document</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="description">Document Description</label>
+      <textarea
+        id="description"
+        maxlength="1000"
+        placeholder="Brief description of the document"
+      ></textarea>
+
+      <label for="companyNumber">
+        Company Registration Number (if applicable)
+      </label>
+      <input
+        id="companyNumber"
+        type="text"
+        maxlength="100"
+        placeholder="Enter registration number"
+      >
+
+      <button id="submitButton" type="submit">
+        Register for Review
+      </button>
+
+    </form>
+
+    <div
+      id="documentMessage"
+      class="message"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    &copy; <span id="year"></span>
+    ARNAUD AFROCHAINE TRUST SYSTEMS LTD.
+  </p>
+  <p>Secure document registration and review portal.</p>
+</footer>
+
+
+<script type="module">
+
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+  // ARNAUD DOCUMENT TRUST FIREBASE PROJECT
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+    authDomain: "arnaud-document-trust.firebaseapp.com",
+    projectId: "arnaud-document-trust",
+    storageBucket: "arnaud-document-trust.firebasestorage.app",
+    messagingSenderId: "96008667746",
+    appId: "1:96008667746:web:63a6badb04fb996219873b",
+    measurementId: "G-NYPH2RB851"
+  };
+
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const loginForm = document.getElementById("loginForm");
+  const loginButton = document.getElementById("loginButton");
+  const logoutButton = document.getElementById("logoutButton");
+  const loginMessage = document.getElementById("loginMessage");
+
+  const documentForm = document.getElementById("documentForm");
+  const submitButton = document.getElementById("submitButton");
+  const documentMessage = document.getElementById("documentMessage");
+
+  const applicationSection =
+    document.getElementById("applicationSection");
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+  function showMessage(element, text, type) {
+    element.textContent = text;
+    element.className = "message " + type;
+    element.hidden = false;
+  }
+
+
+  function makeReferenceNumber() {
+    const date = new Date();
+    const datePart = [
+      date.getFullYear(),
+      String(date.getMonth() + 1).padStart(2, "0"),
+      String(date.getDate()).padStart(2, "0")
+    ].join("");
+
+    const randomPart =
+      crypto.randomUUID().replaceAll("-", "")
+        .substring(0, 10).toUpperCase();
+
+    return "ATS-" + datePart + "-" + randomPart;
+  }
+
+
+  loginForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    loginButton.disabled = true;
+    loginButton.textContent = "Signing In...";
+    loginMessage.hidden = true;
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
+    try {
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      showMessage(
+        loginMessage,
+        "Sign-in successful.",
+        "success"
+      );
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        loginMessage,
+        "Sign-in failed. Check your email and password, and confirm that the account exists in this Firebase project.",
+        "error"
+      );
+
+    } finally {
+
+      loginButton.disabled = false;
+      loginButton.textContent = "Sign In";
+
+    }
+  });
+
+
+  logoutButton.addEventListener("click", async function() {
+    try {
+      await signOut(auth);
+
+      showMessage(
+        loginMessage,
+        "You have signed out.",
+        "success"
+      );
+
+    } catch (error) {
+      console.error(error);
+
+      showMessage(
+        loginMessage,
+        "Could not sign out. Please try again.",
+        "error"
+      );
+    }
+  });
+
+
+  onAuthStateChanged(auth, function(user) {
+
+    if (user) {
+
+      applicationSection.style.display = "block";
+      logoutButton.style.display = "block";
+
+      loginForm.style.display = "none";
+
+      showMessage(
+        loginMessage,
+        "Signed in as " + (user.email || "authorised account") +
+        ". Firestore security rules must still restrict who can register documents.",
+        "success"
+      );
+
+    } else {
+
+      applicationSection.style.display = "none";
+      logoutButton.style.display = "none";
+      loginForm.style.display = "block";
+
+    }
+
+  });
+
+
+  documentForm.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const user = auth.currentUser;
+
+    if (!user) {
+      showMessage(
+        documentMessage,
+        "Please sign in before registering a document.",
+        "error"
+      );
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Registering...";
+    documentMessage.hidden = true;
+
+    const referenceNumber = makeReferenceNumber();
+
+    const record = {
+      referenceNumber: referenceNumber,
+
+      documentTitle:
+        document.getElementById("documentTitle").value.trim(),
+
+      issuedTo:
+        document.getElementById("issuedTo").value.trim(),
+
+      originalDocumentNumber:
+        document.getElementById("originalNumber").value.trim(),
+
+      documentCategory:
+        document.getElementById("documentCategory").value,
+
+      description:
+        document.getElementById("description").value.trim(),
+
+      companyNumber:
+        document.getElementById("companyNumber").value.trim(),
+
+      companyName:
+        "ARNAUD AFROCHAINE TRUST SYSTEMS LTD",
+
+      companyEmail:
+        "arnaudafrochain@gmail.com",
+
+      status: "Pending Review",
+
+      createdByUid: user.uid,
+
+      createdByEmail: user.email || "",
+
+      createdAt: serverTimestamp()
+    };
+
+
+    try {
+
+      // This saves a request for review only.
+      // It does not publish an approved verification record.
+
+      await addDoc(
+        collection(db, "documentRequests"),
+        record
+      );
+
+      showMessage(
+        documentMessage,
+        "Document registered for review. Reference number: " +
+        referenceNumber +
+        ". Status: PENDING REVIEW. This is not an approval or a seal.",
+        "success"
+      );
+
+      documentForm.reset();
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        documentMessage,
+        "The registration could not be saved. Firestore may need its security rules configured. No successful registration is confirmed.",
+        "error"
+      );
+
+    } finally {
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Register for Review";
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
