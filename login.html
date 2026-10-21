@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#075b32">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Secure Login | ARNAUD</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f1f6f2;
+      color: #183329;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      background: #fff;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px #00000012;
+    }
+
+    .logo {
+      width: 65px;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: #075b32;
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 21px;
+      color: #075b32;
+      margin: 0 0 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #637268;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd8cf;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #08783e;
+      border-color: transparent;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: 0;
+      border-radius: 7px;
+      background: #08783e;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 7px;
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .error {
+      background: #ffebeb;
+      color: #8a1717;
+    }
+
+    .success {
+      background: #e3f7e8;
+      color: #145c2d;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    a {
+      color: #08783e;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      color: #637268;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="logo">A</div>
+
+    <h1>Secure Administrator Login</h1>
+
+    <p class="subtitle">
+      ARNAUD AFROCHAINE TRUST SYSTEMS LTD<br>
+      African Roots, Global Vision.
+    </p>
+
+    <form id="loginForm">
+
+      <label for="email">Administrator Email</label>
+
+      <input
+        id="email"
+        type="email"
+        placeholder="Enter your email address"
+        autocomplete="username"
+        required
+      >
+
+      <label for="password">Password</label>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button id="loginButton" type="submit">
+        Sign In Securely
+      </button>
+
+    </form>
+
+    <div id="message" aria-live="polite"></div>
+
+    <div class="links">
+      <a href="admin-sealed-documents.html">
+        Open Administrator Dashboard
+      </a>
+      <br>
+      <a href="index.html">Return to Home</a>
+      <br>
+      <a href="verify-document.html">Verify a Document</a>
+    </div>
+
+    <footer>
+      &copy; <span id="year"></span>
+      ARNAUD AFROCHAINE TRUST SYSTEMS LTD.<br>
+      Authorized access only.
+    </footer>
+
+  </main>
+
+  <script type="module">
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+      getAuth,
+      signInWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+      authDomain: "arnaud-document-trust.firebaseapp.com",
+      projectId: "arnaud-document-trust",
+      storageBucket: "arnaud-document-trust.firebasestorage.app",
+      messagingSenderId: "96008667746",
+      appId: "1:96008667746:web:63a6badb04fb996219873b",
+      measurementId: "G-NYPH2RB851"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const form = document.getElementById("loginForm");
+    const button = document.getElementById("loginButton");
+    const message = document.getElementById("message");
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    function showMessage(text, type) {
+      message.replaceChildren();
+
+      const box = document.createElement("div");
+      box.className = "message " + type;
+      box.textContent = text;
+
+      message.appendChild(box);
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      button.disabled = true;
+      button.textContent = "Signing in...";
+      message.replaceChildren();
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+      try {
+        await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        showMessage(
+          "Login successful. Opening administrator dashboard...",
+          "success"
+        );
+
+        window.location.href = "admin-sealed-documents.html";
+
+      } catch (error) {
+        console.error("Login error:", error);
+
+        showMessage(
+          "Login failed. Check your email and password, and confirm " +
+          "that your account exists in Firebase Authentication. " +
+          "Details: " + error.message,
+          "error"
+        );
+
+        button.disabled = false;
+        button.textContent = "Sign In Securely";
+      }
+    });
+  </script>
+
+</body>
+</html>
