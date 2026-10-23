@@ -1,0 +1,17 @@
+{
+  "name": "arnaud-staff-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure staff management backend for ARNAUD AFROCHAINE TRUST SYSTEMS LTD",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "firebase-admin": "^13.5.0"
+  }
+}
