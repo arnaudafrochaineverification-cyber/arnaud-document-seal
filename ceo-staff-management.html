@@ -1,411 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#075c38">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08783e">
 
-  <title>CEO Staff Management | ARNAUD</title>
+<title>CEO Staff Management | ARNAUD</title>
 
-  <style>
-    :root {
-      --green: #075c38;
-      --green-light: #e9f6ef;
-      --gold: #c9a43b;
-      --background: #f4f7f5;
-      --text: #1e293b;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --white: #ffffff;
-      --red: #b42318;
-    }
+<style>
+:root {
+  --green: #08783e;
+  --dark-green: #075b30;
+  --gold: #d6ad45;
+  --background: #f3f7f4;
+  --text: #183328;
+  --muted: #61736a;
+  --border: #dce7df;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--background);
-      color: var(--text);
-    }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
 
-    header {
-      background: var(--green);
-      color: white;
-      padding: 22px 18px;
-      border-bottom: 4px solid var(--gold);
-    }
+header {
+  background: linear-gradient(120deg, var(--dark-green), var(--green));
+  color: white;
+  padding: 25px 16px;
+  border-bottom: 5px solid var(--gold);
+}
 
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-    }
+.container {
+  width: min(1120px, calc(100% - 24px));
+  margin: auto;
+}
 
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 23px;
-    }
+.company-name {
+  margin: 0;
+  font-size: clamp(19px, 3vw, 26px);
+  font-weight: bold;
+}
 
-    header p {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.6;
-      opacity: .95;
-    }
+.subtitle {
+  margin: 5px 0 0;
+  color: #e8f4eb;
+}
 
-    .container {
-      max-width: 1200px;
-      margin: 24px auto;
-      padding: 0 16px 40px;
-    }
+main {
+  padding: 22px 0 35px;
+}
 
-    .notice {
-      padding: 15px;
-      margin-bottom: 20px;
-      background: #fff8e6;
-      border: 1px solid #f0d58a;
-      border-radius: 10px;
-      font-size: 14px;
-      line-height: 1.6;
-    }
+.notice {
+  background: #fff8e5;
+  border: 1px solid #ead28b;
+  border-left: 5px solid var(--gold);
+  padding: 15px;
+  border-radius: 9px;
+  margin-bottom: 20px;
+}
 
-    .notice strong {
-      color: #805b00;
-    }
+.notice strong {
+  display: block;
+  margin-bottom: 5px;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 22px;
-    }
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
 
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .03);
-    }
+.summary-card,
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px #143c2410;
+}
 
-    .card-label {
-      color: var(--muted);
-      font-size: 13px;
-    }
+.summary-card {
+  padding: 18px;
+}
 
-    .card-number {
-      font-size: 29px;
-      font-weight: bold;
-      margin-top: 10px;
-      color: var(--green);
-    }
+.summary-label {
+  color: var(--muted);
+  font-size: 14px;
+}
 
-    .panel {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 22px;
-    }
+.summary-number {
+  color: var(--dark-green);
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 5px;
+}
 
-    .panel h2 {
-      font-size: 19px;
-      margin: 0 0 8px;
-    }
+.panel {
+  padding: 20px;
+  margin-bottom: 20px;
+}
 
-    .description {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
+h2 {
+  font-size: 21px;
+  margin: 0 0 5px;
+}
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
+.description {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
 
-    .field label {
-      font-size: 13px;
-      font-weight: bold;
-    }
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
 
-    input, select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 7px;
-      font-size: 14px;
-      background: white;
-      color: var(--text);
-    }
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdcec2;
+  border-radius: 8px;
+  background: white;
+  font: inherit;
+  color: var(--text);
+}
 
-    input:focus, select:focus {
-      outline: 2px solid #9dd6b7;
-      border-color: var(--green);
-    }
+input:focus,
+select:focus {
+  outline: 3px solid #08783e22;
+  border-color: var(--green);
+}
 
-    .checkbox-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-top: 18px;
-      font-size: 13px;
-      line-height: 1.5;
-    }
+.permissions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
 
-    .checkbox-row input {
-      width: auto;
-      margin-top: 3px;
-    }
+.permission-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+}
 
-    button, .button-link {
-      display: inline-block;
-      border: 0;
-      border-radius: 7px;
-      padding: 12px 17px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-    }
+.permission-option input {
+  width: auto;
+  margin-top: 4px;
+}
 
-    .primary {
-      background: var(--green);
-      color: white;
-    }
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
 
-    .primary:hover {
-      background: #06472d;
-    }
+button,
+.button-link {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 17px;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
 
-    .secondary {
-      background: #e8edf1;
-      color: #243447;
-    }
+.primary {
+  background: var(--green);
+  color: white;
+}
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
+.secondary {
+  background: #e8efe9;
+  color: var(--text);
+}
 
-    .status-message {
-      display: none;
-      margin-top: 16px;
-      padding: 12px;
-      border-radius: 7px;
-      font-size: 13px;
-      line-height: 1.6;
-    }
+.message {
+  display: none;
+  padding: 13px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+}
 
-    .status-message.info {
-      display: block;
-      background: #eff6ff;
-      color: #1d4ed8;
-    }
+.message.show {
+  display: block;
+}
 
-    .status-message.error {
-      display: block;
-      background: #fef2f2;
-      color: var(--red);
-    }
+.message.info {
+  background: #edf5ff;
+  border: 1px solid #b9d3f2;
+  color: #194875;
+}
 
-    .table-wrap {
-      overflow-x: auto;
-    }
+.message.error {
+  background: #fff0f0;
+  border: 1px solid #edb9b9;
+  color: #a52c2c;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 650px;
-    }
+.toolbar {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin: 15px 0;
+}
 
-    th, td {
-      text-align: left;
-      padding: 13px 10px;
-      border-bottom: 1px solid var(--border);
-      font-size: 13px;
-    }
+.table-container {
+  overflow-x: auto;
+}
 
-    th {
-      background: #f8fafc;
-      color: #475569;
-    }
+table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
 
-    .badge {
-      display: inline-block;
-      border-radius: 20px;
-      padding: 5px 9px;
-      background: var(--green-light);
-      color: var(--green);
-      font-size: 11px;
-      font-weight: bold;
-    }
+th,
+td {
+  padding: 13px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
 
-    .empty-state {
-      color: var(--muted);
-      text-align: center;
-      padding: 25px 10px;
-      font-size: 13px;
-    }
+th {
+  background: #f4f8f5;
+  color: #345343;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px 12px;
-      color: var(--muted);
-      font-size: 12px;
-    }
+.empty-state {
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+}
 
-    @media (max-width: 700px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #fff2d5;
+  color: #76550a;
+  font-size: 12px;
+  font-weight: bold;
+}
 
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
+.activity-box {
+  background: #f7faf8;
+  border: 1px dashed #c9d9ce;
+  border-radius: 8px;
+  padding: 15px;
+  color: var(--muted);
+  font-size: 14px;
+}
 
-      header h1 {
-        font-size: 20px;
-      }
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 12px 0 25px;
+}
 
-      .panel {
-        padding: 16px;
-      }
-    }
-  </style>
+@media (max-width: 650px) {
+  .summary,
+  .form-grid,
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
-    <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
-    <p>CEO Staff Management Dashboard</p>
-    <p>Staff administration, branch assignments and access management</p>
+  <div class="container">
+    <h1 class="company-name">
+      ARNAUD AFROCHAINE TRUST SYSTEMS LTD
+    </h1>
+
+    <p class="subtitle">
+      CEO Staff Management Dashboard
+    </p>
   </div>
 </header>
 
 <main class="container">
 
-  <div class="notice">
-    <strong>Security notice:</strong>
-    This page is the staff-management interface. Staff account creation,
-    role enforcement and account suspension must be connected to a secure
-    backend before they can be used operationally. This page does not create
-    Firebase Authentication accounts or grant access by itself.
-  </div>
+  <!-- SECURITY NOTICE -->
 
-  <section class="cards" aria-label="Staff summary">
+  <section class="notice">
+    <strong>Secure Backend Status: Not Connected</strong>
 
-    <div class="card">
-      <div class="card-label">Staff Records</div>
-      <div class="card-number" id="staffCount">0</div>
+    This dashboard is the staff management interface.
+    Staff account creation, saving records, changing permissions,
+    and deactivating accounts require the secure backend.
+
+    No staff account will be created by this page alone.
+  </section>
+
+
+  <!-- SUMMARY CARDS -->
+
+  <section class="summary">
+
+    <div class="summary-card">
+      <div class="summary-label">Staff Records</div>
+      <div class="summary-number" id="staffCount">0</div>
     </div>
 
-    <div class="card">
-      <div class="card-label">Active Staff</div>
-      <div class="card-number" id="activeCount">0</div>
+    <div class="summary-card">
+      <div class="summary-label">Active Staff</div>
+      <div class="summary-number" id="activeCount">0</div>
     </div>
 
-    <div class="card">
-      <div class="card-label">Assigned Branches</div>
-      <div class="card-number" id="branchCount">0</div>
+    <div class="summary-card">
+      <div class="summary-label">Assigned Branches</div>
+      <div class="summary-number" id="branchCount">0</div>
     </div>
 
   </section>
 
+
+  <!-- STAFF REGISTRATION -->
+
   <section class="panel">
+
     <h2>Register Staff Member</h2>
 
     <p class="description">
-      Enter the staff member's details and proposed permissions.
-      Submitting this form currently validates the information only;
-      it does not create an account or save a staff record.
+      Enter the staff member's information below.
+      The current form validates details but does not save them.
     </p>
 
-    <form id="staffForm">
+    <form id="staffForm" novalidate>
 
       <div class="form-grid">
 
-        <div class="field">
+        <div>
           <label for="staffName">Full Name</label>
+
           <input
-            id="staffName"
-            name="staffName"
             type="text"
-            autocomplete="name"
+            id="staffName"
+            name="name"
             maxlength="100"
+            autocomplete="name"
+            placeholder="Enter full name"
             required
-            placeholder="Enter full name">
+          >
         </div>
 
-        <div class="field">
+
+        <div>
           <label for="staffEmail">Email Address</label>
+
           <input
-            id="staffEmail"
-            name="staffEmail"
             type="email"
-            autocomplete="email"
+            id="staffEmail"
+            name="email"
             maxlength="254"
+            autocomplete="email"
+            placeholder="name@example.com"
             required
-            placeholder="staff@example.com">
+          >
         </div>
 
-        <div class="field">
+
+        <div>
           <label for="staffRole">Staff Role</label>
-          <select id="staffRole" name="staffRole" required>
-            <option value="">Select a role</option>
-            <option value="country_manager">Country Manager</option>
+
+          <select id="staffRole" name="role" required>
+
+            <option value="">Choose a role</option>
+
+            <option value="country_manager">
+              Country Manager
+            </option>
+
             <option value="document_officer">
               Document Verification Officer
             </option>
-            <option value="support_staff">Support Staff</option>
+
+            <option value="support_staff">
+              Support Staff
+            </option>
+
           </select>
         </div>
 
-        <div class="field">
-          <label for="staffBranch">Assigned Country or Branch</label>
+
+        <div>
+          <label for="staffBranch">
+            Assigned Country or Branch
+          </label>
+
           <input
-            id="staffBranch"
-            name="staffBranch"
             type="text"
+            id="staffBranch"
+            name="branch"
             maxlength="100"
+            placeholder="Enter country or branch"
             required
-            placeholder="Enter assigned country or branch">
+          >
         </div>
 
       </div>
 
-      <div class="checkbox-row">
-        <input id="documentAccess" type="checkbox">
-        <label for="documentAccess">
-          Propose access to the document-verification department.
-          Actual access must be enforced by the backend.
+
+      <div class="permissions">
+
+        <label class="permission-option">
+          <input type="checkbox" disabled>
+
+          Document verification access
+          (awaiting secure permissions)
         </label>
+
+
+        <label class="permission-option">
+          <input type="checkbox" disabled>
+
+          Student verification access
+          (not granted by default)
+        </label>
+
       </div>
 
-      <div class="checkbox-row">
-        <input id="studentAccess" type="checkbox">
-        <label for="studentAccess">
-          Request student-verification access separately.
-          This permission must not be granted automatically.
-        </label>
-      </div>
 
-      <div class="button-row">
+      <div class="buttons">
+
         <button class="primary" type="submit">
           Validate Staff Details
         </button>
@@ -413,29 +462,66 @@
         <button class="secondary" type="reset">
           Clear Form
         </button>
+
       </div>
+
 
       <div
         id="formMessage"
-        class="status-message"
+        class="message"
         role="status"
-        aria-live="polite">
-      </div>
+        aria-live="polite"
+      ></div>
 
     </form>
+
   </section>
 
+
+  <!-- STAFF DIRECTORY -->
+
   <section class="panel">
+
     <h2>Staff Directory</h2>
 
     <p class="description">
-      Staff records will appear here after the secure backend and database
-      permissions have been configured. No staff records are loaded or stored
-      by this initial interface.
+      Staff records will appear here after the secure backend
+      is deployed and connected.
     </p>
 
-    <div class="table-wrap">
+
+    <div class="toolbar">
+
+      <input
+        type="search"
+        placeholder="Search name, email or branch"
+        aria-label="Search staff"
+        disabled
+      >
+
+
+      <select aria-label="Filter by role" disabled>
+        <option value="">All Roles</option>
+        <option value="country_manager">Country Manager</option>
+        <option value="document_officer">Document Verification Officer</option>
+        <option value="support_staff">Support Staff</option>
+      </select>
+
+
+      <select aria-label="Filter by status" disabled>
+        <option value="">All Statuses</option>
+        <option value="active">Active</option>
+        <option value="pending_setup">Pending Setup</option>
+        <option value="disabled">Deactivated</option>
+      </select>
+
+    </div>
+
+
+    <div class="table-container">
+
       <table>
+
         <thead>
           <tr>
             <th>Staff Name</th>
@@ -443,99 +529,196 @@
             <th>Role</th>
             <th>Branch</th>
             <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
-        <tbody id="staffTable">
+
+        <tbody id="staffTableBody">
+
           <tr>
-            <td colspan="5" class="empty-state">
+            <td colspan="6" class="empty-state">
               Staff database connection has not been configured.
+              No staff records are loaded.
             </td>
           </tr>
+
         </tbody>
+
       </table>
+
     </div>
+
   </section>
 
+
+  <!-- ACTIVITY LOG -->
+
   <section class="panel">
+
     <h2>Staff Activity Log</h2>
 
     <p class="description">
-      A secure, server-controlled audit log will be connected in a later
-      step. This page does not currently record administrative actions.
+      Staff creation, role changes and deactivation should
+      be recorded by the secure server for accountability.
     </p>
 
-    <div class="empty-state">
-      Audit logging is awaiting backend configuration.
+    <div class="activity-box">
+      Activity log is waiting for the secure backend connection.
+      This page is not recording staff activity.
     </div>
+
   </section>
 
-  <div class="button-row">
-    <a class="button-link secondary"
-       href="admin-sealed-documents.html">
-      Return to Admin Dashboard
+
+  <!-- NAVIGATION -->
+
+  <div class="buttons">
+
+    <a
+      class="button-link secondary"
+      href="admin-sealed-documents.html"
+    >
+      Open Document Admin Dashboard
     </a>
+
   </div>
 
 </main>
 
-<footer>
-  &copy; <span id="currentYear"></span>
-  ARNAUD AFROCHAINE TRUST SYSTEMS LTD.
-  All rights reserved.
+
+<footer class="container">
+  © <span id="currentYear"></span>
+  ARNAUD AFROCHAINE TRUST SYSTEMS LTD
 </footer>
 
+
 <script>
-  document.getElementById("currentYear").textContent =
-    new Date().getFullYear();
+"use strict";
 
-  document.getElementById("staffForm").addEventListener(
-    "submit",
-    function (event) {
-      event.preventDefault();
+document.getElementById("currentYear").textContent =
+  new Date().getFullYear();
 
-      const message = document.getElementById("formMessage");
 
-      const name =
-        document.getElementById("staffName").value.trim();
+const staffForm = document.getElementById("staffForm");
 
-      const email =
-        document.getElementById("staffEmail").value.trim();
+const formMessage = document.getElementById("formMessage");
 
-      const role =
-        document.getElementById("staffRole").value;
 
-      const branch =
-        document.getElementById("staffBranch").value.trim();
+function showMessage(text, type) {
 
-      if (!name || !email || !role || !branch) {
-        message.className = "status-message error";
-        message.textContent =
-          "Please complete all required fields.";
-        return;
-      }
+  formMessage.textContent = text;
 
-      message.className = "status-message info";
-      message.textContent =
-        "The staff details are valid. No account has been created and " +
-        "no information has been saved. The secure backend must be " +
-        "connected before you can register staff.";
+  formMessage.className = "message show " + type;
 
-      message.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-      });
-    }
+}
+
+
+staffForm.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+
+  const name = document
+    .getElementById("staffName")
+    .value
+    .trim();
+
+
+  const email = document
+    .getElementById("staffEmail")
+    .value
+    .trim();
+
+
+  const role = document
+    .getElementById("staffRole")
+    .value;
+
+
+  const branch = document
+    .getElementById("staffBranch")
+    .value
+    .trim();
+
+
+  if (!name || name.length > 100) {
+
+    showMessage(
+      "Please enter a valid full name.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+  if (
+    !emailPattern.test(email) ||
+    email.length > 254
+  ) {
+
+    showMessage(
+      "Please enter a valid email address.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const allowedRoles = [
+    "country_manager",
+    "document_officer",
+    "support_staff"
+  ];
+
+
+  if (!allowedRoles.includes(role)) {
+
+    showMessage(
+      "Please choose a valid staff role.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if (!branch || branch.length > 100) {
+
+    showMessage(
+      "Please enter a valid country or branch.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    "The details passed the form checks. No staff account was created and nothing was saved. The secure backend must be deployed and connected before staff registration can work.",
+    "info"
   );
 
-  document.getElementById("staffForm").addEventListener(
-    "reset",
-    function () {
-      const message = document.getElementById("formMessage");
-      message.className = "status-message";
-      message.textContent = "";
-    }
-  );
+});
+
+
+staffForm.addEventListener("reset", function() {
+
+  formMessage.textContent = "";
+
+  formMessage.className = "message";
+
+});
+
 </script>
 
 </body>
