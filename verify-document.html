@@ -6,31 +6,42 @@
   <meta name="theme-color" content="#08783e">
   <meta name="description" content="Verify approved documents through ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
 
-  <title>Document Verification | ARNAUD TRUST</title>
+  <title>Official Document Verification | ARNAUD TRUST</title>
 
   <style>
     * {
       box-sizing: border-box;
     }
 
+    :root {
+      --green: #08783e;
+      --dark-green: #064d2b;
+      --gold: #d7ae43;
+      --background: #f4f8f5;
+      --text: #203027;
+      --muted: #657168;
+      --border: #dce6df;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f8f5;
-      color: #203027;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
     }
 
     header {
-      background: #08783e;
+      background: var(--green);
       color: white;
       text-align: center;
       padding: 28px 15px;
-      border-bottom: 5px solid #d7ae43;
+      border-bottom: 5px solid var(--gold);
     }
 
     header h1 {
-      font-size: 24px;
+      font-size: 23px;
       margin: 0 0 10px;
+      line-height: 1.4;
     }
 
     header p {
@@ -38,22 +49,22 @@
     }
 
     main {
-      max-width: 760px;
+      max-width: 800px;
       margin: 25px auto;
       padding: 0 14px;
     }
 
     .card {
       background: white;
-      padding: 23px;
+      padding: 24px;
       margin-bottom: 20px;
       border-radius: 14px;
-      border: 1px solid #dce6df;
+      border: 1px solid var(--border);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
 
     h2 {
-      color: #08783e;
+      color: var(--green);
       margin-top: 0;
     }
 
@@ -77,7 +88,7 @@
       padding: 14px;
       border: none;
       border-radius: 8px;
-      background: #08783e;
+      background: var(--green);
       color: white;
       font-size: 16px;
       font-weight: bold;
@@ -89,12 +100,17 @@
       cursor: wait;
     }
 
+    button:hover:not(:disabled) {
+      background: var(--dark-green);
+    }
+
     .message {
       padding: 13px;
       border-radius: 8px;
       margin-top: 15px;
       line-height: 1.5;
       overflow-wrap: anywhere;
+      white-space: pre-wrap;
     }
 
     .success {
@@ -112,28 +128,74 @@
       color: #755400;
     }
 
-    #result {
-      display: none;
+    /*
+      IMPORTANT:
+      The result section is hidden only when its hidden attribute exists.
+      When JavaScript sets result.hidden = false, it becomes visible.
+    */
+
+    #result[hidden] {
+      display: none !important;
+    }
+
+    #result:not([hidden]) {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .company-heading {
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+    }
+
+    .company-heading h3 {
+      color: var(--green);
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
+
+    .verified-banner {
+      background: #e4f7e9;
+      color: #12652d;
+      border: 1px solid #a7d9b4;
+      padding: 15px;
+      border-radius: 9px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 19px;
+      margin: 18px 0;
     }
 
     .detail {
-      padding: 12px 0;
+      padding: 13px 0;
       border-bottom: 1px solid #e5ece7;
       overflow-wrap: anywhere;
     }
 
     .detail strong {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       color: #425449;
+      font-size: 13px;
+    }
+
+    .detail span {
+      display: block;
+      line-height: 1.5;
     }
 
     #qrCode {
       text-align: center;
-      margin-top: 24px;
+      margin-top: 25px;
+      padding: 20px 10px;
+      border: 1px dashed #b9c9be;
+      border-radius: 10px;
     }
 
-    #qrCode img {
+    #qrImage {
       display: block;
       width: 220px;
       height: 220px;
@@ -144,7 +206,7 @@
 
     .small {
       font-size: 13px;
-      color: #657168;
+      color: var(--muted);
       line-height: 1.6;
       overflow-wrap: anywhere;
     }
@@ -153,10 +215,14 @@
       word-break: break-all;
     }
 
+    .print-button {
+      background: #37483d;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
-      color: #657168;
+      color: var(--muted);
       font-size: 13px;
       line-height: 1.7;
     }
@@ -171,20 +237,29 @@
       }
 
       header {
-        border-bottom: 3px solid #08783e;
+        border-bottom: 3px solid var(--green);
+        print-color-adjust: exact;
       }
 
       #searchCard,
       #aboutCard,
       footer,
-      #printButton {
+      #printButton,
+      #message {
         display: none !important;
       }
 
-      #result {
+      #result,
+      #result[hidden] {
         display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         box-shadow: none;
         border: 1px solid #ccc;
+      }
+
+      .card {
+        box-shadow: none;
       }
     }
   </style>
@@ -218,7 +293,7 @@
         type="text"
         maxlength="120"
         autocomplete="off"
-        placeholder="Example: ATS-ABC123456"
+        placeholder="Enter document reference number"
         required
       >
 
@@ -237,9 +312,16 @@
   </section>
 
   <section class="card" id="result" hidden>
+
+    <div class="company-heading">
+      <h3>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h3>
+      <p>African Roots, Global Vision.</p>
+      <p class="small">Official Document Verification Record</p>
+    </div>
+
     <h2>Verification Result</h2>
 
-    <div id="resultStatus" class="message success">
+    <div id="resultStatus" class="verified-banner">
       VERIFIED
     </div>
 
@@ -286,19 +368,28 @@
     <div id="qrCode">
       <h3>QR Verification Code</h3>
 
-      <p>
-        Scan this code to open the verification page
+      <p class="small">
+        Scan this QR code to open the verification page
         for this specific document.
       </p>
 
-      <img id="qrImage" alt="QR code for document verification">
+      <img
+        id="qrImage"
+        alt="QR code for document verification"
+        hidden
+      >
+
+      <p id="qrMessage" class="small">
+        Generating QR code...
+      </p>
 
       <p class="small" id="verificationLink"></p>
     </div>
 
-    <button id="printButton" type="button">
+    <button id="printButton" class="print-button" type="button">
       Print Verification Result
     </button>
+
   </section>
 
   <section class="card" id="aboutCard">
@@ -322,13 +413,11 @@
   <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong><br>
   Official Email: arnaudafrochain@gmail.com<br>
   African Roots, Global Vision.<br><br>
-
   &copy; <span id="year"></span>
   ARNAUD AFROCHAINE TRUST SYSTEMS LTD.
 </footer>
 
 <script type="module">
-
   import {
     initializeApp
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -340,8 +429,6 @@
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-  // EXISTING ARNAUD DOCUMENT TRUST FIREBASE CONFIGURATION
-
   const firebaseConfig = {
     apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
     authDomain: "arnaud-document-trust.firebaseapp.com",
@@ -352,6 +439,8 @@
     measurementId: "G-NYPH2RB851"
   };
 
+  const COMPANY_NAME = "ARNAUD AFROCHAINE TRUST SYSTEMS LTD";
+  const COMPANY_EMAIL = "arnaudafrochain@gmail.com";
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -375,6 +464,8 @@
 
   function setText(id, value, fallback = "Not provided") {
     const element = document.getElementById(id);
+
+    if (!element) return;
 
     element.textContent =
       value === undefined ||
@@ -412,25 +503,12 @@
   function hideResult() {
     result.hidden = true;
 
-    document.getElementById("qrImage").removeAttribute("src");
+    const qrImage = document.getElementById("qrImage");
+    qrImage.hidden = true;
+    qrImage.removeAttribute("src");
+
     document.getElementById("verificationLink").textContent = "";
-  }
-
-
-  function generateQR(url) {
-    const image = document.getElementById("qrImage");
-
-    const qrURL = new URL(
-      "https://api.qrserver.com/v1/create-qr-code/"
-    );
-
-    qrURL.searchParams.set("size", "220x220");
-    qrURL.searchParams.set("data", url);
-
-    image.src = qrURL.toString();
-    image.alt = "QR code for the document verification page";
-
-    document.getElementById("verificationLink").textContent = url;
+    document.getElementById("qrMessage").textContent = "";
   }
 
 
@@ -440,23 +518,53 @@
     url.search = "";
     url.hash = "";
 
-    // Preserve the URL parameter used by this website.
+    // This parameter is used to reopen the same document automatically.
     url.searchParams.set("certificate", reference);
 
     return url.toString();
   }
 
 
+  function generateQR(url) {
+    const image = document.getElementById("qrImage");
+    const qrMessage = document.getElementById("qrMessage");
+
+    image.hidden = true;
+    qrMessage.textContent = "Loading QR code...";
+
+    document.getElementById("verificationLink").textContent = url;
+
+    // QR image is generated by an external QR-code service.
+    const qrURL = new URL(
+      "https://api.qrserver.com/v1/create-qr-code/"
+    );
+
+    qrURL.searchParams.set("size", "220x220");
+    qrURL.searchParams.set("data", url);
+
+    image.onload = function() {
+      image.hidden = false;
+      qrMessage.textContent =
+        "QR code ready. Scan it to open this document's verification page.";
+    };
+
+    image.onerror = function() {
+      image.hidden = true;
+      qrMessage.textContent =
+        "The QR image could not load. Check your internet connection. You can still use the verification link displayed above.";
+    };
+
+    image.src = qrURL.toString();
+  }
+
+
   async function verifyDocument(reference) {
-    const certificateNumber = reference.trim();
+    const certificateNumber = String(reference || "").trim();
 
     hideResult();
 
     if (!certificateNumber) {
-      showMessage(
-        "Please enter a document reference number.",
-        "error"
-      );
+      showMessage("Please enter a document reference number.", "error");
       return;
     }
 
@@ -469,7 +577,6 @@
     );
 
     try {
-      // Document ID must match the exact certificate number.
       const recordRef = doc(
         db,
         "publicVerifications",
@@ -480,7 +587,7 @@
 
       if (!recordSnapshot.exists()) {
         showMessage(
-          "No published record was found for this number. Please check the reference and try again.",
+          "No published record was found for this number. Check the document number and try again.",
           "error"
         );
         return;
@@ -492,7 +599,6 @@
         .trim()
         .toLowerCase();
 
-      // Only approved statuses can produce a successful result.
       if (status !== "verified" && status !== "approved") {
         showMessage(
           "A record exists, but it is not approved for public verification. Please contact the issuing company.",
@@ -501,65 +607,85 @@
         return;
       }
 
+      // Fill in all the result details.
       setText(
         "companyName",
         data.companyName,
-        "ARNAUD AFROCHAINE TRUST SYSTEMS LTD"
+        COMPANY_NAME
       );
 
       setText(
         "docNumber",
-        data.certificateNumber || data.referenceNumber || certificateNumber
+        data.certificateNumber ||
+        data.referenceNumber ||
+        certificateNumber
       );
 
       setText("documentTitle", data.documentTitle);
       setText("issuedTo", data.issuedTo);
 
-      setText(
-        "verificationStatus",
-        "VERIFIED"
-      );
+      setText("verificationStatus", "VERIFIED");
 
       setText(
         "companyEmail",
         data.companyEmail,
-        "arnaudafrochain@gmail.com"
+        COMPANY_EMAIL
       );
 
       setText(
         "companyNumber",
-        data.companyNumber
+        data.companyNumber || data.companyRegistrationNumber
       );
 
       setText(
         "dateRecorded",
-        formatDate(data.issuedAt || data.createdAt)
+        formatDate(
+          data.issuedAt ||
+          data.createdAt ||
+          data.verifiedAt
+        )
       );
 
-      const statusBox =
-        document.getElementById("resultStatus");
+      const statusBox = document.getElementById("resultStatus");
 
-      statusBox.className = "message success";
       statusBox.textContent =
-        "VERIFIED — An approved public verification record was found.";
+        "VERIFIED — Approved public verification record found.";
+
+      statusBox.className = "verified-banner";
 
       const verificationURL =
         makeVerificationURL(certificateNumber);
 
       generateQR(verificationURL);
 
+      /*
+       * CRITICAL DISPLAY FIX:
+       * Remove hidden and explicitly display the result.
+       */
       result.hidden = false;
+      result.style.display = "block";
+      result.style.visibility = "visible";
 
       showMessage(
-        "Verification successful. The approved record was found.",
+        "Verification successful. The document details are displayed below.",
         "success"
       );
+
+      // Scroll the result into view so the user can see it immediately.
+      setTimeout(() => {
+        result.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 100);
 
     } catch (error) {
       console.error("Document verification error:", error);
 
       showMessage(
-        "We could not complete the verification lookup. Please check your internet connection. If the problem continues, the Firebase security rules or database configuration may need attention.",
+        "Verification lookup failed. Error: " +
+        (error.message || String(error)) +
+        "\nPlease check the internet connection and Firebase publicVerifications read rules.",
         "error"
       );
 
@@ -572,7 +698,6 @@
 
   form.addEventListener("submit", async function(event) {
     event.preventDefault();
-
     await verifyDocument(input.value);
   });
 
@@ -585,13 +710,14 @@
   );
 
 
-  // Automatically verify a certificate opened from a QR code.
+  // Automatically load a document when its QR code is scanned.
   const urlParameters = new URLSearchParams(
     window.location.search
   );
 
   const certificateFromURL =
-    urlParameters.get("certificate");
+    urlParameters.get("certificate") ||
+    urlParameters.get("number");
 
   if (certificateFromURL) {
     input.value = certificateFromURL;
