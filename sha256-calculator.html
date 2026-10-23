@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08783e">
+
+<title>ARNAUD SHA-256 Calculator</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f7f4;
+  color: #26352b;
+}
+
+header {
+  background: #08783e;
+  color: white;
+  text-align: center;
+  padding: 24px 15px;
+  border-bottom: 5px solid #d7ae43;
+}
+
+header h1 {
+  font-size: 22px;
+  margin: 0 0 10px;
+}
+
+main {
+  max-width: 700px;
+  margin: 25px auto;
+  padding: 0 14px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  margin-bottom: 20px;
+  border: 1px solid #dce6df;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.05);
+}
+
+h2 {
+  color: #08783e;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.notice {
+  padding: 13px;
+  background: #fff5dc;
+  color: #755400;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 18px 0 8px;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b9c9be;
+  border-radius: 8px;
+  background: white;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #08783e;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .6;
+}
+
+.secondary {
+  background: #344b3b;
+}
+
+.result {
+  display: none;
+}
+
+.hash {
+  padding: 14px;
+  border: 1px solid #dce6df;
+  border-radius: 8px;
+  background: #f8faf8;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-family: monospace;
+}
+
+.message {
+  padding: 13px;
+  margin-top: 14px;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.success {
+  background: #e7f6eb;
+  color: #155d30;
+}
+
+.error {
+  background: #fff0f0;
+  color: #a11c1c;
+}
+
+.muted {
+  color: #647168;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #657168;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+  <p>SHA-256 Fingerprint Calculator</p>
+  <p>African Roots, Global Vision.</p>
+</header>
+
+<main>
+
+<section class="card">
+
+<h2>Calculate Document Fingerprint</h2>
+
+<p>
+Select a PDF or another file from your device to calculate
+its SHA-256 fingerprint.
+</p>
+
+<div class="notice">
+<strong>Important:</strong> This is a testing tool.
+It does not approve documents or establish that a document
+is genuine.
+</div>
+
+<form id="hashForm">
+
+<label for="fileInput">Choose your document</label>
+
+<input
+  type="file"
+  id="fileInput"
+  required
+>
+
+<button id="calculateButton" type="submit">
+Calculate SHA-256
+</button>
+
+</form>
+
+<div id="message" class="message" hidden></div>
+
+</section>
+
+<section id="resultSection" class="card result">
+
+<h2>Fingerprint Result</h2>
+
+<p><strong>File name</strong></p>
+<p id="fileName" class="muted"></p>
+
+<p><strong>File size</strong></p>
+<p id="fileSize" class="muted"></p>
+
+<p><strong>SHA-256 fingerprint</strong></p>
+
+<div id="hashValue" class="hash"></div>
+
+<button id="copyButton" type="button">
+Copy Fingerprint
+</button>
+
+<button id="saveButton" class="secondary" type="button">
+Save Result as Text File
+</button>
+
+</section>
+
+</main>
+
+<footer>
+  <p>
+    &copy; <span id="year"></span>
+    ARNAUD AFROCHAINE TRUST SYSTEMS LTD
+  </p>
+  <p>Local fingerprint testing tool.</p>
+</footer>
+
+<script>
+const form = document.getElementById("hashForm");
+const fileInput = document.getElementById("fileInput");
+const calculateButton =
+  document.getElementById("calculateButton");
+
+const message = document.getElementById("message");
+const resultSection = document.getElementById("resultSection");
+
+let latestResult = null;
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+function showMessage(text, type) {
+  message.textContent = text;
+  message.className = "message " + type;
+  message.hidden = false;
+}
+
+function formatBytes(bytes) {
+  if (bytes < 1024) return bytes + " bytes";
+
+  if (bytes < 1024 * 1024) {
+    return (bytes / 1024).toFixed(2) + " KB";
+  }
+
+  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const file = fileInput.files[0];
+
+  if (!file) {
+    showMessage("Please select a file first.", "error");
+    return;
+  }
+
+  if (!window.crypto || !crypto.subtle) {
+    showMessage(
+      "SHA-256 is unavailable in this browser context. " +
+      "Open this page using a modern browser over HTTPS.",
+      "error"
+    );
+    return;
+  }
+
+  calculateButton.disabled = true;
+  calculateButton.textContent = "Calculating...";
+  resultSection.style.display = "none";
+  message.hidden = true;
+
+  try {
+    const fileBytes = await file.arrayBuffer();
+
+    const digest = await crypto.subtle.digest(
+      "SHA-256",
+      fileBytes
+    );
+
+    const fingerprint = Array.from(
+      new Uint8Array(digest)
+    ).map(function(byte) {
+      return byte.toString(16).padStart(2, "0");
+    }).join("");
+
+    latestResult = {
+      fileName: file.name,
+      fileSize: file.size,
+      fingerprint: fingerprint,
+      calculatedAt: new Date().toISOString()
+    };
+
+    document.getElementById("fileName").textContent =
+      latestResult.fileName;
+
+    document.getElementById("fileSize").textContent =
+      formatBytes(latestResult.fileSize);
+
+    document.getElementById("hashValue").textContent =
+      latestResult.fingerprint;
+
+    resultSection.style.display = "block";
+
+    showMessage(
+      "Fingerprint calculated successfully. " +
+      "This tool processed the file locally without uploading it.",
+      "success"
+    );
+
+  } catch (error) {
+    console.error(error);
+
+    showMessage(
+      "Unable to calculate the fingerprint. Please try again.",
+      "error"
+    );
+
+  } finally {
+    calculateButton.disabled = false;
+    calculateButton.textContent = "Calculate SHA-256";
+  }
+});
+
+document.getElementById("copyButton").addEventListener(
+  "click",
+  async function() {
+    if (!latestResult) return;
+
+    try {
+      await navigator.clipboard.writeText(
+        latestResult.fingerprint
+      );
+
+      showMessage("Fingerprint copied.", "success");
+
+    } catch (error) {
+      showMessage(
+        "Automatic copying is unavailable. " +
+        "Please select and copy the fingerprint manually.",
+        "error"
+      );
+    }
+  }
+);
+
+document.getElementById("saveButton").addEventListener(
+  "click",
+  function() {
+    if (!latestResult) return;
+
+    const content = [
+      "ARNAUD AFROCHAINE TRUST SYSTEMS LTD",
+      "SHA-256 TEST RESULT",
+      "File: " + latestResult.fileName,
+      "File size: " + latestResult.fileSize + " bytes",
+      "SHA-256: " + latestResult.fingerprint,
+      "Calculated at: " + latestResult.calculatedAt,
+      "",
+      "This is a local test result, not an official approval."
+    ].join("\n");
+
+    const blob = new Blob(
+      [content],
+      { type: "text/plain;charset=utf-8" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "arnaud-sha256-test-result.txt";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(function() {
+      URL.revokeObjectURL(url);
+    }, 1000);
+  }
+);
+
+fileInput.addEventListener("change", function() {
+  latestResult = null;
+  resultSection.style.display = "none";
+  message.hidden = true;
+});
+</script>
+
+</body>
+</html>
