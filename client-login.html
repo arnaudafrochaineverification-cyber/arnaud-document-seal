@@ -1,0 +1,492 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08783e">
+  <meta name="description" content="Secure company client login for ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
+  <title>Company Login | ARNAUD</title>  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f7f4;
+      color: #202820;
+    }
+
+    header {
+      background: #08783e;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    header p {
+      margin: 7px 0 0;
+      font-size: 14px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 480px;
+      margin: 35px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px 22px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    }
+
+    h2 {
+      color: #08783e;
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    .intro {
+      color: #59635b;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin: 18px 0 7px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5ce;
+      border-radius: 7px;
+      font-size: 16px;
+      background: white;
+    }
+
+    input:focus {
+      outline: 2px solid #08783e;
+      border-color: transparent;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 7px;
+      padding: 14px;
+      margin-top: 20px;
+      background: #08783e;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background: #789b83;
+      cursor: not-allowed;
+    }
+
+    .secondary {
+      background: #e8f2eb;
+      color: #08783e;
+      border: 1px solid #b9d7c2;
+      margin-top: 10px;
+    }
+
+    #message {
+      display: none;
+      margin-top: 18px;
+      padding: 13px;
+      border-radius: 7px;
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    #message.success {
+      display: block;
+      background: #e5f6e9;
+      color: #145c2b;
+    }
+
+    #message.error {
+      display: block;
+      background: #ffebeb;
+      color: #a21c1c;
+    }
+
+    #message.info {
+      display: block;
+      background: #edf4ff;
+      color: #194b85;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 14px;
+      line-height: 2.1;
+    }
+
+    a {
+      color: #08783e;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 20px 15px;
+      text-align: center;
+      color: #667067;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+  </style></head><body>
+  <header>
+    <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+    <p>Secure Company Client Portal</p>
+  </header>  <main>
+    <section class="card">
+      <h2>Company Login</h2>  <p class="intro">
+    Sign in to track your submitted documents and access your
+    company's verification information.
+  </p>
+
+  <form id="loginForm">
+    <label for="email">Email Address</label>
+    <input
+      id="email"
+      type="email"
+      autocomplete="username"
+      maxlength="254"
+      required
+    >
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      autocomplete="current-password"
+      required
+    >
+
+    <button id="loginButton" type="submit">
+      Log In Securely
+    </button>
+  </form>
+
+  <button
+    id="resetButton"
+    class="secondary"
+    type="button"
+  >
+    Reset Forgotten Password
+  </button>
+
+  <button
+    id="resendButton"
+    class="secondary"
+    type="button"
+    hidden
+  >
+    Resend Email Verification
+  </button>
+
+  <div id="message" role="status" aria-live="polite"></div>
+
+  <div class="links">
+    Don't have a company account?<br>
+    <a href="client-register.html">Register Your Company</a>
+    <br><br>
+    <a href="index.html">Return to Main Website</a>
+  </div>
+</section>
+
+  </main>  <footer>
+    &copy; <span id="year"></span>
+    ARNAUD AFROCHAINE TRUST SYSTEMS LTD.<br>
+    Secure document verification and client services.
+  </footer>  <script type="module">
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      signOut,
+      sendEmailVerification,
+      sendPasswordResetEmail,
+      reload
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    import {
+      getFirestore,
+      doc,
+      getDoc
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+      authDomain: "arnaud-document-trust.firebaseapp.com",
+      projectId: "arnaud-document-trust",
+      storageBucket: "arnaud-document-trust.firebasestorage.app",
+      messagingSenderId: "96008667746",
+      appId: "1:96008667746:web:63a6badb04fb996219873b",
+      measurementId: "G-NYPH2RB851"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("loginForm");
+    const loginButton = document.getElementById("loginButton");
+    const resetButton = document.getElementById("resetButton");
+    const resendButton = document.getElementById("resendButton");
+    const message = document.getElementById("message");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    function showMessage(text, type = "info") {
+      message.textContent = text;
+      message.className = type;
+    }
+
+    function friendlyError(error) {
+      const errors = {
+        "auth/invalid-credential":
+          "The email or password is incorrect. Please check and try again.",
+        "auth/user-not-found":
+          "The login details could not be verified. Please check them or register.",
+        "auth/wrong-password":
+          "The email or password is incorrect.",
+        "auth/invalid-email":
+          "Please enter a valid email address.",
+        "auth/too-many-requests":
+          "Too many attempts. Please wait before trying again.",
+        "auth/network-request-failed":
+          "Network problem. Please check your internet connection.",
+        "auth/user-disabled":
+          "This account is disabled. Please contact the administrator.",
+        "auth/operation-not-allowed":
+          "Email and password login is not enabled in Firebase."
+      };
+
+      return errors[error.code] ||
+        "The request could not be completed. Please try again.";
+    }
+
+    async function checkClientProfile(user) {
+      const profileRef = doc(db, "clientProfiles", user.uid);
+      const profileSnapshot = await getDoc(profileRef);
+
+      if (!profileSnapshot.exists()) {
+        throw new Error(
+          "NO_CLIENT_PROFILE"
+        );
+      }
+
+      const profile = profileSnapshot.data();
+
+      if (
+        profile.uid !== user.uid ||
+        profile.accountType !== "companyClient"
+      ) {
+        throw new Error(
+          "INVALID_CLIENT_PROFILE"
+        );
+      }
+
+      return profile;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = emailInput.value.trim().toLowerCase();
+      const password = passwordInput.value;
+
+      loginButton.disabled = true;
+      loginButton.textContent = "Checking account...";
+      resendButton.hidden = true;
+      message.className = "";
+
+      let user = null;
+
+      try {
+        const credential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        user = credential.user;
+
+        await reload(user);
+
+        if (!user.emailVerified) {
+          resendButton.hidden = false;
+
+          await signOut(auth);
+
+          showMessage(
+            "Your email address has not been verified. Open the verification email sent during registration and click its link. Then return here and log in again. You can request another verification email below.",
+            "error"
+          );
+
+          return;
+        }
+
+        await checkClientProfile(user);
+
+        showMessage(
+          "Login successful. Opening your company dashboard...",
+          "success"
+        );
+
+        window.location.replace("client-dashboard.html");
+
+      } catch (error) {
+        console.error("Client login error:", error);
+
+        if (error.message === "NO_CLIENT_PROFILE") {
+          if (auth.currentUser) {
+            await signOut(auth);
+          }
+
+          showMessage(
+            "We could not find a company profile connected to this account. Please register through the company registration page or contact the administrator.",
+            "error"
+          );
+
+        } else if (error.message === "INVALID_CLIENT_PROFILE") {
+          if (auth.currentUser) {
+            await signOut(auth);
+          }
+
+          showMessage(
+            "This account is not registered as a company client. Please use the correct account.",
+            "error"
+          );
+
+        } else if (
+          error.code === "permission-denied" ||
+          error.code === "firestore/permission-denied"
+        ) {
+          if (auth.currentUser) {
+            await signOut(auth);
+          }
+
+          showMessage(
+            "Firebase denied access to the company profile. Please contact the administrator to check the Firestore security rules.",
+            "error"
+          );
+
+        } else {
+          showMessage(friendlyError(error), "error");
+        }
+
+      } finally {
+        loginButton.disabled = false;
+        loginButton.textContent = "Log In Securely";
+      }
+    });
+
+    resendButton.addEventListener("click", async () => {
+      const email = emailInput.value.trim().toLowerCase();
+      const password = passwordInput.value;
+
+      if (!email || !password) {
+        showMessage(
+          "Enter your email and password first, then request another verification email.",
+          "error"
+        );
+        return;
+      }
+
+      resendButton.disabled = true;
+
+      try {
+        const credential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        if (credential.user.emailVerified) {
+          showMessage(
+            "Your email is already verified. You can log in now.",
+            "success"
+          );
+          return;
+        }
+
+        await sendEmailVerification(credential.user);
+        await signOut(auth);
+
+        showMessage(
+          "A new verification email has been sent. Check your inbox and spam folder.",
+          "success"
+        );
+
+      } catch (error) {
+        console.error("Resend verification error:", error);
+        showMessage(friendlyError(error), "error");
+
+      } finally {
+        if (auth.currentUser) {
+          await signOut(auth);
+        }
+
+        resendButton.disabled = false;
+      }
+    });
+
+    resetButton.addEventListener("click", async () => {
+      const email = emailInput.value.trim().toLowerCase();
+
+      if (!email) {
+        showMessage(
+          "Enter your email address above before requesting a password reset.",
+          "error"
+        );
+        emailInput.focus();
+        return;
+      }
+
+      resetButton.disabled = true;
+
+      try {
+        await sendPasswordResetEmail(auth, email);
+
+        showMessage(
+          "If the account is eligible, Firebase will send password-reset instructions to that email address. Check your inbox and spam folder.",
+          "success"
+        );
+
+      } catch (error) {
+        console.error("Password reset error:", error);
+        showMessage(friendlyError(error), "error");
+
+      } finally {
+        resetButton.disabled = false;
+      }
+    });
+  </script></body>
+</html>
