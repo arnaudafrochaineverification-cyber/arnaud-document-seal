@@ -1,13 +1,14 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#08783e">
   <meta name="description" content="Private company document tracking dashboard.">
-  <title>My Company Dashboard | ARNAUD</title>  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <title>My Company Dashboard | ARNAUD</title>
+
+  <style>
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -88,7 +89,7 @@
 
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 12px;
       margin-top: 20px;
     }
@@ -122,12 +123,17 @@
       font-size: 14px;
       text-decoration: none;
       cursor: pointer;
-      margin-top: 8px;
+      margin: 5px 6px 5px 0;
     }
 
     .button.secondary {
       background: #e8f2eb;
       color: #08783e;
+    }
+
+    .button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .request {
@@ -195,6 +201,16 @@
       display: none !important;
     }
 
+    .hash {
+      background: #f0f3f1;
+      padding: 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+      line-height: 1.6;
+    }
+
     footer {
       text-align: center;
       color: #657067;
@@ -204,446 +220,482 @@
     }
 
     @media (max-width: 520px) {
-      .card {
-        padding: 17px;
-      }
-
-      header h1 {
-        font-size: 18px;
-      }
+      .card { padding: 17px; }
+      header h1 { font-size: 18px; }
+      .button { max-width: 100%; }
     }
-  </style></head><body>
-  <header>
-    <div class="header-inner">
-      <div>
-        <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
-        <p>Private Company Client Portal</p>
-      </div>  <button id="logoutButton" class="logout" type="button">
-    Log Out
-  </button>
-</div>
+  </style>
+</head>
 
-  </header>  <main>
-    <div id="pageMessage" class="message">
-      Checking your account and permissions. Please wait...
-    </div><section id="dashboardContent" class="hidden">
-  <div class="card">
-    <h2>Welcome to Your Dashboard</h2>
+<body>
 
-    <p id="companyName" class="company-name">Loading company...</p>
-    <p id="representativeName" class="muted"></p>
-    <p id="clientEmail" class="muted"></p>
-
-    <div class="summary-grid">
-      <div class="summary">
-        <strong id="totalCount">0</strong>
-        <span>Total submissions</span>
-      </div>
-
-      <div class="summary">
-        <strong id="pendingCount">0</strong>
-        <span>Pending review</span>
-      </div>
-
-      <div class="summary">
-        <strong id="approvedCount">0</strong>
-        <span>Approved</span>
-      </div>
-
-      <div class="summary">
-        <strong id="rejectedCount">0</strong>
-        <span>Rejected</span>
-      </div>
+<header>
+  <div class="header-inner">
+    <div>
+      <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+      <p>Private Company Client Portal</p>
     </div>
-  </div>
 
-  <div class="card">
-    <h2>My Documents</h2>
-
-    <p class="muted">
-      This list contains document requests linked to your signed-in
-      account. Confidential reports and PDF files will only be shown
-      when the appropriate secure access has been implemented.
-    </p>
-
-    <button id="refreshButton" class="button secondary" type="button">
-      Refresh Documents
+    <button id="logoutButton" class="logout" type="button">
+      Log Out
     </button>
+  </div>
+</header>
 
-    <div id="requestsList">
-      <p class="muted">Loading your submissions...</p>
+<main>
+
+  <div id="pageMessage" class="message">
+    Checking your account and permissions. Please wait...
+  </div>
+
+  <section id="dashboardContent" class="hidden">
+
+    <div class="card">
+      <h2>Welcome to Your Dashboard</h2>
+
+      <p id="companyName" class="company-name">
+        Loading company...
+      </p>
+
+      <p id="representativeName" class="muted"></p>
+      <p id="clientEmail" class="muted"></p>
+
+      <div class="summary-grid">
+        <div class="summary">
+          <strong id="totalCount">0</strong>
+          <span>Total submissions</span>
+        </div>
+
+        <div class="summary">
+          <strong id="pendingCount">0</strong>
+          <span>Pending review</span>
+        </div>
+
+        <div class="summary">
+          <strong id="approvedCount">0</strong>
+          <span>Approved</span>
+        </div>
+
+        <div class="summary">
+          <strong id="rejectedCount">0</strong>
+          <span>Rejected</span>
+        </div>
+      </div>
+
+      <p>
+        <a class="button"
+           href="seal-document.html">
+          + Submit New Document
+        </a>
+
+        <a class="button secondary"
+           href="verify-document.html">
+          Verify a Document
+        </a>
+      </p>
     </div>
-  </div>
 
-  <div class="card">
-    <h2>Company Account</h2>
+    <div class="card">
+      <h2>My Documents</h2>
 
-    <p class="muted">
-      Your company profile is associated with your verified email
-      account. Contact the administrator if your company information
-      needs to be corrected.
-    </p>
+      <p class="muted">
+        This list shows document requests associated with your
+        signed-in company account. Your reference number and
+        review status are displayed here.
+      </p>
 
-    <p>
-      <strong>Account:</strong>
-      <span id="accountStatus">Verified login</span>
-    </p>
+      <button id="refreshButton"
+              class="button secondary"
+              type="button">
+        Refresh Documents
+      </button>
 
-    <p>
-      <strong>Company:</strong>
-      <span id="profileCompany"></span>
-    </p>
+      <div id="requestsList">
+        <p class="muted">Loading your submissions...</p>
+      </div>
+    </div>
 
-    <p>
-      <strong>Email:</strong>
-      <span id="profileEmail"></span>
-    </p>
-  </div>
-</section>
+    <div class="card">
+      <h2>Company Account</h2>
 
-  </main>  <footer>
-    &copy; <span id="year"></span>
-    ARNAUD AFROCHAINE TRUST SYSTEMS LTD.<br>
-    Private client document tracking.
-  </footer>  <script type="module">
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      <p class="muted">
+        Your company profile is associated with your verified
+        email account. Contact the administrator if your company
+        information needs correction.
+      </p>
 
-    import {
-      getAuth,
-      onAuthStateChanged,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+      <p>
+        <strong>Account:</strong>
+        <span id="accountStatus">Verified login</span>
+      </p>
 
-    import {
-      getFirestore,
-      doc,
-      getDoc,
-      collection,
-      query,
-      where,
-      getDocs
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      <p>
+        <strong>Company:</strong>
+        <span id="profileCompany"></span>
+      </p>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
-      authDomain: "arnaud-document-trust.firebaseapp.com",
-      projectId: "arnaud-document-trust",
-      storageBucket: "arnaud-document-trust.firebasestorage.app",
-      messagingSenderId: "96008667746",
-      appId: "1:96008667746:web:63a6badb04fb996219873b",
-      measurementId: "G-NYPH2RB851"
-    };
+      <p>
+        <strong>Email:</strong>
+        <span id="profileEmail"></span>
+      </p>
+    </div>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+  </section>
+</main>
 
-    const pageMessage = document.getElementById("pageMessage");
-    const dashboardContent = document.getElementById("dashboardContent");
-    const requestsList = document.getElementById("requestsList");
-    const logoutButton = document.getElementById("logoutButton");
-    const refreshButton = document.getElementById("refreshButton");
+<footer>
+  &copy; <span id="year"></span>
+  ARNAUD AFROCHAINE TRUST SYSTEMS LTD.<br>
+  Private client document tracking.
+</footer>
 
-    let currentUser = null;
-    let profile = null;
-    let loading = false;
+<script type="module">
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+  import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    function showPageMessage(text, isError = false) {
-      pageMessage.textContent = text;
-      pageMessage.className = isError
-        ? "message error"
-        : "message";
-      pageMessage.classList.remove("hidden");
+  import {
+    getFirestore,
+    doc,
+    getDoc,
+    collection,
+    query,
+    where,
+    getDocs
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+    authDomain: "arnaud-document-trust.firebaseapp.com",
+    projectId: "arnaud-document-trust",
+    storageBucket: "arnaud-document-trust.firebasestorage.app",
+    messagingSenderId: "96008667746",
+    appId: "1:96008667746:web:63a6badb04fb996219873b",
+    measurementId: "G-NYPH2RB851"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const pageMessage = document.getElementById("pageMessage");
+  const dashboardContent =
+    document.getElementById("dashboardContent");
+  const requestsList = document.getElementById("requestsList");
+  const logoutButton = document.getElementById("logoutButton");
+  const refreshButton = document.getElementById("refreshButton");
+
+  let currentUser = null;
+  let profile = null;
+  let loading = false;
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  function showPageMessage(text, isError = false) {
+    pageMessage.textContent = text;
+    pageMessage.className = isError
+      ? "message error"
+      : "message";
+    pageMessage.classList.remove("hidden");
+  }
+
+  function showStatusClass(status) {
+    const value = String(status || "").toLowerCase();
+
+    if (value.includes("approv")) return "status approved";
+    if (value.includes("reject")) return "status rejected";
+
+    if (
+      value.includes("pending") ||
+      value.includes("review") ||
+      value.includes("information")
+    ) {
+      return "status pending";
     }
 
-    function showStatusClass(status) {
-      const value = String(status || "").toLowerCase();
+    return "status";
+  }
 
-      if (value.includes("approv")) return "status approved";
-      if (value.includes("reject")) return "status rejected";
-      if (
-        value.includes("pending") ||
-        value.includes("review") ||
-        value.includes("information")
-      ) return "status pending";
+  function addText(parent, tag, label, value) {
+    const element = document.createElement(tag);
 
-      return "status";
+    const safeValue =
+      value === undefined || value === null || value === ""
+        ? "Not provided"
+        : String(value);
+
+    element.textContent = label + safeValue;
+    parent.appendChild(element);
+
+    return element;
+  }
+
+  async function loadProfile(user) {
+    const profileSnapshot = await getDoc(
+      doc(db, "clientProfiles", user.uid)
+    );
+
+    if (!profileSnapshot.exists()) {
+      throw new Error("PROFILE_NOT_FOUND");
     }
 
-    function addText(parent, tag, label, value) {
-      const element = document.createElement(tag);
-      const safeValue =
-        value === undefined || value === null || value === ""
-          ? "Not provided"
-          : String(value);
+    const data = profileSnapshot.data();
 
-      element.textContent = label + safeValue;
-      parent.appendChild(element);
-      return element;
+    if (
+      data.uid !== user.uid ||
+      data.accountType !== "companyClient"
+    ) {
+      throw new Error("INVALID_PROFILE");
     }
 
-    async function loadProfile(user) {
-      const profileSnapshot = await getDoc(
-        doc(db, "clientProfiles", user.uid)
+    return data;
+  }
+
+  async function loadRequests() {
+    if (!currentUser || loading) return;
+
+    loading = true;
+    refreshButton.disabled = true;
+    requestsList.replaceChildren();
+
+    const loadingText = document.createElement("p");
+    loadingText.className = "muted";
+    loadingText.textContent = "Loading your submissions...";
+    requestsList.appendChild(loadingText);
+
+    try {
+      const requestsQuery = query(
+        collection(db, "documentRequests"),
+        where("createdByUid", "==", currentUser.uid)
       );
 
-      if (!profileSnapshot.exists()) {
-        throw new Error("PROFILE_NOT_FOUND");
-      }
+      const snapshot = await getDocs(requestsQuery);
 
-      const data = profileSnapshot.data();
+      const records = snapshot.docs.map(item => ({
+        id: item.id,
+        ...item.data()
+      }));
 
-      if (
-        data.uid !== user.uid ||
-        data.accountType !== "companyClient"
-      ) {
-        throw new Error("INVALID_PROFILE");
-      }
+      records.sort((a, b) => {
+        const timeA = a.createdAt?.toMillis?.() || 0;
+        const timeB = b.createdAt?.toMillis?.() || 0;
+        return timeB - timeA;
+      });
 
-      return data;
-    }
-
-    async function loadRequests() {
-      if (!currentUser || loading) return;
-
-      loading = true;
-      refreshButton.disabled = true;
       requestsList.replaceChildren();
 
-      const loadingText = document.createElement("p");
-      loadingText.className = "muted";
-      loadingText.textContent = "Loading your submissions...";
-      requestsList.appendChild(loadingText);
+      let pending = 0;
+      let approved = 0;
+      let rejected = 0;
 
-      try {
-        // Only fetch requests whose createdByUid matches this user.
-        // Firestore security rules independently enforce this restriction.
-        const requestsQuery = query(
-          collection(db, "documentRequests"),
-          where("createdByUid", "==", currentUser.uid)
+      for (const record of records) {
+        const status = String(record.status || "Submitted");
+        const lowerStatus = status.toLowerCase();
+
+        if (
+          lowerStatus.includes("pending") ||
+          lowerStatus.includes("review") ||
+          lowerStatus.includes("information")
+        ) {
+          pending++;
+        }
+
+        if (lowerStatus.includes("approv")) approved++;
+        if (lowerStatus.includes("reject")) rejected++;
+      }
+
+      document.getElementById("totalCount").textContent =
+        String(records.length);
+
+      document.getElementById("pendingCount").textContent =
+        String(pending);
+
+      document.getElementById("approvedCount").textContent =
+        String(approved);
+
+      document.getElementById("rejectedCount").textContent =
+        String(rejected);
+
+      if (records.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "muted";
+        empty.textContent =
+          "No document submissions are linked to this account yet.";
+
+        requestsList.appendChild(empty);
+        return;
+      }
+
+      for (const record of records) {
+        const card = document.createElement("article");
+        card.className = "request";
+
+        const title = document.createElement("h3");
+        title.textContent =
+          record.documentTitle || "Document submission";
+
+        card.appendChild(title);
+
+        const status = document.createElement("span");
+        status.className = showStatusClass(record.status);
+        status.textContent = record.status || "Submitted";
+        card.appendChild(status);
+
+        addText(
+          card,
+          "p",
+          "Reference number: ",
+          record.referenceNumber
         );
 
-        const snapshot = await getDocs(requestsQuery);
-        requestsList.replaceChildren();
+        addText(
+          card,
+          "p",
+          "Document title: ",
+          record.documentTitle
+        );
 
-        const records = snapshot.docs.map((item) => ({
-          id: item.id,
-          ...item.data()
-        }));
+        addText(
+          card,
+          "p",
+          "Submitted for: ",
+          record.issuedTo
+        );
 
-        records.sort((a, b) => {
-          const timeA = a.createdAt?.toMillis?.() || 0;
-          const timeB = b.createdAt?.toMillis?.() || 0;
-          return timeB - timeA;
-        });
+        addText(
+          card,
+          "p",
+          "Submitted on: ",
+          record.createdAt?.toDate
+            ? record.createdAt.toDate().toLocaleString()
+            : "Date not available"
+        );
 
-        let pending = 0;
-        let approved = 0;
-        let rejected = 0;
+        if (record.sha256Fingerprint) {
+          const label = document.createElement("p");
+          label.textContent = "SHA-256 fingerprint:";
+          card.appendChild(label);
 
-        for (const record of records) {
-          const status = String(record.status || "Submitted");
-          const lowerStatus = status.toLowerCase();
-
-          if (
-            lowerStatus.includes("pending") ||
-            lowerStatus.includes("review") ||
-            lowerStatus.includes("information")
-          ) {
-            pending++;
-          }
-
-          if (lowerStatus.includes("approv")) approved++;
-          if (lowerStatus.includes("reject")) rejected++;
+          const hash = document.createElement("div");
+          hash.className = "hash";
+          hash.textContent = record.sha256Fingerprint;
+          card.appendChild(hash);
         }
 
-        document.getElementById("totalCount").textContent =
-          String(records.length);
-
-        document.getElementById("pendingCount").textContent =
-          String(pending);
-
-        document.getElementById("approvedCount").textContent =
-          String(approved);
-
-        document.getElementById("rejectedCount").textContent =
-          String(rejected);
-
-        if (records.length === 0) {
-          const empty = document.createElement("p");
-          empty.className = "muted";
-          empty.textContent =
-            "No document submissions are linked to this account yet.";
-          requestsList.appendChild(empty);
-          return;
+        if (record.fingerprintStatus) {
+          addText(
+            card,
+            "p",
+            "Fingerprint status: ",
+            record.fingerprintStatus
+          );
         }
 
-        for (const record of records) {
-          const card = document.createElement("article");
-          card.className = "request";
-
-          const title = document.createElement("h3");
-          title.textContent =
-            record.documentTitle || "Document submission";
-          card.appendChild(title);
-
-          const status = document.createElement("span");
-          status.className = showStatusClass(record.status);
-          status.textContent = record.status || "Submitted";
-          card.appendChild(status);
-
-          addText(
-            card,
-            "p",
-            "Reference number: ",
-            record.referenceNumber
-          );
-
-          addText(
-            card,
-            "p",
-            "Document title: ",
-            record.documentTitle
-          );
-
-          addText(
-            card,
-            "p",
-            "Submitted for: ",
-            record.issuedTo
-          );
-
-          addText(
-            card,
-            "p",
-            "Submitted on: ",
-            record.createdAt?.toDate
-              ? record.createdAt.toDate().toLocaleString()
-              : "Date not available"
-          );
-
-          if (record.sha256Fingerprint) {
-            addText(
-              card,
-              "p",
-              "SHA-256 fingerprint: ",
-              record.sha256Fingerprint
-            );
-          }
-
-          if (record.fingerprintStatus) {
-            addText(
-              card,
-              "p",
-              "Fingerprint status: ",
-              record.fingerprintStatus
-            );
-          }
-
-          // Do not display private administrator notes or internal fields.
-          // A future report section should expose only deliberately released
-          // client-facing findings after permissions are implemented.
-
-          requestsList.appendChild(card);
-        }
-
-      } catch (error) {
-        console.error("Could not load client requests:", error);
-        requestsList.replaceChildren();
-
-        const errorText = document.createElement("p");
-        errorText.className = "muted";
-        errorText.textContent =
-          "Your submissions could not be loaded. Please refresh or contact the administrator if the problem continues.";
-
-        requestsList.appendChild(errorText);
-
-      } finally {
-        loading = false;
-        refreshButton.disabled = false;
+        requestsList.appendChild(card);
       }
+
+    } catch (error) {
+      console.error("Could not load client requests:", error);
+
+      requestsList.replaceChildren();
+
+      const errorText = document.createElement("p");
+      errorText.className = "muted";
+
+      errorText.textContent =
+        error.code === "permission-denied"
+          ? "Firebase denied access to your submissions. The administrator needs to check the Firestore security rules."
+          : "Your submissions could not be loaded. Check your internet connection and try again.";
+
+      requestsList.appendChild(errorText);
+
+    } finally {
+      loading = false;
+      refreshButton.disabled = false;
+    }
+  }
+
+  onAuthStateChanged(auth, async user => {
+    if (!user) {
+      window.location.replace("client-login.html");
+      return;
     }
 
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
+    try {
+      await user.reload();
+
+      if (!user.emailVerified) {
+        await signOut(auth);
         window.location.replace("client-login.html");
         return;
       }
 
-      try {
-        await user.reload();
+      currentUser = user;
+      profile = await loadProfile(user);
 
-        if (!user.emailVerified) {
-          await signOut(auth);
-          window.location.replace("client-login.html");
-          return;
-        }
+      document.getElementById("companyName").textContent =
+        profile.companyName || "Company name not provided";
 
-        currentUser = user;
-        profile = await loadProfile(user);
+      document.getElementById("representativeName").textContent =
+        "Authorised representative: " +
+        (profile.representativeName || "Not provided");
 
-        document.getElementById("companyName").textContent =
-          profile.companyName || "Company name not provided";
+      document.getElementById("clientEmail").textContent =
+        "Email: " + (user.email || "");
 
-        document.getElementById("representativeName").textContent =
-          "Authorised representative: " +
-          (profile.representativeName || "Not provided");
+      document.getElementById("profileCompany").textContent =
+        profile.companyName || "Not provided";
 
-        document.getElementById("clientEmail").textContent =
-          "Email: " + (user.email || "");
+      document.getElementById("profileEmail").textContent =
+        user.email || "Not provided";
 
-        document.getElementById("profileCompany").textContent =
-          profile.companyName || "Not provided";
+      pageMessage.classList.add("hidden");
+      dashboardContent.classList.remove("hidden");
 
-        document.getElementById("profileEmail").textContent =
-          user.email || "Not provided";
+      await loadRequests();
 
-        pageMessage.classList.add("hidden");
-        dashboardContent.classList.remove("hidden");
+    } catch (error) {
+      console.error("Dashboard access error:", error);
 
-        await loadRequests();
+      dashboardContent.classList.add("hidden");
 
-      } catch (error) {
-        console.error("Dashboard access error:", error);
+      showPageMessage(
+        error.code === "permission-denied"
+          ? "Firebase denied access to your company profile. Please check the security rules."
+          : "Your company profile could not be verified. Please contact the administrator.",
+        true
+      );
 
-        dashboardContent.classList.add("hidden");
+      await signOut(auth);
+    }
+  });
 
-        if (error.code === "permission-denied") {
-          showPageMessage(
-            "Firebase denied access to your company profile. Please contact the administrator to check the security rules.",
-            true
-          );
-        } else {
-          showPageMessage(
-            "Your company profile could not be verified. Please contact the administrator before continuing.",
-            true
-          );
-        }
+  refreshButton.addEventListener("click", loadRequests);
 
-        await signOut(auth);
-      }
-    });
+  logoutButton.addEventListener("click", async () => {
+    logoutButton.disabled = true;
 
-    refreshButton.addEventListener("click", loadRequests);
+    try {
+      await signOut(auth);
+      window.location.replace("client-login.html");
+    } catch (error) {
+      console.error("Logout error:", error);
 
-    logoutButton.addEventListener("click", async () => {
-      logoutButton.disabled = true;
+      showPageMessage(
+        "We could not complete sign-out. Please try again.",
+        true
+      );
 
-      try {
-        await signOut(auth);
-        window.location.replace("client-login.html");
-      } catch (error) {
-        console.error("Logout error:", error);
-        showPageMessage(
-          "We could not complete sign-out. Please try again.",
-          true
-        );
-        logoutButton.disabled = false;
-      }
-    });
-  </script></body>
+      logoutButton.disabled = false;
+    }
+  });
+</script>
+
+</body>
 </html>
