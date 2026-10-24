@@ -86,13 +86,19 @@ label{
   font-size:14px
 }
 
-input,select{
+input,select,textarea{
   width:100%;
   padding:12px;
   border:1px solid #cbd7ce;
   border-radius:6px;
   font-size:15px;
-  background:#fff
+  background:#fff;
+  font-family:Arial,sans-serif
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical
 }
 
 .notice{
@@ -176,6 +182,7 @@ input,select{
 
 .badge.approved{background:#dcf7e3;color:#17602d}
 .badge.rejected{background:#ffe2e2;color:#8a1717}
+.badge.withdrawn{background:#ffe2e2;color:#8a1717}
 
 .fingerprint-box{
   background:#f0f7f2;
@@ -251,7 +258,6 @@ footer{
   </p>
 
   <form id="loginForm">
-
     <label for="email">Administrator Email</label>
     <input
       id="email"
@@ -275,17 +281,14 @@ footer{
     <button id="loginButton" class="primary" type="submit">
       Sign In
     </button>
-
   </form>
 
   <div id="loginMessage" aria-live="polite"></div>
 </section>
 
-
 <section id="dashboardSection" hidden>
 
   <div class="panel">
-
     <h2>Document Administration</h2>
 
     <p id="signedInAs" class="muted"></p>
@@ -303,13 +306,17 @@ footer{
       with a request. It does not upload or store PDF files.
       A fingerprint alone does not establish that a document
       is genuine.
-    </div>
 
+      <br><br>
+
+      <strong>Withdrawal:</strong>
+      If an approved document was published without proper
+      verification, use the red Withdraw Verification button.
+      The withdrawal reason is stored in a private audit record.
+    </div>
   </div>
 
-
   <div class="stats">
-
     <div class="stat">
       Total Requests
       <strong id="totalCount">0</strong>
@@ -330,11 +337,13 @@ footer{
       <strong id="rejectedCount">0</strong>
     </div>
 
+    <div class="stat">
+      Withdrawn
+      <strong id="withdrawnCount">0</strong>
+    </div>
   </div>
 
-
   <section class="panel">
-
     <h2>Document Requests</h2>
 
     <label for="statusFilter">Filter by status</label>
@@ -344,6 +353,7 @@ footer{
       <option value="Pending Review">Pending Review</option>
       <option value="Verified">Approved / Verified</option>
       <option value="Rejected">Rejected</option>
+      <option value="Verification Withdrawn">Verification Withdrawn</option>
     </select>
 
     <div class="actions">
@@ -354,7 +364,6 @@ footer{
 
     <div id="dashboardMessage" aria-live="polite"></div>
     <div id="requestsList"></div>
-
   </section>
 
 </section>
@@ -365,7 +374,6 @@ footer{
   &copy; <span id="year"></span>
   ARNAUD AFROCHAINE TRUST SYSTEMS LTD. All rights reserved.
 </footer>
-
 
 <script type="module">
 
@@ -385,14 +393,16 @@ import {
   collection,
   getDocs,
   doc,
+  getDoc,
   updateDoc,
   setDoc,
-  serverTimestamp
+  serverTimestamp,
+  writeBatch
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+  apiKey: "AIzaSySyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
   authDomain: "arnaud-document-trust.firebaseapp.com",
   projectId: "arnaud-document-trust",
   storageBucket: "arnaud-document-trust.firebasestorage.app",
@@ -454,12 +464,34 @@ function addDetail(container, label, value) {
 
 
 function normalizedStatus(value) {
-  const s = String(value || "Pending Review").toLowerCase();
+  const s = String(value || "Pending Review")
+    .trim()
+    .toLowerCase();
 
-  if (s === "verified" || s === "approved") return "Verified";
-  if (s === "rejected") return "Rejected";
+  if (
+    s === "verification withdrawn" ||
+    s === "withdrawn"
+  ) {
+    return "Verification Withdrawn";
+  }
 
-  return "Pending Review";
+  if (s === "verified" || s === "approved") {
+    return "Verified";
+  }
+
+  if (s === "rejected") {
+    return "Rejected";
+  }
+
+  if (
+    s === "pending review" ||
+    s === "pending" ||
+    s === "submitted"
+  ) {
+    return "Pending Review";
+  }
+
+  return value || "Pending Review";
 }
 
 
@@ -490,32 +522,36 @@ function updateDiagnostics(user) {
 
 
 onAuthStateChanged(auth, user => {
-
   if (user) {
-
     $("loginSection").hidden = true;
     $("dashboardSection").hidden = false;
     $("logoutButton").hidden = false;
 
     updateDiagnostics(user);
-    loadRequests();
+
+    if (user.uid === ADMIN_UID) {
+      loadRequests();
+    } else {
+      $("requestsList").replaceChildren();
+
+      showMessage(
+        $("dashboardMessage"),
+        "This account is not authorized to administer documents."
+      );
+    }
 
   } else {
-
     $("loginSection").hidden = false;
     $("dashboardSection").hidden = true;
     $("logoutButton").hidden = true;
 
     $("requestsList").replaceChildren();
     $("signedInAs").textContent = "";
-
   }
-
 });
 
 
 $("loginForm").addEventListener("submit", async event => {
-
   event.preventDefault();
   clearMessage($("loginMessage"));
 
@@ -523,56 +559,52 @@ $("loginForm").addEventListener("submit", async event => {
   $("loginButton").textContent = "Signing in...";
 
   try {
-
     await signInWithEmailAndPassword(
       auth,
       $("email").value.trim(),
       $("password").value
     );
 
+    if (auth.currentUser?.uid !== ADMIN_UID) {
+      await signOut(auth);
+
+      throw new Error(
+        "This account is not the authorized administrator account."
+      );
+    }
+
     showMessage(
       $("loginMessage"),
-      "Sign-in successful.",
+      "Administrator sign-in successful.",
       "success"
     );
 
   } catch (error) {
-
     console.error("Sign-in failed:", error);
 
     showMessage(
       $("loginMessage"),
-      "Sign-in failed. Check the email/password and Firebase Email/Password sign-in setting. Error: " +
-      error.message
+      "Sign-in failed: " + error.message
     );
 
   } finally {
-
     $("loginButton").disabled = false;
     $("loginButton").textContent = "Sign In";
-
   }
-
 });
 
 
 $("logoutButton").addEventListener("click", async () => {
-
   try {
-
     await signOut(auth);
     clearMessage($("loginMessage"));
     clearMessage($("dashboardMessage"));
-
   } catch (error) {
-
     showMessage(
       $("dashboardMessage"),
       "Could not sign out: " + error.message
     );
-
   }
-
 });
 
 
@@ -581,9 +613,9 @@ $("statusFilter").addEventListener("change", loadRequests);
 
 
 async function loadRequests() {
-
   const user = auth.currentUser;
-  if (!user) return;
+
+  if (!user || user.uid !== ADMIN_UID) return;
 
   clearMessage($("dashboardMessage"));
   $("requestsList").replaceChildren();
@@ -593,41 +625,43 @@ async function loadRequests() {
   loading.textContent = "Loading document requests.";
 
   $("requestsList").appendChild(loading);
+  $("refreshButton").disabled = true;
 
   try {
-
-    // This UI check is not a replacement for Firestore security rules.
-    if (user.uid !== ADMIN_UID) {
-      throw new Error(
-        "Signed-in UID does not match the authorized administrator UID. Actual UID: " +
-        user.uid
-      );
-    }
-
-    const snapshot = await getDocs(collection(db, "documentRequests"));
+    const snapshot = await getDocs(
+      collection(db, "documentRequests")
+    );
 
     const requests = snapshot.docs.map(item => ({
       id: item.id,
       ...item.data()
     }));
 
+    const getStatus = r => normalizedStatus(r.status);
+
     $("totalCount").textContent = String(requests.length);
 
     $("pendingCount").textContent = String(
       requests.filter(
-        r => normalizedStatus(r.status) === "Pending Review"
+        r => getStatus(r) === "Pending Review"
       ).length
     );
 
     $("approvedCount").textContent = String(
       requests.filter(
-        r => normalizedStatus(r.status) === "Verified"
+        r => getStatus(r) === "Verified"
       ).length
     );
 
     $("rejectedCount").textContent = String(
       requests.filter(
-        r => normalizedStatus(r.status) === "Rejected"
+        r => getStatus(r) === "Rejected"
+      ).length
+    );
+
+    $("withdrawnCount").textContent = String(
+      requests.filter(
+        r => getStatus(r) === "Verification Withdrawn"
       ).length
     );
 
@@ -639,14 +673,12 @@ async function loadRequests() {
     const filter = $("statusFilter").value;
 
     const filtered = requests.filter(r =>
-      filter === "all" ||
-      normalizedStatus(r.status) === filter
+      filter === "all" || getStatus(r) === filter
     );
 
     $("requestsList").replaceChildren();
 
     if (!filtered.length) {
-
       const empty = document.createElement("p");
       empty.className = "empty";
 
@@ -656,46 +688,32 @@ async function loadRequests() {
 
       $("requestsList").appendChild(empty);
       return;
-
     }
 
     filtered.forEach(request => {
-      $("requestsList").appendChild(createRequestCard(request));
+      $("requestsList").appendChild(
+        createRequestCard(request)
+      );
     });
 
   } catch (error) {
-
     console.error("Loading requests failed:", error);
 
     $("requestsList").replaceChildren();
 
-    let advice =
-      "Firestore denied access. Confirm the published rules are saved in project arnaud-document-trust, database (default), and that documentRequests has an administrator read rule.";
-
-    if (
-      error.code === "permission-denied" ||
-      /insufficient permissions/i.test(error.message)
-    ) {
-
-      advice =
-        "Firestore returned PERMISSION DENIED. Confirm the published rules in this Firebase project and the (default) database. The signed-in UID is " +
-        user.uid + ".";
-
-    }
-
     showMessage(
       $("dashboardMessage"),
-      "Could not load requests. " + advice +
-      " Details: " + error.message
+      "Could not load requests. Check that you are signed in with the authorized administrator account, that the published Firestore rules are in the correct project, and that documentRequests allows administrator reads. Details: " +
+      error.message
     );
 
+  } finally {
+    $("refreshButton").disabled = false;
   }
-
 }
 
 
 function createRequestCard(request) {
-
   const card = document.createElement("article");
   card.className = "request";
 
@@ -708,8 +726,17 @@ function createRequestCard(request) {
   const badge = document.createElement("span");
   badge.className = "badge";
 
-  if (status === "Verified") badge.classList.add("approved");
-  if (status === "Rejected") badge.classList.add("rejected");
+  if (status === "Verified") {
+    badge.classList.add("approved");
+  }
+
+  if (status === "Rejected") {
+    badge.classList.add("rejected");
+  }
+
+  if (status === "Verification Withdrawn") {
+    badge.classList.add("withdrawn");
+  }
 
   badge.textContent = status;
   card.appendChild(badge);
@@ -722,7 +749,20 @@ function createRequestCard(request) {
   addDetail(card, "Submitted By", request.createdByEmail);
   addDetail(card, "Submitted On", formatDate(request.createdAt));
 
-  // SHA-256 information from the registration request.
+  if (status === "Verification Withdrawn") {
+    addDetail(
+      card,
+      "Withdrawal Date",
+      formatDate(request.withdrawnAt)
+    );
+
+    addDetail(
+      card,
+      "Withdrawal Reason",
+      request.withdrawalReason
+    );
+  }
+
   const fingerprintBox = document.createElement("div");
   fingerprintBox.className = "fingerprint-box";
 
@@ -773,7 +813,6 @@ function createRequestCard(request) {
   actions.className = "actions";
 
   if (status === "Pending Review") {
-
     const approve = document.createElement("button");
     approve.type = "button";
     approve.className = "primary";
@@ -793,18 +832,15 @@ function createRequestCard(request) {
     });
 
     actions.append(approve, reject);
-
   }
 
   if (status === "Verified") {
-
     const copy = document.createElement("button");
     copy.type = "button";
     copy.className = "secondary";
     copy.textContent = "Copy Verification Link";
 
     copy.addEventListener("click", async () => {
-
       if (!request.referenceNumber) {
         showMessage(
           $("dashboardMessage"),
@@ -824,7 +860,6 @@ function createRequestCard(request) {
       );
 
       try {
-
         await navigator.clipboard.writeText(link.href);
 
         showMessage(
@@ -834,19 +869,24 @@ function createRequestCard(request) {
         );
 
       } catch {
-
         showMessage(
           $("dashboardMessage"),
           "Verification link: " + link.href,
           "success"
         );
-
       }
-
     });
 
-    actions.appendChild(copy);
+    const withdraw = document.createElement("button");
+    withdraw.type = "button";
+    withdraw.className = "danger";
+    withdraw.textContent = "Withdraw Verification";
 
+    withdraw.addEventListener("click", () => {
+      withdrawVerification(request, withdraw);
+    });
+
+    actions.append(copy, withdraw);
   }
 
   if (actions.childElementCount) {
@@ -854,25 +894,30 @@ function createRequestCard(request) {
   }
 
   return card;
-
 }
 
 
 async function approveRequest(request, button) {
+  const user = auth.currentUser;
+
+  if (!user || user.uid !== ADMIN_UID) {
+    showMessage(
+      $("dashboardMessage"),
+      "You are not authorized to approve documents."
+    );
+    return;
+  }
 
   const reference = String(
     request.referenceNumber || ""
   ).trim();
 
   if (!reference) {
-
     showMessage(
       $("dashboardMessage"),
       "Cannot approve this request because its reference number is missing."
     );
-
     return;
-
   }
 
   if (
@@ -889,9 +934,7 @@ async function approveRequest(request, button) {
   button.textContent = "Publishing...";
 
   try {
-
     const record = {
-
       certificateNumber: reference,
       referenceNumber: reference,
 
@@ -907,7 +950,6 @@ async function approveRequest(request, button) {
       originalDocumentNumber:
         request.originalDocumentNumber || "",
 
-      // Publish fingerprint metadata if it was supplied.
       sha256Fingerprint:
         request.sha256Fingerprint || null,
 
@@ -926,22 +968,19 @@ async function approveRequest(request, button) {
 
       issuedAt: serverTimestamp(),
       createdAt: serverTimestamp()
-
     };
 
-    // Publish the public verification record.
     await setDoc(
       doc(db, "publicVerifications", reference),
       record
     );
 
-    // Update the administrator request status.
     await updateDoc(
       doc(db, "documentRequests", request.id),
       {
         status: "Verified",
-        reviewedByUid: auth.currentUser.uid,
-        reviewedByEmail: auth.currentUser.email || "",
+        reviewedByUid: user.uid,
+        reviewedByEmail: user.email || "",
         reviewedAt: serverTimestamp()
       }
     );
@@ -956,24 +995,30 @@ async function approveRequest(request, button) {
     await loadRequests();
 
   } catch (error) {
-
     console.error("Approval failed:", error);
 
     showMessage(
       $("dashboardMessage"),
-      "Approval failed. Check both the document request and public verification record before retrying. Error: " +
+      "Approval failed. Check the document request and public verification record before retrying. Error: " +
       error.message
     );
 
     button.disabled = false;
     button.textContent = "Approve & Publish";
-
   }
-
 }
 
 
 async function rejectRequest(request, button) {
+  const user = auth.currentUser;
+
+  if (!user || user.uid !== ADMIN_UID) {
+    showMessage(
+      $("dashboardMessage"),
+      "You are not authorized to reject documents."
+    );
+    return;
+  }
 
   if (
     !confirm(
@@ -988,13 +1033,12 @@ async function rejectRequest(request, button) {
   button.textContent = "Rejecting...";
 
   try {
-
     await updateDoc(
       doc(db, "documentRequests", request.id),
       {
         status: "Rejected",
-        reviewedByUid: auth.currentUser.uid,
-        reviewedByEmail: auth.currentUser.email || "",
+        reviewedByUid: user.uid,
+        reviewedByEmail: user.email || "",
         reviewedAt: serverTimestamp()
       }
     );
@@ -1008,7 +1052,6 @@ async function rejectRequest(request, button) {
     await loadRequests();
 
   } catch (error) {
-
     console.error("Rejection failed:", error);
 
     showMessage(
@@ -1019,12 +1062,165 @@ async function rejectRequest(request, button) {
 
     button.disabled = false;
     button.textContent = "Reject Request";
+  }
+}
 
+
+async function withdrawVerification(request, button) {
+  const user = auth.currentUser;
+
+  if (!user || user.uid !== ADMIN_UID) {
+    showMessage(
+      $("dashboardMessage"),
+      "You are not authorized to withdraw verification."
+    );
+    return;
   }
 
+  const reference = String(
+    request.referenceNumber || ""
+  ).trim();
+
+  if (!reference) {
+    showMessage(
+      $("dashboardMessage"),
+      "Withdrawal stopped because this request has no reference number."
+    );
+    return;
+  }
+
+  const reason = prompt(
+    "Enter the reason for withdrawing verification.\n\n" +
+    "Reference: " + reference
+  );
+
+  if (reason === null) {
+    return;
+  }
+
+  const cleanReason = reason.trim();
+
+  if (cleanReason.length < 5) {
+    showMessage(
+      $("dashboardMessage"),
+      "Please provide a withdrawal reason of at least 5 characters."
+    );
+    return;
+  }
+
+  const confirmed = confirm(
+    "FINAL CONFIRMATION\n\n" +
+    "You are withdrawing public verification for:\n" +
+    reference + "\n\n" +
+    "Reason: " + cleanReason + "\n\n" +
+    "The public record will no longer be marked Verified.\n" +
+    "The withdrawal will be recorded in the private audit trail.\n\n" +
+    "Continue?"
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Withdrawing...";
+
+  try {
+    // Confirm that the public verification record exists first.
+    const publicRef = doc(
+      db,
+      "publicVerifications",
+      reference
+    );
+
+    const publicSnapshot = await getDoc(publicRef);
+
+    if (!publicSnapshot.exists()) {
+      throw new Error(
+        "The public verification record was not found. No withdrawal was saved. Check the reference number and publicVerifications collection."
+      );
+    }
+
+    const publicData = publicSnapshot.data();
+    const publicStatus = String(
+      publicData.status || ""
+    ).trim().toLowerCase();
+
+    if (
+      publicStatus === "withdrawn" ||
+      publicStatus === "verification withdrawn"
+    ) {
+      throw new Error(
+        "This public verification has already been withdrawn."
+      );
+    }
+
+    // One atomic batch updates the request, public record,
+    // and private audit record together.
+    const batch = writeBatch(db);
+
+    batch.update(
+      doc(db, "documentRequests", request.id),
+      {
+        status: "Verification Withdrawn",
+        withdrawalReason: cleanReason,
+        withdrawnByUid: user.uid,
+        withdrawnByEmail: user.email || "",
+        withdrawnAt: serverTimestamp()
+      }
+    );
+
+    batch.update(
+      publicRef,
+      {
+        status: "Withdrawn",
+        withdrawalMessage:
+          "Verification of this document has been withdrawn by the issuing verification administrator.",
+        withdrawnAt: serverTimestamp()
+      }
+    );
+
+    const auditRef = doc(
+      collection(db, "verificationWithdrawalAudit")
+    );
+
+    batch.set(auditRef, {
+      requestId: request.id,
+      referenceNumber: reference,
+      documentTitle: request.documentTitle || "",
+      issuedTo: request.issuedTo || "",
+      reason: cleanReason,
+      withdrawnByUid: user.uid,
+      withdrawnByEmail: user.email || "",
+      withdrawnAt: serverTimestamp()
+    });
+
+    await batch.commit();
+
+    showMessage(
+      $("dashboardMessage"),
+      "Verification withdrawn successfully. The public record is now marked Withdrawn, and the private audit record has been saved. Reference: " +
+      reference,
+      "success"
+    );
+
+    await loadRequests();
+
+  } catch (error) {
+    console.error("Withdrawal failed:", error);
+
+    showMessage(
+      $("dashboardMessage"),
+      "Withdrawal did not complete. No partial batch updates were applied. Check the reference number, administrator access, and published Firestore rules. Details: " +
+      error.message
+    );
+
+    button.disabled = false;
+    button.textContent = "Withdraw Verification";
+  }
 }
 
 </script>
 
 </body>
-</html>
+    </html>
