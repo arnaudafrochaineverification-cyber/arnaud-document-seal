@@ -1,701 +1,1354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08783e">
-  <meta name="description" content="Private company document tracking dashboard.">
-  <title>My Company Dashboard | ARNAUD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * { box-sizing: border-box; }
+<meta name="description" content="Secure client dashboard for document requests and certificate verification.">
+<meta name="theme-color" content="#08783e">
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f3f7f4;
-      color: #202820;
-    }
+<title>Client Dashboard | ARNAUD AFROCHAINE TRUST SYSTEMS LTD</title>
 
-    header {
-      background: #08783e;
-      color: white;
-      padding: 20px 16px;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .header-inner {
-      max-width: 1050px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f7f4;
+  color: #24352b;
+  line-height: 1.55;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 21px;
-      line-height: 1.5;
-    }
+header {
+  background: linear-gradient(135deg, #07552e, #0b8b49);
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
 
-    header p {
-      margin: 5px 0 0;
-      font-size: 13px;
-    }
+header h1 {
+  margin: 0;
+  font-size: clamp(21px, 4vw, 31px);
+}
 
-    .logout {
-      background: white;
-      color: #08783e;
-      border: 0;
-      border-radius: 7px;
-      padding: 11px 16px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+header p {
+  margin: 7px 0 0;
+}
 
-    main {
-      max-width: 1050px;
-      margin: 25px auto;
-      padding: 0 15px;
-    }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 13px;
+  background: white;
+  border-bottom: 1px solid #dce8df;
+}
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 22px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-    }
+nav a,
+nav button {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 0;
+  background: #08783e;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-    h2 {
-      color: #08783e;
-      margin-top: 0;
-      font-size: 22px;
-    }
+nav a:hover,
+nav button:hover {
+  background: #055b2d;
+}
 
-    .company-name {
-      font-size: 19px;
-      font-weight: bold;
-      overflow-wrap: anywhere;
-    }
+main {
+  width: min(1100px, 94%);
+  margin: 25px auto;
+}
 
-    .muted {
-      color: #657067;
-      font-size: 14px;
-      line-height: 1.7;
-    }
+.panel {
+  background: white;
+  border: 1px solid #dce8df;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.035);
+}
 
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
+.panel h2 {
+  margin-top: 0;
+  color: #075b32;
+}
 
-    .summary {
-      padding: 16px;
-      background: #edf6ef;
-      border-radius: 9px;
-    }
+.login-box {
+  max-width: 480px;
+  margin: 30px auto;
+}
 
-    .summary strong {
-      display: block;
-      font-size: 26px;
-      color: #08783e;
-      margin-bottom: 6px;
-    }
+label {
+  display: block;
+  font-weight: bold;
+  margin: 13px 0 6px;
+}
 
-    .summary span {
-      font-size: 13px;
-      color: #4e5d51;
-    }
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #c8d8ce;
+  border-radius: 7px;
+  font-size: 16px;
+}
 
-    .button {
-      display: inline-block;
-      border: 0;
-      border-radius: 7px;
-      background: #08783e;
-      color: white;
-      padding: 12px 16px;
-      font-weight: bold;
-      font-size: 14px;
-      text-decoration: none;
-      cursor: pointer;
-      margin: 5px 6px 5px 0;
-    }
+button {
+  font-family: inherit;
+}
 
-    .button.secondary {
-      background: #e8f2eb;
-      color: #08783e;
-    }
+.primary,
+.secondary,
+.report-button,
+.disabled-button {
+  border: 0;
+  border-radius: 7px;
+  padding: 11px 15px;
+  min-height: 42px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
 
-    .button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+.primary,
+.report-button {
+  background: #08783e;
+  color: white;
+}
 
-    .request {
-      border: 1px solid #dce5de;
-      border-radius: 9px;
-      padding: 17px;
-      margin: 14px 0;
-      overflow-wrap: anywhere;
-    }
+.secondary {
+  background: #e6f2e9;
+  color: #075b32;
+  border: 1px solid #c5ddcb;
+}
 
-    .request h3 {
-      margin: 0 0 12px;
-      color: #243b2a;
-      font-size: 17px;
-    }
+.disabled-button {
+  background: #eef0ee;
+  color: #59645d;
+  border: 1px solid #d3d9d4;
+}
 
-    .request p {
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 7px 0;
-    }
+button:disabled {
+  opacity: .65;
+  cursor: wait;
+}
 
-    .status {
-      display: inline-block;
-      border-radius: 20px;
-      padding: 6px 11px;
-      background: #edf0f1;
-      color: #34434a;
-      font-size: 12px;
-      font-weight: bold;
-    }
+.message {
+  padding: 12px;
+  border-radius: 7px;
+  margin-top: 14px;
+  overflow-wrap: anywhere;
+}
 
-    .status.approved {
-      background: #e2f6e8;
-      color: #14612b;
-    }
+.message.error {
+  background: #ffeded;
+  border: 1px solid #f0b9b9;
+  color: #861c1c;
+}
 
-    .status.rejected {
-      background: #ffebeb;
-      color: #a21c1c;
-    }
+.message.success {
+  background: #e8f8eb;
+  border: 1px solid #b7dfbf;
+  color: #17602d;
+}
 
-    .status.pending {
-      background: #fff2d9;
-      color: #805400;
-    }
+.message.info {
+  background: #edf5ff;
+  border: 1px solid #c8dcf6;
+  color: #214f7c;
+}
 
-    .message {
-      padding: 14px;
-      border-radius: 8px;
-      background: #edf4ff;
-      color: #194b85;
-      font-size: 14px;
-      line-height: 1.7;
-      overflow-wrap: anywhere;
-      margin: 15px 0;
-    }
+.notice {
+  background: #fff8e7;
+  border: 1px solid #ead9a8;
+  color: #654f16;
+  padding: 13px;
+  border-radius: 8px;
+  margin-top: 14px;
+}
 
-    .message.error {
-      background: #ffebeb;
-      color: #a21c1c;
-    }
+.muted {
+  color: #617168;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
 
-    .hidden {
-      display: none !important;
-    }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
 
-    .hash {
-      background: #f0f3f1;
-      padding: 10px;
-      border-radius: 6px;
-      font-family: monospace;
-      font-size: 12px;
-      overflow-wrap: anywhere;
-      line-height: 1.6;
-    }
+.stat {
+  background: white;
+  border: 1px solid #dce8df;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  font-size: 13px;
+}
 
-    footer {
-      text-align: center;
-      color: #657067;
-      padding: 22px 15px;
-      font-size: 12px;
-      line-height: 1.8;
-    }
+.stat strong {
+  display: block;
+  font-size: 27px;
+  color: #08783e;
+  margin-top: 5px;
+}
 
-    @media (max-width: 520px) {
-      .card { padding: 17px; }
-      header h1 { font-size: 18px; }
-      .button { max-width: 100%; }
-    }
-  </style>
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 20px;
+}
+
+.request {
+  border: 1px solid #dce6df;
+  border-radius: 10px;
+  padding: 17px;
+  margin: 15px 0;
+  overflow-wrap: anywhere;
+}
+
+.request h3 {
+  margin: 0 0 12px;
+  color: #075b32;
+}
+
+.detail {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.detail b {
+  color: #344d40;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #fff1cb;
+  color: #755300;
+}
+
+.badge.approved {
+  background: #dcf7e3;
+  color: #17602d;
+}
+
+.badge.rejected,
+.badge.withdrawn {
+  background: #ffe2e2;
+  color: #8a1717;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.actions button {
+  flex: 0 1 auto;
+}
+
+.empty {
+  text-align: center;
+  padding: 25px 10px;
+  color: #617168;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 12px;
+  color: #617168;
+  font-size: 12px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 15px;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
-    <div>
-      <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
-      <p>Private Company Client Portal</p>
-    </div>
-
-    <button id="logoutButton" class="logout" type="button">
-      Log Out
-    </button>
-  </div>
+  <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+  <p>Client Dashboard</p>
+  <p>African Roots, Global Vision.</p>
 </header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="seal-document.html">Register Document</a>
+  <a href="verify-document.html">Verify Document</a>
+  <button id="logoutButton" type="button" hidden>Sign Out</button>
+</nav>
 
 <main>
 
-  <div id="pageMessage" class="message">
-    Checking your account and permissions. Please wait...
-  </div>
+  <section id="loginSection" class="panel login-box">
+    <h2>Client Sign In</h2>
+    <p class="muted">
+      Sign in with the email address and password associated with your client account.
+    </p>
 
-  <section id="dashboardContent" class="hidden">
+    <form id="loginForm">
+      <label for="email">Email Address</label>
+      <input
+        id="email"
+        type="email"
+        autocomplete="username"
+        required
+        placeholder="Enter your registered email"
+      >
 
-    <div class="card">
-      <h2>Welcome to Your Dashboard</h2>
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        required
+        placeholder="Enter your password"
+      >
 
-      <p id="companyName" class="company-name">
-        Loading company...
-      </p>
+      <br><br>
 
-      <p id="representativeName" class="muted"></p>
-      <p id="clientEmail" class="muted"></p>
-
-      <div class="summary-grid">
-        <div class="summary">
-          <strong id="totalCount">0</strong>
-          <span>Total submissions</span>
-        </div>
-
-        <div class="summary">
-          <strong id="pendingCount">0</strong>
-          <span>Pending review</span>
-        </div>
-
-        <div class="summary">
-          <strong id="approvedCount">0</strong>
-          <span>Approved</span>
-        </div>
-
-        <div class="summary">
-          <strong id="rejectedCount">0</strong>
-          <span>Rejected</span>
-        </div>
-      </div>
-
-      <p>
-        <a class="button"
-           href="seal-document.html">
-          + Submit New Document
-        </a>
-
-        <a class="button secondary"
-           href="verify-document.html">
-          Verify a Document
-        </a>
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>My Documents</h2>
-
-      <p class="muted">
-        This list shows document requests associated with your
-        signed-in company account. Your reference number and
-        review status are displayed here.
-      </p>
-
-      <button id="refreshButton"
-              class="button secondary"
-              type="button">
-        Refresh Documents
+      <button id="loginButton" class="primary" type="submit">
+        Sign In
       </button>
+    </form>
 
-      <div id="requestsList">
-        <p class="muted">Loading your submissions...</p>
+    <div id="loginMessage" aria-live="polite"></div>
+  </section>
+
+  <section id="dashboardSection" hidden>
+
+    <section class="panel">
+      <h2>Welcome to Your Client Dashboard</h2>
+      <p id="signedInAs" class="muted"></p>
+      <div id="dashboardMessage" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Company Profile</h2>
+      <div class="profile-grid">
+        <p class="detail"><b>Company:</b> <span id="companyName">Loading...</span></p>
+        <p class="detail"><b>Representative:</b> <span id="representativeName">Loading...</span></p>
+        <p class="detail"><b>Email:</b> <span id="companyEmail">Loading...</span></p>
+        <p class="detail"><b>Phone:</b> <span id="companyPhone">Loading...</span></p>
+        <p class="detail"><b>Account status:</b> <span id="accountStatus">Loading...</span></p>
       </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2>Company Account</h2>
+    <section class="stats">
+      <div class="stat">
+        Total Requests
+        <strong id="totalCount">0</strong>
+      </div>
+
+      <div class="stat">
+        Pending Review
+        <strong id="pendingCount">0</strong>
+      </div>
+
+      <div class="stat">
+        Approved
+        <strong id="approvedCount">0</strong>
+      </div>
+
+      <div class="stat">
+        Rejected
+        <strong id="rejectedCount">0</strong>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Document Requests</h2>
 
       <p class="muted">
-        Your company profile is associated with your verified
-        email account. Contact the administrator if your company
-        information needs correction.
+        View your submitted requests and generate a verification report for each request.
+        Report generation does not mean that a pending document has been approved.
+      </p>
+
+      <div class="actions">
+        <button id="refreshButton" class="secondary" type="button">
+          Refresh Requests
+        </button>
+
+        <a
+          href="seal-document.html"
+          class="secondary"
+          style="display:inline-block;text-decoration:none;padding:11px 15px;border-radius:7px;"
+        >
+          Register Another Document
+        </a>
+      </div>
+
+      <div id="requestsList"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Document Download Options</h2>
+
+      <p>
+        <b>1. Verification Report:</b>
+        Generate a report with the document details, fingerprint, dates, verification
+        disclaimer and QR code. You can save the report as a PDF using your browser's
+        print menu.
       </p>
 
       <p>
-        <strong>Account:</strong>
-        <span id="accountStatus">Verified login</span>
+        <b>2. Original Document:</b>
+        Original PDF downloads will become available after secure document storage
+        is connected.
       </p>
 
       <p>
-        <strong>Company:</strong>
-        <span id="profileCompany"></span>
+        <b>3. Combined Package:</b>
+        A package containing the original document and verification report will become
+        available after secure document storage is connected.
       </p>
 
-      <p>
-        <strong>Email:</strong>
-        <span id="profileEmail"></span>
-      </p>
-    </div>
+      <div class="notice">
+        Original documents are not downloaded from this dashboard because the existing
+        system does not yet provide a connected, secure file-download service.
+      </div>
+    </section>
 
   </section>
+
 </main>
 
 <footer>
   &copy; <span id="year"></span>
-  ARNAUD AFROCHAINE TRUST SYSTEMS LTD.<br>
-  Private client document tracking.
+  ARNAUD AFROCHAINE TRUST SYSTEMS LTD. All rights reserved.
 </footer>
 
 <script type="module">
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-  import {
-    getAuth,
-    onAuthStateChanged,
-    signOut
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  import {
-    getFirestore,
-    doc,
-    getDoc,
-    collection,
-    query,
-    where,
-    getDocs
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  query,
+  where
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
-    authDomain: "arnaud-document-trust.firebaseapp.com",
-    projectId: "arnaud-document-trust",
-    storageBucket: "arnaud-document-trust.firebasestorage.app",
-    messagingSenderId: "96008667746",
-    appId: "1:96008667746:web:63a6badb04fb996219873b",
-    measurementId: "G-NYPH2RB851"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+  authDomain: "arnaud-document-trust.firebaseapp.com",
+  projectId: "arnaud-document-trust",
+  storageBucket: "arnaud-document-trust.firebasestorage.app",
+  messagingSenderId: "96008667746",
+  appId: "1:96008667746:web:63a6badb04fb996219873b",
+  measurementId: "G-NYPH2RB851"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+const COMPANY_NAME = "ARNAUD AFROCHAINE TRUST SYSTEMS LTD";
+const COMPANY_EMAIL = "arnaudafrochain@gmail.com";
+const COMPANY_PHONE = "+234 913 285 1465";
 
-  const pageMessage = document.getElementById("pageMessage");
-  const dashboardContent =
-    document.getElementById("dashboardContent");
-  const requestsList = document.getElementById("requestsList");
-  const logoutButton = document.getElementById("logoutButton");
-  const refreshButton = document.getElementById("refreshButton");
+const VERIFY_PAGE_URL =
+  new URL("verify-document.html", window.location.href).href;
 
-  let currentUser = null;
-  let profile = null;
-  let loading = false;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+const $ = id => document.getElementById(id);
 
-  function showPageMessage(text, isError = false) {
-    pageMessage.textContent = text;
-    pageMessage.className = isError
-      ? "message error"
-      : "message";
-    pageMessage.classList.remove("hidden");
+$("year").textContent = new Date().getFullYear();
+
+let currentUser = null;
+let currentRequests = [];
+
+function showMessage(element, message, type = "error") {
+  element.replaceChildren();
+
+  const box = document.createElement("div");
+  box.className = "message " + type;
+  box.textContent = message;
+
+  element.appendChild(box);
+}
+
+function clearMessage(element) {
+  element.replaceChildren();
+}
+
+function safeText(value) {
+  if (value === undefined || value === null || value === "") {
+    return "Not provided";
   }
 
-  function showStatusClass(status) {
-    const value = String(status || "").toLowerCase();
+  return String(value);
+}
 
-    if (value.includes("approv")) return "status approved";
-    if (value.includes("reject")) return "status rejected";
+function normalizedStatus(value) {
+  const s = String(value || "Pending Review").toLowerCase();
 
-    if (
-      value.includes("pending") ||
-      value.includes("review") ||
-      value.includes("information")
-    ) {
-      return "status pending";
-    }
-
-    return "status";
+  if (
+    s === "verified" ||
+    s === "approved" ||
+    s === "approved and verified"
+  ) {
+    return "Verified";
   }
 
-  function addText(parent, tag, label, value) {
-    const element = document.createElement(tag);
-
-    const safeValue =
-      value === undefined || value === null || value === ""
-        ? "Not provided"
-        : String(value);
-
-    element.textContent = label + safeValue;
-    parent.appendChild(element);
-
-    return element;
+  if (s.includes("withdraw")) {
+    return "Withdrawn";
   }
 
-  async function loadProfile(user) {
-    const profileSnapshot = await getDoc(
-      doc(db, "clientProfiles", user.uid)
-    );
-
-    if (!profileSnapshot.exists()) {
-      throw new Error("PROFILE_NOT_FOUND");
-    }
-
-    const data = profileSnapshot.data();
-
-    if (
-      data.uid !== user.uid ||
-      data.accountType !== "companyClient"
-    ) {
-      throw new Error("INVALID_PROFILE");
-    }
-
-    return data;
+  if (s === "rejected") {
+    return "Rejected";
   }
 
-  async function loadRequests() {
-    if (!currentUser || loading) return;
+  return "Pending Review";
+}
 
-    loading = true;
-    refreshButton.disabled = true;
-    requestsList.replaceChildren();
+function statusClass(status) {
+  if (status === "Verified") return "approved";
+  if (status === "Rejected") return "rejected";
+  if (status === "Withdrawn") return "withdrawn";
+  return "";
+}
 
-    const loadingText = document.createElement("p");
-    loadingText.className = "muted";
-    loadingText.textContent = "Loading your submissions...";
-    requestsList.appendChild(loadingText);
+function formatDate(value) {
+  if (!value) return "Not available";
 
-    try {
-      const requestsQuery = query(
-        collection(db, "documentRequests"),
-        where("createdByUid", "==", currentUser.uid)
-      );
+  if (typeof value.toDate === "function") {
+    return value.toDate().toLocaleString();
+  }
 
-      const snapshot = await getDocs(requestsQuery);
+  const date = new Date(value);
 
-      const records = snapshot.docs.map(item => ({
-        id: item.id,
-        ...item.data()
-      }));
+  if (Number.isNaN(date.getTime())) {
+    return "Not available";
+  }
 
-      records.sort((a, b) => {
-        const timeA = a.createdAt?.toMillis?.() || 0;
-        const timeB = b.createdAt?.toMillis?.() || 0;
-        return timeB - timeA;
-      });
+  return date.toLocaleString();
+}
 
-      requestsList.replaceChildren();
+function getFirstValue(data, keys) {
+  for (const key of keys) {
+    const value = data?.[key];
 
-      let pending = 0;
-      let approved = 0;
-      let rejected = 0;
-
-      for (const record of records) {
-        const status = String(record.status || "Submitted");
-        const lowerStatus = status.toLowerCase();
-
-        if (
-          lowerStatus.includes("pending") ||
-          lowerStatus.includes("review") ||
-          lowerStatus.includes("information")
-        ) {
-          pending++;
-        }
-
-        if (lowerStatus.includes("approv")) approved++;
-        if (lowerStatus.includes("reject")) rejected++;
-      }
-
-      document.getElementById("totalCount").textContent =
-        String(records.length);
-
-      document.getElementById("pendingCount").textContent =
-        String(pending);
-
-      document.getElementById("approvedCount").textContent =
-        String(approved);
-
-      document.getElementById("rejectedCount").textContent =
-        String(rejected);
-
-      if (records.length === 0) {
-        const empty = document.createElement("p");
-        empty.className = "muted";
-        empty.textContent =
-          "No document submissions are linked to this account yet.";
-
-        requestsList.appendChild(empty);
-        return;
-      }
-
-      for (const record of records) {
-        const card = document.createElement("article");
-        card.className = "request";
-
-        const title = document.createElement("h3");
-        title.textContent =
-          record.documentTitle || "Document submission";
-
-        card.appendChild(title);
-
-        const status = document.createElement("span");
-        status.className = showStatusClass(record.status);
-        status.textContent = record.status || "Submitted";
-        card.appendChild(status);
-
-        addText(
-          card,
-          "p",
-          "Reference number: ",
-          record.referenceNumber
-        );
-
-        addText(
-          card,
-          "p",
-          "Document title: ",
-          record.documentTitle
-        );
-
-        addText(
-          card,
-          "p",
-          "Submitted for: ",
-          record.issuedTo
-        );
-
-        addText(
-          card,
-          "p",
-          "Submitted on: ",
-          record.createdAt?.toDate
-            ? record.createdAt.toDate().toLocaleString()
-            : "Date not available"
-        );
-
-        if (record.sha256Fingerprint) {
-          const label = document.createElement("p");
-          label.textContent = "SHA-256 fingerprint:";
-          card.appendChild(label);
-
-          const hash = document.createElement("div");
-          hash.className = "hash";
-          hash.textContent = record.sha256Fingerprint;
-          card.appendChild(hash);
-        }
-
-        if (record.fingerprintStatus) {
-          addText(
-            card,
-            "p",
-            "Fingerprint status: ",
-            record.fingerprintStatus
-          );
-        }
-
-        requestsList.appendChild(card);
-      }
-
-    } catch (error) {
-      console.error("Could not load client requests:", error);
-
-      requestsList.replaceChildren();
-
-      const errorText = document.createElement("p");
-      errorText.className = "muted";
-
-      errorText.textContent =
-        error.code === "permission-denied"
-          ? "Firebase denied access to your submissions. The administrator needs to check the Firestore security rules."
-          : "Your submissions could not be loaded. Check your internet connection and try again.";
-
-      requestsList.appendChild(errorText);
-
-    } finally {
-      loading = false;
-      refreshButton.disabled = false;
+    if (value !== undefined && value !== null && value !== "") {
+      return value;
     }
   }
 
-  onAuthStateChanged(auth, async user => {
-    if (!user) {
-      window.location.replace("client-login.html");
+  return null;
+}
+
+function addDetail(container, label, value) {
+  const line = document.createElement("p");
+  line.className = "detail";
+
+  const strong = document.createElement("b");
+  strong.textContent = label + ": ";
+
+  const span = document.createElement("span");
+  span.textContent = safeText(value);
+
+  line.append(strong, span);
+  container.appendChild(line);
+}
+
+function getCertificateNumber(request) {
+  return String(
+    getFirstValue(request, [
+      "certificateNumber",
+      "referenceNumber",
+      "documentReference",
+      "reference",
+      "requestNumber"
+    ]) || request.id
+  );
+}
+
+function getDocumentTitle(request) {
+  return getFirstValue(request, [
+    "documentTitle",
+    "title",
+    "documentName"
+  ]) || "Document";
+}
+
+function getIssuedTo(request) {
+  return getFirstValue(request, [
+    "issuedTo",
+    "recipientName",
+    "studentName",
+    "holderName",
+    "documentHolder"
+  ]) || "Not provided";
+}
+
+function getFingerprint(request) {
+  return getFirstValue(request, [
+    "sha256",
+    "fingerprint",
+    "documentHash",
+    "fileHash",
+    "sha256Fingerprint"
+  ]) || "Not provided";
+}
+
+function getIssueDate(request) {
+  return formatDate(
+    getFirstValue(request, [
+      "issueDate",
+      "issuedDate",
+      "dateIssued"
+    ])
+  );
+}
+
+function getVerificationDate(request) {
+  return formatDate(
+    getFirstValue(request, [
+      "verifiedAt",
+      "verificationDate",
+      "approvedAt",
+      "approvalDate",
+      "updatedAt"
+    ])
+  );
+}
+
+function makeVerificationUrl(request) {
+  const certificateNumber = getCertificateNumber(request);
+  const url = new URL(VERIFY_PAGE_URL);
+
+  url.searchParams.set("certificate", certificateNumber);
+
+  return url.href;
+}
+
+function makeQrImage(url, callback) {
+  /*
+    QRCode.js is loaded only when a report is generated.
+    The QR contains the public verification-page URL and certificate number.
+    It does not contain private company-account information.
+  */
+  const scriptUrl =
+    "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
+
+  function generate() {
+    if (typeof window.QRCode !== "function") {
+      callback(null);
       return;
     }
 
-    try {
-      await user.reload();
-
-      if (!user.emailVerified) {
-        await signOut(auth);
-        window.location.replace("client-login.html");
-        return;
-      }
-
-      currentUser = user;
-      profile = await loadProfile(user);
-
-      document.getElementById("companyName").textContent =
-        profile.companyName || "Company name not provided";
-
-      document.getElementById("representativeName").textContent =
-        "Authorised representative: " +
-        (profile.representativeName || "Not provided");
-
-      document.getElementById("clientEmail").textContent =
-        "Email: " + (user.email || "");
-
-      document.getElementById("profileCompany").textContent =
-        profile.companyName || "Not provided";
-
-      document.getElementById("profileEmail").textContent =
-        user.email || "Not provided";
-
-      pageMessage.classList.add("hidden");
-      dashboardContent.classList.remove("hidden");
-
-      await loadRequests();
-
-    } catch (error) {
-      console.error("Dashboard access error:", error);
-
-      dashboardContent.classList.add("hidden");
-
-      showPageMessage(
-        error.code === "permission-denied"
-          ? "Firebase denied access to your company profile. Please check the security rules."
-          : "Your company profile could not be verified. Please contact the administrator.",
-        true
-      );
-
-      await signOut(auth);
-    }
-  });
-
-  refreshButton.addEventListener("click", loadRequests);
-
-  logoutButton.addEventListener("click", async () => {
-    logoutButton.disabled = true;
+    const holder = document.createElement("div");
 
     try {
-      await signOut(auth);
-      window.location.replace("client-login.html");
+      new window.QRCode(holder, {
+        text: url,
+        width: 180,
+        height: 180,
+        correctLevel: window.QRCode.CorrectLevel.M
+      });
+
+      setTimeout(() => {
+        const canvas = holder.querySelector("canvas");
+        const image = holder.querySelector("img");
+
+        if (canvas) {
+          callback(canvas.toDataURL("image/png"));
+        } else if (image && image.src) {
+          callback(image.src);
+        } else {
+          callback(null);
+        }
+      }, 300);
     } catch (error) {
-      console.error("Logout error:", error);
+      console.error("QR generation failed:", error);
+      callback(null);
+    }
+  }
 
-      showPageMessage(
-        "We could not complete sign-out. Please try again.",
-        true
-      );
+  if (typeof window.QRCode === "function") {
+    generate();
+    return;
+  }
 
-      logoutButton.disabled = false;
+  const existingScript = document.querySelector(
+    'script[data-arnaud-qrcode="true"]'
+  );
+
+  if (existingScript) {
+    existingScript.addEventListener("load", generate, { once: true });
+    existingScript.addEventListener(
+      "error",
+      () => callback(null),
+      { once: true }
+    );
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.src = scriptUrl;
+  script.async = true;
+  script.dataset.arnaudQrcode = "true";
+
+  script.onload = generate;
+  script.onerror = () => callback(null);
+
+  document.head.appendChild(script);
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+function openVerificationReport(request) {
+  const certificateNumber = getCertificateNumber(request);
+  const documentTitle = getDocumentTitle(request);
+  const issuedTo = getIssuedTo(request);
+  const status = normalizedStatus(request.status);
+  const fingerprint = getFingerprint(request);
+  const issueDate = getIssueDate(request);
+  const verificationDate = getVerificationDate(request);
+  const verificationUrl = makeVerificationUrl(request);
+
+  const reportWindow = window.open("", "_blank");
+
+  if (!reportWindow) {
+    alert(
+      "Your browser blocked the report window. Please allow pop-ups for this website and try again."
+    );
+    return;
+  }
+
+  reportWindow.document.open();
+  reportWindow.document.write(`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Report - ${escapeHtml(certificateNumber)}</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #23362b;
+    margin: 0;
+    padding: 25px;
+    line-height: 1.5;
+  }
+
+  .report {
+    max-width: 800px;
+    margin: auto;
+    border: 2px solid #08783e;
+    padding: 25px;
+  }
+
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #c9a646;
+    padding-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 23px;
+    color: #075b32;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    color: #075b32;
+    font-size: 19px;
+  }
+
+  .status {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    background: #fff1cb;
+    color: #755300;
+  }
+
+  .status.verified {
+    background: #dcf7e3;
+    color: #17602d;
+  }
+
+  .status.rejected,
+  .status.withdrawn {
+    background: #ffe2e2;
+    color: #8a1717;
+  }
+
+  .row {
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e9e4;
+    overflow-wrap: anywhere;
+  }
+
+  .label {
+    font-weight: bold;
+    display: block;
+    color: #344d40;
+  }
+
+  .fingerprint {
+    font-family: monospace;
+    word-break: break-all;
+  }
+
+  .qr {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .qr img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+  }
+
+  .url {
+    font-size: 12px;
+    word-break: break-all;
+  }
+
+  .disclaimer {
+    background: #fff8e7;
+    border: 1px solid #ead9a8;
+    padding: 12px;
+    margin-top: 20px;
+    font-size: 13px;
+  }
+
+  .actions {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  button {
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 6px;
+    background: #08783e;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  @media print {
+    body {
+      padding: 0;
+    }
+
+    .report {
+      border: 1px solid #08783e;
+      padding: 15px;
+    }
+
+    .actions {
+      display: none;
+    }
+
+    .row {
+      break-inside: avoid;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="report">
+  <div class="header">
+    <h1>${escapeHtml(COMPANY_NAME)}</h1>
+    <p>African Roots, Global Vision.</p>
+    <p>Document Verification Report</p>
+    <p>${escapeHtml(COMPANY_EMAIL)}</p>
+  </div>
+
+  <h2>Verification Details</h2>
+
+  <div class="row">
+    <span class="label">Document Title</span>
+    ${escapeHtml(documentTitle)}
+  </div>
+
+  <div class="row">
+    <span class="label">Certificate / Reference Number</span>
+    ${escapeHtml(certificateNumber)}
+  </div>
+
+  <div class="row">
+    <span class="label">Document Recipient</span>
+    ${escapeHtml(issuedTo)}
+  </div>
+
+  <div class="row">
+    <span class="label">Current Request Status</span>
+    <span class="status ${
+      status === "Verified" ? "verified" :
+      status === "Rejected" ? "rejected" :
+      status === "Withdrawn" ? "withdrawn" : ""
+    }">${escapeHtml(status)}</span>
+  </div>
+
+  <div class="row">
+    <span class="label">Issue Date</span>
+    ${escapeHtml(issueDate)}
+  </div>
+
+  <div class="row">
+    <span class="label">Verification / Approval Date</span>
+    ${escapeHtml(verificationDate)}
+  </div>
+
+  <div class="row">
+    <span class="label">SHA-256 Document Fingerprint</span>
+    <div class="fingerprint">${escapeHtml(fingerprint)}</div>
+  </div>
+
+  <h2>Public Verification</h2>
+
+  <div class="qr">
+    <p>Scan this QR code to open the verification page.</p>
+    <div id="qrImageArea">Preparing QR code...</div>
+    <p class="url">${escapeHtml(verificationUrl)}</p>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Verification disclaimer:</strong>
+    This report displays information recorded in the ARNAUD AFROCHAINE TRUST
+    SYSTEMS LTD client system. A status of “Verified” should be confirmed using
+    the public verification portal. A pending request is not an approval.
+    A rejected or withdrawn document must not be represented as currently verified.
+
+    The SHA-256 fingerprint is shown only if a fingerprint was recorded.
+    Its appearance in this report does not, by itself, establish that the
+    original file has been independently checked against that fingerprint.
+    Dates not recorded in the system are displayed as unavailable.
+  </div>
+
+  <p style="margin-top:25px;font-size:12px;text-align:center;">
+    Generated by the client dashboard. This report is not a substitute for
+    checking the live public verification result.
+  </p>
+
+  <div class="actions">
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+</div>
+</body>
+</html>
+  `);
+  reportWindow.document.close();
+
+  makeQrImage(verificationUrl, qrDataUrl => {
+    if (reportWindow.closed) return;
+
+    const area = reportWindow.document.getElementById("qrImageArea");
+
+    if (!area) return;
+
+    area.replaceChildren();
+
+    if (qrDataUrl) {
+      const image = reportWindow.document.createElement("img");
+      image.src = qrDataUrl;
+      image.alt = "QR code for public verification";
+      image.width = 180;
+      image.height = 180;
+      area.appendChild(image);
+    } else {
+      const message = reportWindow.document.createElement("p");
+      message.textContent =
+        "QR code could not be generated. Use the verification link printed below.";
+      area.appendChild(message);
     }
   });
+}
+
+function showStorageMessage(optionName) {
+  alert(
+    optionName +
+    " is not available yet. Secure original-document storage and authorized " +
+    "download links must be connected before this feature can safely work."
+  );
+}
+
+function createRequestCard(request) {
+  const card = document.createElement("article");
+  card.className = "request";
+
+  const title = document.createElement("h3");
+  title.textContent = getDocumentTitle(request);
+  card.appendChild(title);
+
+  const status = normalizedStatus(request.status);
+  const badge = document.createElement("span");
+
+  badge.className = "badge " + statusClass(status);
+  badge.textContent = status;
+
+  card.appendChild(badge);
+
+  addDetail(card, "Reference Number", getCertificateNumber(request));
+  addDetail(card, "Document Title", getDocumentTitle(request));
+  addDetail(card, "Issued To", getIssuedTo(request));
+  addDetail(card, "Submitted", formatDate(request.createdAt));
+
+  const fingerprint = getFingerprint(request);
+
+  if (fingerprint !== "Not provided") {
+    addDetail(card, "SHA-256 Fingerprint", fingerprint);
+  }
+
+  if (request.statusReason) {
+    addDetail(card, "Status Reason", request.statusReason);
+  } else if (request.rejectionReason) {
+    addDetail(card, "Status Reason", request.rejectionReason);
+  }
+
+  const actions = document.createElement("div");
+  actions.className = "actions";
+
+  const reportButton = document.createElement("button");
+  reportButton.type = "button";
+  reportButton.className = "report-button";
+  reportButton.textContent = "Generate Verification Report";
+
+  reportButton.addEventListener("click", () => {
+    openVerificationReport(request);
+  });
+
+  actions.appendChild(reportButton);
+
+  const verifyLink = document.createElement("a");
+  verifyLink.href = makeVerificationUrl(request);
+  verifyLink.target = "_blank";
+  verifyLink.rel = "noopener noreferrer";
+  verifyLink.className = "secondary";
+  verifyLink.style.textDecoration = "none";
+  verifyLink.style.padding = "11px 15px";
+  verifyLink.style.borderRadius = "7px";
+  verifyLink.textContent = "Open Verification Page";
+
+  actions.appendChild(verifyLink);
+
+  const originalButton = document.createElement("button");
+  originalButton.type = "button";
+  originalButton.className = "disabled-button";
+  originalButton.textContent = "Original Document";
+  originalButton.addEventListener("click", () => {
+    showStorageMessage("Original document download");
+  });
+
+  actions.appendChild(originalButton);
+
+  const packageButton = document.createElement("button");
+  packageButton.type = "button";
+  packageButton.className = "disabled-button";
+  packageButton.textContent = "Combined Package";
+  packageButton.addEventListener("click", () => {
+    showStorageMessage("Combined package download");
+  });
+
+  actions.appendChild(packageButton);
+
+  card.appendChild(actions);
+
+  return card;
+}
+
+async function loadProfile(user) {
+  const profileRef = doc(db, "clientProfiles", user.uid);
+  const profileSnapshot = await getDoc(profileRef);
+
+  if (!profileSnapshot.exists()) {
+    throw new Error(
+      "Your client profile was not found. Please contact the company for assistance."
+    );
+  }
+
+  const profile = profileSnapshot.data();
+
+  if (profile.uid !== user.uid) {
+    throw new Error(
+      "The profile UID does not match the signed-in account. Access has been stopped."
+    );
+  }
+
+  if (profile.accountType !== "companyClient") {
+    throw new Error(
+      "This account is not registered as a company client account."
+    );
+  }
+
+  $("companyName").textContent =
+    safeText(profile.companyName);
+
+  $("representativeName").textContent =
+    safeText(profile.representativeName);
+
+  $("companyEmail").textContent =
+    safeText(profile.email || user.email);
+
+  $("companyPhone").textContent =
+    safeText(profile.phone);
+
+  $("accountStatus").textContent =
+    safeText(profile.accountStatus);
+
+  return profile;
+}
+
+async function loadRequests() {
+  if (!currentUser) return;
+
+  clearMessage($("dashboardMessage"));
+
+  $("requestsList").replaceChildren();
+
+  const loading = document.createElement("p");
+  loading.className = "empty";
+  loading.textContent = "Loading your document requests...";
+  $("requestsList").appendChild(loading);
+
+  try {
+    const requestsQuery = query(
+      collection(db, "documentRequests"),
+      where("createdByUid", "==", currentUser.uid)
+    );
+
+    const snapshot = await getDocs(requestsQuery);
+
+    currentRequests = snapshot.docs.map(item => ({
+      id: item.id,
+      ...item.data()
+    }));
+
+    currentRequests.sort((a, b) => {
+      const aTime = a.createdAt?.toMillis?.() || 0;
+      const bTime = b.createdAt?.toMillis?.() || 0;
+      return bTime - aTime;
+    });
+
+    $("totalCount").textContent = String(currentRequests.length);
+
+    $("pendingCount").textContent = String(
+      currentRequests.filter(
+        item => normalizedStatus(item.status) === "Pending Review"
+      ).length
+    );
+
+    $("approvedCount").textContent = String(
+      currentRequests.filter(
+        item => normalizedStatus(item.status) === "Verified"
+      ).length
+    );
+
+    $("rejectedCount").textContent = String(
+      currentRequests.filter(
+        item => normalizedStatus(item.status) === "Rejected"
+      ).length
+    );
+
+    $("requestsList").replaceChildren();
+
+    if (!currentRequests.length) {
+      const empty = document.createElement("p");
+      empty.className = "empty";
+      empty.textContent =
+        "No document requests were found for this account.";
+      $("requestsList").appendChild(empty);
+      return;
+    }
+
+    currentRequests.forEach(request => {
+      $("requestsList").appendChild(createRequestCard(request));
+    });
+
+  } catch (error) {
+    console.error("Loading client requests failed:", error);
+
+    $("requestsList").replaceChildren();
+
+    showMessage(
+      $("dashboardMessage"),
+      "Could not load your document requests. Check your internet connection and confirm that the published Firestore rules allow a client to read their own documentRequests records. Details: " +
+        error.message,
+      "error"
+    );
+  }
+}
+
+onAuthStateChanged(auth, async user => {
+  currentUser = user || null;
+
+  if (!user) {
+    $("loginSection").hidden = false;
+    $("dashboardSection").hidden = true;
+    $("logoutButton").hidden = true;
+    $("requestsList").replaceChildren();
+    return;
+  }
+
+  $("loginSection").hidden = true;
+  $("dashboardSection").hidden = false;
+  $("logoutButton").hidden = false;
+
+  $("signedInAs").textContent =
+    "Signed in as: " + (user.email || "Authenticated client");
+
+  if (!user.emailVerified) {
+    showMessage(
+      $("dashboardMessage"),
+      "Your email address has not been verified. Please verify your email and then sign in again.",
+      "error"
+    );
+
+    await signOut(auth);
+    return;
+  }
+
+  try {
+    await loadProfile(user);
+    await loadRequests();
+
+  } catch (error) {
+    console.error("Client dashboard setup failed:", error);
+
+    showMessage(
+      $("dashboardMessage"),
+      error.message ||
+        "Your client profile could not be loaded. Please contact support.",
+      "error"
+    );
+
+    $("requestsList").replaceChildren();
+  }
+});
+
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  clearMessage($("loginMessage"));
+
+  $("loginButton").disabled = true;
+  $("loginButton").textContent = "Signing in...";
+
+  try {
+    const credential = await signInWithEmailAndPassword(
+      auth,
+      $("email").value.trim(),
+      $("password").value
+    );
+
+    if (!credential.user.emailVerified) {
+      await signOut(auth);
+
+      showMessage(
+        $("loginMessage"),
+        "Your email address has not been verified. Open the verification link sent to your email before signing in.",
+        "error"
+      );
+
+      return;
+    }
+
+    showMessage(
+      $("loginMessage"),
+      "Sign-in successful.",
+      "success"
+    );
+
+  } catch (error) {
+    console.error("Client sign-in failed:", error);
+
+    showMessage(
+      $("loginMessage"),
+      "Sign-in failed. Check your email and password. If the problem continues, confirm that Email/Password sign-in is enabled in Firebase Authentication. Details: " +
+        error.message,
+      "error"
+    );
+
+  } finally {
+    $("loginButton").disabled = false;
+    $("loginButton").textContent = "Sign In";
+  }
+});
+
+$("logoutButton").addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    clearMessage($("loginMessage"));
+    clearMessage($("dashboardMessage"));
+
+  } catch (error) {
+    showMessage(
+      $("dashboardMessage"),
+      "Could not sign out: " + error.message,
+      "error"
+    );
+  }
+});
+
+$("refreshButton").addEventListener("click", loadRequests);
 </script>
 
 </body>
-</html>
+      </html>
