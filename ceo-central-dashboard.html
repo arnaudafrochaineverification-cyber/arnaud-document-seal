@@ -3,297 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10251a">
 
 <title>ARNAUD Central CEO Dashboard</title>
 
 <style>
 :root {
-  --green: #08783e;
-  --dark: #10251a;
-  --light: #f3f7f4;
-  --border: #dce6df;
-  --red: #b42318;
-  --gold: #a66b00;
+  --green:#08783e;
+  --dark:#10251a;
+  --light:#f3f7f4;
+  --border:#dce6df;
+  --red:#b42318;
+  --gold:#a66b00;
+  --text:#1e2922;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing:border-box; }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--light);
-  color: #1e2922;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--light);
+  color:var(--text);
 }
 
-button, input, select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-.hidden {
-  display: none !important;
-}
+button,input,select { font:inherit; }
+button { cursor:pointer; }
+.hidden { display:none!important; }
 
 header {
-  background: var(--dark);
-  color: white;
-  padding: 17px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
+  background:var(--dark);
+  color:white;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
 }
 
-header h1 {
-  font-size: 19px;
-  margin: 0;
-}
-
-header p {
-  margin: 5px 0 0;
-  color: #d6e7dc;
-  font-size: 12px;
-}
-
-#loginScreen {
-  max-width: 430px;
-  background: white;
-  padding: 25px;
-  margin: 55px auto;
-  border-radius: 14px;
-  box-shadow: 0 5px 25px #00000012;
-}
-
-#loginScreen h2 {
-  color: var(--green);
-}
-
-input, select {
-  width: 100%;
-  padding: 12px;
-  margin: 7px 0 14px;
-  border: 1px solid #cbd7ce;
-  border-radius: 7px;
-  background: white;
-}
+header h1 { font-size:19px; margin:0; }
+header p { font-size:12px; color:#d6e7dc; margin:5px 0 0; }
 
 button {
-  border: 0;
-  padding: 10px 13px;
-  border-radius: 7px;
-  font-weight: 600;
+  border:0;
+  padding:10px 13px;
+  border-radius:7px;
+  font-weight:600;
 }
 
-.primary {
-  background: var(--green);
-  color: white;
+.primary { background:var(--green); color:white; }
+.secondary { background:#e5eee8; color:#183b27; }
+.danger { background:#fee4e2; color:var(--red); }
+.warning { background:#fff1cc; color:#754d00; }
+
+button:disabled { opacity:.6; cursor:not-allowed; }
+
+input,select {
+  width:100%;
+  padding:12px;
+  margin:7px 0 14px;
+  border:1px solid #cbd7ce;
+  border-radius:7px;
+  background:white;
 }
 
-.secondary {
-  background: #e5eee8;
-  color: #183b27;
+label { font-size:13px; font-weight:600; }
+
+#loginScreen {
+  max-width:440px;
+  background:white;
+  padding:25px;
+  margin:45px auto;
+  border-radius:14px;
+  box-shadow:0 5px 25px #00000012;
 }
 
-.danger {
-  background: #fee4e2;
-  color: var(--red);
-}
+#loginScreen h2 { color:var(--green); }
 
-.warning {
-  background: #fff1cc;
-  color: #754d00;
-}
-
-#loginButton {
-  width: 100%;
-}
+#loginButton { width:100%; }
 
 #message {
-  margin-top: 12px;
-  padding: 10px;
-  border-radius: 7px;
-  font-size: 13px;
-  overflow-wrap: anywhere;
+  margin-top:12px;
+  padding:12px;
+  border-radius:7px;
+  font-size:13px;
+  line-height:1.6;
+  overflow-wrap:anywhere;
 }
 
 #appLayout {
-  display: flex;
-  min-height: calc(100vh - 65px);
+  display:flex;
+  min-height:calc(100vh - 65px);
 }
 
 aside {
-  width: 245px;
-  flex-shrink: 0;
-  background: white;
-  border-right: 1px solid var(--border);
-  padding: 15px 10px;
+  width:245px;
+  flex-shrink:0;
+  background:white;
+  border-right:1px solid var(--border);
+  padding:14px 10px;
 }
 
 aside button {
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  padding: 13px 12px;
-  margin-bottom: 4px;
-  color: #304439;
+  display:block;
+  width:100%;
+  text-align:left;
+  background:transparent;
+  padding:12px;
+  margin-bottom:4px;
+  color:#304439;
 }
 
 aside button.active,
 aside button:hover {
-  background: #e5f2e9;
-  color: var(--green);
+  background:#e5f2e9;
+  color:var(--green);
 }
 
-main {
-  min-width: 0;
-  flex: 1;
-  padding: 22px;
-}
+main { flex:1; min-width:0; padding:22px; }
+
+.section { display:none; }
+.section.active { display:block; }
 
 .panel {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px;
-  margin-bottom: 18px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:18px;
 }
 
-.panel h2 {
-  margin-top: 0;
-  font-size: 19px;
-}
+.panel h2 { margin-top:0; font-size:19px; }
 
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 14px;
-  margin-bottom: 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
+  gap:14px;
+  margin-bottom:20px;
 }
 
 .card {
-  background: white;
-  border: 1px solid var(--border);
-  padding: 18px;
-  border-radius: 12px;
+  background:white;
+  border:1px solid var(--border);
+  padding:18px;
+  border-radius:12px;
 }
 
-.card small {
-  color: #5b6c61;
-}
-
+.card small { color:#5b6c61; }
 .card strong {
-  display: block;
-  font-size: 28px;
-  margin-top: 9px;
-  color: var(--green);
+  display:block;
+  font-size:26px;
+  margin-top:9px;
+  color:var(--green);
+  overflow-wrap:anywhere;
 }
 
-.tableWrap {
-  width: 100%;
-  overflow-x: auto;
-}
+.muted { color:#64746a; font-size:13px; line-height:1.6; }
+
+.tableWrap { width:100%; overflow-x:auto; }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
 }
 
-th, td {
-  padding: 11px;
-  border-bottom: 1px solid #e7eee9;
-  text-align: left;
-  vertical-align: top;
+th,td {
+  padding:10px;
+  border-bottom:1px solid #e7eee9;
+  text-align:left;
+  vertical-align:top;
+  overflow-wrap:anywhere;
 }
 
-th {
-  background: #f2f7f3;
-}
-
-td {
-  overflow-wrap: anywhere;
-}
-
-td button {
-  margin: 3px;
-  white-space: nowrap;
-}
+th { background:#f2f7f3; }
+td button { margin:3px; white-space:nowrap; }
 
 .badge {
-  display: inline-block;
-  background: #e8f4eb;
-  color: #176238;
-  padding: 5px 8px;
-  border-radius: 20px;
-  font-size: 11px;
+  display:inline-block;
+  background:#e8f4eb;
+  color:#176238;
+  padding:5px 8px;
+  border-radius:20px;
+  font-size:11px;
 }
 
-.muted {
-  color: #64746a;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.section {
-  display: none;
-}
-
-.section.active {
-  display: block;
-}
-
-.actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
+.actions { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
 
 .linkButton {
-  display: inline-block;
-  text-decoration: none;
-  background: #e5eee8;
-  color: #183b27;
-  padding: 12px;
-  border-radius: 7px;
-  margin: 5px;
+  display:inline-block;
+  text-decoration:none;
+  background:#e5eee8;
+  color:#183b27;
+  padding:12px;
+  border-radius:7px;
+  margin:5px;
 }
 
 #logoutButton {
-  background: #ffffff20;
-  color: white;
-  border: 1px solid #ffffff55;
+  background:#ffffff20;
+  color:white;
+  border:1px solid #ffffff55;
 }
 
-@media (max-width: 760px) {
-  #appLayout {
-    display: block;
-  }
+#globalNotice {
+  padding:12px;
+  border-radius:8px;
+  background:#e5f5e9;
+  color:#176238;
+  margin-bottom:15px;
+  font-size:13px;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
 
+@media(max-width:760px) {
+  #appLayout { display:block; }
   aside {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    border-right:0;
+    border-bottom:1px solid var(--border);
   }
-
-  aside button {
-    font-size: 12px;
-    padding: 11px 8px;
-  }
-
-  main {
-    padding: 12px;
-  }
-
-  #loginScreen {
-    margin: 25px 12px;
-  }
+  aside button { font-size:12px; padding:10px 8px; }
+  main { padding:12px; }
+  #loginScreen { margin:22px 12px; }
 }
 </style>
 </head>
@@ -305,47 +241,34 @@ td button {
     <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
     <p>Central CEO Administration Portal</p>
   </div>
-
-  <button id="logoutButton" class="hidden" type="button">
-    Sign Out
-  </button>
+  <button id="logoutButton" class="hidden" type="button">Sign Out</button>
 </header>
 
 <section id="loginScreen">
   <h2>CEO Secure Login</h2>
 
   <p class="muted">
-    Sign in using the administrator email and password registered
-    in both the company and student Firebase projects.
+    Use the administrator email and password registered in both
+    Firebase projects. Each project is authenticated separately.
   </p>
 
   <form id="loginForm">
     <label for="email">Administrator Email</label>
-    <input
-      id="email"
-      type="email"
-      autocomplete="username"
-      required
-    >
+    <input id="email" type="email" autocomplete="username" required>
 
     <label for="password">Administrator Password</label>
-    <input
-      id="password"
-      type="password"
-      autocomplete="current-password"
-      required
-    >
+    <input id="password" type="password"
+           autocomplete="current-password" required>
 
     <button id="loginButton" class="primary" type="submit">
       Sign In to Central Dashboard
     </button>
   </form>
 
-  <div id="message" class="hidden"></div>
+  <div id="message" class="hidden" role="alert"></div>
 </section>
 
 <div id="appLayout" class="hidden">
-
   <aside>
     <button class="active" data-section="home">🏠 Dashboard Home</button>
     <button data-section="company">🏢 Company Documents</button>
@@ -359,15 +282,18 @@ td button {
   </aside>
 
   <main>
+    <div id="globalNotice">
+      Sign in to connect to the company and student administration systems.
+    </div>
 
     <section id="home" class="section active">
       <div class="panel">
-        <h2>Welcome to the Central CEO Dashboard</h2>
+        <h2>Central CEO Dashboard</h2>
         <p class="muted">
-          Manage company documents and student verification from
-          one interface. Your existing public websites remain separate.
+          Manage the available company and student records from one interface.
+          Existing public websites remain separate.
         </p>
-        <p id="accountStatus" class="muted">Checking connection...</p>
+        <p id="accountStatus" class="muted">Not signed in.</p>
       </div>
 
       <div class="cards">
@@ -390,11 +316,11 @@ td button {
       </div>
 
       <div class="panel">
-        <h2>System Status</h2>
+        <h2>Connection Status</h2>
         <p id="systemStatus" class="muted">
-          Sign in to check the connected systems.
+          Sign in to check both Firebase projects.
         </p>
-        <button class="primary" id="refreshButton" type="button">
+        <button id="refreshButton" class="primary" type="button">
           Refresh Dashboard
         </button>
       </div>
@@ -404,11 +330,11 @@ td button {
       <div class="panel">
         <h2>Company Document Requests</h2>
         <p class="muted">
-          This section reads the existing documentRequests collection.
-          Use your established company admin page for approval or other
-          actions until the complete company record workflow is integrated.
+          View records in the existing documentRequests collection.
+          Use the established company admin page for any workflow not
+          available in this central view.
         </p>
-        <button class="primary" id="loadDocumentsButton" type="button">
+        <button id="loadDocumentsButton" class="primary" type="button">
           Load Document Requests
         </button>
         <div id="documentsTable"></div>
@@ -419,20 +345,14 @@ td button {
       <div class="panel">
         <h2>Company Certificate Verification</h2>
         <p class="muted">
-          Your existing public verification portal is preserved.
-          Open it to verify company document certificate numbers and
-          display their published verification details.
+          Your existing public verification portal remains unchanged.
         </p>
-        <a class="linkButton"
-           href="verify-document.html"
-           target="_blank" rel="noopener">
-          Open Company Verification
-        </a>
-        <a class="linkButton"
-           href="admin-sealed-documents.html"
-           target="_blank" rel="noopener">
-          Open Existing Company Admin
-        </a>
+        <a class="linkButton" href="verify-document.html"
+           target="_blank" rel="noopener">Open Company Verification</a>
+        <a class="linkButton" href="admin-sealed-documents.html"
+           target="_blank" rel="noopener">Open Existing Company Admin</a>
+        <a class="linkButton" href="seal-document.html"
+           target="_blank" rel="noopener">Open Document Registration</a>
       </div>
     </section>
 
@@ -440,17 +360,12 @@ td button {
       <div class="panel">
         <h2>Student Applications</h2>
         <p class="muted">
-          Review applications, update payment and verification status,
-          and publish a verified certificate to the public certificate
-          collection. Confirm every document before approving it.
+          Review applications and update status or payment status.
+          Verify the supporting documents before approving any application.
         </p>
-
-        <div class="actions">
-          <button class="primary" id="loadApplicationsButton" type="button">
-            Load Applications
-          </button>
-        </div>
-
+        <button id="loadApplicationsButton" class="primary" type="button">
+          Load Applications
+        </button>
         <div id="applicationsTable"></div>
       </div>
     </section>
@@ -459,10 +374,10 @@ td button {
       <div class="panel">
         <h2>Student Tracking Access Requests</h2>
         <p class="muted">
-          Review a student's access request and match the reference and
-          email to the correct application before approving access.
+          Match the reference and email to the correct application before
+          approving a tracking-access request.
         </p>
-        <button class="primary" id="loadAccessButton" type="button">
+        <button id="loadAccessButton" class="primary" type="button">
           Load Access Requests
         </button>
         <div id="accessTable"></div>
@@ -473,10 +388,10 @@ td button {
       <div class="panel">
         <h2>Public Student Certificates</h2>
         <p class="muted">
-          These are the limited public records in publicCertificates.
-          Do not publish sensitive student information.
+          View the limited records in publicCertificates. Do not publish
+          sensitive student information.
         </p>
-        <button class="primary" id="loadCertificatesButton" type="button">
+        <button id="loadCertificatesButton" class="primary" type="button">
           Load Public Certificates
         </button>
         <div id="certificatesTable"></div>
@@ -487,13 +402,14 @@ td button {
       <div class="panel">
         <h2>Client Management</h2>
         <p class="muted">
-          This area uses the existing company clientProfiles collection.
-          Open the established company admin dashboard for client operations.
+          View records in the existing company clientProfiles collection.
         </p>
-        <button class="primary" id="loadClientsButton" type="button">
+        <button id="loadClientsButton" class="primary" type="button">
           Load Client Profiles
         </button>
         <div id="clientsTable"></div>
+        <a class="linkButton" href="client-dashboard.html"
+           target="_blank" rel="noopener">Open Client Dashboard</a>
       </div>
     </section>
 
@@ -501,15 +417,12 @@ td button {
       <div class="panel">
         <h2>Staff Management</h2>
         <p class="muted">
-          Your existing CEO staff management page remains available.
-          This central dashboard does not create authentication accounts
-          or change staff permissions.
+          This links to your existing staff management page. This central
+          dashboard does not create authentication accounts or change
+          staff permissions.
         </p>
-        <a class="linkButton"
-           href="ceo-staff-management.html"
-           target="_blank" rel="noopener">
-          Open CEO Staff Management
-        </a>
+        <a class="linkButton" href="ceo-staff-management.html"
+           target="_blank" rel="noopener">Open CEO Staff Management</a>
       </div>
     </section>
 
@@ -518,15 +431,14 @@ td button {
         <h2>Company Verification Audit Records</h2>
         <p class="muted">
           Load the existing withdrawal and restoration audit records.
-          Access is governed by your company Firestore security rules.
+          Access remains controlled by company Firestore security rules.
         </p>
-        <button class="primary" id="loadAuditButton" type="button">
+        <button id="loadAuditButton" class="primary" type="button">
           Load Audit Records
         </button>
         <div id="auditTable"></div>
       </div>
     </section>
-
   </main>
 </div>
 
@@ -538,9 +450,8 @@ td button {
 "use strict";
 
 /*
- * Two separate Firebase projects are used.
- * Each has its own authentication state and Firestore rules.
- * Never put service-account credentials in this public HTML.
+ * Public Firebase client configuration only.
+ * Never put service-account credentials or private keys in this file.
  */
 
 const COMPANY_ADMIN_UID = "Zdi9MZk5uffixwVcJv9i576jmrS2";
@@ -593,13 +504,19 @@ function clearMessage() {
   $("message").classList.add("hidden");
 }
 
+function notice(text, isError = false) {
+  $("globalNotice").textContent = text;
+  $("globalNotice").style.background = isError ? "#fee4e2" : "#e5f5e9";
+  $("globalNotice").style.color = isError ? "#9f1c16" : "#176238";
+}
+
 function escapeHTML(value) {
   return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
   })[char]);
 }
 
@@ -609,9 +526,14 @@ function formatValue(value) {
     return value.toDate().toLocaleString();
   }
   if (typeof value === "object") {
-    return JSON.stringify(value);
+    try { return JSON.stringify(value); }
+    catch (_) { return "[Object]"; }
   }
   return String(value);
+}
+
+function row(cells) {
+  return "<tr>" + cells.map(c => "<td>" + c + "</td>").join("") + "</tr>";
 }
 
 function renderTable(targetId, headers, rows) {
@@ -626,46 +548,42 @@ function renderTable(targetId, headers, rows) {
     <div class="tableWrap">
       <table>
         <thead>
-          <tr>${headers.map(h => `<th>${escapeHTML(h)}</th>`).join("")}</tr>
+          <tr>${headers.map(h => "<th>" + escapeHTML(h) + "</th>").join("")}</tr>
         </thead>
-        <tbody>
-          ${rows.join("")}
-        </tbody>
+        <tbody>${rows.join("")}</tbody>
       </table>
     </div>
   `;
 }
 
-function row(cells) {
-  return `<tr>${cells.map(c => `<td>${c}</td>`).join("")}</tr>`;
-}
-
 function getStudentAdmin() {
   const user = studentAuth.currentUser;
-
   if (!user || user.uid !== STUDENT_ADMIN_UID) {
     throw new Error("Student administrator authentication is not active.");
   }
-
   return user;
 }
 
 function getCompanyAdmin() {
   const user = companyAuth.currentUser;
-
   if (!user || user.uid !== COMPANY_ADMIN_UID) {
     throw new Error("Company administrator authentication is not active.");
   }
-
   return user;
 }
 
-/* ---------- SIGN IN TO BOTH PROJECTS ---------- */
+function readableAuthError(projectName, error) {
+  const code = error.code || "unknown";
+  return projectName + " FIREBASE LOGIN FAILED. Error code: " +
+    code + ". Message: " + (error.message || "No additional message.");
+}
+
+/* ---------- LOGIN TO BOTH FIREBASE PROJECTS ---------- */
 
 $("loginForm").addEventListener("submit", async event => {
   event.preventDefault();
-
   if (busy) return;
+
   busy = true;
   clearMessage();
 
@@ -677,29 +595,45 @@ $("loginForm").addEventListener("submit", async event => {
   button.textContent = "Signing in...";
 
   try {
-    /*
-     * Authenticate independently against both Firebase projects.
-     * The same email/password must be valid in both projects.
-     */
-    const companyCredential = await companyAuth.signInWithEmailAndPassword(
-      email, password
-    );
+    let companyCredential;
+
+    try {
+      companyCredential = await companyAuth.signInWithEmailAndPassword(
+        email, password
+      );
+    } catch (error) {
+      throw new Error(readableAuthError("COMPANY", error));
+    }
 
     if (companyCredential.user.uid !== COMPANY_ADMIN_UID) {
-      throw new Error("The signed-in company account is not the authorized CEO account.");
+      throw new Error(
+        "The company account UID does not match the authorized CEO account."
+      );
     }
 
-    const studentCredential = await studentAuth.signInWithEmailAndPassword(
-      email, password
-    );
+    let studentCredential;
+
+    try {
+      studentCredential = await studentAuth.signInWithEmailAndPassword(
+        email, password
+      );
+    } catch (error) {
+      throw new Error(readableAuthError("STUDENT", error));
+    }
 
     if (studentCredential.user.uid !== STUDENT_ADMIN_UID) {
-      throw new Error("The signed-in student account is not the authorized administrator account.");
+      throw new Error(
+        "The student account UID does not match the authorized administrator."
+      );
     }
 
-    if (!companyCredential.user.emailVerified ||
-        !studentCredential.user.emailVerified) {
-      throw new Error("Verify the administrator email in both Firebase projects before continuing.");
+    if (
+      !companyCredential.user.emailVerified ||
+      !studentCredential.user.emailVerified
+    ) {
+      throw new Error(
+        "Verify the administrator email in both Firebase projects before continuing."
+      );
     }
 
     currentEmail = email;
@@ -712,22 +646,24 @@ $("loginForm").addEventListener("submit", async event => {
       "Signed in as " + currentEmail +
       ". Both administrator UIDs have been checked.";
 
-    $("systemStatus").textContent =
-      "Both authentication sessions are active. Firestore operations will still be checked against each project's security rules.";
+    notice("Both Firebase authentication sessions are active.");
 
-    await refreshDashboard();
+    try {
+      await refreshDashboard();
+    } catch (error) {
+      $("systemStatus").textContent =
+        "Login succeeded, but the dashboard counts could not all load: " +
+        error.message;
+      notice("Login succeeded. Some Firestore collections need checking.", true);
+    }
 
   } catch (error) {
-    console.error("Central dashboard sign-in failed:", error);
+    console.error("Central dashboard login diagnostic:", error);
 
     try { await studentAuth.signOut(); } catch (_) {}
     try { await companyAuth.signOut(); } catch (_) {}
 
-    showMessage(
-      "Sign-in was not completed: " +
-      (error.message || error.code || "Unknown error") +
-      ". Check both project accounts and email verification."
-    );
+    showMessage(error.message || "An unknown login error occurred.");
 
   } finally {
     busy = false;
@@ -777,23 +713,28 @@ async function refreshDashboard() {
   ];
 
   results.forEach((result, index) => {
-    $(ids[index]).textContent = result.status === "fulfilled"
-      ? result.value
-      : "Unavailable";
+    $(ids[index]).textContent =
+      result.status === "fulfilled" ? result.value : "Unavailable";
   });
 
-  const failed = results.some(r => r.status === "rejected");
+  const failed = results.some(result => result.status === "rejected");
 
   $("systemStatus").textContent = failed
-    ? "Some collections could not be loaded. Review Firestore rules and browser console errors."
-    : "Dashboard counts loaded. Both projects responded to authorized requests.";
+    ? "Some collections could not load. Check Firestore rules and browser errors."
+    : "Dashboard counts loaded successfully.";
+
+  if (failed) {
+    notice("Some Firestore collections were unavailable. Login may still be working.", true);
+  } else {
+    notice("Both projects are connected and the dashboard counts loaded.");
+  }
 }
 
 $("refreshButton").addEventListener("click", async () => {
   try {
     await refreshDashboard();
   } catch (error) {
-    alert(error.message);
+    alert("Refresh failed: " + error.message);
   }
 });
 
@@ -807,8 +748,23 @@ async function loadApplications() {
   const rows = snapshot.docs.map(doc => {
     const d = doc.data();
 
-    const status = escapeHTML(d.status || "Pending");
-    const payment = escapeHTML(d.paymentStatus || "Unpaid");
+    const statusOptions = [
+      "Pending", "Verified", "Rejected", "Unable to Verify"
+    ].map(value =>
+      `<option value="${escapeHTML(value)}"
+        ${d.status === value ? "selected" : ""}>
+        ${escapeHTML(value)}
+      </option>`
+    ).join("");
+
+    const paymentOptions = [
+      "Unpaid", "Pending", "Paid", "Refunded"
+    ].map(value =>
+      `<option value="${escapeHTML(value)}"
+        ${d.paymentStatus === value ? "selected" : ""}>
+        ${escapeHTML(value)}
+      </option>`
+    ).join("");
 
     return row([
       escapeHTML(doc.id),
@@ -818,33 +774,20 @@ async function loadApplications() {
       escapeHTML(d.certificateNumber || ""),
       escapeHTML(d.school || ""),
       escapeHTML(d.course || ""),
-      escapeHTML(d.ownerUid || ""),
-      escapeHTML(status),
-      escapeHTML(payment),
+      escapeHTML(d.status || "Pending"),
+      escapeHTML(d.paymentStatus || "Unpaid"),
       `
-        <select id="status-${escapeHTML(doc.id)}">
-          ${["Pending","Verified","Rejected","Unable to Verify"].map(s =>
-            `<option ${d.status === s ? "selected" : ""}>${s}</option>`
-          ).join("")}
-        </select>
+        <label for="status-${escapeHTML(doc.id)}">Status</label>
+        <select id="status-${escapeHTML(doc.id)}">${statusOptions}</select>
 
-        <select id="payment-${escapeHTML(doc.id)}">
-          ${["Unpaid","Pending","Paid","Refunded"].map(s =>
-            `<option ${d.paymentStatus === s ? "selected" : ""}>${s}</option>`
-          ).join("")}
-        </select>
+        <label for="payment-${escapeHTML(doc.id)}">Payment</label>
+        <select id="payment-${escapeHTML(doc.id)}">${paymentOptions}</select>
 
-        <button class="primary"
-          data-action="save-application"
-          data-id="${escapeHTML(doc.id)}">
-          Save
-        </button>
+        <button class="primary" data-action="save-application"
+          data-id="${escapeHTML(doc.id)}">Save</button>
 
-        <button class="secondary"
-          data-action="publish-certificate"
-          data-id="${escapeHTML(doc.id)}">
-          Publish Verified
-        </button>
+        <button class="secondary" data-action="publish-certificate"
+          data-id="${escapeHTML(doc.id)}">Publish Verified</button>
       `
     ]);
   });
@@ -852,14 +795,14 @@ async function loadApplications() {
   renderTable("applicationsTable", [
     "Document ID", "Reference", "Student", "Email",
     "Certificate No.", "Institution", "Course",
-    "Owner UID", "Current Status", "Payment",
-    "Administrator Actions"
+    "Status", "Payment", "Administrator Actions"
   ], rows);
 }
 
 $("loadApplicationsButton").addEventListener("click", async () => {
+  $("applicationsTable").textContent = "Loading applications...";
+
   try {
-    $("applicationsTable").textContent = "Loading...";
     await loadApplications();
   } catch (error) {
     $("applicationsTable").textContent =
@@ -882,7 +825,7 @@ $("applicationsTable").addEventListener("click", async event => {
       const paymentStatus = $("payment-" + id).value;
 
       if (!confirm(
-        "Update application status to '" + status +
+        "Update status to '" + status +
         "' and payment status to '" + paymentStatus + "'?"
       )) return;
 
@@ -898,18 +841,20 @@ $("applicationsTable").addEventListener("click", async event => {
     }
 
     if (action === "publish-certificate") {
-      const ref = studentDB.collection("applications").doc(id);
-      const doc = await ref.get();
+      const applicationRef = studentDB.collection("applications").doc(id);
+      const applicationDoc = await applicationRef.get();
 
-      if (!doc.exists) throw new Error("Application not found.");
-
-      const d = doc.data();
-
-      if (d.status !== "Verified") {
-        throw new Error("Only applications marked Verified can be published.");
+      if (!applicationDoc.exists) {
+        throw new Error("Application not found.");
       }
 
-      if (!d.certificateNumber) {
+      const d = applicationDoc.data();
+
+      if (d.status !== "Verified") {
+        throw new Error("Only an application marked Verified can be published.");
+      }
+
+      if (!d.certificateNumber || !String(d.certificateNumber).trim()) {
         throw new Error("This application has no certificate number.");
       }
 
@@ -920,17 +865,15 @@ $("applicationsTable").addEventListener("click", async event => {
 
       const certificateId = String(d.certificateNumber).trim();
 
-      await studentDB.collection("publicCertificates")
-        .doc(certificateId)
-        .set({
-          certificateNumber: certificateId,
-          fullName: d.fullName || "",
-          institution: d.school || "",
-          qualification: d.certificateType || "",
-          course: d.course || "",
-          status: "Verified",
-          publishedAt: firebase.firestore.FieldValue.serverTimestamp()
-        }, { merge: true });
+      await studentDB.collection("publicCertificates").doc(certificateId).set({
+        certificateNumber: certificateId,
+        fullName: d.fullName || "",
+        institution: d.school || "",
+        qualification: d.certificateType || "",
+        course: d.course || "",
+        status: "Verified",
+        publishedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
 
       alert("Public certificate record published.");
     }
@@ -946,8 +889,7 @@ async function loadAccessRequests() {
   getStudentAdmin();
 
   const snapshot = await studentDB
-    .collection("applicationAccessRequests")
-    .get();
+    .collection("applicationAccessRequests").get();
 
   const rows = snapshot.docs.map(doc => {
     const d = doc.data();
@@ -960,34 +902,28 @@ async function loadAccessRequests() {
       escapeHTML(d.status || ""),
       escapeHTML(formatValue(d.createdAt)),
       `
-        <button class="primary"
-          data-access-action="approve"
-          data-id="${escapeHTML(doc.id)}">
-          Approve
-        </button>
-        <button class="danger"
-          data-access-action="reject"
-          data-id="${escapeHTML(doc.id)}">
-          Reject
-        </button>
+        <button class="primary" data-access-action="approve"
+          data-id="${escapeHTML(doc.id)}">Approve</button>
+        <button class="danger" data-access-action="reject"
+          data-id="${escapeHTML(doc.id)}">Reject</button>
       `
     ]);
   });
 
   renderTable("accessTable", [
-    "Request ID", "Student UID", "Email",
-    "Reference", "Status", "Submitted",
-    "Actions"
+    "Request ID", "Student UID", "Email", "Reference",
+    "Status", "Submitted", "Actions"
   ], rows);
 }
 
 $("loadAccessButton").addEventListener("click", async () => {
+  $("accessTable").textContent = "Loading access requests...";
+
   try {
-    $("accessTable").textContent = "Loading...";
     await loadAccessRequests();
   } catch (error) {
     $("accessTable").textContent =
-      "Could not load requests: " + error.message;
+      "Could not load access requests: " + error.message;
   }
 });
 
@@ -1002,8 +938,7 @@ $("accessTable").addEventListener("click", async event => {
     getStudentAdmin();
 
     const requestRef = studentDB
-      .collection("applicationAccessRequests")
-      .doc(requestId);
+      .collection("applicationAccessRequests").doc(requestId);
 
     const requestDoc = await requestRef.get();
 
@@ -1036,10 +971,8 @@ $("accessTable").addEventListener("click", async event => {
       " using reference " + requestData.ref + "?"
     )) return;
 
-    const applications = await studentDB
-      .collection("applications")
-      .where("ref", "==", requestData.ref)
-      .get();
+    const applications = await studentDB.collection("applications")
+      .where("ref", "==", requestData.ref).get();
 
     const matching = applications.docs.filter(doc => {
       const data = doc.data();
@@ -1052,17 +985,15 @@ $("accessTable").addEventListener("click", async event => {
     if (matching.length !== 1) {
       throw new Error(
         "Could not identify exactly one matching application. " +
-        "Check the reference, email, and existing owner UID manually."
+        "Check the reference, email, and owner UID."
       );
     }
 
-    const applicationRef = matching[0].ref;
-
     /*
-     * These are two separate Firestore writes, not one atomic transaction.
-     * If the second write fails, check both records before retrying.
+     * These writes are separate, not an atomic transaction.
+     * If one succeeds and the other fails, inspect both records before retrying.
      */
-    await applicationRef.update({
+    await matching[0].ref.update({
       ownerUid: requestData.uid
     });
 
@@ -1108,8 +1039,9 @@ async function loadCertificates() {
 }
 
 $("loadCertificatesButton").addEventListener("click", async () => {
+  $("certificatesTable").textContent = "Loading certificates...";
+
   try {
-    $("certificatesTable").textContent = "Loading...";
     await loadCertificates();
   } catch (error) {
     $("certificatesTable").textContent =
@@ -1117,7 +1049,7 @@ $("loadCertificatesButton").addEventListener("click", async () => {
   }
 });
 
-/* ---------- GENERIC COMPANY COLLECTION VIEW ---------- */
+/* ---------- COMPANY COLLECTION VIEWS ---------- */
 
 async function loadCompanyCollection(collectionName, targetId, headers) {
   getCompanyAdmin();
@@ -1129,9 +1061,7 @@ async function loadCompanyCollection(collectionName, targetId, headers) {
 
     return row([
       escapeHTML(doc.id),
-      ...headers.slice(1).map(field =>
-        escapeHTML(formatValue(d[field]))
-      )
+      ...headers.slice(1).map(field => escapeHTML(formatValue(d[field])))
     ]);
   });
 
@@ -1139,8 +1069,9 @@ async function loadCompanyCollection(collectionName, targetId, headers) {
 }
 
 $("loadDocumentsButton").addEventListener("click", async () => {
+  $("documentsTable").textContent = "Loading company document requests...";
+
   try {
-    $("documentsTable").textContent = "Loading...";
     await loadCompanyCollection(
       "documentRequests",
       "documentsTable",
@@ -1153,8 +1084,9 @@ $("loadDocumentsButton").addEventListener("click", async () => {
 });
 
 $("loadClientsButton").addEventListener("click", async () => {
+  $("clientsTable").textContent = "Loading client profiles...";
+
   try {
-    $("clientsTable").textContent = "Loading...";
     await loadCompanyCollection(
       "clientProfiles",
       "clientsTable",
@@ -1166,18 +1098,22 @@ $("loadClientsButton").addEventListener("click", async () => {
   }
 });
 
+/* ---------- COMPANY AUDIT RECORDS ---------- */
+
 $("loadAuditButton").addEventListener("click", async () => {
+  $("auditTable").textContent = "Loading audit records...";
+
   try {
     getCompanyAdmin();
 
-    const names = [
+    const collectionNames = [
       "verificationWithdrawalAudit",
       "verificationRestorationAudit"
     ];
 
-    let rows = [];
+    const rows = [];
 
-    for (const collectionName of names) {
+    for (const collectionName of collectionNames) {
       const snapshot = await companyDB.collection(collectionName).get();
 
       snapshot.docs.forEach(doc => {
@@ -1213,6 +1149,8 @@ $("logoutButton").addEventListener("click", async () => {
       companyAuth.signOut(),
       studentAuth.signOut()
     ]);
+  } catch (error) {
+    console.error("Sign-out error:", error);
   } finally {
     $("appLayout").classList.add("hidden");
     $("logoutButton").classList.add("hidden");
@@ -1220,6 +1158,7 @@ $("logoutButton").addEventListener("click", async () => {
     $("password").value = "";
     currentEmail = "";
     clearMessage();
+    notice("You have signed out of the central dashboard.");
   }
 });
 </script>
