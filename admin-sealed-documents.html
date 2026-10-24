@@ -5,236 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#08783e">
-
 <title>Administrator Dashboard | ARNAUD</title>
 
 <style>
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f2f6f3;
-  color:#183329
-}
-
-header{
-  background:#075b32;
-  color:#fff;
-  padding:22px 16px;
-  text-align:center
-}
-
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6f3;color:#183329}
+header{background:#075b32;color:#fff;padding:22px 16px;text-align:center}
 header h1{font-size:22px;margin:0 0 8px}
 header p{margin:5px 0;font-size:13px}
-
-nav{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  padding:14px;
-  background:#fff;
-  border-bottom:1px solid #dbe5de
-}
-
-nav a,nav button,.primary,.secondary,.danger{
-  display:inline-block;
-  padding:11px 14px;
-  border:0;
-  border-radius:6px;
-  background:#08783e;
-  color:#fff;
-  text-decoration:none;
-  cursor:pointer;
-  font-size:14px;
-  font-weight:bold
-}
-
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:14px;background:#fff;border-bottom:1px solid #dbe5de}
+nav a,nav button,.primary,.secondary,.danger{display:inline-block;padding:11px 14px;border:0;border-radius:6px;background:#08783e;color:#fff;text-decoration:none;cursor:pointer;font-size:14px;font-weight:bold}
 nav button,.danger{background:#a52525}
 .secondary{background:#e6eee8;color:#164b2e}
-
-button:disabled{
-  opacity:.6;
-  cursor:not-allowed
-}
-
-main{
-  width:min(1100px,94%);
-  margin:24px auto
-}
-
-.panel{
-  background:#fff;
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 2px 10px #0000000d;
-  margin-bottom:20px
-}
-
+button:disabled{opacity:.6;cursor:not-allowed}
+main{width:min(1100px,94%);margin:24px auto}
+.panel{background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 10px #0000000d;margin-bottom:20px}
 h2{margin-top:0;color:#075b32}
-
-.login-box{
-  max-width:440px;
-  margin:35px auto
-}
-
-label{
-  display:block;
-  margin:13px 0 6px;
-  font-weight:bold;
-  font-size:14px
-}
-
-input,select,textarea{
-  width:100%;
-  padding:12px;
-  border:1px solid #cbd7ce;
-  border-radius:6px;
-  font-size:15px;
-  background:#fff;
-  font-family:Arial,sans-serif
-}
-
-textarea{
-  min-height:110px;
-  resize:vertical
-}
-
-.notice{
-  background:#fff8df;
-  border:1px solid #ead58b;
-  padding:12px;
-  border-radius:7px;
-  line-height:1.6;
-  font-size:14px
-}
-
-.message{
-  margin:12px 0;
-  padding:11px;
-  border-radius:6px;
-  line-height:1.5;
-  overflow-wrap:anywhere
-}
-
+.login-box{max-width:440px;margin:35px auto}
+label{display:block;margin:13px 0 6px;font-weight:bold;font-size:14px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd7ce;border-radius:6px;font-size:15px;background:#fff;font-family:Arial,sans-serif}
+textarea{min-height:100px;resize:vertical}
+.notice{background:#fff8df;border:1px solid #ead58b;padding:12px;border-radius:7px;line-height:1.6;font-size:14px}
+.message{margin:12px 0;padding:11px;border-radius:6px;line-height:1.5;overflow-wrap:anywhere}
 .success{background:#e4f7e9;color:#145c2d}
 .error{background:#ffebeb;color:#8a1717}
-
-.muted{
-  color:#617168;
-  font-size:13px;
-  line-height:1.5;
-  overflow-wrap:anywhere
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:12px;
-  margin-bottom:20px
-}
-
-.stat{
-  padding:17px;
-  border-radius:9px;
-  background:#fff;
-  border-left:4px solid #08783e;
-  box-shadow:0 2px 8px #00000009
-}
-
-.stat strong{
-  display:block;
-  font-size:26px;
-  margin-top:7px
-}
-
-.request{
-  border:1px solid #dce6df;
-  border-radius:9px;
-  padding:16px;
-  margin:14px 0;
-  overflow-wrap:anywhere
-}
-
-.request h3{
-  margin:0 0 12px;
-  color:#075b32
-}
-
-.detail{
-  margin:8px 0;
-  line-height:1.5;
-  overflow-wrap:anywhere
-}
-
+.muted{color:#617168;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px}
+.stat{padding:17px;border-radius:9px;background:#fff;border-left:4px solid #08783e;box-shadow:0 2px 8px #00000009}
+.stat strong{display:block;font-size:26px;margin-top:7px}
+.request{border:1px solid #dce6df;border-radius:9px;padding:16px;margin:14px 0;overflow-wrap:anywhere}
+.request h3{margin:0 0 12px;color:#075b32}
+.detail{margin:8px 0;line-height:1.5;overflow-wrap:anywhere}
 .detail b{color:#344d40}
-
-.badge{
-  display:inline-block;
-  border-radius:20px;
-  padding:5px 10px;
-  font-size:12px;
-  font-weight:bold;
-  background:#fff1cb;
-  color:#755300
-}
-
+.badge{display:inline-block;border-radius:20px;padding:5px 10px;font-size:12px;font-weight:bold;background:#fff1cb;color:#755300}
 .badge.approved{background:#dcf7e3;color:#17602d}
-.badge.rejected{background:#ffe2e2;color:#8a1717}
-.badge.withdrawn{background:#ffe2e2;color:#8a1717}
-
-.fingerprint-box{
-  background:#f0f7f2;
-  border:1px solid #cfe3d4;
-  padding:12px;
-  border-radius:7px;
-  margin-top:12px
-}
-
-.fingerprint-value{
-  display:block;
-  font-family:monospace;
-  font-size:12px;
-  line-height:1.7;
-  overflow-wrap:anywhere;
-  word-break:break-word;
-  margin-top:6px
-}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:15px
-}
-
+.badge.rejected,.badge.withdrawn{background:#ffe2e2;color:#8a1717}
+.fingerprint-box{background:#f0f7f2;border:1px solid #cfe3d4;padding:12px;border-radius:7px;margin-top:12px}
+.fingerprint-value{display:block;font-family:monospace;font-size:12px;line-height:1.7;overflow-wrap:anywhere;word-break:break-word;margin-top:6px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
 .actions button{min-height:40px}
-
-.empty{
-  text-align:center;
-  padding:25px 10px;
-  color:#617168
-}
-
-footer{
-  text-align:center;
-  padding:25px 12px;
-  color:#617168;
-  font-size:12px
-}
-
+.empty{text-align:center;padding:25px 10px;color:#617168}
+footer{text-align:center;padding:25px 12px;color:#617168;font-size:12px}
 [hidden]{display:none!important}
-
-@media(max-width:600px){
-  header h1{font-size:19px}
-  .panel{padding:15px}
-}
+@media(max-width:600px){header h1{font-size:19px}.panel{padding:15px}}
 </style>
 </head>
 
 <body>
-
 <header>
   <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
   <p>Administrator Dashboard</p>
@@ -249,105 +66,49 @@ footer{
 </nav>
 
 <main>
-
 <section id="loginSection" class="panel login-box">
   <h2>Administrator Login</h2>
-
-  <p class="muted">
-    Sign in with your authorized Firebase administrator account.
-  </p>
+  <p class="muted">Sign in with your authorized Firebase administrator account.</p>
 
   <form id="loginForm">
     <label for="email">Administrator Email</label>
-    <input
-      id="email"
-      type="email"
-      autocomplete="username"
-      required
-      placeholder="Enter administrator email"
-    >
+    <input id="email" type="email" autocomplete="username" required placeholder="Enter administrator email">
 
     <label for="password">Password</label>
-    <input
-      id="password"
-      type="password"
-      autocomplete="current-password"
-      required
-      placeholder="Enter password"
-    >
+    <input id="password" type="password" autocomplete="current-password" required placeholder="Enter password">
 
     <br><br>
-
-    <button id="loginButton" class="primary" type="submit">
-      Sign In
-    </button>
+    <button id="loginButton" class="primary" type="submit">Sign In</button>
   </form>
 
   <div id="loginMessage" aria-live="polite"></div>
 </section>
 
 <section id="dashboardSection" hidden>
-
   <div class="panel">
     <h2>Document Administration</h2>
-
     <p id="signedInAs" class="muted"></p>
 
     <div class="notice">
-      <strong>Important:</strong>
-      Review each document carefully before approval.
-      Approval publishes its verification details publicly.
-      Do not approve a document unless you have independently
-      checked it.
-
+      <strong>Important:</strong> Review each document carefully before approval. Approval publishes its verification details publicly. Do not approve a document unless you have independently checked it.
       <br><br>
-
-      This dashboard records fingerprint information supplied
-      with a request. It does not upload or store PDF files.
-      A fingerprint alone does not establish that a document
-      is genuine.
-
+      This dashboard records fingerprint information supplied with a request. It does not upload or store PDF files. A fingerprint alone does not establish that a document is genuine.
       <br><br>
-
-      <strong>Withdrawal:</strong>
-      If an approved document was published without proper
-      verification, use the red Withdraw Verification button.
-      The withdrawal reason is stored in a private audit record.
+      <strong>Withdrawal:</strong> Use Withdraw Verification if an approved document should no longer be publicly verified. The withdrawal reason is recorded in a private audit trail.
     </div>
   </div>
 
   <div class="stats">
-    <div class="stat">
-      Total Requests
-      <strong id="totalCount">0</strong>
-    </div>
-
-    <div class="stat">
-      Pending Review
-      <strong id="pendingCount">0</strong>
-    </div>
-
-    <div class="stat">
-      Approved
-      <strong id="approvedCount">0</strong>
-    </div>
-
-    <div class="stat">
-      Rejected
-      <strong id="rejectedCount">0</strong>
-    </div>
-
-    <div class="stat">
-      Withdrawn
-      <strong id="withdrawnCount">0</strong>
-    </div>
+    <div class="stat">Total Requests<strong id="totalCount">0</strong></div>
+    <div class="stat">Pending Review<strong id="pendingCount">0</strong></div>
+    <div class="stat">Approved<strong id="approvedCount">0</strong></div>
+    <div class="stat">Rejected<strong id="rejectedCount">0</strong></div>
+    <div class="stat">Withdrawn<strong id="withdrawnCount">0</strong></div>
   </div>
 
   <section class="panel">
     <h2>Document Requests</h2>
-
     <label for="statusFilter">Filter by status</label>
-
     <select id="statusFilter">
       <option value="all">All Requests</option>
       <option value="Pending Review">Pending Review</option>
@@ -357,17 +118,13 @@ footer{
     </select>
 
     <div class="actions">
-      <button id="refreshButton" class="secondary" type="button">
-        Refresh Requests
-      </button>
+      <button id="refreshButton" class="secondary" type="button">Refresh Requests</button>
     </div>
 
     <div id="dashboardMessage" aria-live="polite"></div>
     <div id="requestsList"></div>
   </section>
-
 </section>
-
 </main>
 
 <footer>
@@ -376,10 +133,7 @@ footer{
 </footer>
 
 <script type="module">
-
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
   getAuth,
@@ -400,9 +154,9 @@ import {
   writeBatch
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-
+/* IMPORTANT: This is the original Firebase configuration. */
 const firebaseConfig = {
-  apiKey: "AIzaSySyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+  apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
   authDomain: "arnaud-document-trust.firebaseapp.com",
   projectId: "arnaud-document-trust",
   storageBucket: "arnaud-document-trust.firebasestorage.app",
@@ -412,41 +166,33 @@ const firebaseConfig = {
 };
 
 const ADMIN_UID = "Zdi9MZk5uffixwVcJv9i576jmrS2";
-
 const COMPANY_NAME = "ARNAUD AFROCHAINE TRUST SYSTEMS LTD";
 const COMPANY_EMAIL = "arnaudafrochain@gmail.com";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
 const $ = id => document.getElementById(id);
 
 $("year").textContent = new Date().getFullYear();
 
-
 function showMessage(element, message, type = "error") {
   element.replaceChildren();
-
   const box = document.createElement("div");
   box.className = "message " + type;
   box.textContent = message;
-
   element.appendChild(box);
 }
-
 
 function clearMessage(element) {
   element.replaceChildren();
 }
-
 
 function safeText(value) {
   return value === undefined || value === null || value === ""
     ? "Not provided"
     : String(value);
 }
-
 
 function addDetail(container, label, value) {
   const line = document.createElement("p");
@@ -462,53 +208,28 @@ function addDetail(container, label, value) {
   container.appendChild(line);
 }
 
-
 function normalizedStatus(value) {
-  const s = String(value || "Pending Review")
-    .trim()
-    .toLowerCase();
+  const s = String(value || "Pending Review").trim().toLowerCase();
 
-  if (
-    s === "verification withdrawn" ||
-    s === "withdrawn"
-  ) {
+  if (s === "verification withdrawn" || s === "withdrawn") {
     return "Verification Withdrawn";
   }
-
-  if (s === "verified" || s === "approved") {
-    return "Verified";
-  }
-
-  if (s === "rejected") {
-    return "Rejected";
-  }
-
-  if (
-    s === "pending review" ||
-    s === "pending" ||
-    s === "submitted"
-  ) {
+  if (s === "verified" || s === "approved") return "Verified";
+  if (s === "rejected") return "Rejected";
+  if (s === "pending review" || s === "pending" || s === "submitted") {
     return "Pending Review";
   }
-
   return value || "Pending Review";
 }
 
-
 function formatDate(value) {
   if (!value) return "Not available";
-
   if (typeof value.toDate === "function") {
     return value.toDate().toLocaleString();
   }
-
   const d = new Date(value);
-
-  return Number.isNaN(d.getTime())
-    ? "Not available"
-    : d.toLocaleString();
+  return Number.isNaN(d.getTime()) ? "Not available" : d.toLocaleString();
 }
-
 
 function updateDiagnostics(user) {
   $("signedInAs").textContent =
@@ -520,41 +241,33 @@ function updateDiagnostics(user) {
       : " | WARNING: UID DOES NOT MATCH ADMIN RULE");
 }
 
-
 onAuthStateChanged(auth, user => {
-  if (user) {
-    $("loginSection").hidden = true;
-    $("dashboardSection").hidden = false;
-    $("logoutButton").hidden = false;
-
-    updateDiagnostics(user);
-
-    if (user.uid === ADMIN_UID) {
-      loadRequests();
-    } else {
-      $("requestsList").replaceChildren();
-
-      showMessage(
-        $("dashboardMessage"),
-        "This account is not authorized to administer documents."
-      );
-    }
-
-  } else {
+  if (!user) {
     $("loginSection").hidden = false;
     $("dashboardSection").hidden = true;
     $("logoutButton").hidden = true;
-
     $("requestsList").replaceChildren();
     $("signedInAs").textContent = "";
+    return;
   }
-});
 
+  $("loginSection").hidden = true;
+  $("dashboardSection").hidden = false;
+  $("logoutButton").hidden = false;
+  updateDiagnostics(user);
+
+  if (user.uid !== ADMIN_UID) {
+    $("requestsList").replaceChildren();
+    showMessage($("dashboardMessage"), "This account is not authorized to administer documents.");
+    return;
+  }
+
+  loadRequests();
+});
 
 $("loginForm").addEventListener("submit", async event => {
   event.preventDefault();
   clearMessage($("loginMessage"));
-
   $("loginButton").disabled = true;
   $("loginButton").textContent = "Signing in...";
 
@@ -567,32 +280,18 @@ $("loginForm").addEventListener("submit", async event => {
 
     if (auth.currentUser?.uid !== ADMIN_UID) {
       await signOut(auth);
-
-      throw new Error(
-        "This account is not the authorized administrator account."
-      );
+      throw new Error("This account is not the authorized administrator account.");
     }
 
-    showMessage(
-      $("loginMessage"),
-      "Administrator sign-in successful.",
-      "success"
-    );
-
+    showMessage($("loginMessage"), "Administrator sign-in successful.", "success");
   } catch (error) {
     console.error("Sign-in failed:", error);
-
-    showMessage(
-      $("loginMessage"),
-      "Sign-in failed: " + error.message
-    );
-
+    showMessage($("loginMessage"), "Sign-in failed: " + error.message);
   } finally {
     $("loginButton").disabled = false;
     $("loginButton").textContent = "Sign In";
   }
 });
-
 
 $("logoutButton").addEventListener("click", async () => {
   try {
@@ -600,21 +299,15 @@ $("logoutButton").addEventListener("click", async () => {
     clearMessage($("loginMessage"));
     clearMessage($("dashboardMessage"));
   } catch (error) {
-    showMessage(
-      $("dashboardMessage"),
-      "Could not sign out: " + error.message
-    );
+    showMessage($("dashboardMessage"), "Could not sign out: " + error.message);
   }
 });
-
 
 $("refreshButton").addEventListener("click", loadRequests);
 $("statusFilter").addEventListener("change", loadRequests);
 
-
 async function loadRequests() {
   const user = auth.currentUser;
-
   if (!user || user.uid !== ADMIN_UID) return;
 
   clearMessage($("dashboardMessage"));
@@ -622,16 +315,12 @@ async function loadRequests() {
 
   const loading = document.createElement("p");
   loading.className = "empty";
-  loading.textContent = "Loading document requests.";
-
+  loading.textContent = "Loading document requests...";
   $("requestsList").appendChild(loading);
   $("refreshButton").disabled = true;
 
   try {
-    const snapshot = await getDocs(
-      collection(db, "documentRequests")
-    );
-
+    const snapshot = await getDocs(collection(db, "documentRequests"));
     const requests = snapshot.docs.map(item => ({
       id: item.id,
       ...item.data()
@@ -640,30 +329,10 @@ async function loadRequests() {
     const getStatus = r => normalizedStatus(r.status);
 
     $("totalCount").textContent = String(requests.length);
-
-    $("pendingCount").textContent = String(
-      requests.filter(
-        r => getStatus(r) === "Pending Review"
-      ).length
-    );
-
-    $("approvedCount").textContent = String(
-      requests.filter(
-        r => getStatus(r) === "Verified"
-      ).length
-    );
-
-    $("rejectedCount").textContent = String(
-      requests.filter(
-        r => getStatus(r) === "Rejected"
-      ).length
-    );
-
-    $("withdrawnCount").textContent = String(
-      requests.filter(
-        r => getStatus(r) === "Verification Withdrawn"
-      ).length
-    );
+    $("pendingCount").textContent = String(requests.filter(r => getStatus(r) === "Pending Review").length);
+    $("approvedCount").textContent = String(requests.filter(r => getStatus(r) === "Verified").length);
+    $("rejectedCount").textContent = String(requests.filter(r => getStatus(r) === "Rejected").length);
+    $("withdrawnCount").textContent = String(requests.filter(r => getStatus(r) === "Verification Withdrawn").length);
 
     requests.sort((a, b) =>
       (b.createdAt?.toMillis?.() || 0) -
@@ -671,47 +340,34 @@ async function loadRequests() {
     );
 
     const filter = $("statusFilter").value;
-
-    const filtered = requests.filter(r =>
-      filter === "all" || getStatus(r) === filter
-    );
+    const filtered = requests.filter(r => filter === "all" || getStatus(r) === filter);
 
     $("requestsList").replaceChildren();
 
     if (!filtered.length) {
       const empty = document.createElement("p");
       empty.className = "empty";
-
       empty.textContent = requests.length === 0
         ? "No document requests have been registered yet."
         : "No requests match this filter.";
-
       $("requestsList").appendChild(empty);
       return;
     }
 
     filtered.forEach(request => {
-      $("requestsList").appendChild(
-        createRequestCard(request)
-      );
+      $("requestsList").appendChild(createRequestCard(request));
     });
-
   } catch (error) {
     console.error("Loading requests failed:", error);
-
     $("requestsList").replaceChildren();
-
     showMessage(
       $("dashboardMessage"),
-      "Could not load requests. Check that you are signed in with the authorized administrator account, that the published Firestore rules are in the correct project, and that documentRequests allows administrator reads. Details: " +
-      error.message
+      "Could not load requests. Check the administrator account and Firestore rules. Details: " + error.message
     );
-
   } finally {
     $("refreshButton").disabled = false;
   }
 }
-
 
 function createRequestCard(request) {
   const card = document.createElement("article");
@@ -722,21 +378,12 @@ function createRequestCard(request) {
   card.appendChild(title);
 
   const status = normalizedStatus(request.status);
-
   const badge = document.createElement("span");
   badge.className = "badge";
 
-  if (status === "Verified") {
-    badge.classList.add("approved");
-  }
-
-  if (status === "Rejected") {
-    badge.classList.add("rejected");
-  }
-
-  if (status === "Verification Withdrawn") {
-    badge.classList.add("withdrawn");
-  }
+  if (status === "Verified") badge.classList.add("approved");
+  if (status === "Rejected") badge.classList.add("rejected");
+  if (status === "Verification Withdrawn") badge.classList.add("withdrawn");
 
   badge.textContent = status;
   card.appendChild(badge);
@@ -750,34 +397,15 @@ function createRequestCard(request) {
   addDetail(card, "Submitted On", formatDate(request.createdAt));
 
   if (status === "Verification Withdrawn") {
-    addDetail(
-      card,
-      "Withdrawal Date",
-      formatDate(request.withdrawnAt)
-    );
-
-    addDetail(
-      card,
-      "Withdrawal Reason",
-      request.withdrawalReason
-    );
+    addDetail(card, "Withdrawal Date", formatDate(request.withdrawnAt));
+    addDetail(card, "Withdrawal Reason", request.withdrawalReason);
   }
 
   const fingerprintBox = document.createElement("div");
   fingerprintBox.className = "fingerprint-box";
 
-  addDetail(
-    fingerprintBox,
-    "Fingerprint Status",
-    request.fingerprintStatus ||
-      "Unavailable - No fingerprint recorded"
-  );
-
-  addDetail(
-    fingerprintBox,
-    "Fingerprint Algorithm",
-    request.fingerprintAlgorithm || "Not available"
-  );
+  addDetail(fingerprintBox, "Fingerprint Status", request.fingerprintStatus || "Unavailable - No fingerprint recorded");
+  addDetail(fingerprintBox, "Fingerprint Algorithm", request.fingerprintAlgorithm || "Not available");
 
   const hashLine = document.createElement("div");
   hashLine.className = "detail";
@@ -787,24 +415,17 @@ function createRequestCard(request) {
 
   const hashValue = document.createElement("span");
   hashValue.className = "fingerprint-value";
-  hashValue.textContent =
-    request.sha256Fingerprint || "No fingerprint supplied";
+  hashValue.textContent = request.sha256Fingerprint || "No fingerprint supplied";
 
   hashLine.append(hashLabel, hashValue);
   fingerprintBox.appendChild(hashLine);
 
-  addDetail(
-    fingerprintBox,
-    "Original PDF Filename",
-    request.fingerprintFileName || "Not supplied"
-  );
+  addDetail(fingerprintBox, "Original PDF Filename", request.fingerprintFileName || "Not supplied");
 
-  const fingerprintNote = document.createElement("p");
-  fingerprintNote.className = "muted";
-  fingerprintNote.textContent =
-    "This fingerprint was supplied by the registration page. It has not been independently verified.";
-
-  fingerprintBox.appendChild(fingerprintNote);
+  const note = document.createElement("p");
+  note.className = "muted";
+  note.textContent = "This fingerprint was supplied by the registration page. It has not been independently verified.";
+  fingerprintBox.appendChild(note);
   card.appendChild(fingerprintBox);
 
   addDetail(card, "Request ID", request.id);
@@ -817,19 +438,13 @@ function createRequestCard(request) {
     approve.type = "button";
     approve.className = "primary";
     approve.textContent = "Approve & Publish";
-
-    approve.addEventListener("click", () => {
-      approveRequest(request, approve);
-    });
+    approve.addEventListener("click", () => approveRequest(request, approve));
 
     const reject = document.createElement("button");
     reject.type = "button";
     reject.className = "danger";
     reject.textContent = "Reject Request";
-
-    reject.addEventListener("click", () => {
-      rejectRequest(request, reject);
-    });
+    reject.addEventListener("click", () => rejectRequest(request, reject));
 
     actions.append(approve, reject);
   }
@@ -842,38 +457,18 @@ function createRequestCard(request) {
 
     copy.addEventListener("click", async () => {
       if (!request.referenceNumber) {
-        showMessage(
-          $("dashboardMessage"),
-          "This request has no reference number."
-        );
+        showMessage($("dashboardMessage"), "This request has no reference number.");
         return;
       }
 
-      const link = new URL(
-        "verify-document.html",
-        window.location.href
-      );
-
-      link.searchParams.set(
-        "certificate",
-        request.referenceNumber
-      );
+      const link = new URL("verify-document.html", window.location.href);
+      link.searchParams.set("certificate", request.referenceNumber);
 
       try {
         await navigator.clipboard.writeText(link.href);
-
-        showMessage(
-          $("dashboardMessage"),
-          "Verification link copied: " + link.href,
-          "success"
-        );
-
+        showMessage($("dashboardMessage"), "Verification link copied: " + link.href, "success");
       } catch {
-        showMessage(
-          $("dashboardMessage"),
-          "Verification link: " + link.href,
-          "success"
-        );
+        showMessage($("dashboardMessage"), "Verification link: " + link.href, "success");
       }
     });
 
@@ -881,54 +476,32 @@ function createRequestCard(request) {
     withdraw.type = "button";
     withdraw.className = "danger";
     withdraw.textContent = "Withdraw Verification";
-
-    withdraw.addEventListener("click", () => {
-      withdrawVerification(request, withdraw);
-    });
+    withdraw.addEventListener("click", () => withdrawVerification(request, withdraw));
 
     actions.append(copy, withdraw);
   }
 
-  if (actions.childElementCount) {
-    card.appendChild(actions);
-  }
-
+  if (actions.childElementCount) card.appendChild(actions);
   return card;
 }
 
-
 async function approveRequest(request, button) {
   const user = auth.currentUser;
-
   if (!user || user.uid !== ADMIN_UID) {
-    showMessage(
-      $("dashboardMessage"),
-      "You are not authorized to approve documents."
-    );
+    showMessage($("dashboardMessage"), "You are not authorized to approve documents.");
     return;
   }
 
-  const reference = String(
-    request.referenceNumber || ""
-  ).trim();
-
+  const reference = String(request.referenceNumber || "").trim();
   if (!reference) {
-    showMessage(
-      $("dashboardMessage"),
-      "Cannot approve this request because its reference number is missing."
-    );
+    showMessage($("dashboardMessage"), "Cannot approve this request because its reference number is missing.");
     return;
   }
 
-  if (
-    !confirm(
-      "Have you independently checked this document?\n\n" +
-      "Approving publishes its verification details publicly.\n\n" +
-      "Reference: " + reference
-    )
-  ) {
-    return;
-  }
+  if (!confirm(
+    "Have you independently checked this document?\n\n" +
+    "Approving publishes its verification details publicly.\n\nReference: " + reference
+  )) return;
 
   button.disabled = true;
   button.textContent = "Publishing...";
@@ -937,252 +510,152 @@ async function approveRequest(request, button) {
     const record = {
       certificateNumber: reference,
       referenceNumber: reference,
-
       documentTitle: request.documentTitle || "",
       issuedTo: request.issuedTo || "",
-
       status: "Verified",
-
       companyName: COMPANY_NAME,
       companyEmail: COMPANY_EMAIL,
-
       companyNumber: request.companyNumber || "",
-      originalDocumentNumber:
-        request.originalDocumentNumber || "",
-
-      sha256Fingerprint:
-        request.sha256Fingerprint || null,
-
-      fingerprintAlgorithm:
-        request.sha256Fingerprint
-          ? (request.fingerprintAlgorithm || "SHA-256")
-          : null,
-
-      fingerprintStatus:
-        request.sha256Fingerprint
-          ? "Submitted fingerprint - not independently verified"
-          : "Unavailable - No fingerprint recorded",
-
-      fingerprintFileName:
-        request.fingerprintFileName || null,
-
+      originalDocumentNumber: request.originalDocumentNumber || "",
+      sha256Fingerprint: request.sha256Fingerprint || null,
+      fingerprintAlgorithm: request.sha256Fingerprint
+        ? (request.fingerprintAlgorithm || "SHA-256")
+        : null,
+      fingerprintStatus: request.sha256Fingerprint
+        ? "Submitted fingerprint - not independently verified"
+        : "Unavailable - No fingerprint recorded",
+      fingerprintFileName: request.fingerprintFileName || null,
       issuedAt: serverTimestamp(),
       createdAt: serverTimestamp()
     };
 
-    await setDoc(
-      doc(db, "publicVerifications", reference),
-      record
-    );
+    await setDoc(doc(db, "publicVerifications", reference), record);
 
-    await updateDoc(
-      doc(db, "documentRequests", request.id),
-      {
-        status: "Verified",
-        reviewedByUid: user.uid,
-        reviewedByEmail: user.email || "",
-        reviewedAt: serverTimestamp()
-      }
-    );
+    await updateDoc(doc(db, "documentRequests", request.id), {
+      status: "Verified",
+      reviewedByUid: user.uid,
+      reviewedByEmail: user.email || "",
+      reviewedAt: serverTimestamp()
+    });
 
     showMessage(
       $("dashboardMessage"),
-      "Request approved and public verification published. Reference: " +
-      reference,
+      "Request approved and public verification published. Reference: " + reference,
       "success"
     );
 
     await loadRequests();
-
   } catch (error) {
     console.error("Approval failed:", error);
-
-    showMessage(
-      $("dashboardMessage"),
-      "Approval failed. Check the document request and public verification record before retrying. Error: " +
-      error.message
-    );
-
+    showMessage($("dashboardMessage"), "Approval failed. Check the records before retrying. Error: " + error.message);
     button.disabled = false;
     button.textContent = "Approve & Publish";
   }
 }
 
-
 async function rejectRequest(request, button) {
   const user = auth.currentUser;
-
   if (!user || user.uid !== ADMIN_UID) {
-    showMessage(
-      $("dashboardMessage"),
-      "You are not authorized to reject documents."
-    );
+    showMessage($("dashboardMessage"), "You are not authorized to reject documents.");
     return;
   }
 
-  if (
-    !confirm(
-      "Are you sure you want to reject this document request?\n\n" +
-      "Reference: " + safeText(request.referenceNumber)
-    )
-  ) {
-    return;
-  }
+  if (!confirm(
+    "Are you sure you want to reject this document request?\n\nReference: " +
+    safeText(request.referenceNumber)
+  )) return;
 
   button.disabled = true;
   button.textContent = "Rejecting...";
 
   try {
-    await updateDoc(
-      doc(db, "documentRequests", request.id),
-      {
-        status: "Rejected",
-        reviewedByUid: user.uid,
-        reviewedByEmail: user.email || "",
-        reviewedAt: serverTimestamp()
-      }
-    );
+    await updateDoc(doc(db, "documentRequests", request.id), {
+      status: "Rejected",
+      reviewedByUid: user.uid,
+      reviewedByEmail: user.email || "",
+      reviewedAt: serverTimestamp()
+    });
 
-    showMessage(
-      $("dashboardMessage"),
-      "Request rejected. It has not been published.",
-      "success"
-    );
-
+    showMessage($("dashboardMessage"), "Request rejected. It has not been published.", "success");
     await loadRequests();
-
   } catch (error) {
     console.error("Rejection failed:", error);
-
-    showMessage(
-      $("dashboardMessage"),
-      "Could not reject this request. Check the Firestore rules. Error: " +
-      error.message
-    );
-
+    showMessage($("dashboardMessage"), "Could not reject this request. Error: " + error.message);
     button.disabled = false;
     button.textContent = "Reject Request";
   }
 }
 
-
 async function withdrawVerification(request, button) {
   const user = auth.currentUser;
 
   if (!user || user.uid !== ADMIN_UID) {
-    showMessage(
-      $("dashboardMessage"),
-      "You are not authorized to withdraw verification."
-    );
+    showMessage($("dashboardMessage"), "You are not authorized to withdraw verification.");
     return;
   }
 
-  const reference = String(
-    request.referenceNumber || ""
-  ).trim();
+  const reference = String(request.referenceNumber || "").trim();
 
   if (!reference) {
-    showMessage(
-      $("dashboardMessage"),
-      "Withdrawal stopped because this request has no reference number."
-    );
+    showMessage($("dashboardMessage"), "Withdrawal stopped because the reference number is missing.");
     return;
   }
 
   const reason = prompt(
-    "Enter the reason for withdrawing verification.\n\n" +
-    "Reference: " + reference
+    "Enter the reason for withdrawing verification.\n\nReference: " + reference
   );
 
-  if (reason === null) {
-    return;
-  }
+  if (reason === null) return;
 
   const cleanReason = reason.trim();
 
   if (cleanReason.length < 5) {
-    showMessage(
-      $("dashboardMessage"),
-      "Please provide a withdrawal reason of at least 5 characters."
-    );
+    showMessage($("dashboardMessage"), "Please provide a reason of at least 5 characters.");
     return;
   }
 
-  const confirmed = confirm(
-    "FINAL CONFIRMATION\n\n" +
-    "You are withdrawing public verification for:\n" +
-    reference + "\n\n" +
-    "Reason: " + cleanReason + "\n\n" +
-    "The public record will no longer be marked Verified.\n" +
-    "The withdrawal will be recorded in the private audit trail.\n\n" +
-    "Continue?"
-  );
-
-  if (!confirmed) {
-    return;
-  }
+  if (!confirm(
+    "FINAL CONFIRMATION\n\nReference: " + reference +
+    "\n\nReason: " + cleanReason +
+    "\n\nThe public record will no longer be marked Verified.\n" +
+    "A private audit record will be saved.\n\nContinue?"
+  )) return;
 
   button.disabled = true;
   button.textContent = "Withdrawing...";
 
   try {
-    // Confirm that the public verification record exists first.
-    const publicRef = doc(
-      db,
-      "publicVerifications",
-      reference
-    );
-
+    const publicRef = doc(db, "publicVerifications", reference);
     const publicSnapshot = await getDoc(publicRef);
 
     if (!publicSnapshot.exists()) {
-      throw new Error(
-        "The public verification record was not found. No withdrawal was saved. Check the reference number and publicVerifications collection."
-      );
+      throw new Error("The public verification record was not found. Nothing was withdrawn.");
     }
 
     const publicData = publicSnapshot.data();
-    const publicStatus = String(
-      publicData.status || ""
-    ).trim().toLowerCase();
+    const currentPublicStatus = String(publicData.status || "").trim().toLowerCase();
 
-    if (
-      publicStatus === "withdrawn" ||
-      publicStatus === "verification withdrawn"
-    ) {
-      throw new Error(
-        "This public verification has already been withdrawn."
-      );
+    if (currentPublicStatus === "withdrawn" || currentPublicStatus === "verification withdrawn") {
+      throw new Error("This verification has already been withdrawn.");
     }
 
-    // One atomic batch updates the request, public record,
-    // and private audit record together.
     const batch = writeBatch(db);
 
-    batch.update(
-      doc(db, "documentRequests", request.id),
-      {
-        status: "Verification Withdrawn",
-        withdrawalReason: cleanReason,
-        withdrawnByUid: user.uid,
-        withdrawnByEmail: user.email || "",
-        withdrawnAt: serverTimestamp()
-      }
-    );
+    batch.update(doc(db, "documentRequests", request.id), {
+      status: "Verification Withdrawn",
+      withdrawalReason: cleanReason,
+      withdrawnByUid: user.uid,
+      withdrawnByEmail: user.email || "",
+      withdrawnAt: serverTimestamp()
+    });
 
-    batch.update(
-      publicRef,
-      {
-        status: "Withdrawn",
-        withdrawalMessage:
-          "Verification of this document has been withdrawn by the issuing verification administrator.",
-        withdrawnAt: serverTimestamp()
-      }
-    );
+    batch.update(publicRef, {
+      status: "Withdrawn",
+      withdrawalMessage: "Verification of this document has been withdrawn by the issuing verification administrator.",
+      withdrawnAt: serverTimestamp()
+    });
 
-    const auditRef = doc(
-      collection(db, "verificationWithdrawalAudit")
-    );
+    const auditRef = doc(collection(db, "verificationWithdrawalAudit"));
 
     batch.set(auditRef, {
       requestId: request.id,
@@ -1199,28 +672,21 @@ async function withdrawVerification(request, button) {
 
     showMessage(
       $("dashboardMessage"),
-      "Verification withdrawn successfully. The public record is now marked Withdrawn, and the private audit record has been saved. Reference: " +
-      reference,
+      "Verification withdrawn successfully. The public record is marked Withdrawn and the private audit record is saved. Reference: " + reference,
       "success"
     );
 
     await loadRequests();
-
   } catch (error) {
     console.error("Withdrawal failed:", error);
-
     showMessage(
       $("dashboardMessage"),
-      "Withdrawal did not complete. No partial batch updates were applied. Check the reference number, administrator access, and published Firestore rules. Details: " +
-      error.message
+      "Withdrawal failed. No partial batch updates were applied. Check your published Firestore rules and public record. Details: " + error.message
     );
-
     button.disabled = false;
     button.textContent = "Withdraw Verification";
   }
 }
-
 </script>
-
 </body>
     </html>
