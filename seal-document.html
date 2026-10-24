@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="Register a document for review and verification by ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
-
   <meta name="theme-color" content="#08783e">
-
+  <meta name="description" content="Register a document for review by ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
   <title>Document Registration | ARNAUD</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      padding: 20px;
+      padding: 16px;
       background: #f3f7f4;
       color: #202820;
       font-family: Arial, sans-serif;
@@ -25,34 +20,28 @@
 
     .container {
       max-width: 760px;
-      margin: 25px auto;
+      margin: 20px auto;
+      padding: 25px;
       background: white;
-      padding: 28px;
       border-radius: 14px;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 5px 25px rgba(0,0,0,.08);
     }
 
     .header {
       text-align: center;
       border-bottom: 2px solid #08783e;
-      padding-bottom: 20px;
-      margin-bottom: 24px;
+      padding-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .header h1 {
       color: #08783e;
-      font-size: 25px;
-      margin-bottom: 8px;
-    }
-
-    .header p {
-      color: #555;
-      line-height: 1.6;
+      font-size: 24px;
     }
 
     h2 {
-      font-size: 21px;
       color: #08783e;
+      font-size: 21px;
     }
 
     label {
@@ -61,9 +50,7 @@
       margin: 17px 0 7px;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 12px;
       border: 1px solid #cbd5ce;
@@ -78,7 +65,7 @@
     }
 
     button {
-      border: none;
+      border: 0;
       border-radius: 7px;
       padding: 13px 18px;
       font-size: 15px;
@@ -87,10 +74,10 @@
     }
 
     .primary {
+      width: 100%;
+      margin-top: 20px;
       background: #08783e;
       color: white;
-      width: 100%;
-      margin-top: 22px;
     }
 
     .secondary {
@@ -100,33 +87,26 @@
     }
 
     button:disabled {
-      opacity: 0.6;
+      opacity: .6;
       cursor: not-allowed;
+    }
+
+    .notice, .warning, .status {
+      padding: 13px;
+      margin: 16px 0;
+      border-radius: 7px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
     }
 
     .notice {
       background: #edf7ef;
       border-left: 4px solid #08783e;
-      padding: 13px;
-      line-height: 1.6;
-      margin: 18px 0;
-      overflow-wrap: anywhere;
     }
 
     .warning {
       background: #fff6df;
       border-left: 4px solid #d49b16;
-      padding: 13px;
-      line-height: 1.6;
-      margin: 18px 0;
-    }
-
-    .status {
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 7px;
-      line-height: 1.5;
-      overflow-wrap: anywhere;
     }
 
     .success {
@@ -160,7 +140,7 @@
     }
 
     footer {
-      margin-top: 28px;
+      margin-top: 25px;
       padding-top: 18px;
       border-top: 1px solid #ddd;
       text-align: center;
@@ -169,111 +149,87 @@
       line-height: 1.8;
     }
 
-    a {
-      color: #08783e;
-    }
+    a { color: #08783e; }
 
     @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-
-      .container {
-        padding: 18px;
-        margin: 10px auto;
-      }
-
-      .header h1 {
-        font-size: 21px;
-      }
+      body { padding: 8px; }
+      .container { padding: 17px; }
+      .header h1 { font-size: 21px; }
     }
   </style>
 </head>
 
 <body>
-
 <div class="container">
 
   <div class="header">
     <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
-    <p>
-      Document Registration and Integrity Verification Portal
-    </p>
+    <p>Document Registration and Integrity Verification Portal</p>
   </div>
 
-  <div id="loginSection">
-    <h2>Account Login</h2>
+  <div id="loadingSection" class="notice">
+    Checking your company account...
+  </div>
 
-    <p>Sign in to register a document for administrator review.</p>
+  <div id="accessSection" class="hidden">
+    <h2>Company Account Required</h2>
+    <p id="accessMessage">
+      Sign in with your verified company account to register documents.
+    </p>
 
-    <form id="loginForm">
-      <label for="loginEmail">Email Address</label>
-      <input
-        type="email"
-        id="loginEmail"
-        autocomplete="username"
-        required
-      >
-
-      <label for="loginPassword">Password</label>
-      <input
-        type="password"
-        id="loginPassword"
-        autocomplete="current-password"
-        required
-      >
-
-      <button class="primary" id="loginButton" type="submit">
-        Sign In
-      </button>
-    </form>
-
-    <div id="loginMessage" class="status hidden"></div>
+    <a id="loginLink"
+       href="client-login.html?next=seal-document.html">
+      Go to Company Login
+    </a>
   </div>
 
   <div id="registrationSection" class="hidden">
 
     <div class="notice">
-      <strong>Signed in:</strong>
-      <span id="currentUser"></span>
-      <br>
-      Your request will be sent to the administrator for review.
+      <strong>Company:</strong>
+      <span id="companyNameDisplay"></span><br>
+
+      <strong>Representative:</strong>
+      <span id="representativeDisplay"></span><br>
+
+      <strong>Signed-in email:</strong>
+      <span id="emailDisplay"></span><br>
+
+      Your submission will be linked to this company account.
     </div>
 
     <button id="logoutButton" class="secondary" type="button">
       Sign Out
     </button>
 
+    <p>
+      <a href="client-dashboard.html">Return to Company Dashboard</a>
+    </p>
+
     <h2>Register a Document</h2>
 
     <form id="documentForm">
 
       <label for="documentTitle">Document Title *</label>
-      <input
-        type="text"
-        id="documentTitle"
-        maxlength="200"
-        placeholder="e.g. Academic Certificate"
-        required
-      >
+      <input id="documentTitle"
+             type="text"
+             maxlength="200"
+             placeholder="e.g. Academic Certificate"
+             required>
 
       <label for="issuedTo">Full Name of Document Holder *</label>
-      <input
-        type="text"
-        id="issuedTo"
-        maxlength="200"
-        required
-      >
+      <input id="issuedTo"
+             type="text"
+             maxlength="200"
+             required>
 
       <label for="originalDocumentNumber">
         Original Document Number
       </label>
-      <input
-        type="text"
-        id="originalDocumentNumber"
-        maxlength="150"
-        placeholder="Enter the original number, if available"
-      >
+      <input id="originalDocumentNumber"
+             type="text"
+             maxlength="150"
+             placeholder="Enter the original number, if available">
 
       <label for="documentCategory">Document Category *</label>
       <select id="documentCategory" required>
@@ -287,75 +243,61 @@
       </select>
 
       <label for="description">Additional Information</label>
-      <textarea
-        id="description"
-        maxlength="2000"
-        placeholder="Enter any relevant details"
-      ></textarea>
+      <textarea id="description"
+                maxlength="2000"
+                placeholder="Enter relevant details"></textarea>
 
       <div class="notice">
-        <strong>Company information</strong><br>
-        Company: ARNAUD AFROCHAINE TRUST SYSTEMS LTD<br>
+        <strong>Portal Operator</strong><br>
+        ARNAUD AFROCHAINE TRUST SYSTEMS LTD<br>
         Email: arnaudafrochain@gmail.com<br>
         Phone: +234 913 285 1465
       </div>
 
       <label for="companyNumber">Company Number</label>
-      <input
-        type="text"
-        id="companyNumber"
-        maxlength="150"
-        placeholder="Enter the applicable company number"
-      >
+      <input id="companyNumber"
+             type="text"
+             maxlength="150"
+             placeholder="Enter the applicable company number">
 
       <label for="originalFile">
         Original Document PDF (Optional)
       </label>
 
-      <input
-        type="file"
-        id="originalFile"
-        accept=".pdf,application/pdf"
-      >
+      <input id="originalFile"
+             type="file"
+             accept=".pdf,application/pdf">
 
       <p class="small">
-        Select the original PDF if it is available. Its SHA-256
-        fingerprint will be calculated in your browser. The PDF
-        itself will not be uploaded or saved by this page.
+        The PDF is processed in your browser only to calculate its
+        SHA-256 fingerprint. This page does not upload or save the
+        PDF itself. Do not select a confidential document unless
+        you understand this limitation.
       </p>
 
       <div id="fingerprintPanel" class="notice hidden">
         <strong>SHA-256 Fingerprint</strong>
-
-        <p id="fingerprintStatus">
-          Waiting for a document.
-        </p>
-
+        <p id="fingerprintStatus">Waiting for a document.</p>
         <div id="fingerprintValue" class="hash"></div>
-
         <p class="small">
-          Keep the original file unchanged. Editing, rescanning,
-          or saving the document again can produce a different
+          Editing, rescanning, or resaving a file can change its
           fingerprint.
         </p>
       </div>
 
       <div class="warning">
-        <strong>Important:</strong>
-        Selecting a PDF does not prove that the document is genuine.
-        The administrator must review the request. Fingerprint
-        recording and comparison will be completed in the next
-        stages of this upgrade.
+        Selecting a PDF does not prove that it is genuine.
+        The administrator must review the submission. A fingerprint
+        is an integrity identifier, not proof of authenticity.
       </div>
 
-      <button class="primary" id="submitButton" type="submit">
+      <button id="submitButton" class="primary" type="submit">
         Submit for Administrator Review
       </button>
 
     </form>
 
     <div id="formMessage" class="status hidden"></div>
-
   </div>
 
   <footer>
@@ -364,30 +306,27 @@
     Phone: +234 913 285 1465<br>
     Document Registration Portal
   </footer>
-
 </div>
 
 <script type="module">
-
   import { initializeApp }
     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
   import {
     getAuth,
-    signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
   import {
     getFirestore,
+    doc,
+    getDoc,
     collection,
     addDoc,
     serverTimestamp
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-
-  // Existing ARNAUD Firebase project.
   const firebaseConfig = {
     apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
     authDomain: "arnaud-document-trust.firebaseapp.com",
@@ -398,35 +337,33 @@
     measurementId: "G-NYPH2RB851"
   };
 
-  const COMPANY_NAME = "ARNAUD AFROCHAINE TRUST SYSTEMS LTD";
-  const COMPANY_EMAIL = "arnaudafrochain@gmail.com";
-
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  const loginSection = document.getElementById("loginSection");
+  const loadingSection = document.getElementById("loadingSection");
+  const accessSection = document.getElementById("accessSection");
   const registrationSection =
     document.getElementById("registrationSection");
 
-  const loginForm = document.getElementById("loginForm");
+  const accessMessage = document.getElementById("accessMessage");
+  const loginLink = document.getElementById("loginLink");
+
   const documentForm = document.getElementById("documentForm");
-
-  const loginMessage = document.getElementById("loginMessage");
-  const formMessage = document.getElementById("formMessage");
-
-  const loginButton = document.getElementById("loginButton");
   const submitButton = document.getElementById("submitButton");
+  const formMessage = document.getElementById("formMessage");
 
   const originalFile = document.getElementById("originalFile");
   const fingerprintPanel = document.getElementById("fingerprintPanel");
   const fingerprintStatus = document.getElementById("fingerprintStatus");
   const fingerprintValue = document.getElementById("fingerprintValue");
 
+  let currentUser = null;
+  let currentProfile = null;
   let currentFingerprint = null;
   let currentFileName = null;
   let hashOperation = 0;
-
+  let authCheckOperation = 0;
 
   function showMessage(element, message, type) {
     element.textContent = message;
@@ -440,11 +377,9 @@
 
   function makeReferenceNumber() {
     const date = new Date();
-
     const year = date.getUTCFullYear();
     const month = String(date.getUTCMonth() + 1).padStart(2, "0");
     const day = String(date.getUTCDate()).padStart(2, "0");
-
     const randomPart = crypto.randomUUID()
       .replace(/-/g, "")
       .substring(0, 10)
@@ -453,32 +388,44 @@
     return `ATS-${year}${month}${day}-${randomPart}`;
   }
 
-
-  // Calculate SHA-256 locally in the browser.
-  // The selected file is not uploaded by this function.
   async function calculateSHA256(file) {
-
     if (!window.crypto || !window.crypto.subtle) {
       throw new Error(
-        "Secure SHA-256 calculation is unavailable. Open the website through HTTPS."
+        "SHA-256 is unavailable. Open this page through HTTPS."
       );
     }
 
-    const fileBuffer = await file.arrayBuffer();
-
-    const digest = await crypto.subtle.digest(
-      "SHA-256",
-      fileBuffer
-    );
+    const buffer = await file.arrayBuffer();
+    const digest = await crypto.subtle.digest("SHA-256", buffer);
 
     return Array.from(new Uint8Array(digest))
       .map(byte => byte.toString(16).padStart(2, "0"))
       .join("");
   }
 
+  function showAccess(message) {
+    loadingSection.classList.add("hidden");
+    registrationSection.classList.add("hidden");
+    accessSection.classList.remove("hidden");
+    accessMessage.textContent = message;
+  }
 
-  originalFile.addEventListener("change", async function () {
+  function showRegistration(user, profile) {
+    loadingSection.classList.add("hidden");
+    accessSection.classList.add("hidden");
+    registrationSection.classList.remove("hidden");
 
+    document.getElementById("companyNameDisplay").textContent =
+      profile.companyName || "Company name not supplied";
+
+    document.getElementById("representativeDisplay").textContent =
+      profile.representativeName || "Representative not supplied";
+
+    document.getElementById("emailDisplay").textContent =
+      user.email || "";
+  }
+
+  originalFile.addEventListener("change", async () => {
     const operation = ++hashOperation;
 
     currentFingerprint = null;
@@ -501,62 +448,39 @@
       !file.name.toLowerCase().endsWith(".pdf")
     ) {
       originalFile.value = "";
+      fingerprintStatus.textContent = "Please select a PDF file.";
 
-      fingerprintStatus.textContent =
-        "Please select a PDF file.";
-
-      showMessage(
-        formMessage,
-        "Only PDF files can be selected.",
-        "error"
-      );
-
+      showMessage(formMessage, "Only PDF files are accepted.", "error");
       return;
     }
 
-    // Avoid accidentally processing very large files on a phone.
+    if (file.size === 0) {
+      originalFile.value = "";
+      fingerprintStatus.textContent = "The selected file is empty.";
+
+      showMessage(formMessage, "Please select a non-empty PDF.", "error");
+      return;
+    }
+
     if (file.size > 25 * 1024 * 1024) {
       originalFile.value = "";
-
-      fingerprintStatus.textContent =
-        "The selected file is too large.";
+      fingerprintStatus.textContent = "The selected file is too large.";
 
       showMessage(
         formMessage,
         "Please select a PDF no larger than 25 MB.",
         "error"
       );
-
-      return;
-    }
-
-    if (file.size === 0) {
-      originalFile.value = "";
-
-      fingerprintStatus.textContent =
-        "The selected file is empty.";
-
-      showMessage(
-        formMessage,
-        "Please select a valid PDF file.",
-        "error"
-      );
-
       return;
     }
 
     fingerprintStatus.textContent =
       "Calculating SHA-256 fingerprint...";
 
-    fingerprintValue.textContent = "";
-
     try {
       const hash = await calculateSHA256(file);
 
-      // Ignore an older calculation if another file was selected.
-      if (operation !== hashOperation) {
-        return;
-      }
+      if (operation !== hashOperation) return;
 
       currentFingerprint = hash;
       currentFileName = file.name;
@@ -565,15 +489,8 @@
         "Fingerprint calculated successfully.";
 
       fingerprintValue.textContent = hash;
-
     } catch (error) {
-
-      if (operation !== hashOperation) {
-        return;
-      }
-
-      currentFingerprint = null;
-      currentFileName = null;
+      if (operation !== hashOperation) return;
 
       fingerprintStatus.textContent =
         "Fingerprint calculation failed.";
@@ -584,131 +501,116 @@
         "error"
       );
     }
-
   });
 
+  onAuthStateChanged(auth, async user => {
+    const operation = ++authCheckOperation;
 
-  // Sign in using the existing Firebase Authentication system.
-  loginForm.addEventListener("submit", async function (event) {
+    currentUser = null;
+    currentProfile = null;
 
-    event.preventDefault();
+    loadingSection.classList.remove("hidden");
+    accessSection.classList.add("hidden");
+    registrationSection.classList.add("hidden");
 
-    hideMessage(loginMessage);
-    loginButton.disabled = true;
-    loginButton.textContent = "Signing in...";
+    if (!user) {
+      showAccess(
+        "Please sign in with your company account before registering a document."
+      );
+      return;
+    }
 
     try {
+      await user.reload();
 
-      await signInWithEmailAndPassword(
-        auth,
-        document.getElementById("loginEmail").value.trim(),
-        document.getElementById("loginPassword").value
-      );
+      if (operation !== authCheckOperation) return;
 
-      showMessage(
-        loginMessage,
-        "Sign-in successful.",
-        "success"
-      );
+      if (!user.emailVerified) {
+        showAccess(
+          "Your email address is not verified yet. Sign in to the company portal and complete email verification before submitting documents."
+        );
+        return;
+      }
 
+      const profileRef = doc(db, "clientProfiles", user.uid);
+      const profileSnapshot = await getDoc(profileRef);
+
+      if (operation !== authCheckOperation) return;
+
+      if (!profileSnapshot.exists()) {
+        showAccess(
+          "Your company profile was not found. Please contact the administrator."
+        );
+        return;
+      }
+
+      const profile = profileSnapshot.data();
+
+      if (
+        profile.uid !== user.uid ||
+        profile.accountType !== "companyClient"
+      ) {
+        showAccess(
+          "This account is not authorised to use company document registration."
+        );
+        return;
+      }
+
+      currentUser = user;
+      currentProfile = profile;
+
+      showRegistration(user, profile);
     } catch (error) {
+      console.error("Company account check failed:", error);
 
-      showMessage(
-        loginMessage,
-        "Sign-in failed. Check your email and password, then try again.",
-        "error"
+      showAccess(
+        "We could not verify your company account. Check your internet connection and try again."
       );
-
-    } finally {
-
-      loginButton.disabled = false;
-      loginButton.textContent = "Sign In";
-
     }
-
   });
-
-
-  // Update the visible page when authentication changes.
-  onAuthStateChanged(auth, user => {
-
-    if (user) {
-
-      loginSection.classList.add("hidden");
-      registrationSection.classList.remove("hidden");
-
-      document.getElementById("currentUser").textContent =
-        user.email || "Authenticated account";
-
-    } else {
-
-      loginSection.classList.remove("hidden");
-      registrationSection.classList.add("hidden");
-
-      document.getElementById("currentUser").textContent = "";
-
-    }
-
-  });
-
 
   document.getElementById("logoutButton")
-    .addEventListener("click", async function () {
-
+    .addEventListener("click", async () => {
       try {
         await signOut(auth);
-        documentForm.reset();
-
-        currentFingerprint = null;
-        currentFileName = null;
-
-        fingerprintPanel.classList.add("hidden");
-        hideMessage(formMessage);
-
+        window.location.href = "client-login.html";
       } catch (error) {
-
         showMessage(
           formMessage,
           "Unable to sign out. Please try again.",
           "error"
         );
-
       }
-
     });
 
-
-  // Submit the registration metadata and fingerprint.
-  documentForm.addEventListener("submit", async function (event) {
-
+  documentForm.addEventListener("submit", async event => {
     event.preventDefault();
-
     hideMessage(formMessage);
 
-    const user = auth.currentUser;
-
-    if (!user) {
-
+    if (!currentUser || !currentProfile) {
       showMessage(
         formMessage,
-        "Your session has expired. Please sign in again.",
+        "Your company account is not ready. Sign in again.",
         "error"
       );
-
       return;
     }
 
-    const selectedFile = originalFile.files[0];
-
-    // If a PDF was selected, require a successful hash.
-    if (selectedFile && !currentFingerprint) {
-
+    if (!currentUser.emailVerified) {
       showMessage(
         formMessage,
-        "Wait for the SHA-256 fingerprint to finish calculating before submitting.",
+        "Verify your email address before submitting.",
         "error"
       );
+      return;
+    }
 
+    if (originalFile.files[0] && !currentFingerprint) {
+      showMessage(
+        formMessage,
+        "Wait for the SHA-256 fingerprint calculation to finish.",
+        "error"
+      );
       return;
     }
 
@@ -716,12 +618,10 @@
     submitButton.textContent = "Submitting...";
 
     try {
-
       const referenceNumber = makeReferenceNumber();
 
       const requestData = {
-
-        referenceNumber: referenceNumber,
+        referenceNumber,
 
         documentTitle:
           document.getElementById("documentTitle").value.trim(),
@@ -741,17 +641,17 @@
         companyNumber:
           document.getElementById("companyNumber").value.trim(),
 
-        companyName: COMPANY_NAME,
-        companyEmail: COMPANY_EMAIL,
+        companyName: currentProfile.companyName,
+        companyEmail: currentUser.email || "",
+        representativeName: currentProfile.representativeName || "",
+        companyProfileUid: currentUser.uid,
 
         status: "Pending Review",
 
-        createdByUid: user.uid,
-        createdByEmail: user.email || "",
-
+        createdByUid: currentUser.uid,
+        createdByEmail: currentUser.email || "",
         createdAt: serverTimestamp(),
 
-        // Fingerprint metadata only; no PDF is uploaded.
         sha256Fingerprint: currentFingerprint || null,
 
         fingerprintStatus: currentFingerprint
@@ -763,52 +663,38 @@
         fingerprintAlgorithm: currentFingerprint
           ? "SHA-256"
           : null
-
       };
 
-      await addDoc(
-        collection(db, "documentRequests"),
-        requestData
-      );
+      await addDoc(collection(db, "documentRequests"), requestData);
 
       showMessage(
         formMessage,
-        "Registration submitted successfully. Reference number: " +
+        "Document submitted successfully. Reference: " +
           referenceNumber +
-          ". Status: Pending Review. Keep your reference number for future enquiries.",
+          ". Status: Pending Review. You can track this request from your company dashboard.",
         "success"
       );
 
       documentForm.reset();
-
       currentFingerprint = null;
       currentFileName = null;
 
       fingerprintPanel.classList.add("hidden");
       fingerprintStatus.textContent = "No document selected.";
       fingerprintValue.textContent = "";
-
     } catch (error) {
-
-      console.error("Registration error:", error);
+      console.error("Document submission failed:", error);
 
       showMessage(
         formMessage,
-        "The request could not be submitted. Check your internet connection and Firebase permissions, then try again.",
+        "Submission failed. Your request was not confirmed as saved. Please try again or contact the administrator.",
         "error"
       );
-
     } finally {
-
       submitButton.disabled = false;
-      submitButton.textContent =
-        "Submit for Administrator Review";
-
+      submitButton.textContent = "Submit for Administrator Review";
     }
-
   });
-
 </script>
-
 </body>
 </html>
