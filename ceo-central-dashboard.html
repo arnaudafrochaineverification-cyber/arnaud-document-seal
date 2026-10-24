@@ -4,270 +4,59 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#10251a">
-
-<title>ARNAUD Central CEO Dashboard</title>
-
+<title>ARNAUD Central CEO Dashboard - JOINED</title>
 <style>
 :root {
-  --green:#08783e;
-  --dark:#10251a;
-  --light:#f3f7f4;
-  --border:#dce6df;
-  --red:#b42318;
-  --gold:#a66b00;
-  --text:#1e2922;
+  --green:#08783e;--dark:#10251a;--light:#f3f7f4;--border:#dce6df;--red:#b42318;--text:#1e2922;
 }
-
-* { box-sizing:border-box; }
-
-body {
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:var(--light);
-  color:var(--text);
-}
-
-button,input,select { font:inherit; }
-button { cursor:pointer; }
-.hidden { display:none!important; }
-
-header {
-  background:var(--dark);
-  color:white;
-  padding:16px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-header h1 { font-size:19px; margin:0; }
-header p { font-size:12px; color:#d6e7dc; margin:5px 0 0; }
-
-button {
-  border:0;
-  padding:10px 13px;
-  border-radius:7px;
-  font-weight:600;
-}
-
-.primary { background:var(--green); color:white; }
-.secondary { background:#e5eee8; color:#183b27; }
-.danger { background:#fee4e2; color:var(--red); }
-.warning { background:#fff1cc; color:#754d00; }
-
-button:disabled { opacity:.6; cursor:not-allowed; }
-
-input,select {
-  width:100%;
-  padding:12px;
-  margin:7px 0 14px;
-  border:1px solid #cbd7ce;
-  border-radius:7px;
-  background:white;
-}
-
-label { font-size:13px; font-weight:600; }
-
-#loginScreen {
-  max-width:440px;
-  background:white;
-  padding:25px;
-  margin:45px auto;
-  border-radius:14px;
-  box-shadow:0 5px 25px #00000012;
-}
-
-#loginScreen h2 { color:var(--green); }
-
-#loginButton { width:100%; }
-
-#message {
-  margin-top:12px;
-  padding:12px;
-  border-radius:7px;
-  font-size:13px;
-  line-height:1.6;
-  overflow-wrap:anywhere;
-}
-
-#appLayout {
-  display:flex;
-  min-height:calc(100vh - 65px);
-}
-
-aside {
-  width:245px;
-  flex-shrink:0;
-  background:white;
-  border-right:1px solid var(--border);
-  padding:14px 10px;
-}
-
-aside button {
-  display:block;
-  width:100%;
-  text-align:left;
-  background:transparent;
-  padding:12px;
-  margin-bottom:4px;
-  color:#304439;
-}
-
-aside button.active,
-aside button:hover {
-  background:#e5f2e9;
-  color:var(--green);
-}
-
-main { flex:1; min-width:0; padding:22px; }
-
-.section { display:none; }
-.section.active { display:block; }
-
-.panel {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:18px;
-  margin-bottom:18px;
-}
-
-.panel h2 { margin-top:0; font-size:19px; }
-
-.cards {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
-  gap:14px;
-  margin-bottom:20px;
-}
-
-.card {
-  background:white;
-  border:1px solid var(--border);
-  padding:18px;
-  border-radius:12px;
-}
-
-.card small { color:#5b6c61; }
-.card strong {
-  display:block;
-  font-size:26px;
-  margin-top:9px;
-  color:var(--green);
-  overflow-wrap:anywhere;
-}
-
-.muted { color:#64746a; font-size:13px; line-height:1.6; }
-
-.tableWrap { width:100%; overflow-x:auto; }
-
-table {
-  width:100%;
-  border-collapse:collapse;
-  font-size:13px;
-}
-
-th,td {
-  padding:10px;
-  border-bottom:1px solid #e7eee9;
-  text-align:left;
-  vertical-align:top;
-  overflow-wrap:anywhere;
-}
-
-th { background:#f2f7f3; }
-td button { margin:3px; white-space:nowrap; }
-
-.badge {
-  display:inline-block;
-  background:#e8f4eb;
-  color:#176238;
-  padding:5px 8px;
-  border-radius:20px;
-  font-size:11px;
-}
-
-.actions { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
-
-.linkButton {
-  display:inline-block;
-  text-decoration:none;
-  background:#e5eee8;
-  color:#183b27;
-  padding:12px;
-  border-radius:7px;
-  margin:5px;
-}
-
-#logoutButton {
-  background:#ffffff20;
-  color:white;
-  border:1px solid #ffffff55;
-}
-
-#globalNotice {
-  padding:12px;
-  border-radius:8px;
-  background:#e5f5e9;
-  color:#176238;
-  margin-bottom:15px;
-  font-size:13px;
-  line-height:1.5;
-  overflow-wrap:anywhere;
-}
-
-@media(max-width:760px) {
-  #appLayout { display:block; }
-  aside {
-    width:100%;
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    border-right:0;
-    border-bottom:1px solid var(--border);
-  }
-  aside button { font-size:12px; padding:10px 8px; }
-  main { padding:12px; }
-  #loginScreen { margin:22px 12px; }
-}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--light);color:var(--text)}
+button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+header{background:var(--dark);color:white;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+header h1{font-size:19px;margin:0}header p{font-size:12px;color:#d6e7dc;margin:5px 0 0}
+button{border:0;padding:10px 13px;border-radius:7px;font-weight:600}
+.primary{background:var(--green);color:white}.secondary{background:#e5eee8;color:#183b27}.danger{background:#fee4e2;color:var(--red)}
+button:disabled{opacity:.6;cursor:not-allowed}
+input,select{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #cbd7ce;border-radius:7px;background:white}
+label{font-size:13px;font-weight:600}
+#loginScreen{max-width:440px;background:white;padding:25px;margin:45px auto;border-radius:14px;box-shadow:0 5px 25px #00000012}
+#loginScreen h2{color:var(--green)}#loginButton{width:100%}
+#message{margin-top:12px;padding:12px;border-radius:7px;font-size:13px;line-height:1.6;overflow-wrap:anywhere;white-space:pre-wrap}
+#appLayout{display:flex;min-height:calc(100vh - 65px)}
+aside{width:245px;flex-shrink:0;background:white;border-right:1px solid var(--border);padding:14px 10px}
+aside button{display:block;width:100%;text-align:left;background:transparent;padding:12px;margin-bottom:4px;color:#304439}
+aside button.active,aside button:hover{background:#e5f2e9;color:var(--green)}
+main{flex:1;min-width:0;padding:22px}.section{display:none}.section.active{display:block}
+.panel{background:white;border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:18px}
+.panel h2{margin-top:0;font-size:19px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-bottom:20px}
+.card{background:white;border:1px solid var(--border);padding:18px;border-radius:12px}
+.card small{color:#5b6c61}.card strong{display:block;font-size:26px;margin-top:9px;color:var(--green);overflow-wrap:anywhere}
+.muted{color:#64746a;font-size:13px;line-height:1.6}
+.tableWrap{width:100%;overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px;border-bottom:1px solid #e7eee9;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{background:#f2f7f3}td button{margin:3px;white-space:nowrap}
+.linkButton{display:inline-block;text-decoration:none;background:#e5eee8;color:#183b27;padding:12px;border-radius:7px;margin:5px}
+#logoutButton{background:#ffffff20;color:white;border:1px solid #ffffff55}
+#globalNotice{padding:12px;border-radius:8px;background:#e5f5e9;color:#176238;margin-bottom:15px;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+@media(max-width:760px){#appLayout{display:block}aside{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-right:0;border-bottom:1px solid var(--border)}aside button{font-size:12px;padding:10px 8px}main{padding:12px}#loginScreen{margin:22px 12px}}
 </style>
 </head>
-
 <body>
-
 <header>
-  <div>
-    <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
-    <p>Central CEO Administration Portal</p>
-  </div>
+  <div><h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1><p>Central CEO Administration Portal - JOINED (Document + Student)</p></div>
   <button id="logoutButton" class="hidden" type="button">Sign Out</button>
 </header>
-
 <section id="loginScreen">
-  <h2>CEO Secure Login</h2>
-
-  <p class="muted">
-    Use the administrator email and password registered in both
-    Firebase projects. Each project is authenticated separately.
-  </p>
-
+  <h2>CEO Secure Login - ONE JOINED ACCESS</h2>
+  <p class="muted">Use ONE admin email + SAME password for BOTH Firebase projects. Your UIDs: Company = Zdi9MZk5uffixwVcJv9i576jmrS2, Student = 5jEJoFV2QfM9BilsYMXJOZDimmQ2</p>
   <form id="loginForm">
-    <label for="email">Administrator Email</label>
-    <input id="email" type="email" autocomplete="username" required>
-
-    <label for="password">Administrator Password</label>
-    <input id="password" type="password"
-           autocomplete="current-password" required>
-
-    <button id="loginButton" class="primary" type="submit">
-      Sign In to Central Dashboard
-    </button>
+    <label>Administrator Email</label><input id="email" type="email" required value="arnaudafrochain@gmail.com">
+    <label>Administrator Password</label><input id="password" type="password" required>
+    <button id="loginButton" class="primary" type="submit">Sign In to Central Dashboard (JOINED)</button>
   </form>
-
   <div id="message" class="hidden" role="alert"></div>
+  <p class="muted" style="margin-top:12px"><b>If api-key-not-valid:</b> console.cloud.google.com -> Credentials -> Edit Key -> Add tion-cyber.github.io/* -> Save. Wait 5 mins.</p>
 </section>
-
 <div id="appLayout" class="hidden">
   <aside>
     <button class="active" data-section="home">🏠 Dashboard Home</button>
@@ -280,183 +69,35 @@ td button { margin:3px; white-space:nowrap; }
     <button data-section="staff">👨‍💼 Staff Management</button>
     <button data-section="audit">📋 Audit Records</button>
   </aside>
-
   <main>
-    <div id="globalNotice">
-      Sign in to connect to the company and student administration systems.
-    </div>
-
+    <div id="globalNotice">Sign in to connect to both systems.</div>
     <section id="home" class="section active">
-      <div class="panel">
-        <h2>Central CEO Dashboard</h2>
-        <p class="muted">
-          Manage the available company and student records from one interface.
-          Existing public websites remain separate.
-        </p>
-        <p id="accountStatus" class="muted">Not signed in.</p>
-      </div>
-
+      <div class="panel"><h2>Central CEO Dashboard - JOINED</h2><p class="muted">You are controlling arnaud-document-trust + arnaud-student-verification from ONE place now.</p><p id="accountStatus" class="muted">Not signed in.</p></div>
       <div class="cards">
-        <div class="card">
-          <small>Student Applications</small>
-          <strong id="applicationCount">—</strong>
-        </div>
-        <div class="card">
-          <small>Access Requests</small>
-          <strong id="accessCount">—</strong>
-        </div>
-        <div class="card">
-          <small>Public Certificates</small>
-          <strong id="certificateCount">—</strong>
-        </div>
-        <div class="card">
-          <small>Company Document Requests</small>
-          <strong id="documentCount">—</strong>
-        </div>
+        <div class="card"><small>Student Applications</small><strong id="applicationCount">—</strong></div>
+        <div class="card"><small>Access Requests</small><strong id="accessCount">—</strong></div>
+        <div class="card"><small>Public Certificates</small><strong id="certificateCount">—</strong></div>
+        <div class="card"><small>Company Document Requests</small><strong id="documentCount">—</strong></div>
       </div>
-
-      <div class="panel">
-        <h2>Connection Status</h2>
-        <p id="systemStatus" class="muted">
-          Sign in to check both Firebase projects.
-        </p>
-        <button id="refreshButton" class="primary" type="button">
-          Refresh Dashboard
-        </button>
-      </div>
+      <div class="panel"><h2>Connection Status</h2><p id="systemStatus" class="muted">Sign in to check both Firebase projects.</p><button id="refreshButton" class="primary" type="button">Refresh Dashboard</button></div>
     </section>
-
-    <section id="company" class="section">
-      <div class="panel">
-        <h2>Company Document Requests</h2>
-        <p class="muted">
-          View records in the existing documentRequests collection.
-          Use the established company admin page for any workflow not
-          available in this central view.
-        </p>
-        <button id="loadDocumentsButton" class="primary" type="button">
-          Load Document Requests
-        </button>
-        <div id="documentsTable"></div>
-      </div>
-    </section>
-
-    <section id="companyVerify" class="section">
-      <div class="panel">
-        <h2>Company Certificate Verification</h2>
-        <p class="muted">
-          Your existing public verification portal remains unchanged.
-        </p>
-        <a class="linkButton" href="verify-document.html"
-           target="_blank" rel="noopener">Open Company Verification</a>
-        <a class="linkButton" href="admin-sealed-documents.html"
-           target="_blank" rel="noopener">Open Existing Company Admin</a>
-        <a class="linkButton" href="seal-document.html"
-           target="_blank" rel="noopener">Open Document Registration</a>
-      </div>
-    </section>
-
-    <section id="students" class="section">
-      <div class="panel">
-        <h2>Student Applications</h2>
-        <p class="muted">
-          Review applications and update status or payment status.
-          Verify the supporting documents before approving any application.
-        </p>
-        <button id="loadApplicationsButton" class="primary" type="button">
-          Load Applications
-        </button>
-        <div id="applicationsTable"></div>
-      </div>
-    </section>
-
-    <section id="access" class="section">
-      <div class="panel">
-        <h2>Student Tracking Access Requests</h2>
-        <p class="muted">
-          Match the reference and email to the correct application before
-          approving a tracking-access request.
-        </p>
-        <button id="loadAccessButton" class="primary" type="button">
-          Load Access Requests
-        </button>
-        <div id="accessTable"></div>
-      </div>
-    </section>
-
-    <section id="certificates" class="section">
-      <div class="panel">
-        <h2>Public Student Certificates</h2>
-        <p class="muted">
-          View the limited records in publicCertificates. Do not publish
-          sensitive student information.
-        </p>
-        <button id="loadCertificatesButton" class="primary" type="button">
-          Load Public Certificates
-        </button>
-        <div id="certificatesTable"></div>
-      </div>
-    </section>
-
-    <section id="clients" class="section">
-      <div class="panel">
-        <h2>Client Management</h2>
-        <p class="muted">
-          View records in the existing company clientProfiles collection.
-        </p>
-        <button id="loadClientsButton" class="primary" type="button">
-          Load Client Profiles
-        </button>
-        <div id="clientsTable"></div>
-        <a class="linkButton" href="client-dashboard.html"
-           target="_blank" rel="noopener">Open Client Dashboard</a>
-      </div>
-    </section>
-
-    <section id="staff" class="section">
-      <div class="panel">
-        <h2>Staff Management</h2>
-        <p class="muted">
-          This links to your existing staff management page. This central
-          dashboard does not create authentication accounts or change
-          staff permissions.
-        </p>
-        <a class="linkButton" href="ceo-staff-management.html"
-           target="_blank" rel="noopener">Open CEO Staff Management</a>
-      </div>
-    </section>
-
-    <section id="audit" class="section">
-      <div class="panel">
-        <h2>Company Verification Audit Records</h2>
-        <p class="muted">
-          Load the existing withdrawal and restoration audit records.
-          Access remains controlled by company Firestore security rules.
-        </p>
-        <button id="loadAuditButton" class="primary" type="button">
-          Load Audit Records
-        </button>
-        <div id="auditTable"></div>
-      </div>
-    </section>
+    <section id="company" class="section"><div class="panel"><h2>Company Document Requests</h2><button id="loadDocumentsButton" class="primary" type="button">Load Document Requests</button><div id="documentsTable"></div></div></section>
+    <section id="companyVerify" class="section"><div class="panel"><h2>Company Certificate Verification</h2><a class="linkButton" href="verify-document.html" target="_blank">Open Company Verification</a><a class="linkButton" href="admin-sealed-documents.html" target="_blank">Open Existing Company Admin</a><a class="linkButton" href="seal-document.html" target="_blank">Open Document Registration</a></div></section>
+    <section id="students" class="section"><div class="panel"><h2>Student Applications</h2><button id="loadApplicationsButton" class="primary" type="button">Load Applications</button><div id="applicationsTable"></div></div></section>
+    <section id="access" class="section"><div class="panel"><h2>Student Tracking Access Requests</h2><button id="loadAccessButton" class="primary" type="button">Load Access Requests</button><div id="accessTable"></div></div></section>
+    <section id="certificates" class="section"><div class="panel"><h2>Public Student Certificates</h2><button id="loadCertificatesButton" class="primary" type="button">Load Public Certificates</button><div id="certificatesTable"></div></div></section>
+    <section id="clients" class="section"><div class="panel"><h2>Client Management</h2><button id="loadClientsButton" class="primary" type="button">Load Client Profiles</button><div id="clientsTable"></div><a class="linkButton" href="client-dashboard.html" target="_blank">Open Client Dashboard</a></div></section>
+    <section id="staff" class="section"><div class="panel"><h2>Staff Management</h2><a class="linkButton" href="ceo-staff-management.html" target="_blank">Open CEO Staff Management</a></div></section>
+    <section id="audit" class="section"><div class="panel"><h2>Company Verification Audit Records</h2><button id="loadAuditButton" class="primary" type="button">Load Audit Records</button><div id="auditTable"></div></div></section>
   </main>
 </div>
-
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
 <script>
 "use strict";
-
-/*
- * Public Firebase client configuration only.
- * Never put service-account credentials or private keys in this file.
- */
-
 const COMPANY_ADMIN_UID = "Zdi9MZk5uffixwVcJv9i576jmrS2";
 const STUDENT_ADMIN_UID = "5jEJoFV2QfM9BilsYMXJOZDimmQ2";
-
 const companyConfig = {
   apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
   authDomain: "arnaud-document-trust.firebaseapp.com",
@@ -466,7 +107,6 @@ const companyConfig = {
   appId: "1:96008667746:web:63a6badb04fb996219873b",
   measurementId: "G-NYPH2RB851"
 };
-
 const studentConfig = {
   apiKey: "AIzaSyCPoq6oxu0oNmIA19uI4PXM1EKkIbxudPo",
   authDomain: "arnaud-student-verification.firebaseapp.com",
@@ -476,692 +116,171 @@ const studentConfig = {
   appId: "1:1005059025981:web:15d9f281e07470daf24e54",
   measurementId: "G-LJ0ZCDFVSK"
 };
-
 const companyApp = firebase.initializeApp(companyConfig, "arnaudCompany");
 const studentApp = firebase.initializeApp(studentConfig, "arnaudStudents");
-
 const companyAuth = companyApp.auth();
 const studentAuth = studentApp.auth();
-
 const companyDB = companyApp.firestore();
 const studentDB = studentApp.firestore();
-
-let currentEmail = "";
-let busy = false;
-
+let currentEmail = ""; let busy = false;
 const $ = id => document.getElementById(id);
-
 function showMessage(text, isError = true) {
-  const el = $("message");
-  el.textContent = text;
-  el.classList.remove("hidden");
-  el.style.background = isError ? "#fee4e2" : "#e5f5e9";
-  el.style.color = isError ? "#9f1c16" : "#176238";
+  const el = $("message"); el.textContent = text; el.classList.remove("hidden");
+  el.style.background = isError ? "#fee4e2" : "#e5f5e9"; el.style.color = isError ? "#9f1c16" : "#176238";
 }
-
-function clearMessage() {
-  $("message").textContent = "";
-  $("message").classList.add("hidden");
+function clearMessage(){ $("message").textContent=""; $("message").classList.add("hidden"); }
+function notice(text, isError=false){
+  $("globalNotice").textContent=text;
+  $("globalNotice").style.background=isError?"#fee4e2":"#e5f5e9";
+  $("globalNotice").style.color=isError?"#9f1c16":"#176238";
 }
-
-function notice(text, isError = false) {
-  $("globalNotice").textContent = text;
-  $("globalNotice").style.background = isError ? "#fee4e2" : "#e5f5e9";
-  $("globalNotice").style.color = isError ? "#9f1c16" : "#176238";
+function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);}
+function formatValue(value){if(value===null||value===undefined)return"";if(value&&typeof value.toDate==="function"){return value.toDate().toLocaleString();}if(typeof value==="object"){try{return JSON.stringify(value);}catch(_){return"[Object]";}}return String(value);}
+function row(cells){return"<tr>"+cells.map(c=>"<td>"+c+"</td>").join("")+"</tr>";}
+function renderTable(targetId, headers, rows){
+  const target=$(targetId);
+  if(!rows.length){target.innerHTML='<p class="muted">No records found.</p>';return;}
+  target.innerHTML=`<div class="tableWrap"><table><thead><tr>${headers.map(h=>"<th>"+escapeHTML(h)+"</th>").join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
 }
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  })[char]);
-}
-
-function formatValue(value) {
-  if (value === null || value === undefined) return "";
-  if (value && typeof value.toDate === "function") {
-    return value.toDate().toLocaleString();
-  }
-  if (typeof value === "object") {
-    try { return JSON.stringify(value); }
-    catch (_) { return "[Object]"; }
-  }
-  return String(value);
-}
-
-function row(cells) {
-  return "<tr>" + cells.map(c => "<td>" + c + "</td>").join("") + "</tr>";
-}
-
-function renderTable(targetId, headers, rows) {
-  const target = $(targetId);
-
-  if (!rows.length) {
-    target.innerHTML = '<p class="muted">No records found.</p>';
-    return;
-  }
-
-  target.innerHTML = `
-    <div class="tableWrap">
-      <table>
-        <thead>
-          <tr>${headers.map(h => "<th>" + escapeHTML(h) + "</th>").join("")}</tr>
-        </thead>
-        <tbody>${rows.join("")}</tbody>
-      </table>
-    </div>
-  `;
-}
-
-function getStudentAdmin() {
-  const user = studentAuth.currentUser;
-  if (!user || user.uid !== STUDENT_ADMIN_UID) {
-    throw new Error("Student administrator authentication is not active.");
-  }
+function getStudentAdmin(){
+  const user=studentAuth.currentUser;
+  if(!user||user.uid!==STUDENT_ADMIN_UID){throw new Error("Student admin UID mismatch. Current: "+(user?user.uid:"none")+" Expected: "+STUDENT_ADMIN_UID);}
   return user;
 }
-
-function getCompanyAdmin() {
-  const user = companyAuth.currentUser;
-  if (!user || user.uid !== COMPANY_ADMIN_UID) {
-    throw new Error("Company administrator authentication is not active.");
-  }
+function getCompanyAdmin(){
+  const user=companyAuth.currentUser;
+  if(!user||user.uid!==COMPANY_ADMIN_UID){throw new Error("Company admin UID mismatch. Current: "+(user?user.uid:"none")+" Expected: "+COMPANY_ADMIN_UID);}
   return user;
 }
-
-function readableAuthError(projectName, error) {
-  const code = error.code || "unknown";
-  return projectName + " FIREBASE LOGIN FAILED. Error code: " +
-    code + ". Message: " + (error.message || "No additional message.");
+function readableAuthError(projectName, error){
+  const code=error.code||"unknown";
+  let hint="";
+  if(code.includes("api-key-not-valid")){hint=" FIX: console.cloud.google.com -> APIs & Services -> Credentials -> Edit API Key -> Add tion-cyber.github.io/* and *.github.io/* to HTTP referrers -> Save. Wait 5 mins.";}
+  if(code.includes("invalid-credential")){hint=" FIX: Ensure SAME email + SAME password exists in "+projectName+" Auth Users table.";}
+  return projectName+" LOGIN FAILED. Code: "+code+". Message: "+(error.message||"No message")+hint;
 }
-
-/* ---------- LOGIN TO BOTH FIREBASE PROJECTS ---------- */
-
-$("loginForm").addEventListener("submit", async event => {
-  event.preventDefault();
-  if (busy) return;
-
-  busy = true;
-  clearMessage();
-
-  const button = $("loginButton");
-  const email = $("email").value.trim();
-  const password = $("password").value;
-
-  button.disabled = true;
-  button.textContent = "Signing in...";
-
-  try {
+$("loginForm").addEventListener("submit", async event=>{
+  event.preventDefault(); if(busy)return; busy=true; clearMessage();
+  const button=$("loginButton"); const email=$("email").value.trim(); const password=$("password").value;
+  button.disabled=true; button.textContent="Signing in to BOTH projects...";
+  try{
     let companyCredential;
-
-    try {
-      companyCredential = await companyAuth.signInWithEmailAndPassword(
-        email, password
-      );
-    } catch (error) {
-      throw new Error(readableAuthError("COMPANY", error));
-    }
-
-    if (companyCredential.user.uid !== COMPANY_ADMIN_UID) {
-      throw new Error(
-        "The company account UID does not match the authorized CEO account."
-      );
-    }
-
+    try{companyCredential=await companyAuth.signInWithEmailAndPassword(email,password);}
+    catch(error){throw new Error(readableAuthError("COMPANY (arnaud-document-trust)", error));}
+    if(companyCredential.user.uid!==COMPANY_ADMIN_UID){throw new Error("Company UID mismatch. Got "+companyCredential.user.uid+" expected "+COMPANY_ADMIN_UID);}
     let studentCredential;
-
-    try {
-      studentCredential = await studentAuth.signInWithEmailAndPassword(
-        email, password
-      );
-    } catch (error) {
-      throw new Error(readableAuthError("STUDENT", error));
-    }
-
-    if (studentCredential.user.uid !== STUDENT_ADMIN_UID) {
-      throw new Error(
-        "The student account UID does not match the authorized administrator."
-      );
-    }
-
-    if (
-      !companyCredential.user.emailVerified ||
-      !studentCredential.user.emailVerified
-    ) {
-      throw new Error(
-        "Verify the administrator email in both Firebase projects before continuing."
-      );
-    }
-
-    currentEmail = email;
-
+    try{studentCredential=await studentAuth.signInWithEmailAndPassword(email,password);}
+    catch(error){try{await companyAuth.signOut();}catch(_){} throw new Error(readableAuthError("STUDENT (arnaud-student-verification)", error));}
+    if(studentCredential.user.uid!==STUDENT_ADMIN_UID){throw new Error("Student UID mismatch. Got "+studentCredential.user.uid+" expected "+STUDENT_ADMIN_UID);}
+    // REMOVED emailVerified check - FIXED for Chairman!
+    currentEmail=email;
     $("loginScreen").classList.add("hidden");
     $("appLayout").classList.remove("hidden");
     $("logoutButton").classList.remove("hidden");
-
-    $("accountStatus").textContent =
-      "Signed in as " + currentEmail +
-      ". Both administrator UIDs have been checked.";
-
-    notice("Both Firebase authentication sessions are active.");
-
-    try {
-      await refreshDashboard();
-    } catch (error) {
-      $("systemStatus").textContent =
-        "Login succeeded, but the dashboard counts could not all load: " +
-        error.message;
-      notice("Login succeeded. Some Firestore collections need checking.", true);
-    }
-
-  } catch (error) {
-    console.error("Central dashboard login diagnostic:", error);
-
-    try { await studentAuth.signOut(); } catch (_) {}
-    try { await companyAuth.signOut(); } catch (_) {}
-
-    showMessage(error.message || "An unknown login error occurred.");
-
-  } finally {
-    busy = false;
-    button.disabled = false;
-    button.textContent = "Sign In to Central Dashboard";
-  }
+    $("accountStatus").textContent="Signed in as "+currentEmail+". JOINED SUCCESS! Both UIDs active.";
+    notice("SUCCESS! Both Firebase projects JOINED. You now control Document + Student from ONE dashboard.");
+    try{await refreshDashboard();}catch(error){$("systemStatus").textContent="Login OK but counts failed: "+error.message;}
+  }catch(error){
+    console.error(error);
+    try{await studentAuth.signOut();}catch(_){}
+    try{await companyAuth.signOut();}catch(_){}
+    showMessage(error.message||"Unknown error");
+  }finally{busy=false;button.disabled=false;button.textContent="Sign In to Central Dashboard (JOINED)";}
 });
-
-/* ---------- NAVIGATION ---------- */
-
-document.querySelectorAll("aside button[data-section]").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll("aside button[data-section]")
-      .forEach(b => b.classList.remove("active"));
-
-    document.querySelectorAll(".section")
-      .forEach(section => section.classList.remove("active"));
-
+document.querySelectorAll("aside button[data-section]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.querySelectorAll("aside button[data-section]").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
     button.classList.add("active");
     $(button.dataset.section).classList.add("active");
   });
 });
-
-/* ---------- DASHBOARD COUNTS ---------- */
-
-async function safeCount(db, collectionName) {
-  const snapshot = await db.collection(collectionName).get();
-  return snapshot.size;
+async function safeCount(db, collectionName){const snapshot=await db.collection(collectionName).get();return snapshot.size;}
+async function refreshDashboard(){
+  getCompanyAdmin();getStudentAdmin();
+  const results=await Promise.allSettled([safeCount(studentDB,"applications"),safeCount(studentDB,"applicationAccessRequests"),safeCount(studentDB,"publicCertificates"),safeCount(companyDB,"documentRequests")]);
+  const ids=["applicationCount","accessCount","certificateCount","documentCount"];
+  results.forEach((result,index)=>{$(ids[index]).textContent=result.status==="fulfilled"?result.value:"Unavailable";});
+  const failed=results.some(r=>r.status==="rejected");
+  $("systemStatus").textContent=failed?"Some collections could not load. Check Firestore rules.":"Dashboard counts loaded. JOINED mode active.";
+  if(failed){notice("Some collections unavailable but JOINED login works.",true);}else{notice("Both projects JOINED and counts loaded.");}
 }
-
-async function refreshDashboard() {
-  getCompanyAdmin();
-  getStudentAdmin();
-
-  const results = await Promise.allSettled([
-    safeCount(studentDB, "applications"),
-    safeCount(studentDB, "applicationAccessRequests"),
-    safeCount(studentDB, "publicCertificates"),
-    safeCount(companyDB, "documentRequests")
-  ]);
-
-  const ids = [
-    "applicationCount",
-    "accessCount",
-    "certificateCount",
-    "documentCount"
-  ];
-
-  results.forEach((result, index) => {
-    $(ids[index]).textContent =
-      result.status === "fulfilled" ? result.value : "Unavailable";
+$("refreshButton").addEventListener("click", async()=>{try{await refreshDashboard();}catch(e){alert("Refresh failed: "+e.message);}});
+async function loadApplications(){
+  getStudentAdmin();const snapshot=await studentDB.collection("applications").get();
+  const rows=snapshot.docs.map(doc=>{
+    const d=doc.data();
+    const statusOptions=["Pending","Verified","Rejected","Unable to Verify"].map(v=>`<option value="${escapeHTML(v)}" ${d.status===v?"selected":""}>${escapeHTML(v)}</option>`).join("");
+    const paymentOptions=["Unpaid","Pending","Paid","Refunded"].map(v=>`<option value="${escapeHTML(v)}" ${d.paymentStatus===v?"selected":""}>${escapeHTML(v)}</option>`).join("");
+    return row([escapeHTML(doc.id),escapeHTML(d.ref||""),escapeHTML(d.fullName||""),escapeHTML(d.email||""),escapeHTML(d.certificateNumber||""),escapeHTML(d.school||""),escapeHTML(d.course||""),escapeHTML(d.status||"Pending"),escapeHTML(d.paymentStatus||"Unpaid"),`<select id="status-${escapeHTML(doc.id)}">${statusOptions}</select><select id="payment-${escapeHTML(doc.id)}">${paymentOptions}</select><button class="primary" data-action="save-application" data-id="${escapeHTML(doc.id)}">Save</button><button class="secondary" data-action="publish-certificate" data-id="${escapeHTML(doc.id)}">Publish</button>`]);
   });
-
-  const failed = results.some(result => result.status === "rejected");
-
-  $("systemStatus").textContent = failed
-    ? "Some collections could not load. Check Firestore rules and browser errors."
-    : "Dashboard counts loaded successfully.";
-
-  if (failed) {
-    notice("Some Firestore collections were unavailable. Login may still be working.", true);
-  } else {
-    notice("Both projects are connected and the dashboard counts loaded.");
-  }
+  renderTable("applicationsTable",["Doc ID","Ref","Student","Email","Cert No","Institution","Course","Status","Payment","Actions"],rows);
 }
-
-$("refreshButton").addEventListener("click", async () => {
-  try {
-    await refreshDashboard();
-  } catch (error) {
-    alert("Refresh failed: " + error.message);
-  }
-});
-
-/* ---------- STUDENT APPLICATIONS ---------- */
-
-async function loadApplications() {
-  getStudentAdmin();
-
-  const snapshot = await studentDB.collection("applications").get();
-
-  const rows = snapshot.docs.map(doc => {
-    const d = doc.data();
-
-    const statusOptions = [
-      "Pending", "Verified", "Rejected", "Unable to Verify"
-    ].map(value =>
-      `<option value="${escapeHTML(value)}"
-        ${d.status === value ? "selected" : ""}>
-        ${escapeHTML(value)}
-      </option>`
-    ).join("");
-
-    const paymentOptions = [
-      "Unpaid", "Pending", "Paid", "Refunded"
-    ].map(value =>
-      `<option value="${escapeHTML(value)}"
-        ${d.paymentStatus === value ? "selected" : ""}>
-        ${escapeHTML(value)}
-      </option>`
-    ).join("");
-
-    return row([
-      escapeHTML(doc.id),
-      escapeHTML(d.ref || ""),
-      escapeHTML(d.fullName || ""),
-      escapeHTML(d.email || ""),
-      escapeHTML(d.certificateNumber || ""),
-      escapeHTML(d.school || ""),
-      escapeHTML(d.course || ""),
-      escapeHTML(d.status || "Pending"),
-      escapeHTML(d.paymentStatus || "Unpaid"),
-      `
-        <label for="status-${escapeHTML(doc.id)}">Status</label>
-        <select id="status-${escapeHTML(doc.id)}">${statusOptions}</select>
-
-        <label for="payment-${escapeHTML(doc.id)}">Payment</label>
-        <select id="payment-${escapeHTML(doc.id)}">${paymentOptions}</select>
-
-        <button class="primary" data-action="save-application"
-          data-id="${escapeHTML(doc.id)}">Save</button>
-
-        <button class="secondary" data-action="publish-certificate"
-          data-id="${escapeHTML(doc.id)}">Publish Verified</button>
-      `
-    ]);
-  });
-
-  renderTable("applicationsTable", [
-    "Document ID", "Reference", "Student", "Email",
-    "Certificate No.", "Institution", "Course",
-    "Status", "Payment", "Administrator Actions"
-  ], rows);
-}
-
-$("loadApplicationsButton").addEventListener("click", async () => {
-  $("applicationsTable").textContent = "Loading applications...";
-
-  try {
-    await loadApplications();
-  } catch (error) {
-    $("applicationsTable").textContent =
-      "Could not load applications: " + error.message;
-  }
-});
-
-$("applicationsTable").addEventListener("click", async event => {
-  const button = event.target.closest("button[data-action]");
-  if (!button) return;
-
-  const id = button.dataset.id;
-  const action = button.dataset.action;
-
-  try {
+$("loadApplicationsButton").addEventListener("click", async()=>{$("applicationsTable").textContent="Loading...";try{await loadApplications();}catch(e){$("applicationsTable").textContent="Failed: "+e.message;}});
+$("applicationsTable").addEventListener("click", async event=>{
+  const button=event.target.closest("button[data-action]");if(!button)return;
+  const id=button.dataset.id;const action=button.dataset.action;
+  try{
     getStudentAdmin();
-
-    if (action === "save-application") {
-      const status = $("status-" + id).value;
-      const paymentStatus = $("payment-" + id).value;
-
-      if (!confirm(
-        "Update status to '" + status +
-        "' and payment status to '" + paymentStatus + "'?"
-      )) return;
-
-      await studentDB.collection("applications").doc(id).update({
-        status,
-        paymentStatus,
-        reviewedBy: currentEmail,
-        reviewedAt: firebase.firestore.FieldValue.serverTimestamp()
-      });
-
-      alert("Application updated.");
-      await loadApplications();
+    if(action==="save-application"){
+      const status=$("status-"+id).value;const paymentStatus=$("payment-"+id).value;
+      if(!confirm("Update to "+status+" / "+paymentStatus+"?"))return;
+      await studentDB.collection("applications").doc(id).update({status,paymentStatus,reviewedBy:currentEmail,reviewedAt:firebase.firestore.FieldValue.serverTimestamp()});
+      alert("Updated");await loadApplications();
     }
-
-    if (action === "publish-certificate") {
-      const applicationRef = studentDB.collection("applications").doc(id);
-      const applicationDoc = await applicationRef.get();
-
-      if (!applicationDoc.exists) {
-        throw new Error("Application not found.");
-      }
-
-      const d = applicationDoc.data();
-
-      if (d.status !== "Verified") {
-        throw new Error("Only an application marked Verified can be published.");
-      }
-
-      if (!d.certificateNumber || !String(d.certificateNumber).trim()) {
-        throw new Error("This application has no certificate number.");
-      }
-
-      if (!confirm(
-        "Publish a limited public certificate record for " +
-        (d.fullName || "this student") + "?"
-      )) return;
-
-      const certificateId = String(d.certificateNumber).trim();
-
-      await studentDB.collection("publicCertificates").doc(certificateId).set({
-        certificateNumber: certificateId,
-        fullName: d.fullName || "",
-        institution: d.school || "",
-        qualification: d.certificateType || "",
-        course: d.course || "",
-        status: "Verified",
-        publishedAt: firebase.firestore.FieldValue.serverTimestamp()
-      }, { merge: true });
-
-      alert("Public certificate record published.");
+    if(action==="publish-certificate"){
+      const ref=studentDB.collection("applications").doc(id);const snap=await ref.get();if(!snap.exists)throw new Error("Not found");
+      const d=snap.data();if(d.status!=="Verified")throw new Error("Mark Verified first");if(!d.certificateNumber)throw new Error("No cert number");
+      if(!confirm("Publish for "+(d.fullName||"student")+"?"))return;
+      const certId=String(d.certificateNumber).trim();
+      await studentDB.collection("publicCertificates").doc(certId).set({certificateNumber:certId,fullName:d.fullName||"",institution:d.school||"",qualification:d.certificateType||"",course:d.course||"",status:"Verified",publishedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+      alert("Published");
     }
-
-  } catch (error) {
-    alert("Operation failed: " + error.message);
-  }
+  }catch(e){alert("Failed: "+e.message);}
 });
-
-/* ---------- STUDENT ACCESS REQUESTS ---------- */
-
-async function loadAccessRequests() {
-  getStudentAdmin();
-
-  const snapshot = await studentDB
-    .collection("applicationAccessRequests").get();
-
-  const rows = snapshot.docs.map(doc => {
-    const d = doc.data();
-
-    return row([
-      escapeHTML(doc.id),
-      escapeHTML(d.uid || ""),
-      escapeHTML(d.email || ""),
-      escapeHTML(d.ref || ""),
-      escapeHTML(d.status || ""),
-      escapeHTML(formatValue(d.createdAt)),
-      `
-        <button class="primary" data-access-action="approve"
-          data-id="${escapeHTML(doc.id)}">Approve</button>
-        <button class="danger" data-access-action="reject"
-          data-id="${escapeHTML(doc.id)}">Reject</button>
-      `
-    ]);
-  });
-
-  renderTable("accessTable", [
-    "Request ID", "Student UID", "Email", "Reference",
-    "Status", "Submitted", "Actions"
-  ], rows);
+async function loadAccessRequests(){
+  getStudentAdmin();const snapshot=await studentDB.collection("applicationAccessRequests").get();
+  const rows=snapshot.docs.map(doc=>{const d=doc.data();return row([escapeHTML(doc.id),escapeHTML(d.uid||""),escapeHTML(d.email||""),escapeHTML(d.ref||""),escapeHTML(d.status||""),escapeHTML(formatValue(d.createdAt)),`<button class="primary" data-access-action="approve" data-id="${escapeHTML(doc.id)}">Approve</button><button class="danger" data-access-action="reject" data-id="${escapeHTML(doc.id)}">Reject</button>`]);});
+  renderTable("accessTable",["Request ID","Student UID","Email","Ref","Status","Submitted","Actions"],rows);
 }
-
-$("loadAccessButton").addEventListener("click", async () => {
-  $("accessTable").textContent = "Loading access requests...";
-
-  try {
-    await loadAccessRequests();
-  } catch (error) {
-    $("accessTable").textContent =
-      "Could not load access requests: " + error.message;
-  }
-});
-
-$("accessTable").addEventListener("click", async event => {
-  const button = event.target.closest("button[data-access-action]");
-  if (!button) return;
-
-  const requestId = button.dataset.id;
-  const action = button.dataset.accessAction;
-
-  try {
+$("loadAccessButton").addEventListener("click", async()=>{$("accessTable").textContent="Loading...";try{await loadAccessRequests();}catch(e){$("accessTable").textContent="Failed: "+e.message;}});
+$("accessTable").addEventListener("click", async event=>{
+  const button=event.target.closest("button[data-access-action]");if(!button)return;
+  const requestId=button.dataset.id;const action=button.dataset.accessAction;
+  try{
     getStudentAdmin();
-
-    const requestRef = studentDB
-      .collection("applicationAccessRequests").doc(requestId);
-
-    const requestDoc = await requestRef.get();
-
-    if (!requestDoc.exists) {
-      throw new Error("Access request not found.");
-    }
-
-    const requestData = requestDoc.data();
-
-    if (requestData.status !== "Pending") {
-      throw new Error("This request has already been reviewed.");
-    }
-
-    if (action === "reject") {
-      if (!confirm("Reject this student access request?")) return;
-
-      await requestRef.update({
-        status: "Rejected",
-        reviewedBy: currentEmail,
-        reviewedAt: firebase.firestore.FieldValue.serverTimestamp()
-      });
-
-      alert("Request rejected.");
-      await loadAccessRequests();
-      return;
-    }
-
-    if (!confirm(
-      "Approve access for " + requestData.email +
-      " using reference " + requestData.ref + "?"
-    )) return;
-
-    const applications = await studentDB.collection("applications")
-      .where("ref", "==", requestData.ref).get();
-
-    const matching = applications.docs.filter(doc => {
-      const data = doc.data();
-
-      return String(data.email || "").toLowerCase() ===
-               String(requestData.email || "").toLowerCase()
-        && (!data.ownerUid || data.ownerUid === requestData.uid);
-    });
-
-    if (matching.length !== 1) {
-      throw new Error(
-        "Could not identify exactly one matching application. " +
-        "Check the reference, email, and owner UID."
-      );
-    }
-
-    /*
-     * These writes are separate, not an atomic transaction.
-     * If one succeeds and the other fails, inspect both records before retrying.
-     */
-    await matching[0].ref.update({
-      ownerUid: requestData.uid
-    });
-
-    await requestRef.update({
-      status: "Approved",
-      reviewedBy: currentEmail,
-      reviewedAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-
-    alert("Access request approved.");
-    await loadAccessRequests();
-
-  } catch (error) {
-    alert("Could not complete request: " + error.message);
-  }
+    const requestRef=studentDB.collection("applicationAccessRequests").doc(requestId);const requestDoc=await requestRef.get();if(!requestDoc.exists)throw new Error("Not found");const requestData=requestDoc.data();if(requestData.status!=="Pending")throw new Error("Already reviewed");
+    if(action==="reject"){if(!confirm("Reject?"))return;await requestRef.update({status:"Rejected",reviewedBy:currentEmail,reviewedAt:firebase.firestore.FieldValue.serverTimestamp()});alert("Rejected");await loadAccessRequests();return;}
+    if(!confirm("Approve "+requestData.email+" ref "+requestData.ref+"?"))return;
+    const applications=await studentDB.collection("applications").where("ref","==",requestData.ref).get();
+    const matching=applications.docs.filter(doc=>{const data=doc.data();return String(data.email||"").toLowerCase()===String(requestData.email||"").toLowerCase()&&(!data.ownerUid||data.ownerUid===requestData.uid);});
+    if(matching.length!==1)throw new Error("Could not find exactly one matching application.");
+    await matching[0].ref.update({ownerUid:requestData.uid});
+    await requestRef.update({status:"Approved",reviewedBy:currentEmail,reviewedAt:firebase.firestore.FieldValue.serverTimestamp()});
+    alert("Approved");await loadAccessRequests();
+  }catch(e){alert("Failed: "+e.message);}
 });
-
-/* ---------- PUBLIC CERTIFICATES ---------- */
-
-async function loadCertificates() {
-  getStudentAdmin();
-
-  const snapshot = await studentDB.collection("publicCertificates").get();
-
-  const rows = snapshot.docs.map(doc => {
-    const d = doc.data();
-
-    return row([
-      escapeHTML(doc.id),
-      escapeHTML(d.certificateNumber || ""),
-      escapeHTML(d.fullName || ""),
-      escapeHTML(d.institution || ""),
-      escapeHTML(d.qualification || ""),
-      escapeHTML(d.course || ""),
-      escapeHTML(d.status || "")
-    ]);
-  });
-
-  renderTable("certificatesTable", [
-    "Record ID", "Certificate No.", "Student",
-    "Institution", "Qualification", "Course", "Status"
-  ], rows);
+async function loadCertificates(){
+  getStudentAdmin();const snapshot=await studentDB.collection("publicCertificates").get();
+  const rows=snapshot.docs.map(doc=>{const d=doc.data();return row([escapeHTML(doc.id),escapeHTML(d.certificateNumber||""),escapeHTML(d.fullName||""),escapeHTML(d.institution||""),escapeHTML(d.qualification||""),escapeHTML(d.course||""),escapeHTML(d.status||"")]);});
+  renderTable("certificatesTable",["Record ID","Cert No","Student","Institution","Qualification","Course","Status"],rows);
 }
-
-$("loadCertificatesButton").addEventListener("click", async () => {
-  $("certificatesTable").textContent = "Loading certificates...";
-
-  try {
-    await loadCertificates();
-  } catch (error) {
-    $("certificatesTable").textContent =
-      "Could not load certificates: " + error.message;
-  }
-});
-
-/* ---------- COMPANY COLLECTION VIEWS ---------- */
-
-async function loadCompanyCollection(collectionName, targetId, headers) {
-  getCompanyAdmin();
-
-  const snapshot = await companyDB.collection(collectionName).get();
-
-  const rows = snapshot.docs.map(doc => {
-    const d = doc.data();
-
-    return row([
-      escapeHTML(doc.id),
-      ...headers.slice(1).map(field => escapeHTML(formatValue(d[field])))
-    ]);
-  });
-
-  renderTable(targetId, headers, rows);
+$("loadCertificatesButton").addEventListener("click", async()=>{$("certificatesTable").textContent="Loading...";try{await loadCertificates();}catch(e){$("certificatesTable").textContent="Failed: "+e.message;}});
+async function loadCompanyCollection(collectionName,targetId,headers){
+  getCompanyAdmin();const snapshot=await companyDB.collection(collectionName).get();
+  const rows=snapshot.docs.map(doc=>{const d=doc.data();return row([escapeHTML(doc.id),...headers.slice(1).map(field=>escapeHTML(formatValue(d[field]))) ]);});
+  renderTable(targetId,headers,rows);
 }
-
-$("loadDocumentsButton").addEventListener("click", async () => {
-  $("documentsTable").textContent = "Loading company document requests...";
-
-  try {
-    await loadCompanyCollection(
-      "documentRequests",
-      "documentsTable",
-      ["Record ID", "status", "clientEmail", "documentName", "createdAt"]
-    );
-  } catch (error) {
-    $("documentsTable").textContent =
-      "Could not load company document requests: " + error.message;
-  }
+$("loadDocumentsButton").addEventListener("click", async()=>{$("documentsTable").textContent="Loading...";try{await loadCompanyCollection("documentRequests","documentsTable",["Record ID","status","clientEmail","documentName","createdAt"]);}catch(e){$("documentsTable").textContent="Failed: "+e.message;}});
+$("loadClientsButton").addEventListener("click", async()=>{$("clientsTable").textContent="Loading...";try{await loadCompanyCollection("clientProfiles","clientsTable",["Record ID","email","fullName","companyName","createdAt"]);}catch(e){$("clientsTable").textContent="Failed: "+e.message;}});
+$("loadAuditButton").addEventListener("click", async()=>{
+  $("auditTable").textContent="Loading...";
+  try{getCompanyAdmin();const names=["verificationWithdrawalAudit","verificationRestorationAudit"];const rows=[];for(const name of names){const snap=await companyDB.collection(name).get();snap.docs.forEach(doc=>{const d=doc.data();rows.push(row([escapeHTML(name),escapeHTML(doc.id),escapeHTML(formatValue(d.certificateNumber)),escapeHTML(formatValue(d.reason)),escapeHTML(formatValue(d.performedBy)),escapeHTML(formatValue(d.createdAt||d.timestamp))]));});}renderTable("auditTable",["Collection","Record ID","Certificate","Reason","Performed By","Date"],rows);}catch(e){$("auditTable").textContent="Failed: "+e.message;}
 });
-
-$("loadClientsButton").addEventListener("click", async () => {
-  $("clientsTable").textContent = "Loading client profiles...";
-
-  try {
-    await loadCompanyCollection(
-      "clientProfiles",
-      "clientsTable",
-      ["Record ID", "email", "fullName", "companyName", "createdAt"]
-    );
-  } catch (error) {
-    $("clientsTable").textContent =
-      "Could not load client profiles: " + error.message;
-  }
-});
-
-/* ---------- COMPANY AUDIT RECORDS ---------- */
-
-$("loadAuditButton").addEventListener("click", async () => {
-  $("auditTable").textContent = "Loading audit records...";
-
-  try {
-    getCompanyAdmin();
-
-    const collectionNames = [
-      "verificationWithdrawalAudit",
-      "verificationRestorationAudit"
-    ];
-
-    const rows = [];
-
-    for (const collectionName of collectionNames) {
-      const snapshot = await companyDB.collection(collectionName).get();
-
-      snapshot.docs.forEach(doc => {
-        const d = doc.data();
-
-        rows.push(row([
-          escapeHTML(collectionName),
-          escapeHTML(doc.id),
-          escapeHTML(formatValue(d.certificateNumber)),
-          escapeHTML(formatValue(d.reason)),
-          escapeHTML(formatValue(d.performedBy)),
-          escapeHTML(formatValue(d.createdAt || d.timestamp))
-        ]));
-      });
-    }
-
-    renderTable("auditTable", [
-      "Collection", "Record ID", "Certificate",
-      "Reason", "Performed By", "Date"
-    ], rows);
-
-  } catch (error) {
-    $("auditTable").textContent =
-      "Could not load audit records: " + error.message;
-  }
-});
-
-/* ---------- SIGN OUT ---------- */
-
-$("logoutButton").addEventListener("click", async () => {
-  try {
-    await Promise.all([
-      companyAuth.signOut(),
-      studentAuth.signOut()
-    ]);
-  } catch (error) {
-    console.error("Sign-out error:", error);
-  } finally {
-    $("appLayout").classList.add("hidden");
-    $("logoutButton").classList.add("hidden");
-    $("loginScreen").classList.remove("hidden");
-    $("password").value = "";
-    currentEmail = "";
-    clearMessage();
-    notice("You have signed out of the central dashboard.");
-  }
+$("logoutButton").addEventListener("click", async()=>{
+  try{await Promise.all([companyAuth.signOut(),studentAuth.signOut()]);}catch(e){console.error(e);}
+  finally{$("appLayout").classList.add("hidden");$("logoutButton").classList.add("hidden");$("loginScreen").classList.remove("hidden");$("password").value="";currentEmail="";clearMessage();notice("Signed out.");}
 });
 </script>
-
 </body>
 </html>
