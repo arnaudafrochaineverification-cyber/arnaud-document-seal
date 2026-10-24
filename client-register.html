@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register your company account with ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
+  <meta name="theme-color" content="#08783e">
+  <title>Company Registration | ARNAUD</title>  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f7f4;
+      color: #202820;
+    }
+
+    header {
+      background: #08783e;
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      font-size: 14px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 560px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px 22px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #08783e;
+      font-size: 23px;
+    }
+
+    .intro {
+      color: #59635b;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      margin: 17px 0 7px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5ce;
+      border-radius: 7px;
+      font-size: 16px;
+      background: #fff;
+    }
+
+    input:focus {
+      outline: 2px solid #08783e;
+      border-color: transparent;
+    }
+
+    .help {
+      color: #69736b;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 22px;
+      border: 0;
+      border-radius: 7px;
+      background: #08783e;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background: #779b83;
+      cursor: not-allowed;
+    }
+
+    #message {
+      display: none;
+      margin-top: 18px;
+      padding: 13px;
+      border-radius: 7px;
+      line-height: 1.6;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    #message.success {
+      display: block;
+      background: #e5f6e9;
+      color: #145c2b;
+    }
+
+    #message.error {
+      display: block;
+      background: #ffebeb;
+      color: #a21c1c;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 22px;
+      line-height: 2;
+      font-size: 14px;
+    }
+
+    a {
+      color: #08783e;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 15px;
+      color: #667067;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+  </style></head><body>
+  <header>
+    <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+    <p>Secure Document Verification and Client Services</p>
+  </header>  <main>
+    <section class="card">
+      <h2>Create a Company Account</h2>  <p class="intro">
+    Register an authorised company representative account to submit
+    documents, track verification requests, and access completed reports.
+  </p>
+
+  <form id="registerForm">
+    <label for="companyName">Company or Organisation Name</label>
+    <input
+      id="companyName"
+      name="companyName"
+      type="text"
+      maxlength="150"
+      autocomplete="organization"
+      required
+    >
+
+    <label for="representativeName">Authorised Representative's Full Name</label>
+    <input
+      id="representativeName"
+      name="representativeName"
+      type="text"
+      maxlength="120"
+      autocomplete="name"
+      required
+    >
+
+    <label for="email">Official Email Address</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      maxlength="254"
+      autocomplete="email"
+      required
+    >
+
+    <label for="phone">Contact Phone Number</label>
+    <input
+      id="phone"
+      name="phone"
+      type="tel"
+      maxlength="30"
+      autocomplete="tel"
+      required
+    >
+
+    <label for="password">Create Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      minlength="8"
+      autocomplete="new-password"
+      required
+    >
+
+    <p class="help">
+      Use at least 8 characters. Never share your password with another person.
+    </p>
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input
+      id="confirmPassword"
+      name="confirmPassword"
+      type="password"
+      minlength="8"
+      autocomplete="new-password"
+      required
+    >
+
+    <button id="submitButton" type="submit">
+      Create Company Account
+    </button>
+  </form>
+
+  <div id="message" role="status" aria-live="polite"></div>
+
+  <div class="links">
+    Already registered?
+    <a href="client-login.html">Log in to your account</a>
+    <br>
+    <a href="index.html">Return to Main Website</a>
+  </div>
+</section>
+
+  </main>  <footer>
+    &copy; <span id="year"></span> ARNAUD AFROCHAINE TRUST SYSTEMS LTD.<br>
+    Protecting document integrity through verification.
+  </footer>  <script type="module">
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      sendEmailVerification,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+      authDomain: "arnaud-document-trust.firebaseapp.com",
+      projectId: "arnaud-document-trust",
+      storageBucket: "arnaud-document-trust.firebasestorage.app",
+      messagingSenderId: "96008667746",
+      appId: "1:96008667746:web:63a6badb04fb996219873b",
+      measurementId: "G-NYPH2RB851"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("registerForm");
+    const button = document.getElementById("submitButton");
+    const message = document.getElementById("message");
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className = type;
+    }
+
+    function friendlyError(error) {
+      const messages = {
+        "auth/email-already-in-use":
+          "This email already has an account. Please log in instead.",
+        "auth/invalid-email":
+          "Please enter a valid email address.",
+        "auth/weak-password":
+          "Your password is too weak. Use at least 8 characters.",
+        "auth/network-request-failed":
+          "Network error. Check your internet connection and try again.",
+        "permission-denied":
+          "Your account was created, but the profile could not be saved. Please contact the administrator before trying again.",
+        "unavailable":
+          "The service is temporarily unavailable. Please try again later."
+      };
+
+      return messages[error.code] ||
+        "Registration could not be completed. Please try again or contact the administrator.";
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const companyName =
+        document.getElementById("companyName").value.trim();
+
+      const representativeName =
+        document.getElementById("representativeName").value.trim();
+
+      const email =
+        document.getElementById("email").value.trim().toLowerCase();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+      const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+      if (!companyName || !representativeName || !phone || !email) {
+        showMessage("Please complete all the required fields.", "error");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showMessage("The two passwords do not match.", "error");
+        return;
+      }
+
+      if (password.length < 8) {
+        showMessage("Your password must contain at least 8 characters.", "error");
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Creating account...";
+      message.className = "";
+      message.style.display = "none";
+
+      let credential = null;
+
+      try {
+        credential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        await updateProfile(credential.user, {
+          displayName: representativeName
+        });
+
+        await setDoc(doc(db, "clientProfiles", credential.user.uid), {
+          uid: credential.user.uid,
+          companyName: companyName,
+          representativeName: representativeName,
+          email: email,
+          phone: phone,
+          accountType: "companyClient",
+          accountStatus: "pendingEmailVerification",
+          emailVerified: false,
+          createdAt: serverTimestamp()
+        });
+
+        await sendEmailVerification(credential.user);
+
+        showMessage(
+          "Your account has been created. Please open the verification email sent to " +
+          email +
+          " and click its verification link. Your client dashboard will become available after the account and access permissions have been configured. If you cannot find the email, check your spam folder.",
+          "success"
+        );
+
+        form.reset();
+      } catch (error) {
+        console.error("Company registration error:", error);
+
+        showMessage(friendlyError(error), "error");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Create Company Account";
+      }
+    });
+  </script></body>
+</html>
