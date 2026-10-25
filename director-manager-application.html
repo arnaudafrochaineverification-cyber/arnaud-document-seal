@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#075b36">
+<meta name="description" content="Director Manager application portal for ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
+
+<title>Director Manager Application | ARNAUD</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f6f4;
+  color: #203128;
+  line-height: 1.6;
+}
+
+header {
+  background: #075b36;
+  color: white;
+  padding: 30px 18px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 25px;
+}
+
+header p {
+  margin: 5px 0;
+}
+
+.container {
+  width: min(850px, 94%);
+  margin: 25px auto;
+}
+
+.card {
+  background: white;
+  padding: 24px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid #dce6df;
+  box-shadow: 0 3px 12px rgba(0,0,0,.04);
+}
+
+h2 {
+  color: #075b36;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 16px 0 7px;
+}
+
+input:not([type="checkbox"]),
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd7cf;
+  border-radius: 7px;
+  background: white;
+  font: inherit;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+button {
+  border: 0;
+  border-radius: 7px;
+  padding: 13px 18px;
+  margin-top: 18px;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: #08783e;
+  color: white;
+  width: 100%;
+}
+
+.notice {
+  padding: 14px;
+  border-radius: 7px;
+  margin: 15px 0;
+  background: #edf5ef;
+  overflow-wrap: anywhere;
+}
+
+.notice.error {
+  background: #fff0f0;
+  color: #8b1720;
+}
+
+.notice.success {
+  background: #e7f7e9;
+  color: #075b36;
+}
+
+.notice.warning {
+  background: #fff7df;
+  color: #6e5200;
+}
+
+.small {
+  color: #607168;
+  font-size: 13px;
+}
+
+.required {
+  color: #a51f2b;
+}
+
+footer {
+  padding: 25px 15px;
+  text-align: center;
+  color: #607168;
+  font-size: 13px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 500px) {
+  .card {
+    padding: 17px;
+  }
+
+  header h1 {
+    font-size: 21px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Director Manager Application</h1>
+  <p><strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong></p>
+  <p>African Roots, Global Vision.</p>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2>Apply to Become a Director Manager</h2>
+
+    <p>
+      Use this form to apply for the position of Director Manager
+      for a branch of ARNAUD AFROCHAINE TRUST SYSTEMS LTD.
+    </p>
+
+    <div class="notice warning">
+      Submitting this application does not automatically appoint you
+      as a Director Manager. All applications are subject to review
+      and approval by the authorised CEO.
+    </div>
+
+    <div id="message"
+         class="notice hidden"
+         role="status"
+         aria-live="polite"></div>
+
+    <form id="applicationForm">
+
+      <h2>1. Personal Information</h2>
+
+      <label for="fullName">
+        Full Name <span class="required">*</span>
+      </label>
+      <input
+        id="fullName"
+        name="fullName"
+        type="text"
+        maxlength="120"
+        autocomplete="name"
+        required
+      >
+
+      <label for="email">
+        Email Address <span class="required">*</span>
+      </label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        maxlength="254"
+        autocomplete="email"
+        required
+      >
+
+      <label for="phone">
+        Phone Number <span class="required">*</span>
+      </label>
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        maxlength="30"
+        autocomplete="tel"
+        placeholder="+234..."
+        required
+      >
+
+      <h2 style="margin-top:30px">2. Branch Information</h2>
+
+      <label for="country">
+        Country <span class="required">*</span>
+      </label>
+      <input
+        id="country"
+        name="country"
+        type="text"
+        maxlength="100"
+        required
+      >
+
+      <label for="state">
+        State, Province or Region <span class="required">*</span>
+      </label>
+      <input
+        id="state"
+        name="state"
+        type="text"
+        maxlength="100"
+        required
+      >
+
+      <label for="branch">
+        Preferred Branch Name <span class="required">*</span>
+      </label>
+      <input
+        id="branch"
+        name="branch"
+        type="text"
+        maxlength="120"
+        placeholder="Enter the branch you wish to manage"
+        required
+      >
+
+      <label for="branchAddress">
+        Proposed Branch Address
+      </label>
+      <textarea
+        id="branchAddress"
+        name="branchAddress"
+        maxlength="500"
+        placeholder="Enter the branch address, if known"
+      ></textarea>
+
+      <h2 style="margin-top:30px">3. Management Experience</h2>
+
+      <label for="experience">
+        Previous Management Experience
+        <span class="required">*</span>
+      </label>
+      <textarea
+        id="experience"
+        name="experience"
+        maxlength="2500"
+        placeholder="Describe your previous management or supervisory experience"
+        required
+      ></textarea>
+
+      <label for="reason">
+        Why Are You Applying?
+        <span class="required">*</span>
+      </label>
+      <textarea
+        id="reason"
+        name="reason"
+        maxlength="2500"
+        placeholder="Explain why you wish to become a Director Manager"
+        required
+      ></textarea>
+
+      <label for="availability">
+        Availability to Manage the Branch
+        <span class="required">*</span>
+      </label>
+      <select id="availability" name="availability" required>
+        <option value="">Select availability</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+        <option value="To be discussed">To be discussed</option>
+      </select>
+
+      <h2 style="margin-top:30px">4. Declaration</h2>
+
+      <label for="declaration">
+        <input
+          id="declaration"
+          name="declaration"
+          type="checkbox"
+          required
+        >
+        I confirm that the information provided is accurate and
+        understand that appointment requires CEO approval.
+      </label>
+
+      <button id="submitButton" class="primary" type="submit">
+        Submit Director Manager Application
+      </button>
+
+      <p class="small">
+        Please check your information before submitting.
+        Do not submit passwords, bank details or other sensitive
+        financial information through this form.
+      </p>
+
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>What Happens After Submission?</h2>
+
+    <ol>
+      <li>Your application is submitted for review.</li>
+      <li>The CEO reviews your application.</li>
+      <li>The CEO may approve or reject your application.</li>
+      <li>If approved, the CEO confirms your branch and role.</li>
+      <li>Access to staff management tools is granted only after
+          the necessary account and permission setup.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  &copy; <span id="year"></span>
+  ARNAUD AFROCHAINE TRUST SYSTEMS LTD
+</footer>
+
+<script type="module">
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+  authDomain: "arnaud-document-trust.firebaseapp.com",
+  projectId: "arnaud-document-trust",
+  storageBucket: "arnaud-document-trust.firebasestorage.app",
+  messagingSenderId: "96008667746",
+  appId: "1:96008667746:web:63a6badb04fb996219873b",
+  measurementId: "G-NYPH2RB851"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const form = document.getElementById("applicationForm");
+const message = document.getElementById("message");
+const submitButton = document.getElementById("submitButton");
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+function showMessage(text, type = "") {
+  message.textContent = text;
+  message.className = "notice" + (type ? " " + type : "");
+  message.classList.remove("hidden");
+}
+
+function getValue(id) {
+  return document.getElementById(id).value.trim();
+}
+
+form.addEventListener("submit", async event => {
+  event.preventDefault();
+
+  if (!form.reportValidity()) {
+    return;
+  }
+
+  if (!document.getElementById("declaration").checked) {
+    showMessage(
+      "Please confirm the declaration before submitting.",
+      "error"
+    );
+    return;
+  }
+
+  const application = {
+    fullName: getValue("fullName"),
+    email: getValue("email").toLowerCase(),
+    phone: getValue("phone"),
+    country: getValue("country"),
+    state: getValue("state"),
+    branch: getValue("branch"),
+    branchAddress: getValue("branchAddress"),
+    requestedRole: "directorManager",
+    experience: getValue("experience"),
+    reason: getValue("reason"),
+    availability: getValue("availability"),
+    status: "Pending Approval",
+    submittedAt: serverTimestamp(),
+    createdAt: serverTimestamp()
+  };
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(application.email)) {
+    showMessage("Please enter a valid email address.", "error");
+    return;
+  }
+
+  if (!confirm(
+    "Submit your Director Manager application for CEO review?"
+  )) {
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting Application...";
+  message.classList.add("hidden");
+
+  try {
+    const result = await addDoc(
+      collection(db, "staffRequests"),
+      application
+    );
+
+    form.reset();
+
+    showMessage(
+      "Your application was submitted successfully. " +
+      "Your application reference is: " + result.id +
+      ". Your status is Pending Approval. This is not an appointment.",
+      "success"
+    );
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  } catch (error) {
+    console.error("Director Manager application error:", error);
+
+    if (error.code === "permission-denied") {
+      showMessage(
+        "Firebase rejected this submission because the current " +
+        "Firestore security rules do not permit it. The rules must " +
+        "be checked and updated safely before the form can accept applications.",
+        "error"
+      );
+    } else {
+      showMessage(
+        "The application could not be submitted. Please try again. " +
+        "Error: " + (error.code || error.message || "Unknown error"),
+        "error"
+      );
+    }
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent =
+      "Submit Director Manager Application";
+  }
+});
+</script>
+
+</body>
+</html>
