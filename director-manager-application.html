@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Director Manager Application | ARNAUD</title>
-<meta name="description" content="Apply for a Director Manager position with ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#08783e">
+
+<title>Director Manager Application | ARNAUD AFROCHAINE TRUST SYSTEMS LTD</title>
 
 <style>
 :root {
   --green: #08783e;
-  --gold: #c89b32;
+  --dark-green: #04532b;
+  --gold: #d5a52b;
   --light: #f4f8f5;
-  --dark: #173126;
+  --text: #24332a;
+  --border: #dce6df;
 }
 
 * {
@@ -21,147 +23,177 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
   background: var(--light);
-  color: #26352c;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
 }
 
 header {
   background: var(--green);
   color: white;
-  padding: 25px 16px;
   text-align: center;
+  padding: 28px 16px;
   border-bottom: 5px solid var(--gold);
 }
 
 header h1 {
   margin: 0;
-  font-size: 23px;
+  font-size: 25px;
 }
 
 header p {
-  margin: 7px 0 0;
+  margin: 6px 0 0;
 }
 
 .container {
-  width: 100%;
-  max-width: 850px;
+  width: min(950px, 94%);
   margin: 25px auto;
-  padding: 0 14px;
 }
 
-.notice {
-  padding: 14px;
-  background: #fff8e6;
-  border-left: 4px solid var(--gold);
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-form {
+.card {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 15px #0000000d;
+  padding: 24px;
+  margin-bottom: 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 14px rgba(0,0,0,.06);
 }
 
-section {
-  margin-bottom: 28px;
-}
-
-section h2 {
+h2 {
   color: var(--green);
-  border-bottom: 2px solid #e2ece5;
-  padding-bottom: 8px;
-  font-size: 19px;
+  margin-top: 0;
+}
+
+h3 {
+  color: var(--dark-green);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 7px;
+  margin-top: 25px;
 }
 
 label {
   display: block;
-  margin: 15px 0 5px;
   font-weight: bold;
+  margin: 13px 0 5px;
 }
 
-input,
-select,
-textarea {
+input, select, textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #cbd7ce;
-  border-radius: 5px;
-  font-size: 15px;
+  border: 1px solid #cbd8ce;
+  border-radius: 7px;
+  font-size: 16px;
   background: white;
 }
 
 textarea {
-  min-height: 100px;
+  min-height: 90px;
   resize: vertical;
 }
 
-.checkbox {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  margin: 16px 0;
-  font-weight: normal;
-}
-
-.checkbox input {
-  width: auto;
-  margin-top: 6px;
-  flex-shrink: 0;
-}
-
 button {
-  width: 100%;
+  border: 0;
+  border-radius: 7px;
   background: var(--green);
   color: white;
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
+  padding: 13px 18px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  margin: 10px 5px 0 0;
+}
+
+button:hover {
+  background: var(--dark-green);
 }
 
 button:disabled {
-  opacity: 0.6;
+  background: #8ca597;
   cursor: not-allowed;
 }
 
-#message {
-  display: none;
-  padding: 14px;
-  margin-bottom: 18px;
+.secondary {
+  background: #53675a;
+}
+
+.gold {
+  background: #a87a08;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+}
+
+.notice {
+  background: #fff8df;
+  border-left: 4px solid var(--gold);
+  padding: 12px;
   border-radius: 5px;
-  overflow-wrap: anywhere;
+  margin: 12px 0;
+}
+
+.success {
+  background: #e7f7eb;
+  color: #075b2c;
+  padding: 13px;
+  border-radius: 7px;
+}
+
+.error {
+  background: #ffebeb;
+  color: #a00000;
+  padding: 13px;
+  border-radius: 7px;
+}
+
+.info {
+  background: #edf5ff;
+  color: #174c80;
+  padding: 13px;
+  border-radius: 7px;
+}
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: normal;
+  margin: 14px 0;
+}
+
+.check input {
+  width: auto;
+  margin-top: 5px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.small {
+  font-size: 14px;
+  color: #526157;
 }
 
 footer {
   text-align: center;
   padding: 25px 12px;
-  background: var(--dark);
-  color: white;
-  margin-top: 35px;
+  color: #526157;
 }
 
-footer a {
-  color: #f2d47c;
-}
+@media (max-width: 650px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 
-.small {
-  font-size: 13px;
-  color: #59665e;
-}
-
-@media (max-width: 500px) {
-  form {
-    padding: 15px;
+  .card {
+    padding: 17px;
   }
 
   header h1 {
-    font-size: 20px;
+    font-size: 21px;
   }
 }
 </style>
@@ -175,257 +207,327 @@ footer a {
   <p>Director Manager Recruitment Application</p>
 </header>
 
-<div class="container">
+<main class="container">
 
-  <div class="notice">
-    <strong>Important information</strong>
+  <section class="card">
+    <h2>Welcome to ARNAUD Recruitment</h2>
     <p>
-      Applications are subject to document checks, reference checks,
-      and CEO approval. Submitting an application does not guarantee
-      appointment.
+      This portal is for applicants seeking a Director Manager position
+      with ARNAUD AFROCHAINE TRUST SYSTEMS LTD.
     </p>
-    <p class="small">
-      Supporting-document uploads are not activated yet. Do not upload
-      or send identity documents through this page until secure storage
-      has been configured.
-    </p>
-  </div>
+    <div class="notice">
+      Create an account, verify your email address, and sign in before
+      submitting your application. Email verification does not itself
+      mean that your application has been approved.
+    </div>
+  </section>
 
-  <div id="message" role="status" aria-live="polite"></div>
+  <!-- ACCOUNT SECTION -->
+  <section class="card" id="accountSection">
+    <h2>Applicant Account</h2>
 
-  <form id="applicationForm">
+    <div id="authMessage" role="status" aria-live="polite"></div>
 
-    <section>
-      <h2>1. Personal Information</h2>
+    <div id="registerPanel">
+      <h3>Create Your Account</h3>
 
-      <label for="fullName">Full legal name *</label>
-      <input id="fullName" name="fullName"
-             autocomplete="name" required maxlength="120">
+      <label for="registerEmail">Email Address</label>
+      <input id="registerEmail" type="email" autocomplete="email"
+             maxlength="150" required>
 
-      <label for="email">Email address *</label>
-      <input id="email" name="email" type="email"
-             autocomplete="email" required maxlength="150">
-
-      <label for="phone">Phone number *</label>
-      <input id="phone" name="phone" type="tel"
-             autocomplete="tel" required maxlength="30">
-
-      <label for="dateOfBirth">Date of birth *</label>
-      <input id="dateOfBirth" name="dateOfBirth"
-             type="date" required>
-
-      <label for="country">Country of residence *</label>
-      <input id="country" name="country"
-             required maxlength="100">
-
-      <label for="state">State or region *</label>
-      <input id="state" name="state"
-             required maxlength="100">
-
-      <label for="residentialAddress">Residential address *</label>
-      <textarea id="residentialAddress" name="residentialAddress"
-                required maxlength="500"></textarea>
-    </section>
-
-    <section>
-      <h2>2. Identification</h2>
-
-      <label for="idType">Identification type *</label>
-      <select id="idType" name="idType" required>
-        <option value="">Select identification type</option>
-        <option value="International Passport">International Passport</option>
-        <option value="National Identity Card">National Identity Card</option>
-        <option value="Drivers Licence">Driver's Licence</option>
-        <option value="Voters Card">Voter's Card</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <label for="idNumber">Identification number *</label>
-      <input id="idNumber" name="idNumber"
-             required maxlength="100">
+      <label for="registerPassword">Create Password</label>
+      <input id="registerPassword" type="password"
+             autocomplete="new-password" minlength="8" required>
 
       <p class="small">
-        Secure identification-document uploads will be added after
-        private storage has been configured.
+        Use a strong password of at least 8 characters.
       </p>
-    </section>
 
-    <section>
-      <h2>3. Education</h2>
+      <button type="button" id="registerButton">
+        Create Account and Send Verification Email
+      </button>
+    </div>
 
-      <label for="highestQualification">Highest qualification *</label>
-      <select id="highestQualification"
-              name="highestQualification" required>
-        <option value="">Select qualification</option>
-        <option value="Secondary School">Secondary School</option>
-        <option value="OND">OND</option>
-        <option value="HND">HND</option>
-        <option value="Bachelor Degree">Bachelor's Degree</option>
-        <option value="Postgraduate Diploma">Postgraduate Diploma</option>
-        <option value="Masters Degree">Master's Degree</option>
-        <option value="Doctorate">Doctorate</option>
-        <option value="Professional Qualification">Professional Qualification</option>
+    <div id="loginPanel">
+      <h3>Already Have an Account?</h3>
+
+      <label for="loginEmail">Email Address</label>
+      <input id="loginEmail" type="email" autocomplete="email"
+             maxlength="150">
+
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" type="password"
+             autocomplete="current-password">
+
+      <button type="button" id="loginButton">Sign In</button>
+      <button type="button" id="resetPasswordButton" class="secondary">
+        Reset Password
+      </button>
+    </div>
+
+    <div id="signedInPanel" class="hidden">
+      <h3>Your Account</h3>
+      <p>Signed in as: <strong id="signedInEmail"></strong></p>
+      <p id="verificationStatus"></p>
+
+      <button type="button" id="refreshVerificationButton" class="gold">
+        I Have Verified My Email — Check Again
+      </button>
+
+      <button type="button" id="resendVerificationButton" class="secondary">
+        Resend Verification Email
+      </button>
+
+      <button type="button" id="signOutButton" class="secondary">
+        Sign Out
+      </button>
+    </div>
+  </section>
+
+  <!-- APPLICATION SECTION -->
+  <section class="card hidden" id="applicationSection">
+    <h2>Director Manager Application Form</h2>
+
+    <div id="applicationMessage" role="status" aria-live="polite"></div>
+
+    <p class="small">
+      Complete every required field accurately. Your application will
+      remain pending until reviewed by the company.
+    </p>
+
+    <form id="applicationForm">
+
+      <h3>1. Personal Information</h3>
+
+      <div class="grid">
+        <div>
+          <label for="fullName">Full Legal Name *</label>
+          <input id="fullName" maxlength="120" required>
+        </div>
+
+        <div>
+          <label for="email">Email Address *</label>
+          <input id="email" type="email" maxlength="150" required readonly>
+        </div>
+
+        <div>
+          <label for="phone">Phone Number *</label>
+          <input id="phone" type="tel" maxlength="30" required>
+        </div>
+
+        <div>
+          <label for="dateOfBirth">Date of Birth *</label>
+          <input id="dateOfBirth" type="date" required>
+        </div>
+
+        <div>
+          <label for="country">Country *</label>
+          <input id="country" maxlength="100" required>
+        </div>
+
+        <div>
+          <label for="state">State / Region *</label>
+          <input id="state" maxlength="100" required>
+        </div>
+      </div>
+
+      <label for="residentialAddress">Residential Address *</label>
+      <textarea id="residentialAddress" maxlength="500" required></textarea>
+
+      <h3>2. Identification</h3>
+
+      <label for="idType">Identification Type *</label>
+      <select id="idType" required>
+        <option value="">Select identification type</option>
+        <option value="National ID">National ID</option>
+        <option value="International Passport">International Passport</option>
+        <option value="Driver Licence">Driver Licence</option>
+        <option value="Voter Card">Voter Card</option>
         <option value="Other">Other</option>
       </select>
 
-      <label for="institution">Institution attended *</label>
-      <input id="institution" name="institution"
-             required maxlength="180">
+      <label for="idNumber">Identification Number *</label>
+      <input id="idNumber" maxlength="100" required>
 
-      <label for="course">Course of study *</label>
-      <input id="course" name="course"
-             required maxlength="180">
+      <div class="notice">
+        Only provide identification details through this official HTTPS
+        website. Do not submit your bank PIN, password, or one-time code.
+      </div>
 
-      <label for="graduationYear">Graduation year *</label>
-      <input id="graduationYear" name="graduationYear"
-             type="number" min="1950" max="2100" required>
-    </section>
+      <h3>3. Education</h3>
 
-    <section>
-      <h2>4. Management Experience</h2>
+      <div class="grid">
+        <div>
+          <label for="highestQualification">Highest Qualification *</label>
+          <select id="highestQualification" required>
+            <option value="">Select qualification</option>
+            <option value="Secondary School">Secondary School</option>
+            <option value="OND">OND</option>
+            <option value="HND">HND</option>
+            <option value="Bachelor's Degree">Bachelor's Degree</option>
+            <option value="Master's Degree">Master's Degree</option>
+            <option value="Doctorate">Doctorate</option>
+            <option value="Professional Qualification">Professional Qualification</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
-      <label for="yearsExperience">
-        Years of management experience *
-      </label>
-      <select id="yearsExperience" name="yearsExperience" required>
-        <option value="">Select experience</option>
-        <option value="Less than 1 year">Less than 1 year</option>
-        <option value="1-2 years">1–2 years</option>
-        <option value="3-5 years">3–5 years</option>
-        <option value="6-10 years">6–10 years</option>
-        <option value="More than 10 years">More than 10 years</option>
-      </select>
+        <div>
+          <label for="institution">Institution *</label>
+          <input id="institution" maxlength="200" required>
+        </div>
 
-      <label for="previousEmployer">Previous employer</label>
-      <input id="previousEmployer" name="previousEmployer"
-             maxlength="180">
+        <div>
+          <label for="course">Course / Field of Study *</label>
+          <input id="course" maxlength="150" required>
+        </div>
 
-      <label for="previousPosition">Previous position</label>
-      <input id="previousPosition" name="previousPosition"
-             maxlength="180">
+        <div>
+          <label for="graduationYear">Graduation Year *</label>
+          <input id="graduationYear" type="number"
+                 min="1950" max="2100" required>
+        </div>
+      </div>
+
+      <h3>4. Management Experience</h3>
+
+      <div class="grid">
+        <div>
+          <label for="yearsExperience">Years of Experience *</label>
+          <select id="yearsExperience" required>
+            <option value="">Select experience</option>
+            <option value="Less than 1 year">Less than 1 year</option>
+            <option value="1-2 years">1–2 years</option>
+            <option value="3-5 years">3–5 years</option>
+            <option value="6-10 years">6–10 years</option>
+            <option value="Over 10 years">Over 10 years</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="previousEmployer">Previous Employer *</label>
+          <input id="previousEmployer" maxlength="200" required>
+        </div>
+
+        <div>
+          <label for="previousPosition">Previous Position *</label>
+          <input id="previousPosition" maxlength="150" required>
+        </div>
+      </div>
 
       <label for="experienceDetails">
-        Describe your management experience *
+        Describe Your Management Experience *
       </label>
-      <textarea id="experienceDetails" name="experienceDetails"
-                required maxlength="3000"></textarea>
+      <textarea id="experienceDetails" maxlength="3000" required></textarea>
 
-      <p class="small">
-        CV and supporting-document uploads will be enabled after
-        secure file storage is configured.
-      </p>
-    </section>
+      <h3>5. Preferred Branch</h3>
 
-    <section>
-      <h2>5. Preferred Branch</h2>
+      <div class="grid">
+        <div>
+          <label for="branchCountry">Preferred Country *</label>
+          <input id="branchCountry" maxlength="100" required>
+        </div>
 
-      <label for="branchCountry">Preferred country *</label>
-      <input id="branchCountry" name="branchCountry"
-             required maxlength="100">
+        <div>
+          <label for="branch">Preferred Branch / Region *</label>
+          <input id="branch" maxlength="150" required>
+        </div>
+      </div>
 
-      <label for="branch">Preferred branch or city *</label>
-      <input id="branch" name="branch"
-             required maxlength="150">
+      <label for="branchAddress">Preferred Branch Address / Area *</label>
+      <textarea id="branchAddress" maxlength="500" required></textarea>
 
-      <label for="branchAddress">Proposed branch address</label>
-      <textarea id="branchAddress" name="branchAddress"
-                maxlength="500"></textarea>
-    </section>
+      <h3>6. Guarantor Information</h3>
 
-    <section>
-      <h2>6. Guarantor Information</h2>
+      <div class="grid">
+        <div>
+          <label for="guarantorName">Guarantor's Full Name *</label>
+          <input id="guarantorName" maxlength="120" required>
+        </div>
 
-      <label for="guarantorName">Guarantor's full name *</label>
-      <input id="guarantorName" name="guarantorName"
-             required maxlength="120">
+        <div>
+          <label for="guarantorPhone">Guarantor's Phone *</label>
+          <input id="guarantorPhone" type="tel" maxlength="30" required>
+        </div>
 
-      <label for="guarantorPhone">Guarantor's phone *</label>
-      <input id="guarantorPhone" name="guarantorPhone"
-             type="tel" required maxlength="30">
+        <div>
+          <label for="guarantorEmail">Guarantor's Email *</label>
+          <input id="guarantorEmail" type="email" maxlength="150" required>
+        </div>
 
-      <label for="guarantorEmail">Guarantor's email</label>
-      <input id="guarantorEmail" name="guarantorEmail"
-             type="email" maxlength="150">
+        <div>
+          <label for="guarantorOccupation">Guarantor's Occupation *</label>
+          <input id="guarantorOccupation" maxlength="150" required>
+        </div>
 
-      <label for="guarantorOccupation">Guarantor's occupation *</label>
-      <input id="guarantorOccupation" name="guarantorOccupation"
-             required maxlength="150">
+        <div>
+          <label for="guarantorRelationship">Relationship to Applicant *</label>
+          <input id="guarantorRelationship" maxlength="100" required>
+        </div>
+      </div>
 
-      <label for="guarantorRelationship">
-        Relationship to applicant *
-      </label>
-      <input id="guarantorRelationship"
-             name="guarantorRelationship"
-             required maxlength="100">
+      <label for="guarantorAddress">Guarantor's Address *</label>
+      <textarea id="guarantorAddress" maxlength="500" required></textarea>
 
-      <label for="guarantorAddress">Guarantor's address *</label>
-      <textarea id="guarantorAddress" name="guarantorAddress"
-                required maxlength="500"></textarea>
-
-      <label class="checkbox">
-        <input type="checkbox" id="guarantorConsent"
-               name="guarantorConsent" required>
+      <label class="check">
+        <input id="guarantorConsent" type="checkbox" required>
         <span>
-          I confirm that the guarantor has agreed to be contacted
-          for reference checks.
-        </span>
-      </label>
-    </section>
-
-    <section>
-      <h2>7. Declaration</h2>
-
-      <label for="reason">Why do you want this position? *</label>
-      <textarea id="reason" name="reason"
-                required maxlength="3000"></textarea>
-
-      <label for="availability">Availability to start *</label>
-      <select id="availability" name="availability" required>
-        <option value="">Select availability</option>
-        <option value="Immediately">Immediately</option>
-        <option value="Within 2 weeks">Within 2 weeks</option>
-        <option value="Within 1 month">Within 1 month</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <label class="checkbox">
-        <input type="checkbox" id="accuracyConsent"
-               name="accuracyConsent" required>
-        <span>
-          I declare that the information provided is accurate and
-          understand that false information may lead to rejection.
+          I confirm that I have permission to provide the guarantor's
+          details and understand that the company may contact the guarantor.
         </span>
       </label>
 
-      <label class="checkbox">
-        <input type="checkbox" id="privacyConsent"
-               name="privacyConsent" required>
+      <h3>7. Declaration</h3>
+
+      <label for="reason">
+        Why do you want to become a Director Manager at ARNAUD? *
+      </label>
+      <textarea id="reason" maxlength="3000" required></textarea>
+
+      <label for="availability">Availability / Proposed Start Date *</label>
+      <input id="availability" maxlength="200" required>
+
+      <label class="check">
+        <input id="accuracyConsent" type="checkbox" required>
         <span>
-          I consent to the company using my application information
-          for recruitment review and relevant checks, subject to
-          its privacy and data-protection obligations.
+          I declare that the information supplied is accurate and complete
+          to the best of my knowledge.
         </span>
       </label>
-    </section>
 
-    <button type="submit" id="submitButton">
-      Submit Application
-    </button>
+      <label class="check">
+        <input id="privacyConsent" type="checkbox" required>
+        <span>
+          I consent to ARNAUD AFROCHAINE TRUST SYSTEMS LTD processing these
+          application details for recruitment and review purposes.
+        </span>
+      </label>
 
-  </form>
-</div>
+      <div class="notice">
+        Submission does not guarantee employment or appointment. The company
+        must review and approve the application before any appointment is made.
+      </div>
+
+      <button type="submit" id="submitButton">
+        Submit Director Manager Application
+      </button>
+
+    </form>
+  </section>
+
+  <section class="card hidden" id="submittedSection">
+    <h2>Application Submitted</h2>
+    <div id="submittedMessage" class="success"></div>
+    <p>Keep your application reference for future enquiries.</p>
+  </section>
+
+</main>
 
 <footer>
-  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong>
-  <p>African Roots, Global Vision.</p>
-  <p>
-    Contact:
-    <a href="mailto:arnaudafrochain@gmail.com">
-      arnaudafrochain@gmail.com
-    </a>
-    |
-    <a href="tel:+2349132851465">+2349132851465</a>
-  </p>
+  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong><br>
+  African Roots, Global Vision.<br>
+  Email: arnaudafrochain@gmail.com<br>
+  Phone: +2349132851465
 </footer>
 
 <script type="module">
@@ -434,7 +536,13 @@ import { initializeApp }
 
 import {
   getAuth,
-  signInAnonymously
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendEmailVerification,
+  sendPasswordResetEmail,
+  signOut,
+  onAuthStateChanged,
+  reload
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
 import {
@@ -458,170 +566,456 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const form = document.getElementById("applicationForm");
-const button = document.getElementById("submitButton");
-const message = document.getElementById("message");
+const $ = id => document.getElementById(id);
 
-function showMessage(text, success = false) {
-  message.style.display = "block";
-  message.style.background = success ? "#e5f7e9" : "#fdeaea";
-  message.style.color = success ? "#155b2b" : "#8b1e1e";
-  message.textContent = text;
-
-  message.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
+function showMessage(element, text, type = "info") {
+  element.className = type;
+  element.textContent = text;
 }
 
-function value(id) {
-  return document.getElementById(id).value.trim();
+function errorText(error) {
+  const messages = {
+    "auth/email-already-in-use":
+      "An account already exists with this email. Please sign in instead.",
+    "auth/invalid-email":
+      "Please enter a valid email address.",
+    "auth/weak-password":
+      "Choose a stronger password with at least 8 characters.",
+    "auth/invalid-credential":
+      "The email or password is incorrect.",
+    "auth/user-not-found":
+      "No account was found with this email. Please create an account.",
+    "auth/wrong-password":
+      "The password is incorrect.",
+    "auth/too-many-requests":
+      "Too many attempts. Please wait and try again later.",
+    "auth/network-request-failed":
+      "Network problem. Check your internet connection and try again.",
+    "auth/operation-not-allowed":
+      "Email and password sign-in is not enabled in Firebase Authentication.",
+    "permission-denied":
+      "Firestore denied the request. Check the directorManagerApplications security rules.",
+    "unavailable":
+      "Firebase is temporarily unavailable. Please try again."
+  };
+
+  return messages[error.code] ||
+    error.message ||
+    "Something went wrong. Please try again.";
 }
 
-function createReference() {
-  return "ARNAUD-DM-" +
-    crypto.randomUUID().replaceAll("-", "").slice(0, 12).toUpperCase();
+function setButtonBusy(button, busy, busyText) {
+  if (busy) {
+    button.dataset.originalText = button.textContent;
+    button.textContent = busyText;
+    button.disabled = true;
+  } else {
+    button.textContent = button.dataset.originalText ||
+      button.textContent;
+    button.disabled = false;
+  }
 }
 
-form.addEventListener("submit", async (event) => {
+function updateAuthUI(user) {
+  const loggedIn = Boolean(user);
+
+  $("registerPanel").classList.toggle("hidden", loggedIn);
+  $("loginPanel").classList.toggle("hidden", loggedIn);
+  $("signedInPanel").classList.toggle("hidden", !loggedIn);
+
+  $("applicationSection").classList.add("hidden");
+  $("email").value = user?.email || "";
+
+  if (!user) {
+    $("verificationStatus").textContent = "";
+    return;
+  }
+
+  $("signedInEmail").textContent = user.email || "";
+
+  if (user.emailVerified) {
+    $("verificationStatus").textContent =
+      "Your email is verified. You can complete your application.";
+    $("applicationSection").classList.remove("hidden");
+    $("resendVerificationButton").classList.add("hidden");
+    $("refreshVerificationButton").classList.add("hidden");
+  } else {
+    $("verificationStatus").textContent =
+      "Your email is not verified yet. Open the verification email sent to you, click its link, then return here and check again.";
+    $("resendVerificationButton").classList.remove("hidden");
+    $("refreshVerificationButton").classList.remove("hidden");
+  }
+}
+
+$("registerButton").addEventListener("click", async () => {
+  const button = $("registerButton");
+  const email = $("registerEmail").value.trim();
+  const password = $("registerPassword").value;
+
+  if (!email || password.length < 8) {
+    showMessage(
+      $("authMessage"),
+      "Enter a valid email and a password of at least 8 characters.",
+      "error"
+    );
+    return;
+  }
+
+  setButtonBusy(button, true, "Creating account...");
+
+  try {
+    const credential = await createUserWithEmailAndPassword(
+      auth, email, password
+    );
+
+    await sendEmailVerification(credential.user);
+
+    showMessage(
+      $("authMessage"),
+      "Your account has been created. A verification email has been sent to " +
+        email +
+        ". Open that email, click the verification link, then return and sign in.",
+      "success"
+    );
+
+    await signOut(auth);
+
+    $("loginEmail").value = email;
+    $("loginPassword").value = "";
+    $("registerPassword").value = "";
+
+  } catch (error) {
+    showMessage($("authMessage"), errorText(error), "error");
+  } finally {
+    setButtonBusy(button, false);
+  }
+});
+
+$("loginButton").addEventListener("click", async () => {
+  const button = $("loginButton");
+  const email = $("loginEmail").value.trim();
+  const password = $("loginPassword").value;
+
+  if (!email || !password) {
+    showMessage(
+      $("authMessage"),
+      "Enter your email address and password.",
+      "error"
+    );
+    return;
+  }
+
+  setButtonBusy(button, true, "Signing in...");
+
+  try {
+    const credential = await signInWithEmailAndPassword(
+      auth, email, password
+    );
+
+    await reload(credential.user);
+
+    if (!auth.currentUser.emailVerified) {
+      showMessage(
+        $("authMessage"),
+        "Your email is not verified yet. Open the verification email, click the link, and then use the check button below.",
+        "error"
+      );
+    } else {
+      showMessage(
+        $("authMessage"),
+        "Sign-in successful. Your verified account is ready.",
+        "success"
+      );
+    }
+
+    updateAuthUI(auth.currentUser);
+
+  } catch (error) {
+    showMessage($("authMessage"), errorText(error), "error");
+  } finally {
+    setButtonBusy(button, false);
+  }
+});
+
+$("refreshVerificationButton").addEventListener("click", async () => {
+  const user = auth.currentUser;
+
+  if (!user) {
+    showMessage(
+      $("authMessage"),
+      "Please sign in first.",
+      "error"
+    );
+    return;
+  }
+
+  try {
+    await reload(user);
+    updateAuthUI(auth.currentUser);
+
+    if (auth.currentUser.emailVerified) {
+      showMessage(
+        $("authMessage"),
+        "Email verified successfully. You can now complete your application.",
+        "success"
+      );
+    } else {
+      showMessage(
+        $("authMessage"),
+        "Firebase has not confirmed your email verification yet. Check your inbox and spam folder, click the verification link, and try again.",
+        "error"
+      );
+    }
+  } catch (error) {
+    showMessage($("authMessage"), errorText(error), "error");
+  }
+});
+
+$("resendVerificationButton").addEventListener("click", async () => {
+  const user = auth.currentUser;
+
+  if (!user) return;
+
+  try {
+    await sendEmailVerification(user);
+    showMessage(
+      $("authMessage"),
+      "A new verification email has been sent. Check your inbox and spam folder.",
+      "success"
+    );
+  } catch (error) {
+    showMessage($("authMessage"), errorText(error), "error");
+  }
+});
+
+$("resetPasswordButton").addEventListener("click", async () => {
+  const email = $("loginEmail").value.trim();
+
+  if (!email) {
+    showMessage(
+      $("authMessage"),
+      "Enter your email address in the sign-in email field first.",
+      "error"
+    );
+    return;
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+    showMessage(
+      $("authMessage"),
+      "If an account exists for that address, Firebase will send a password-reset email.",
+      "success"
+    );
+  } catch (error) {
+    showMessage($("authMessage"), errorText(error), "error");
+  }
+});
+
+$("signOutButton").addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    $("applicationForm").reset();
+    $("applicationMessage").textContent = "";
+    $("authMessage").textContent = "";
+    $("submittedSection").classList.add("hidden");
+    showMessage(
+      $("authMessage"),
+      "You have signed out.",
+      "success"
+    );
+  } catch (error) {
+    showMessage($("authMessage"), errorText(error), "error");
+  }
+});
+
+onAuthStateChanged(auth, async user => {
+  if (user) {
+    try {
+      await reload(user);
+    } catch (error) {
+      showMessage($("authMessage"), errorText(error), "error");
+    }
+  }
+
+  updateAuthUI(auth.currentUser);
+});
+
+$("applicationForm").addEventListener("submit", async event => {
   event.preventDefault();
+
+  const button = $("submitButton");
+  const user = auth.currentUser;
+
+  if (!user) {
+    showMessage(
+      $("applicationMessage"),
+      "Please sign in before submitting your application.",
+      "error"
+    );
+    return;
+  }
+
+  try {
+    await reload(user);
+  } catch (error) {
+    showMessage($("applicationMessage"), errorText(error), "error");
+    return;
+  }
+
+  if (!auth.currentUser || !auth.currentUser.emailVerified) {
+    updateAuthUI(auth.currentUser);
+    showMessage(
+      $("applicationMessage"),
+      "You must verify your email before submitting this application.",
+      "error"
+    );
+    return;
+  }
+
+  const form = $("applicationForm");
 
   if (!form.reportValidity()) return;
 
-  const year = Number(value("graduationYear"));
+  const year = Number($("graduationYear").value);
   const currentYear = new Date().getFullYear();
 
   if (!Number.isInteger(year) || year < 1950 || year > currentYear) {
-    showMessage("Please enter a valid graduation year.");
+    showMessage(
+      $("applicationMessage"),
+      "Enter a valid graduation year between 1950 and " + currentYear + ".",
+      "error"
+    );
     return;
   }
 
-  const dateOfBirth = value("dateOfBirth");
-  const today = new Date().toISOString().slice(0, 10);
+  const dob = $("dateOfBirth").value;
 
-  if (!dateOfBirth || dateOfBirth >= today) {
-    showMessage("Please enter a valid date of birth in the past.");
+  if (!dob || dob >= new Date().toISOString().slice(0, 10)) {
+    showMessage(
+      $("applicationMessage"),
+      "Enter a valid date of birth in the past.",
+      "error"
+    );
     return;
   }
 
-  const guarantorConsent =
-    document.getElementById("guarantorConsent").checked;
-  const accuracyConsent =
-    document.getElementById("accuracyConsent").checked;
-  const privacyConsent =
-    document.getElementById("privacyConsent").checked;
-
-  if (!guarantorConsent || !accuracyConsent || !privacyConsent) {
-    showMessage("Please confirm all required declarations.");
+  if (
+    !$("guarantorConsent").checked ||
+    !$("accuracyConsent").checked ||
+    !$("privacyConsent").checked
+  ) {
+    showMessage(
+      $("applicationMessage"),
+      "Please accept all required declarations before submitting.",
+      "error"
+    );
     return;
   }
 
-  button.disabled = true;
-  button.textContent = "Submitting application...";
+  const applicationReference =
+    "ARNAUD-DM-" +
+    crypto.randomUUID().replace(/-/g, "").slice(0, 12).toUpperCase();
+
+  const data = {
+    fullName: $("fullName").value.trim(),
+    email: auth.currentUser.email,
+    phone: $("phone").value.trim(),
+    dateOfBirth: dob,
+    country: $("country").value.trim(),
+    state: $("state").value.trim(),
+    residentialAddress: $("residentialAddress").value.trim(),
+
+    idType: $("idType").value,
+    idNumber: $("idNumber").value.trim(),
+
+    highestQualification: $("highestQualification").value,
+    institution: $("institution").value.trim(),
+    course: $("course").value.trim(),
+    graduationYear: String(year),
+
+    yearsExperience: $("yearsExperience").value,
+    previousEmployer: $("previousEmployer").value.trim(),
+    previousPosition: $("previousPosition").value.trim(),
+    experienceDetails: $("experienceDetails").value.trim(),
+
+    branchCountry: $("branchCountry").value.trim(),
+    branch: $("branch").value.trim(),
+    branchAddress: $("branchAddress").value.trim(),
+
+    guarantorName: $("guarantorName").value.trim(),
+    guarantorPhone: $("guarantorPhone").value.trim(),
+    guarantorEmail: $("guarantorEmail").value.trim(),
+    guarantorOccupation: $("guarantorOccupation").value.trim(),
+    guarantorRelationship: $("guarantorRelationship").value.trim(),
+    guarantorAddress: $("guarantorAddress").value.trim(),
+
+    reason: $("reason").value.trim(),
+    availability: $("availability").value.trim(),
+
+    guarantorConsent: $("guarantorConsent").checked,
+    accuracyConsent: $("accuracyConsent").checked,
+    privacyConsent: $("privacyConsent").checked,
+
+    requestedRole: "directorManager",
+    applicationReference: applicationReference,
+    ownerUid: auth.currentUser.uid,
+
+    status: "Pending Approval",
+    reviewNote: "",
+    reviewedByUid: "",
+    reviewedByEmail: "",
+    reviewedAt: null,
+
+    submittedAt: serverTimestamp()
+  };
+
+  setButtonBusy(button, true, "Submitting application...");
 
   try {
-    if (!auth.currentUser) {
-      await signInAnonymously(auth);
-    }
-
-    const user = auth.currentUser;
-
-    if (!user) {
-      throw new Error("Authentication could not be completed.");
-    }
-
-    const applicationReference = createReference();
-
-    const application = {
-      fullName: value("fullName"),
-      email: value("email").toLowerCase(),
-      phone: value("phone"),
-      dateOfBirth,
-      country: value("country"),
-      state: value("state"),
-      residentialAddress: value("residentialAddress"),
-
-      idType: value("idType"),
-      idNumber: value("idNumber"),
-
-      highestQualification: value("highestQualification"),
-      institution: value("institution"),
-      course: value("course"),
-      graduationYear: String(year),
-
-      yearsExperience: value("yearsExperience"),
-      previousEmployer: value("previousEmployer"),
-      previousPosition: value("previousPosition"),
-      experienceDetails: value("experienceDetails"),
-
-      branchCountry: value("branchCountry"),
-      branch: value("branch"),
-      branchAddress: value("branchAddress"),
-
-      guarantorName: value("guarantorName"),
-      guarantorPhone: value("guarantorPhone"),
-      guarantorEmail: value("guarantorEmail").toLowerCase(),
-      guarantorOccupation: value("guarantorOccupation"),
-      guarantorRelationship: value("guarantorRelationship"),
-      guarantorAddress: value("guarantorAddress"),
-
-      reason: value("reason"),
-      availability: value("availability"),
-
-      guarantorConsent,
-      accuracyConsent,
-      privacyConsent,
-
-      requestedRole: "directorManager",
-      applicationReference,
-      ownerUid: user.uid,
-      status: "Pending Approval",
-      reviewNote: "",
-      reviewedByUid: "",
-      reviewedByEmail: "",
-      reviewedAt: null,
-      submittedAt: serverTimestamp()
-    };
-
-    await addDoc(
+    const docRef = await addDoc(
       collection(db, "directorManagerApplications"),
-      application
+      data
     );
+
+    $("applicationForm").reset();
+
+    $("submittedMessage").textContent =
+      "Your Director Manager application has been received. Your reference is " +
+      applicationReference +
+      ". Keep this reference for your records. Your application is pending review.";
+
+    $("submittedSection").classList.remove("hidden");
+    $("applicationSection").classList.add("hidden");
 
     showMessage(
-      "Application submitted successfully. Your reference is " +
-      applicationReference +
-      ". Keep this reference for your records.",
-      true
+      $("applicationMessage"),
+      "Application submitted successfully. Reference: " +
+        applicationReference,
+      "success"
     );
 
-    form.reset();
-    button.textContent = "Application Submitted";
+    console.log("Application document ID:", docRef.id);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
   } catch (error) {
-    console.error("Director Manager submission error:", error);
+    console.error("Application submission error:", error);
 
-    let errorMessage =
-      "The application could not be submitted. Please try again.";
+    let message = errorText(error);
 
-    if (error.code === "permission-denied") {
-      errorMessage =
-        "Firebase security rules rejected the submission. The database rules must be configured correctly.";
-    } else if (error.code === "auth/operation-not-allowed") {
-      errorMessage =
-        "Anonymous Authentication is not enabled in Firebase.";
-    } else if (error.code === "auth/network-request-failed") {
-      errorMessage =
-        "Network connection failed. Check your internet and try again.";
-    } else if (error.code === "unavailable") {
-      errorMessage =
-        "Firebase is temporarily unavailable. Please try again.";
+    if (
+      error.code === "permission-denied" ||
+      error.code === "firestore/permission-denied"
+    ) {
+      message =
+        "Firebase rejected the submission. Confirm that the directorManagerApplications Firestore rule requires a verified email and matches the fields in this form.";
     }
 
-    showMessage(errorMessage);
+    showMessage($("applicationMessage"), message, "error");
 
-    button.disabled = false;
-    button.textContent = "Submit Application";
+  } finally {
+    setButtonBusy(button, false);
   }
 });
 </script>
