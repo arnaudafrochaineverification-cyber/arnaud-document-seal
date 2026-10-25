@@ -3,14 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#075b36">
+<meta name="theme-color" content="#08783e">
 
-<meta name="description"
-content="CEO staff management and Director Manager recruitment portal for ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
-
-<title>CEO Staff Management | ARNAUD</title>
+<title>CEO Staff Management | ARNAUD AFROCHAINE TRUST SYSTEMS LTD</title>
 
 <style>
+:root {
+  --green: #08783e;
+  --green-dark: #075b30;
+  --gold: #d4a72c;
+  --light: #f3f7f4;
+  --white: #ffffff;
+  --text: #18251d;
+  --muted: #657168;
+  --border: #dce5de;
+  --danger: #b42318;
+  --blue: #175cd3;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -18,68 +28,78 @@ content="CEO staff management and Director Manager recruitment portal for ARNAUD
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f3f6f4;
-  color: #203128;
-  line-height: 1.5;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.55;
 }
 
 header {
-  background: #075b36;
+  background: var(--green-dark);
   color: white;
-  padding: 24px 18px;
-  border-bottom: 5px solid #c89b32;
+  padding: 22px 16px;
+  border-bottom: 5px solid var(--gold);
+}
+
+.header-inner,
+main {
+  width: min(1150px, 100%);
+  margin: auto;
 }
 
 header h1 {
-  margin: 0 0 8px;
-  font-size: 23px;
+  margin: 0;
+  font-size: clamp(21px, 4vw, 30px);
 }
 
 header p {
-  margin: 0;
+  margin: 7px 0 0;
 }
 
-.container {
-  width: min(1200px, 94%);
-  margin: 24px auto;
+.brand-tagline {
+  color: #f6dfa0;
+  font-weight: bold;
 }
 
-.card {
-  background: white;
-  padding: 22px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  border: 1px solid #dce6df;
-  box-shadow: 0 3px 12px rgba(0,0,0,.04);
+main {
+  padding: 18px 14px 40px;
+}
+
+.panel,
+.section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.035);
 }
 
 h2 {
-  color: #075b36;
   margin-top: 0;
-  font-size: 20px;
+  color: var(--green-dark);
+  font-size: 21px;
 }
 
 h3 {
-  color: #075b36;
-  margin-top: 22px;
+  margin-top: 0;
+  overflow-wrap: anywhere;
 }
 
 label {
   display: block;
   font-weight: bold;
-  margin: 15px 0 7px;
+  margin: 13px 0 6px;
 }
 
 input,
 select,
 textarea {
-  display: block;
   width: 100%;
   padding: 12px;
-  border: 1px solid #cbd7cf;
-  border-radius: 7px;
-  background: white;
+  border: 1px solid #cbd5ce;
+  border-radius: 8px;
   font: inherit;
+  background: white;
 }
 
 textarea {
@@ -87,170 +107,211 @@ textarea {
   resize: vertical;
 }
 
-button {
+button,
+.button {
+  display: inline-block;
+  padding: 11px 15px;
   border: 0;
-  border-radius: 7px;
-  padding: 12px 16px;
-  margin: 8px 6px 0 0;
-  font: inherit;
+  border-radius: 8px;
+  background: var(--green);
+  color: white;
   font-weight: bold;
+  font-size: 14px;
   cursor: pointer;
+  text-decoration: none;
+  margin: 5px 4px 5px 0;
+}
+
+button:hover,
+.button:hover {
+  background: var(--green-dark);
 }
 
 button:disabled {
-  opacity: .5;
+  opacity: .55;
   cursor: not-allowed;
 }
 
-.primary {
-  background: #08783e;
-  color: white;
+button.secondary {
+  background: #475467;
 }
 
-.secondary {
-  background: #e5eee8;
-  color: #075b36;
+button.gold {
+  background: #9a6c00;
 }
 
-.danger {
-  background: #a51f2b;
-  color: white;
+button.danger {
+  background: var(--danger);
+}
+
+button.blue {
+  background: var(--blue);
 }
 
 .hidden {
   display: none !important;
 }
 
-.notice {
+.message {
   padding: 12px;
-  border-radius: 7px;
-  margin: 14px 0;
-  background: #edf5ef;
+  border-radius: 8px;
+  margin: 12px 0;
   overflow-wrap: anywhere;
 }
 
-.notice.error {
-  background: #fff0f0;
-  color: #8b1720;
+.message.success {
+  color: #075b30;
+  background: #e4f6e9;
+  border: 1px solid #9ed9af;
 }
 
-.notice.warning {
-  background: #fff7df;
-  color: #6e5200;
+.message.error {
+  color: #8b1e16;
+  background: #fff0ee;
+  border: 1px solid #f0b7b1;
+}
+
+.message.info {
+  color: #174ea6;
+  background: #eff6ff;
+  border: 1px solid #bfd7ff;
 }
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 .stat {
   background: white;
-  border: 1px solid #dce6df;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--gold);
   border-radius: 10px;
-  padding: 18px;
+  padding: 15px;
 }
 
 .stat strong {
   display: block;
   font-size: 27px;
-  color: #075b36;
-  margin-top: 8px;
+  color: var(--green-dark);
 }
 
-.table-wrap {
-  overflow-x: auto;
+.stat span {
+  color: var(--muted);
+  font-size: 13px;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 700px;
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
 }
 
-th,
-td {
-  border-bottom: 1px solid #e0e7e2;
-  padding: 12px;
-  text-align: left;
-  vertical-align: top;
+.tabs button {
+  flex: 1 1 135px;
+  margin: 0;
+  background: #e1eae3;
+  color: #164b2d;
+}
+
+.tabs button.active {
+  background: var(--green);
+  color: white;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 14px;
+}
+
+.application-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 15px;
+  background: #fff;
+  min-width: 0;
+}
+
+.application-card p {
   overflow-wrap: anywhere;
+  margin: 7px 0;
 }
 
-th {
-  background: #edf5ef;
+.muted {
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .status {
   display: inline-block;
-  background: #edf5ef;
-  color: #075b36;
-  padding: 5px 9px;
+  padding: 4px 9px;
   border-radius: 20px;
+  background: #fff1cc;
+  color: #805900;
   font-size: 12px;
   font-weight: bold;
 }
 
-.small {
-  color: #607168;
-  font-size: 13px;
-  line-height: 1.6;
+.status.approved,
+.status.active {
+  background: #dff5e5;
+  color: #08783e;
 }
 
-.application-card {
-  border: 1px solid #dce6df;
-  padding: 16px;
-  border-radius: 9px;
-  margin: 14px 0;
-  overflow-wrap: anywhere;
+.status.rejected,
+.status.inactive {
+  background: #ffe4e1;
+  color: #a32118;
 }
 
-.application-card h3 {
-  margin-top: 0;
-}
-
-.application-details {
+.field-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 0 14px;
 }
 
-.detail {
-  background: #f7faf8;
-  padding: 10px;
-  border-radius: 6px;
-  overflow-wrap: anywhere;
+.actions {
+  margin-top: 12px;
 }
 
-.detail strong {
-  display: block;
-  color: #075b36;
-  font-size: 13px;
-  margin-bottom: 4px;
-}
-
-.review-box {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #dce6df;
+.empty {
+  padding: 20px;
+  background: #f8faf8;
+  border: 1px dashed #cbd5ce;
+  border-radius: 9px;
+  color: var(--muted);
 }
 
 footer {
-  padding: 22px;
   text-align: center;
-  color: #607168;
+  padding: 22px 12px;
+  background: #102b1b;
+  color: white;
   font-size: 13px;
 }
 
-@media(max-width: 600px) {
-  .card {
-    padding: 16px;
+.small-note {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .panel,
+  .section {
+    padding: 13px;
   }
 
-  header h1 {
-    font-size: 20px;
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .tabs button {
+    width: auto;
   }
 }
 </style>
@@ -259,340 +320,332 @@ footer {
 <body>
 
 <header>
-  <h1>CEO Staff Management Dashboard</h1>
-  <p>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</p>
-  <p style="color:#e0f1e6;font-size:13px">
-    Director Manager Recruitment and Central Staff Administration
-  </p>
+  <div class="header-inner">
+    <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+    <p class="brand-tagline">African Roots, Global Vision.</p>
+    <p>CEO Staff Management & Recruitment Review Dashboard</p>
+  </div>
 </header>
 
-<main class="container">
+<main>
 
-  <div id="message"
-       class="notice hidden"
-       role="status"
-       aria-live="polite"></div>
-
-  <!-- CEO LOGIN -->
-
-  <section id="loginSection" class="card">
+  <section id="loginPanel" class="panel">
     <h2>CEO Secure Login</h2>
-
-    <p class="small">
-      Only the authorised CEO account can access this dashboard.
-    </p>
+    <p>Sign in using your authorised company account.</p>
 
     <form id="loginForm">
+      <label for="loginEmail">Email address</label>
+      <input id="loginEmail" type="email" autocomplete="username"
+             required>
 
-      <label for="email">CEO Email Address</label>
-      <input
-        id="email"
-        type="email"
-        autocomplete="username"
-        required>
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" type="password"
+             autocomplete="current-password" required>
 
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        autocomplete="current-password"
-        required>
-
-      <button class="primary" type="submit">
-        Sign In
-      </button>
-
+      <button id="loginButton" type="submit">Sign In</button>
     </form>
+
+    <div id="loginMessage" class="message hidden" role="status"></div>
   </section>
 
-  <!-- MAIN DASHBOARD -->
+  <section id="dashboard" class="hidden">
 
-  <section id="dashboardSection" class="hidden">
+    <section class="panel">
+      <h2>CEO Control Centre</h2>
+      <p id="signedInAs"></p>
 
-    <div class="card">
-      <h2>Welcome to Staff Administration</h2>
+      <button id="refreshButton" type="button">Refresh Dashboard</button>
+      <button id="logoutButton" type="button" class="secondary">Sign Out</button>
 
-      <p id="signedInUser" class="small"></p>
-
-      <p>
-        Review Director Manager applications, manage recruitment,
-        and maintain staff profiles.
-      </p>
-
-      <button
-        id="refreshButton"
-        class="secondary"
-        type="button">
-        Refresh Dashboard
-      </button>
-
-      <button
-        id="logoutButton"
-        class="danger"
-        type="button">
-        Sign Out
-      </button>
-    </div>
-
-    <!-- STATISTICS -->
+      <div id="dashboardMessage" class="message hidden"
+           role="status"></div>
+    </section>
 
     <div class="stats">
-
       <div class="stat">
-        Director Manager Applications
-        <strong id="directorTotal">0</strong>
+        <strong id="statDirector">0</strong>
+        <span>Director Manager Applications</span>
       </div>
 
       <div class="stat">
-        Director Applications Pending
-        <strong id="directorPending">0</strong>
+        <strong id="statPendingDirector">0</strong>
+        <span>Director Applications Pending</span>
       </div>
 
       <div class="stat">
-        Internal Requests Pending
-        <strong id="pendingCount">0</strong>
+        <strong id="statStaffRequests">0</strong>
+        <span>Internal Staff Requests</span>
       </div>
 
       <div class="stat">
-        Active Staff
-        <strong id="activeCount">0</strong>
+        <strong id="statStaff">0</strong>
+        <span>Staff Profiles</span>
       </div>
-
-      <div class="stat">
-        Deactivated Staff
-        <strong id="inactiveCount">0</strong>
-      </div>
-
     </div>
 
-    <!-- DIRECTOR MANAGER APPLICATIONS -->
+    <nav class="tabs" aria-label="Dashboard sections">
+      <button class="active" type="button" data-tab="directorSection">
+        Director Manager Applications
+      </button>
 
-    <section class="card">
+      <button type="button" data-tab="requestsSection">
+        Internal Recruitment
+      </button>
 
+      <button type="button" data-tab="registerSection">
+        Register Staff
+      </button>
+
+      <button type="button" data-tab="directorySection">
+        Staff Directory
+      </button>
+
+      <button type="button" data-tab="rolesSection">
+        Staff Roles
+      </button>
+    </nav>
+
+    <!-- SECTION 1: DIRECTOR MANAGER APPLICATIONS -->
+    <section id="directorSection" class="section">
       <h2>Director Manager Applications</h2>
 
-      <p class="small">
-        Review applications submitted through the Director Manager
-        application form. Applicant information is sensitive and must
-        only be accessed by authorised personnel.
+      <p>
+        Review applications submitted through the public Director Manager
+        application form.
       </p>
 
-      <div class="notice warning">
-        Approval here records a recruitment decision only. It does not
-        create an employee account, grant system permissions, or confirm
-        that identity, qualifications, and references have been verified.
+      <div class="field-grid">
+        <div>
+          <label for="directorFilter">Filter by status</label>
+          <select id="directorFilter">
+            <option value="ALL">All applications</option>
+            <option value="Pending Approval">Pending Approval</option>
+            <option value="Pending CEO Review">Pending CEO Review</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="directorSearch">Search applicants</label>
+          <input id="directorSearch"
+                 placeholder="Name, email or reference">
+        </div>
       </div>
 
-      <label for="directorFilter">Filter applications</label>
-
-      <select id="directorFilter">
-        <option value="all">All applications</option>
-        <option value="Pending Approval">Pending Approval</option>
-        <option value="Under Review">Under Review</option>
-        <option value="Approved">Approved</option>
-        <option value="Rejected">Rejected</option>
-      </select>
-
-      <div id="directorApplicationsArea">
-        Director Manager applications have not been loaded yet.
+      <p id="directorCount" class="muted"></p>
+      <div id="directorApplications" class="card-list">
+        <div class="empty">Applications will appear here after loading.</div>
       </div>
-
     </section>
 
-    <!-- INTERNAL RECRUITMENT REQUESTS -->
-
-    <section class="card">
-
+    <!-- SECTION 2: INTERNAL STAFF REQUESTS -->
+    <section id="requestsSection" class="section hidden">
       <h2>Internal Staff Recruitment Requests</h2>
 
-      <p class="small">
-        This section retains the existing staffRequests workflow
-        for authorised internal recruitment requests.
+      <p>
+        Review requests from the existing internal recruitment workflow.
       </p>
 
-      <div id="requestsArea">
-        Loading internal recruitment requests...
+      <div class="field-grid">
+        <div>
+          <label for="requestFilter">Filter by status</label>
+          <select id="requestFilter">
+            <option value="ALL">All requests</option>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="requestSearch">Search requests</label>
+          <input id="requestSearch"
+                 placeholder="Name, email or role">
+        </div>
       </div>
 
+      <p id="requestCount" class="muted"></p>
+      <div id="staffRequests" class="card-list">
+        <div class="empty">Requests will appear here after loading.</div>
+      </div>
     </section>
 
-    <!-- REGISTER STAFF -->
+    <!-- SECTION 3: REGISTER STAFF -->
+    <section id="registerSection" class="section hidden">
+      <h2>Register a Staff Profile</h2>
 
-    <section class="card">
-
-      <h2>Register New Staff</h2>
-
-      <p class="small">
-        Enter the UID of an existing Firebase Authentication user.
-        This form creates a staff profile, not a login account.
-      </p>
+      <div class="message info">
+        This creates a staff profile record. It does not create a Firebase
+        login account or automatically grant access to protected systems.
+      </div>
 
       <form id="staffForm">
+        <div class="field-grid">
+          <div>
+            <label for="staffName">Full name</label>
+            <input id="staffName" required maxlength="150">
+          </div>
 
-        <label for="staffUid">
-          Firebase Authentication UID
-        </label>
+          <div>
+            <label for="staffEmail">Email address</label>
+            <input id="staffEmail" type="email" required maxlength="254">
+          </div>
 
-        <input
-          id="staffUid"
-          autocomplete="off"
-          required
-          maxlength="128">
+          <div>
+            <label for="staffPhone">Phone number</label>
+            <input id="staffPhone" type="tel" required maxlength="40">
+          </div>
 
-        <label for="staffName">Staff Full Name</label>
+          <div>
+            <label for="staffRole">Staff role</label>
+            <select id="staffRole" required>
+              <option value="">Select role</option>
+              <option value="Director Manager">Director Manager</option>
+              <option value="Country Manager">Country Manager</option>
+              <option value="Branch Manager">Branch Manager</option>
+              <option value="Verification Officer">Verification Officer</option>
+              <option value="Administrative Officer">Administrative Officer</option>
+              <option value="Customer Support Officer">Customer Support Officer</option>
+              <option value="Human Resources Officer">Human Resources Officer</option>
+              <option value="Other Staff">Other Staff</option>
+            </select>
+          </div>
 
-        <input
-          id="staffName"
-          maxlength="120"
-          required>
+          <div>
+            <label for="staffCountry">Country</label>
+            <input id="staffCountry" required maxlength="100">
+          </div>
 
-        <label for="staffEmail">Staff Email Address</label>
+          <div>
+            <label for="staffBranch">Branch</label>
+            <input id="staffBranch" required maxlength="150">
+          </div>
 
-        <input
-          id="staffEmail"
-          type="email"
-          maxlength="254"
-          required>
+          <div>
+            <label for="staffStatus">Profile status</label>
+            <select id="staffStatus" required>
+              <option value="Active">Active</option>
+              <option value="Pending">Pending</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
 
-        <label for="staffRole">Staff Position</label>
+        <label for="staffNotes">Administrative notes (optional)</label>
+        <textarea id="staffNotes" maxlength="2000"></textarea>
 
-        <select id="staffRole" required>
-          <option value="">Select position</option>
-          <option value="directorManager">Director Manager</option>
-          <option value="countryManager">Country Manager</option>
-          <option value="verificationOfficer">Verification Officer</option>
-          <option value="customerSupport">Customer Support</option>
-        </select>
-
-        <label for="staffCountry">Assigned Country</label>
-
-        <input
-          id="staffCountry"
-          maxlength="100"
-          required>
-
-        <label for="staffBranch">Branch / Office</label>
-
-        <input
-          id="staffBranch"
-          maxlength="120"
-          value="Main Office"
-          required>
-
-        <label for="staffStatus">Profile Status</label>
-
-        <select id="staffStatus" required>
-          <option value="Active">Active</option>
-          <option value="Deactivated">Deactivated</option>
-        </select>
-
-        <button class="primary" type="submit">
-          Save Staff Profile
-        </button>
-
-        <button class="secondary" type="reset">
-          Clear Form
-        </button>
-
+        <button id="saveStaffButton" type="submit">Save Staff Profile</button>
       </form>
 
-      <div class="notice warning">
-        Verify the employee's identity and UID before assigning a role.
-        Deactivating a profile does not disable the Firebase Authentication
-        account. Account disabling must be implemented separately.
-      </div>
-
+      <div id="staffFormMessage" class="message hidden"
+           role="status"></div>
     </section>
 
-    <!-- STAFF DIRECTORY -->
-
-    <section class="card">
-
+    <!-- SECTION 4: STAFF DIRECTORY -->
+    <section id="directorySection" class="section hidden">
       <h2>Staff Directory</h2>
 
-      <div id="staffArea">
-        Loading staff records...
+      <div class="field-grid">
+        <div>
+          <label for="staffSearch">Search staff</label>
+          <input id="staffSearch"
+                 placeholder="Name, email, role or branch">
+        </div>
       </div>
 
+      <p id="staffCount" class="muted"></p>
+      <div id="staffDirectory" class="card-list">
+        <div class="empty">Staff profiles will appear here after loading.</div>
+      </div>
     </section>
 
-    <!-- ROLE INFORMATION -->
+    <!-- SECTION 5: ROLE INFORMATION -->
+    <section id="rolesSection" class="section hidden">
+      <h2>Staff Roles & Responsibilities</h2>
 
-    <section class="card">
+      <article class="application-card">
+        <h3>Director Manager</h3>
+        <p>Oversees company operations, management coordination,
+          reporting and approved strategic activities.</p>
+      </article>
 
-      <h2>Staff Roles and Responsibilities</h2>
+      <article class="application-card">
+        <h3>Country Manager</h3>
+        <p>Coordinates approved operations within an assigned country
+          and reports through the authorised management structure.</p>
+      </article>
 
-      <ul>
-        <li>
-          <strong>Director Manager:</strong>
-          manages an authorised branch subject to assigned permissions.
-        </li>
+      <article class="application-card">
+        <h3>Branch Manager</h3>
+        <p>Coordinates branch operations, staff activities and
+          service delivery within the approved branch.</p>
+      </article>
 
-        <li>
-          <strong>Country Manager:</strong>
-          supervises authorised operations in an assigned country.
-        </li>
+      <article class="application-card">
+        <h3>Verification Officer</h3>
+        <p>Handles authorised document verification tasks and follows
+          company verification procedures.</p>
+      </article>
 
-        <li>
-          <strong>Verification Officer:</strong>
-          handles assigned document-review tasks.
-        </li>
+      <article class="application-card">
+        <h3>Administrative Officer</h3>
+        <p>Supports records, communication, scheduling and routine
+          administrative processes.</p>
+      </article>
 
-        <li>
-          <strong>Customer Support:</strong>
-          assists clients with permitted account enquiries.
-        </li>
+      <article class="application-card">
+        <h3>Customer Support Officer</h3>
+        <p>Assists customers with enquiries and routes verification
+          or application concerns to the correct department.</p>
+      </article>
 
-        <li>
-          <strong>CEO:</strong>
-          oversees recruitment approvals and staff assignments.
-        </li>
-      </ul>
+      <article class="application-card">
+        <h3>Human Resources Officer</h3>
+        <p>Supports recruitment coordination, staff records and
+          approved personnel processes.</p>
+      </article>
 
-      <div class="notice warning">
-        Role names alone do not grant secure access. Firebase Security
-        Rules and trusted server-side controls must enforce permissions.
-      </div>
-
+      <p class="small-note">
+        These descriptions are informational. Actual authority must be
+        assigned and enforced through the company's approved access rules.
+      </p>
     </section>
 
   </section>
-
 </main>
 
 <footer>
-  &copy; <span id="year"></span>
-  ARNAUD AFROCHAINE TRUST SYSTEMS LTD
+  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong>
   <br>
   African Roots, Global Vision.
+  <br>
+  Contact: arnaudafrochain@gmail.com | +2349132851465
 </footer>
 
 <script type="module">
-
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 
 import {
   getAuth,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
 import {
   getFirestore,
   collection,
   getDocs,
   doc,
-  setDoc,
   updateDoc,
+  addDoc,
   serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
 /* COMPANY FIREBASE CONFIGURATION */
-
 const firebaseConfig = {
   apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
   authDomain: "arnaud-document-trust.firebaseapp.com",
@@ -603,84 +656,37 @@ const firebaseConfig = {
   measurementId: "G-NYPH2RB851"
 };
 
-
-/* AUTHORISED CEO UID */
-
 const CEO_UID = "Zdi9MZk5uffixwVcJv9i576jmrS2";
-
-
-/* INITIALISE FIREBASE */
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const loginPanel = document.getElementById("loginPanel");
+const dashboard = document.getElementById("dashboard");
+const loginForm = document.getElementById("loginForm");
+const loginButton = document.getElementById("loginButton");
+const loginMessage = document.getElementById("loginMessage");
+const dashboardMessage = document.getElementById("dashboardMessage");
 
-/* PAGE ELEMENTS */
-
-const loginSection =
-  document.getElementById("loginSection");
-
-const dashboardSection =
-  document.getElementById("dashboardSection");
-
-const message =
-  document.getElementById("message");
-
-
-/* APPLICATION STATE */
-
-let currentUser = null;
-let busy = false;
-
-let directorApplications = [];
-let internalRequests = [];
+let directorRecords = [];
+let requestRecords = [];
 let staffRecords = [];
+let currentUser = null;
+let loadingDashboard = false;
+let savingStaff = false;
+let reviewingIds = new Set();
 
-
-/* FOOTER YEAR */
-
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-
-
-/* MESSAGES */
-
-function showMessage(text, type = "") {
-  message.textContent = text;
-
-  message.className =
-    "notice" + (type ? " " + type : "");
-
-  message.classList.remove("hidden");
-
-  message.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
+function showMessage(element, message, type = "info") {
+  element.textContent = message;
+  element.className = "message " + type;
+  element.classList.remove("hidden");
 }
 
-
-function clearMessage() {
-  message.textContent = "";
-  message.className = "notice hidden";
+function clearMessage(element) {
+  element.textContent = "";
+  element.className = "message hidden";
 }
-
-
-/* BUSY STATE */
-
-function setBusy(value) {
-  busy = value;
-
-  document.querySelectorAll(
-    "#dashboardSection button, #loginForm button"
-  ).forEach(button => {
-    button.disabled = value;
-  });
-}
-
-
-/* ESCAPE USER-SUPPLIED TEXT */
 
 function escapeHTML(value) {
   return String(value ?? "").replace(/[&<>"']/g, character => ({
@@ -688,232 +694,709 @@ function escapeHTML(value) {
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
-    "'": "&#39;"
+    "'": "&#039;"
   })[character]);
 }
 
-
-/* CEO CHECK */
-
-function requireCEO(user) {
-  if (!user || user.uid !== CEO_UID) {
-    throw new Error(
-      "Access denied. This account is not authorised for CEO administration."
-    );
-  }
-}
-
-
-/* NORMALISE STATUS */
-
-function statusText(value) {
-  return String(value || "Unknown");
-}
-
-
-/* DATE DISPLAY */
-
 function displayDate(value) {
-  if (!value) return "Not recorded";
-
-  if (typeof value.toDate === "function") {
-    return value.toDate().toLocaleString();
-  }
-
-  if (typeof value === "string") {
-    return escapeHTML(value);
-  }
-
-  return "Not recorded";
-}
-
-
-/* LOAD DASHBOARD DATA */
-
-async function refreshDashboard() {
-
-  if (busy || !currentUser) return;
-
-  requireCEO(currentUser);
-
-  clearMessage();
-  setBusy(true);
+  if (!value) return "Not available";
 
   try {
+    const date = typeof value.toDate === "function"
+      ? value.toDate()
+      : new Date(value);
 
-    const results = await Promise.all([
+    if (Number.isNaN(date.getTime())) return "Not available";
+
+    return date.toLocaleString();
+  } catch {
+    return "Not available";
+  }
+}
+
+function valueFrom(record, ...keys) {
+  for (const key of keys) {
+    if (record[key] !== undefined && record[key] !== null &&
+        record[key] !== "") {
+      return record[key];
+    }
+  }
+
+  return "Not provided";
+}
+
+function normalStatus(value, fallback = "Pending") {
+  const text = String(value || fallback).trim();
+
+  if (!text) return fallback;
+
+  return text;
+}
+
+function statusClass(value) {
+  const text = String(value || "").toLowerCase();
+
+  if (text.includes("approv") || text === "active") {
+    return "approved";
+  }
+
+  if (text.includes("reject") || text === "inactive") {
+    return "rejected";
+  }
+
+  return "";
+}
+
+function requireCEO() {
+  if (!currentUser || currentUser.uid !== CEO_UID) {
+    throw new Error("Only the authorised CEO account can perform this action.");
+  }
+}
+
+function setButtonBusy(button, busy, busyText = "Please wait...") {
+  if (busy) {
+    button.dataset.originalText = button.textContent;
+    button.textContent = busyText;
+    button.disabled = true;
+  } else {
+    button.textContent = button.dataset.originalText || button.textContent;
+    button.disabled = false;
+  }
+}
+
+function searchable(record) {
+  return Object.values(record)
+    .map(value => {
+      if (value && typeof value === "object") return "";
+      return String(value ?? "");
+    })
+    .join(" ")
+    .toLowerCase();
+}
+
+/* LOGIN */
+loginForm.addEventListener("submit", async event => {
+  event.preventDefault();
+  clearMessage(loginMessage);
+
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  setButtonBusy(loginButton, true, "Signing in...");
+
+  try {
+    const credential = await signInWithEmailAndPassword(auth, email, password);
+
+    if (credential.user.uid !== CEO_UID) {
+      await signOut(auth);
+      throw new Error("This account is not authorised for the CEO dashboard.");
+    }
+  } catch (error) {
+    showMessage(
+      loginMessage,
+      error.message || "Sign-in failed. Please check your credentials.",
+      "error"
+    );
+  } finally {
+    setButtonBusy(loginButton, false);
+  }
+});
+
+/* AUTH STATE */
+onAuthStateChanged(auth, async user => {
+  currentUser = user;
+
+  if (!user) {
+    loginPanel.classList.remove("hidden");
+    dashboard.classList.add("hidden");
+    document.getElementById("signedInAs").textContent = "";
+    return;
+  }
+
+  if (user.uid !== CEO_UID) {
+    await signOut(auth);
+    loginPanel.classList.remove("hidden");
+    dashboard.classList.add("hidden");
+    showMessage(
+      loginMessage,
+      "Access denied. This account is not the authorised CEO account.",
+      "error"
+    );
+    return;
+  }
+
+  loginPanel.classList.add("hidden");
+  dashboard.classList.remove("hidden");
+
+  document.getElementById("signedInAs").textContent =
+    "Signed in as: " + (user.email || "Authorised CEO");
+
+  await refreshDashboard();
+});
+
+document.getElementById("logoutButton").addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    showMessage(dashboardMessage, error.message, "error");
+  }
+});
+
+/* DASHBOARD LOADING */
+document.getElementById("refreshButton").addEventListener(
+  "click",
+  refreshDashboard
+);
+
+async function refreshDashboard() {
+  if (loadingDashboard) return;
+
+  try {
+    requireCEO();
+    loadingDashboard = true;
+    clearMessage(dashboardMessage);
+
+    document.getElementById("refreshButton").disabled = true;
+    document.getElementById("refreshButton").textContent = "Refreshing...";
+
+    const results = await Promise.allSettled([
       getDocs(collection(db, "directorManagerApplications")),
       getDocs(collection(db, "staffRequests")),
       getDocs(collection(db, "staffProfiles"))
     ]);
 
-    directorApplications = results[0].docs.map(item => ({
-      id: item.id,
-      ...item.data()
-    }));
+    const errors = [];
 
-    internalRequests = results[1].docs.map(item => ({
-      id: item.id,
-      ...item.data()
-    }));
+    if (results[0].status === "fulfilled") {
+      directorRecords = results[0].value.docs.map(item => ({
+        id: item.id,
+        ...item.data()
+      }));
+    } else {
+      directorRecords = [];
+      errors.push("Director Manager applications could not be loaded.");
+      console.error("Director applications error:", results[0].reason);
+    }
 
-    staffRecords = results[2].docs.map(item => ({
-      id: item.id,
-      ...item.data()
-    }));
+    if (results[1].status === "fulfilled") {
+      requestRecords = results[1].value.docs.map(item => ({
+        id: item.id,
+        ...item.data()
+      }));
+    } else {
+      requestRecords = [];
+      errors.push("Internal staff requests could not be loaded.");
+      console.error("Staff requests error:", results[1].reason);
+    }
+
+    if (results[2].status === "fulfilled") {
+      staffRecords = results[2].value.docs.map(item => ({
+        id: item.id,
+        ...item.data()
+      }));
+    } else {
+      staffRecords = [];
+      errors.push("Staff profiles could not be loaded.");
+      console.error("Staff profiles error:", results[2].reason);
+    }
 
     updateStatistics();
-
     renderDirectorApplications();
-
-    renderInternalRequests();
-
+    renderStaffRequests();
     renderStaffDirectory();
 
+    if (errors.length) {
+      showMessage(
+        dashboardMessage,
+        errors.join(" ") +
+        " Check Firestore rules and the browser console. Sections with errors may be empty.",
+        "error"
+      );
+    } else {
+      showMessage(dashboardMessage, "Dashboard refreshed successfully.", "success");
+    }
   } catch (error) {
-
-    console.error("Dashboard loading error:", error);
-
-    showMessage(
-      "The dashboard could not load all records. The Firestore rules " +
-      "must permit the authorised CEO to read the required collections. " +
-      error.message,
-      "error"
-    );
-
-    document.getElementById(
-      "directorApplicationsArea"
-    ).textContent =
-      "Director Manager applications could not be loaded.";
-
-    document.getElementById(
-      "requestsArea"
-    ).textContent =
-      "Internal requests could not be loaded.";
-
-    document.getElementById(
-      "staffArea"
-    ).textContent =
-      "Staff records could not be loaded.";
-
+    showMessage(dashboardMessage, error.message, "error");
   } finally {
-
-    setBusy(false);
-
+    loadingDashboard = false;
+    document.getElementById("refreshButton").disabled = false;
+    document.getElementById("refreshButton").textContent = "Refresh Dashboard";
   }
-
 }
-
-
-/* UPDATE STATISTICS */
 
 function updateStatistics() {
+  document.getElementById("statDirector").textContent = directorRecords.length;
 
-  document.getElementById("directorTotal").textContent =
-    directorApplications.length;
+  document.getElementById("statPendingDirector").textContent =
+    directorRecords.filter(item => {
+      const status = normalStatus(item.status, "Pending Approval");
+      return [
+        "Pending Approval",
+        "Pending CEO Review",
+        "Under Review"
+      ].includes(status);
+    }).length;
 
-  document.getElementById("directorPending").textContent =
-    directorApplications.filter(item =>
-      item.status === "Pending Approval" ||
-      item.status === "Pending CEO Review"
-    ).length;
+  document.getElementById("statStaffRequests").textContent =
+    requestRecords.length;
 
-  document.getElementById("pendingCount").textContent =
-    internalRequests.filter(item =>
-      item.status === "Pending Approval"
-    ).length;
-
-  document.getElementById("activeCount").textContent =
-    staffRecords.filter(item =>
-      item.status === "Active"
-    ).length;
-
-  document.getElementById("inactiveCount").textContent =
-    staffRecords.filter(item =>
-      item.status === "Deactivated"
-    ).length;
-
+  document.getElementById("statStaff").textContent = staffRecords.length;
 }
 
+/* DIRECTOR MANAGER APPLICATIONS */
+document.getElementById("directorFilter").addEventListener(
+  "change",
+  renderDirectorApplications
+);
 
-/* RENDER DIRECTOR MANAGER APPLICATIONS */
+document.getElementById("directorSearch").addEventListener(
+  "input",
+  renderDirectorApplications
+);
 
 function renderDirectorApplications() {
+  const container = document.getElementById("directorApplications");
+  const filter = document.getElementById("directorFilter").value;
+  const search = document.getElementById("directorSearch").value
+    .trim().toLowerCase();
 
-  const area = document.getElementById(
-    "directorApplicationsArea"
-  );
+  const records = directorRecords.filter(item => {
+    const status = normalStatus(item.status, "Pending Approval");
 
-  const filter = document.getElementById(
-    "directorFilter"
-  ).value;
+    const matchesStatus = filter === "ALL" || status === filter;
+    const matchesSearch = !search || searchable(item).includes(search);
 
-  let records = [...directorApplications];
+    return matchesStatus && matchesSearch;
+  });
 
-  if (filter !== "all") {
-    records = records.filter(item =>
-      item.status === filter
-    );
-  }
+  document.getElementById("directorCount").textContent =
+    records.length + " application(s) shown.";
+
+  container.replaceChildren();
 
   if (!records.length) {
-    area.textContent =
-      "No Director Manager applications match this filter.";
+    container.innerHTML =
+      '<div class="empty">No matching Director Manager applications were found.</div>';
     return;
   }
 
-  area.replaceChildren();
-
-  records.sort((a, b) => {
-    const aDate = a.submittedAt?.toMillis?.() || 0;
-    const bDate = b.submittedAt?.toMillis?.() || 0;
-
-    return bDate - aDate;
-  });
-
   records.forEach(item => {
+    const fullName = valueFrom(item, "fullName", "name");
+    const email = valueFrom(item, "email");
+    const phone = valueFrom(item, "phone");
+    const role = valueFrom(item, "requestedRole");
+    const status = normalStatus(item.status, "Pending Approval");
+    const reference = valueFrom(item, "applicationReference");
+    const branch = valueFrom(item, "branch");
+    const country = valueFrom(item, "branchCountry");
+    const qualification = valueFrom(item, "highestQualification");
+    const institution = valueFrom(item, "institution");
+    const course = valueFrom(item, "course");
+    const experience = valueFrom(item, "yearsExperience");
+    const reason = valueFrom(item, "reason");
+    const submitted = displayDate(item.submittedAt);
+    const reviewNote = String(item.reviewNote || "");
 
     const card = document.createElement("article");
-
     card.className = "application-card";
 
-    const fullName =
-      item.fullName || "Name not recorded";
-
-    const email =
-      item.email || "Email not recorded";
-
-    const phone =
-      item.phone || "Phone not recorded";
-
-    const branchCountry =
-      item.branchCountry || item.country || "Not recorded";
-
-    const branch =
-      item.branch || "Not recorded";
-
-    const qualification =
-      item.highestQualification || "Not recorded";
-
-    const institution =
-      item.institution || "Not recorded";
-
-    const course =
-      item.course || "Not recorded";
-
-    const experience =
-      item.yearsExperience || "Not recorded";
-
-    const applicationStatus =
-      statusText(item.status);
-
-    const canReview =
-      applicationStatus === "Pending Approval" ||
-      applicationStatus === "Pending CEO Review" ||
-      applicationStatus === "Under Review";
-
     card.innerHTML = `
-
       <h3>${escapeHTML(fullName)}</h3>
 
-     
+      <p><strong>Reference:</strong> ${escapeHTML(reference)}</p>
+      <p><strong>Email:</strong> ${escapeHTML(email)}</p>
+      <p><strong>Phone:</strong> ${escapeHTML(phone)}</p>
+      <p><strong>Requested role:</strong> ${escapeHTML(role)}</p>
+      <p><strong>Preferred branch:</strong> ${escapeHTML(branch)}</p>
+      <p><strong>Country:</strong> ${escapeHTML(country)}</p>
+      <p><strong>Qualification:</strong> ${escapeHTML(qualification)}</p>
+      <p><strong>Institution:</strong> ${escapeHTML(institution)}</p>
+      <p><strong>Course:</strong> ${escapeHTML(course)}</p>
+      <p><strong>Experience:</strong> ${escapeHTML(experience)}</p>
+      <p><strong>Reason for applying:</strong> ${escapeHTML(reason)}</p>
+      <p><strong>Submitted:</strong> ${escapeHTML(submitted)}</p>
+      <p><strong>Status:</strong>
+        <span class="status ${statusClass(status)}">
+          ${escapeHTML(status)}
+        </span>
+      </p>
+
+      <label>CEO review note</label>
+      <textarea class="review-note" maxlength="2000"
+        placeholder="Enter your review note">${escapeHTML(reviewNote)}</textarea>
+
+      <div class="actions">
+        <button type="button" class="blue review-btn"
+          data-status="Under Review">Mark Under Review</button>
+
+        <button type="button" class="gold review-btn"
+          data-status="Pending CEO Review">Request CEO Review</button>
+
+        <button type="button" class="review-btn"
+          data-status="Approved">Approve</button>
+
+        <button type="button" class="danger review-btn"
+          data-status="Rejected">Reject</button>
+      </div>
+      <p class="muted">
+        Review updates require matching published Firestore permissions.
+      </p>
+    `;
+
+    card.querySelectorAll(".review-btn").forEach(button => {
+      button.addEventListener("click", async () => {
+        const nextStatus = button.dataset.status;
+        const note = card.querySelector(".review-note").value.trim();
+
+        if (!confirm(
+          "Change this application to '" + nextStatus + "'?"
+        )) {
+          return;
+        }
+
+        if (reviewingIds.has(item.id)) return;
+
+        reviewingIds.add(item.id);
+        setButtonBusy(button, true, "Saving...");
+
+        try {
+          await updateDirectorApplication(item.id, nextStatus, note);
+
+          const index = directorRecords.findIndex(row => row.id === item.id);
+
+          if (index !== -1) {
+            directorRecords[index] = {
+              ...directorRecords[index],
+              status: nextStatus,
+              reviewNote: note,
+              reviewedByUid: currentUser.uid,
+              reviewedByEmail: currentUser.email || "",
+              reviewedAt: new Date()
+            };
+          }
+
+          updateStatistics();
+          renderDirectorApplications();
+
+          showMessage(
+            dashboardMessage,
+            "Application status updated to " + nextStatus + ".",
+            "success"
+          );
+        } catch (error) {
+          showMessage(
+            dashboardMessage,
+            "Could not update the application: " + error.message,
+            "error"
+          );
+        } finally {
+          reviewingIds.delete(item.id);
+        }
+      });
+    });
+
+    container.appendChild(card);
+  });
+}
+
+async function updateDirectorApplication(applicationId, status, note) {
+  requireCEO();
+
+  const allowedStatuses = [
+    "Pending Approval",
+    "Pending CEO Review",
+    "Under Review",
+    "Approved",
+    "Rejected"
+  ];
+
+  if (!allowedStatuses.includes(status)) {
+    throw new Error("Invalid application status.");
+  }
+
+  /*
+   * Only update fields allowed by the proposed Firestore rule.
+   * The Cloud Function creates the application; this dashboard reviews it.
+   */
+  await updateDoc(
+    doc(db, "directorManagerApplications", applicationId),
+    {
+      status,
+      reviewNote: note,
+      reviewedByUid: currentUser.uid,
+      reviewedByEmail: currentUser.email || "",
+      reviewedAt: serverTimestamp()
+    }
+  );
+}
+
+/* INTERNAL STAFF REQUESTS */
+document.getElementById("requestFilter").addEventListener(
+  "change",
+  renderStaffRequests
+);
+
+document.getElementById("requestSearch").addEventListener(
+  "input",
+  renderStaffRequests
+);
+
+function renderStaffRequests() {
+  const container = document.getElementById("staffRequests");
+  const filter = document.getElementById("requestFilter").value;
+  const search = document.getElementById("requestSearch").value
+    .trim().toLowerCase();
+
+  const records = requestRecords.filter(item => {
+    const status = normalStatus(item.status, "Pending");
+
+    return (filter === "ALL" || status === filter) &&
+      (!search || searchable(item).includes(search));
+  });
+
+  document.getElementById("requestCount").textContent =
+    records.length + " request(s) shown.";
+
+  container.replaceChildren();
+
+  if (!records.length) {
+    container.innerHTML =
+      '<div class="empty">No matching internal staff requests were found.</div>';
+    return;
+  }
+
+  records.forEach(item => {
+    const fullName = valueFrom(item, "fullName", "name");
+    const email = valueFrom(item, "email");
+    const role = valueFrom(item, "role", "requestedRole", "position");
+    const country = valueFrom(item, "country");
+    const branch = valueFrom(item, "branch");
+    const status = normalStatus(item.status, "Pending");
+
+    const card = document.createElement("article");
+    card.className = "application-card";
+
+    card.innerHTML = `
+      <h3>${escapeHTML(fullName)}</h3>
+      <p><strong>Email:</strong> ${escapeHTML(email)}</p>
+      <p><strong>Role:</strong> ${escapeHTML(role)}</p>
+      <p><strong>Country:</strong> ${escapeHTML(country)}</p>
+      <p><strong>Branch:</strong> ${escapeHTML(branch)}</p>
+      <p><strong>Status:</strong>
+        <span class="status ${statusClass(status)}">
+          ${escapeHTML(status)}
+        </span>
+      </p>
+      <p class="muted">
+        Request ID: ${escapeHTML(item.id)}
+      </p>
+      <div class="actions">
+        <button class="request-status-btn" data-status="Approved"
+          type="button">Approve Request</button>
+        <button class="request-status-btn danger" data-status="Rejected"
+          type="button">Reject Request</button>
+        <button class="request-status-btn secondary" data-status="Pending"
+          type="button">Set Pending</button>
+      </div>
+    `;
+
+    card.querySelectorAll(".request-status-btn").forEach(button => {
+      button.addEventListener("click", async () => {
+        const nextStatus = button.dataset.status;
+
+        if (!confirm("Change this staff request status to " + nextStatus + "?")) {
+          return;
+        }
+
+        setButtonBusy(button, true, "Saving...");
+
+        try {
+          requireCEO();
+
+          /*
+           * Existing staffRequests rules allow a CEO to update status only.
+           * Do not add review fields here unless your rules explicitly allow them.
+           */
+          await updateDoc(
+            doc(db, "staffRequests", item.id),
+            { status: nextStatus }
+          );
+
+          const index = requestRecords.findIndex(row => row.id === item.id);
+
+          if (index !== -1) {
+            requestRecords[index] = {
+              ...requestRecords[index],
+              status: nextStatus
+            };
+          }
+
+          renderStaffRequests();
+          updateStatistics();
+
+          showMessage(
+            dashboardMessage,
+            "Internal staff request status updated.",
+            "success"
+          );
+        } catch (error) {
+          showMessage(
+            dashboardMessage,
+            "Could not update staff request: " + error.message,
+            "error"
+          );
+        }
+      });
+    });
+
+    container.appendChild(card);
+  });
+}
+
+/* REGISTER STAFF PROFILE */
+document.getElementById("staffForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const button = document.getElementById("saveStaffButton");
+  const message = document.getElementById("staffFormMessage");
+
+  if (savingStaff) return;
+
+  clearMessage(message);
+
+  const fullName = document.getElementById("staffName").value.trim();
+  const email = document.getElementById("staffEmail").value.trim().toLowerCase();
+  const phone = document.getElementById("staffPhone").value.trim();
+  const role = document.getElementById("staffRole").value;
+  const country = document.getElementById("staffCountry").value.trim();
+  const branch = document.getElementById("staffBranch").value.trim();
+  const status = document.getElementById("staffStatus").value;
+  const notes = document.getElementById("staffNotes").value.trim();
+
+  if (!fullName || !email || !phone || !role || !country || !branch) {
+    showMessage(message, "Please complete all required fields.", "error");
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showMessage(message, "Please enter a valid staff email address.", "error");
+    return;
+  }
+
+  savingStaff = true;
+  setButtonBusy(button, true, "Saving Profile...");
+
+  try {
+    requireCEO();
+
+    await addDoc(collection(db, "staffProfiles"), {
+      fullName,
+      email,
+      phone,
+      role,
+      country,
+      branch,
+      status,
+      notes,
+      createdAt: serverTimestamp(),
+      createdByUid: currentUser.uid,
+      createdByEmail: currentUser.email || ""
+    });
+
+    form.reset();
+
+    showMessage(
+      message,
+      "Staff profile saved successfully. No login account was created.",
+      "success"
+    );
+
+    await refreshDashboard();
+  } catch (error) {
+    showMessage(
+      message,
+      "Could not save the staff profile: " + error.message,
+      "error"
+    );
+  } finally {
+    savingStaff = false;
+    setButtonBusy(button, false);
+  }
+});
+
+/* STAFF DIRECTORY */
+document.getElementById("staffSearch").addEventListener(
+  "input",
+  renderStaffDirectory
+);
+
+function renderStaffDirectory() {
+  const container = document.getElementById("staffDirectory");
+  const search = document.getElementById("staffSearch").value
+    .trim().toLowerCase();
+
+  const records = staffRecords.filter(item =>
+    !search || searchable(item).includes(search)
+  );
+
+  document.getElementById("staffCount").textContent =
+    records.length + " staff profile(s) shown.";
+
+  container.replaceChildren();
+
+  if (!records.length) {
+    container.innerHTML =
+      '<div class="empty">No matching staff profiles were found.</div>';
+    return;
+  }
+
+  records.forEach(item => {
+    const fullName = valueFrom(item, "fullName", "name");
+    const email = valueFrom(item, "email");
+    const phone = valueFrom(item, "phone");
+    const role = valueFrom(item, "role", "position");
+    const country = valueFrom(item, "country");
+    const branch = valueFrom(item, "branch");
+    const status = normalStatus(item.status, "Pending");
+
+    const card = document.createElement("article");
+    card.className = "application-card";
+
+    card.innerHTML = `
+      <h3>${escapeHTML(fullName)}</h3>
+      <p><strong>Email:</strong> ${escapeHTML(email)}</p>
+      <p><strong>Phone:</strong> ${escapeHTML(phone)}</p>
+      <p><strong>Role:</strong> ${escapeHTML(role)}</p>
+      <p><strong>Country:</strong> ${escapeHTML(country)}</p>
+      <p><strong>Branch:</strong> ${escapeHTML(branch)}</p>
+      <p><strong>Status:</strong>
+        <span class="status ${statusClass(status)}">
+          ${escapeHTML(status)}
+        </span>
+      </p>
+      <p class="muted">Profile ID: ${escapeHTML(item.id)}</p>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+/* NAVIGATION TABS */
+document.querySelectorAll("[data-tab]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-tab]").forEach(tab => {
+      tab.classList.toggle("active", tab === button);
+    });
+
+    document.querySelectorAll(
+      "#dashboard > .section"
+    ).forEach(section => {
+      section.classList.toggle("hidden", section.id !== button.dataset.tab);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
