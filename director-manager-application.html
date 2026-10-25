@@ -1,10 +1,13 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Director Manager Application | ARNAUD</title>
 <meta name="description" content="Apply for a Director Manager position with ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
-<meta name="theme-color" content="#08783e"><style>
+<meta name="theme-color" content="#08783e">
+
+<style>
 :root {
   --green: #08783e;
   --gold: #c89b32;
@@ -161,11 +164,20 @@ footer a {
     font-size: 20px;
   }
 }
-</style></head><body><header>
+</style>
+</head>
+
+<body>
+
+<header>
   <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
   <p>African Roots, Global Vision.</p>
   <p>Director Manager Recruitment Application</p>
-</header><div class="container">  <div class="notice">
+</header>
+
+<div class="container">
+
+  <div class="notice">
     <strong>Important information</strong>
     <p>
       Applications are subject to document checks, reference checks,
@@ -177,225 +189,233 @@ footer a {
       or send identity documents through this page until secure storage
       has been configured.
     </p>
-  </div>  <div id="message" role="status" aria-live="polite"></div>  <form id="applicationForm"><section>
-  <h2>1. Personal Information</h2>
+  </div>
 
-  <label for="fullName">Full legal name *</label>
-  <input id="fullName" name="fullName"
-         autocomplete="name" required maxlength="120">
+  <div id="message" role="status" aria-live="polite"></div>
 
-  <label for="email">Email address *</label>
-  <input id="email" name="email" type="email"
-         autocomplete="email" required maxlength="150">
+  <form id="applicationForm">
 
-  <label for="phone">Phone number *</label>
-  <input id="phone" name="phone" type="tel"
-         autocomplete="tel" required maxlength="30">
+    <section>
+      <h2>1. Personal Information</h2>
 
-  <label for="dateOfBirth">Date of birth *</label>
-  <input id="dateOfBirth" name="dateOfBirth"
-         type="date" required>
+      <label for="fullName">Full legal name *</label>
+      <input id="fullName" name="fullName"
+             autocomplete="name" required maxlength="120">
 
-  <label for="country">Country of residence *</label>
-  <input id="country" name="country"
-         required maxlength="100">
+      <label for="email">Email address *</label>
+      <input id="email" name="email" type="email"
+             autocomplete="email" required maxlength="150">
 
-  <label for="state">State or region *</label>
-  <input id="state" name="state"
-         required maxlength="100">
+      <label for="phone">Phone number *</label>
+      <input id="phone" name="phone" type="tel"
+             autocomplete="tel" required maxlength="30">
 
-  <label for="residentialAddress">Residential address *</label>
-  <textarea id="residentialAddress" name="residentialAddress"
-            required maxlength="500"></textarea>
-</section>
+      <label for="dateOfBirth">Date of birth *</label>
+      <input id="dateOfBirth" name="dateOfBirth"
+             type="date" required>
 
-<section>
-  <h2>2. Identification</h2>
+      <label for="country">Country of residence *</label>
+      <input id="country" name="country"
+             required maxlength="100">
 
-  <label for="idType">Identification type *</label>
-  <select id="idType" name="idType" required>
-    <option value="">Select identification type</option>
-    <option value="International Passport">International Passport</option>
-    <option value="National Identity Card">National Identity Card</option>
-    <option value="Drivers Licence">Driver's Licence</option>
-    <option value="Voters Card">Voter's Card</option>
-    <option value="Other">Other</option>
-  </select>
+      <label for="state">State or region *</label>
+      <input id="state" name="state"
+             required maxlength="100">
 
-  <label for="idNumber">Identification number *</label>
-  <input id="idNumber" name="idNumber"
-         required maxlength="100">
+      <label for="residentialAddress">Residential address *</label>
+      <textarea id="residentialAddress" name="residentialAddress"
+                required maxlength="500"></textarea>
+    </section>
 
-  <p class="small">
-    Secure identification-document uploads will be added after
-    private storage has been configured.
-  </p>
-</section>
+    <section>
+      <h2>2. Identification</h2>
 
-<section>
-  <h2>3. Education</h2>
+      <label for="idType">Identification type *</label>
+      <select id="idType" name="idType" required>
+        <option value="">Select identification type</option>
+        <option value="International Passport">International Passport</option>
+        <option value="National Identity Card">National Identity Card</option>
+        <option value="Drivers Licence">Driver's Licence</option>
+        <option value="Voters Card">Voter's Card</option>
+        <option value="Other">Other</option>
+      </select>
 
-  <label for="highestQualification">Highest qualification *</label>
-  <select id="highestQualification"
-          name="highestQualification" required>
-    <option value="">Select qualification</option>
-    <option value="Secondary School">Secondary School</option>
-    <option value="OND">OND</option>
-    <option value="HND">HND</option>
-    <option value="Bachelor Degree">Bachelor's Degree</option>
-    <option value="Postgraduate Diploma">Postgraduate Diploma</option>
-    <option value="Masters Degree">Master's Degree</option>
-    <option value="Doctorate">Doctorate</option>
-    <option value="Professional Qualification">Professional Qualification</option>
-    <option value="Other">Other</option>
-  </select>
+      <label for="idNumber">Identification number *</label>
+      <input id="idNumber" name="idNumber"
+             required maxlength="100">
 
-  <label for="institution">Institution attended *</label>
-  <input id="institution" name="institution"
-         required maxlength="180">
+      <p class="small">
+        Secure identification-document uploads will be added after
+        private storage has been configured.
+      </p>
+    </section>
 
-  <label for="course">Course of study *</label>
-  <input id="course" name="course"
-         required maxlength="180">
+    <section>
+      <h2>3. Education</h2>
 
-  <label for="graduationYear">Graduation year *</label>
-  <input id="graduationYear" name="graduationYear"
-         type="number" min="1950" max="2100" required>
-</section>
+      <label for="highestQualification">Highest qualification *</label>
+      <select id="highestQualification"
+              name="highestQualification" required>
+        <option value="">Select qualification</option>
+        <option value="Secondary School">Secondary School</option>
+        <option value="OND">OND</option>
+        <option value="HND">HND</option>
+        <option value="Bachelor Degree">Bachelor's Degree</option>
+        <option value="Postgraduate Diploma">Postgraduate Diploma</option>
+        <option value="Masters Degree">Master's Degree</option>
+        <option value="Doctorate">Doctorate</option>
+        <option value="Professional Qualification">Professional Qualification</option>
+        <option value="Other">Other</option>
+      </select>
 
-<section>
-  <h2>4. Management Experience</h2>
+      <label for="institution">Institution attended *</label>
+      <input id="institution" name="institution"
+             required maxlength="180">
 
-  <label for="yearsExperience">
-    Years of management experience *
-  </label>
-  <select id="yearsExperience" name="yearsExperience" required>
-    <option value="">Select experience</option>
-    <option value="Less than 1 year">Less than 1 year</option>
-    <option value="1-2 years">1–2 years</option>
-    <option value="3-5 years">3–5 years</option>
-    <option value="6-10 years">6–10 years</option>
-    <option value="More than 10 years">More than 10 years</option>
-  </select>
+      <label for="course">Course of study *</label>
+      <input id="course" name="course"
+             required maxlength="180">
 
-  <label for="previousEmployer">Previous employer</label>
-  <input id="previousEmployer" name="previousEmployer"
-         maxlength="180">
+      <label for="graduationYear">Graduation year *</label>
+      <input id="graduationYear" name="graduationYear"
+             type="number" min="1950" max="2100" required>
+    </section>
 
-  <label for="previousPosition">Previous position</label>
-  <input id="previousPosition" name="previousPosition"
-         maxlength="180">
+    <section>
+      <h2>4. Management Experience</h2>
 
-  <label for="experienceDetails">
-    Describe your management experience *
-  </label>
-  <textarea id="experienceDetails" name="experienceDetails"
-            required maxlength="3000"></textarea>
+      <label for="yearsExperience">
+        Years of management experience *
+      </label>
+      <select id="yearsExperience" name="yearsExperience" required>
+        <option value="">Select experience</option>
+        <option value="Less than 1 year">Less than 1 year</option>
+        <option value="1-2 years">1–2 years</option>
+        <option value="3-5 years">3–5 years</option>
+        <option value="6-10 years">6–10 years</option>
+        <option value="More than 10 years">More than 10 years</option>
+      </select>
 
-  <p class="small">
-    CV and supporting-document uploads will be enabled after
-    secure file storage is configured.
-  </p>
-</section>
+      <label for="previousEmployer">Previous employer</label>
+      <input id="previousEmployer" name="previousEmployer"
+             maxlength="180">
 
-<section>
-  <h2>5. Preferred Branch</h2>
+      <label for="previousPosition">Previous position</label>
+      <input id="previousPosition" name="previousPosition"
+             maxlength="180">
 
-  <label for="branchCountry">Preferred country *</label>
-  <input id="branchCountry" name="branchCountry"
-         required maxlength="100">
+      <label for="experienceDetails">
+        Describe your management experience *
+      </label>
+      <textarea id="experienceDetails" name="experienceDetails"
+                required maxlength="3000"></textarea>
 
-  <label for="branch">Preferred branch or city *</label>
-  <input id="branch" name="branch"
-         required maxlength="150">
+      <p class="small">
+        CV and supporting-document uploads will be enabled after
+        secure file storage is configured.
+      </p>
+    </section>
 
-  <label for="branchAddress">Proposed branch address</label>
-  <textarea id="branchAddress" name="branchAddress"
-            maxlength="500"></textarea>
-</section>
+    <section>
+      <h2>5. Preferred Branch</h2>
 
-<section>
-  <h2>6. Guarantor Information</h2>
+      <label for="branchCountry">Preferred country *</label>
+      <input id="branchCountry" name="branchCountry"
+             required maxlength="100">
 
-  <label for="guarantorName">Guarantor's full name *</label>
-  <input id="guarantorName" name="guarantorName"
-         required maxlength="120">
+      <label for="branch">Preferred branch or city *</label>
+      <input id="branch" name="branch"
+             required maxlength="150">
 
-  <label for="guarantorPhone">Guarantor's phone *</label>
-  <input id="guarantorPhone" name="guarantorPhone"
-         type="tel" required maxlength="30">
+      <label for="branchAddress">Proposed branch address</label>
+      <textarea id="branchAddress" name="branchAddress"
+                maxlength="500"></textarea>
+    </section>
 
-  <label for="guarantorEmail">Guarantor's email</label>
-  <input id="guarantorEmail" name="guarantorEmail"
-         type="email" maxlength="150">
+    <section>
+      <h2>6. Guarantor Information</h2>
 
-  <label for="guarantorOccupation">Guarantor's occupation *</label>
-  <input id="guarantorOccupation" name="guarantorOccupation"
-         required maxlength="150">
+      <label for="guarantorName">Guarantor's full name *</label>
+      <input id="guarantorName" name="guarantorName"
+             required maxlength="120">
 
-  <label for="guarantorRelationship">
-    Relationship to applicant *
-  </label>
-  <input id="guarantorRelationship"
-         name="guarantorRelationship"
-         required maxlength="100">
+      <label for="guarantorPhone">Guarantor's phone *</label>
+      <input id="guarantorPhone" name="guarantorPhone"
+             type="tel" required maxlength="30">
 
-  <label for="guarantorAddress">Guarantor's address *</label>
-  <textarea id="guarantorAddress" name="guarantorAddress"
-            required maxlength="500"></textarea>
+      <label for="guarantorEmail">Guarantor's email</label>
+      <input id="guarantorEmail" name="guarantorEmail"
+             type="email" maxlength="150">
 
-  <label class="checkbox">
-    <input type="checkbox" id="guarantorConsent"
-           name="guarantorConsent" required>
-    <span>
-      I confirm that the guarantor has agreed to be contacted
-      for reference checks.
-    </span>
-  </label>
-</section>
+      <label for="guarantorOccupation">Guarantor's occupation *</label>
+      <input id="guarantorOccupation" name="guarantorOccupation"
+             required maxlength="150">
 
-<section>
-  <h2>7. Declaration</h2>
+      <label for="guarantorRelationship">
+        Relationship to applicant *
+      </label>
+      <input id="guarantorRelationship"
+             name="guarantorRelationship"
+             required maxlength="100">
 
-  <label for="reason">Why do you want this position? *</label>
-  <textarea id="reason" name="reason"
-            required maxlength="3000"></textarea>
+      <label for="guarantorAddress">Guarantor's address *</label>
+      <textarea id="guarantorAddress" name="guarantorAddress"
+                required maxlength="500"></textarea>
 
-  <label for="availability">Availability to start *</label>
-  <select id="availability" name="availability" required>
-    <option value="">Select availability</option>
-    <option value="Immediately">Immediately</option>
-    <option value="Within 2 weeks">Within 2 weeks</option>
-    <option value="Within 1 month">Within 1 month</option>
-    <option value="Other">Other</option>
-  </select>
+      <label class="checkbox">
+        <input type="checkbox" id="guarantorConsent"
+               name="guarantorConsent" required>
+        <span>
+          I confirm that the guarantor has agreed to be contacted
+          for reference checks.
+        </span>
+      </label>
+    </section>
 
-  <label class="checkbox">
-    <input type="checkbox" id="accuracyConsent"
-           name="accuracyConsent" required>
-    <span>
-      I declare that the information provided is accurate and
-      understand that false information may lead to rejection.
-    </span>
-  </label>
+    <section>
+      <h2>7. Declaration</h2>
 
-  <label class="checkbox">
-    <input type="checkbox" id="privacyConsent"
-           name="privacyConsent" required>
-    <span>
-      I consent to the company using my application information
-      for recruitment review and relevant checks, subject to
-      its privacy and data-protection obligations.
-    </span>
-  </label>
-</section>
+      <label for="reason">Why do you want this position? *</label>
+      <textarea id="reason" name="reason"
+                required maxlength="3000"></textarea>
 
-<button type="submit" id="submitButton">
-  Submit Application
-</button>
+      <label for="availability">Availability to start *</label>
+      <select id="availability" name="availability" required>
+        <option value="">Select availability</option>
+        <option value="Immediately">Immediately</option>
+        <option value="Within 2 weeks">Within 2 weeks</option>
+        <option value="Within 1 month">Within 1 month</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label class="checkbox">
+        <input type="checkbox" id="accuracyConsent"
+               name="accuracyConsent" required>
+        <span>
+          I declare that the information provided is accurate and
+          understand that false information may lead to rejection.
+        </span>
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" id="privacyConsent"
+               name="privacyConsent" required>
+        <span>
+          I consent to the company using my application information
+          for recruitment review and relevant checks, subject to
+          its privacy and data-protection obligations.
+        </span>
+      </label>
+    </section>
+
+    <button type="submit" id="submitButton">
+      Submit Application
+    </button>
 
   </form>
-</div><footer>
+</div>
+
+<footer>
   <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong>
   <p>African Roots, Global Vision.</p>
   <p>
@@ -406,14 +426,23 @@ footer a {
     |
     <a href="tel:+2349132851465">+2349132851465</a>
   </p>
-</footer><script type="module">
+</footer>
+
+<script type="module">
 import { initializeApp }
   from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 
 import {
-  getFunctions,
-  httpsCallable
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-functions.js";
+  getAuth,
+  signInAnonymously
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
@@ -426,12 +455,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const functions = getFunctions(app, "us-central1");
-
-const submitApplication = httpsCallable(
-  functions,
-  "submitDirectorManagerApplication"
-);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 const form = document.getElementById("applicationForm");
 const button = document.getElementById("submitButton");
@@ -453,99 +478,119 @@ function value(id) {
   return document.getElementById(id).value.trim();
 }
 
+function createReference() {
+  return "ARNAUD-DM-" +
+    crypto.randomUUID().replaceAll("-", "").slice(0, 12).toUpperCase();
+}
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  if (!form.reportValidity()) {
-    return;
-  }
+  if (!form.reportValidity()) return;
 
   const year = Number(value("graduationYear"));
   const currentYear = new Date().getFullYear();
 
-  if (
-    !Number.isInteger(year) ||
-    year < 1950 ||
-    year > currentYear
-  ) {
+  if (!Number.isInteger(year) || year < 1950 || year > currentYear) {
     showMessage("Please enter a valid graduation year.");
+    return;
+  }
+
+  const dateOfBirth = value("dateOfBirth");
+  const today = new Date().toISOString().slice(0, 10);
+
+  if (!dateOfBirth || dateOfBirth >= today) {
+    showMessage("Please enter a valid date of birth in the past.");
     return;
   }
 
   const guarantorConsent =
     document.getElementById("guarantorConsent").checked;
-
   const accuracyConsent =
     document.getElementById("accuracyConsent").checked;
-
   const privacyConsent =
     document.getElementById("privacyConsent").checked;
 
-  if (
-    !guarantorConsent ||
-    !accuracyConsent ||
-    !privacyConsent
-  ) {
+  if (!guarantorConsent || !accuracyConsent || !privacyConsent) {
     showMessage("Please confirm all required declarations.");
     return;
   }
 
-  const application = {
-    fullName: value("fullName"),
-    email: value("email").toLowerCase(),
-    phone: value("phone"),
-    dateOfBirth: value("dateOfBirth"),
-    country: value("country"),
-    state: value("state"),
-    residentialAddress: value("residentialAddress"),
-
-    idType: value("idType"),
-    idNumber: value("idNumber"),
-
-    highestQualification: value("highestQualification"),
-    institution: value("institution"),
-    course: value("course"),
-    graduationYear: String(year),
-
-    yearsExperience: value("yearsExperience"),
-    previousEmployer: value("previousEmployer"),
-    previousPosition: value("previousPosition"),
-    experienceDetails: value("experienceDetails"),
-
-    branchCountry: value("branchCountry"),
-    branch: value("branch"),
-    branchAddress: value("branchAddress"),
-
-    guarantorName: value("guarantorName"),
-    guarantorPhone: value("guarantorPhone"),
-    guarantorEmail: value("guarantorEmail").toLowerCase(),
-    guarantorOccupation: value("guarantorOccupation"),
-    guarantorRelationship: value("guarantorRelationship"),
-    guarantorAddress: value("guarantorAddress"),
-
-    reason: value("reason"),
-    availability: value("availability"),
-
-    // Send the declaration values to the backend.
-    guarantorConsent: guarantorConsent,
-    accuracyConsent: accuracyConsent,
-    privacyConsent: privacyConsent
-  };
-
   button.disabled = true;
-  button.textContent = "Submitting securely...";
+  button.textContent = "Submitting application...";
 
   try {
-    const result = await submitApplication(application);
-    const response = result.data || {};
-
-    if (!response.success || !response.applicationReference) {
-      throw new Error("The server did not confirm the application.");
+    if (!auth.currentUser) {
+      await signInAnonymously(auth);
     }
+
+    const user = auth.currentUser;
+
+    if (!user) {
+      throw new Error("Authentication could not be completed.");
+    }
+
+    const applicationReference = createReference();
+
+    const application = {
+      fullName: value("fullName"),
+      email: value("email").toLowerCase(),
+      phone: value("phone"),
+      dateOfBirth,
+      country: value("country"),
+      state: value("state"),
+      residentialAddress: value("residentialAddress"),
+
+      idType: value("idType"),
+      idNumber: value("idNumber"),
+
+      highestQualification: value("highestQualification"),
+      institution: value("institution"),
+      course: value("course"),
+      graduationYear: String(year),
+
+      yearsExperience: value("yearsExperience"),
+      previousEmployer: value("previousEmployer"),
+      previousPosition: value("previousPosition"),
+      experienceDetails: value("experienceDetails"),
+
+      branchCountry: value("branchCountry"),
+      branch: value("branch"),
+      branchAddress: value("branchAddress"),
+
+      guarantorName: value("guarantorName"),
+      guarantorPhone: value("guarantorPhone"),
+      guarantorEmail: value("guarantorEmail").toLowerCase(),
+      guarantorOccupation: value("guarantorOccupation"),
+      guarantorRelationship: value("guarantorRelationship"),
+      guarantorAddress: value("guarantorAddress"),
+
+      reason: value("reason"),
+      availability: value("availability"),
+
+      guarantorConsent,
+      accuracyConsent,
+      privacyConsent,
+
+      requestedRole: "directorManager",
+      applicationReference,
+      ownerUid: user.uid,
+      status: "Pending Approval",
+      reviewNote: "",
+      reviewedByUid: "",
+      reviewedByEmail: "",
+      reviewedAt: null,
+      submittedAt: serverTimestamp()
+    };
+
+    await addDoc(
+      collection(db, "directorManagerApplications"),
+      application
+    );
 
     showMessage(
       "Application submitted successfully. Your reference is " +
-      response.applicationReference +
+      applicationReference +
       ". Keep this reference for your records.",
       true
     );
@@ -554,23 +599,23 @@ form.addEventListener("submit", async (event) => {
     button.textContent = "Application Submitted";
 
   } catch (error) {
-    console.error("Application submission error:", error);
+    console.error("Director Manager submission error:", error);
 
     let errorMessage =
-      "The application could not be submitted. Please try again later.";
+      "The application could not be submitted. Please try again.";
 
-    if (error.code === "functions/not-found") {
+    if (error.code === "permission-denied") {
       errorMessage =
-        "The application service has not been deployed yet.";
-    } else if (error.code === "functions/invalid-argument") {
+        "Firebase security rules rejected the submission. The database rules must be configured correctly.";
+    } else if (error.code === "auth/operation-not-allowed") {
       errorMessage =
-        "Some application information is missing or invalid. Please check the form.";
-    } else if (error.code === "functions/failed-precondition") {
+        "Anonymous Authentication is not enabled in Firebase.";
+    } else if (error.code === "auth/network-request-failed") {
       errorMessage =
-        "Please accept all required declarations before submitting.";
-    } else if (error.code === "functions/resource-exhausted") {
+        "Network connection failed. Check your internet and try again.";
+    } else if (error.code === "unavailable") {
       errorMessage =
-        "Too many submissions have been made. Please try again later.";
+        "Firebase is temporarily unavailable. Please try again.";
     }
 
     showMessage(errorMessage);
@@ -579,5 +624,7 @@ form.addEventListener("submit", async (event) => {
     button.textContent = "Submit Application";
   }
 });
-</script></body>
+</script>
+
+</body>
 </html>
