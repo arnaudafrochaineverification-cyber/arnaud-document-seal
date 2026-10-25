@@ -3,12 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#075b36">
-<meta name="description" content="Director Manager application portal for ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
+
+<meta name="description"
+content="Director Manager recruitment application for ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
+
+<meta name="theme-color" content="#08783e">
 
 <title>Director Manager Application | ARNAUD</title>
 
 <style>
+:root {
+  --green: #08783e;
+  --gold: #c99a28;
+  --dark: #173326;
+  --light: #f4f8f5;
+  --border: #d8e3dc;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -16,21 +27,22 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f3f6f4;
-  color: #203128;
+  background: var(--light);
+  color: #26352c;
   line-height: 1.6;
 }
 
 header {
-  background: #075b36;
+  background: var(--green);
   color: white;
-  padding: 30px 18px;
+  padding: 28px 16px;
   text-align: center;
+  border-bottom: 5px solid var(--gold);
 }
 
 header h1 {
   margin: 0 0 8px;
-  font-size: 25px;
+  font-size: 24px;
 }
 
 header p {
@@ -38,119 +50,137 @@ header p {
 }
 
 .container {
-  width: min(850px, 94%);
-  margin: 25px auto;
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 14px;
+}
+
+.notice {
+  background: #fff8df;
+  border-left: 5px solid var(--gold);
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
 }
 
 .card {
   background: white;
-  padding: 24px;
+  padding: 22px;
   margin-bottom: 20px;
-  border-radius: 12px;
-  border: 1px solid #dce6df;
-  box-shadow: 0 3px 12px rgba(0,0,0,.04);
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.05);
 }
 
 h2 {
-  color: #075b36;
+  color: var(--green);
   margin-top: 0;
   font-size: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
 }
 
 label {
   display: block;
   font-weight: bold;
-  margin: 16px 0 7px;
+  margin: 14px 0 5px;
 }
 
-input:not([type="checkbox"]),
+input,
 select,
 textarea {
-  display: block;
   width: 100%;
   padding: 12px;
-  border: 1px solid #cbd7cf;
-  border-radius: 7px;
-  background: white;
+  border: 1px solid #bdccc2;
+  border-radius: 6px;
   font: inherit;
-}
-
-textarea {
-  min-height: 110px;
-  resize: vertical;
+  background: white;
 }
 
 input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  vertical-align: middle;
+  width: auto;
+  margin-right: 8px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.help {
+  color: #5d6b62;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.document-box {
+  background: #f7faf8;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  margin: 12px 0;
+}
+
+.document-box h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.status {
+  padding: 14px;
+  margin: 15px 0;
+  border-radius: 6px;
+  display: none;
+  overflow-wrap: anywhere;
+}
+
+.status.success {
+  display: block;
+  background: #e6f7eb;
+  color: #155c2b;
+}
+
+.status.error {
+  display: block;
+  background: #fdebea;
+  color: #8b1e1e;
 }
 
 button {
+  width: 100%;
+  padding: 15px;
   border: 0;
   border-radius: 7px;
-  padding: 13px 18px;
-  margin-top: 18px;
-  font: inherit;
+  background: var(--green);
+  color: white;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
 }
 
 button:disabled {
-  opacity: .55;
+  opacity: .6;
   cursor: not-allowed;
 }
 
-.primary {
-  background: #08783e;
-  color: white;
-  width: 100%;
-}
-
-.notice {
-  padding: 14px;
-  border-radius: 7px;
-  margin: 15px 0;
-  background: #edf5ef;
-  overflow-wrap: anywhere;
-}
-
-.notice.error {
-  background: #fff0f0;
-  color: #8b1720;
-}
-
-.notice.success {
-  background: #e7f7e9;
-  color: #075b36;
-}
-
-.notice.warning {
-  background: #fff7df;
-  color: #6e5200;
-}
-
-.small {
-  color: #607168;
-  font-size: 13px;
-}
-
-.required {
-  color: #a51f2b;
-}
-
 footer {
-  padding: 25px 15px;
   text-align: center;
-  color: #607168;
+  padding: 24px 12px;
+  color: #526158;
   font-size: 13px;
 }
 
-.hidden {
-  display: none !important;
-}
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 
-@media (max-width: 500px) {
   .card {
     padding: 17px;
   }
@@ -165,333 +195,403 @@ footer {
 <body>
 
 <header>
-  <h1>Director Manager Application</h1>
-  <p><strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong></p>
+  <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
   <p>African Roots, Global Vision.</p>
+  <p><strong>Director Manager Recruitment Application</strong></p>
+  <p>Company email: arnaudafrochain@gmail.com</p>
 </header>
 
 <main class="container">
 
-  <section class="card">
-    <h2>Apply to Become a Director Manager</h2>
-
+  <div class="notice">
+    <strong>Important recruitment notice</strong>
     <p>
-      Use this form to apply for the position of Director Manager
-      for a branch of ARNAUD AFROCHAINE TRUST SYSTEMS LTD.
+      This form is for people applying to become a Director Manager
+      of an ARNAUD branch. Submitting an application does not guarantee
+      employment, appointment, branch assignment or system access.
+      The CEO must review the application before making a decision.
     </p>
+    <p>
+      Document uploads are being prepared. Until secure storage is
+      configured, selecting a file here does not upload it to ARNAUD.
+    </p>
+  </div>
 
-    <div class="notice warning">
-      Submitting this application does not automatically appoint you
-      as a Director Manager. All applications are subject to review
-      and approval by the authorised CEO.
-    </div>
+  <form id="applicationForm">
 
-    <div id="message"
-         class="notice hidden"
-         role="status"
-         aria-live="polite"></div>
+    <!-- PERSONAL INFORMATION -->
 
-    <form id="applicationForm">
-
+    <section class="card">
       <h2>1. Personal Information</h2>
 
-      <label for="fullName">
-        Full Name <span class="required">*</span>
+      <label for="fullName">Full name as shown on your ID *</label>
+      <input id="fullName" name="fullName"
+        maxlength="120" autocomplete="name" required>
+
+      <div class="grid">
+        <div>
+          <label for="email">Email address *</label>
+          <input id="email" name="email" type="email"
+            maxlength="254" autocomplete="email" required>
+        </div>
+
+        <div>
+          <label for="phone">Telephone number *</label>
+          <input id="phone" name="phone" type="tel"
+            maxlength="30" autocomplete="tel" required>
+        </div>
+      </div>
+
+      <label for="dateOfBirth">Date of birth *</label>
+      <input id="dateOfBirth" name="dateOfBirth"
+        type="date" required>
+
+      <label for="residentialAddress">Residential address *</label>
+      <textarea id="residentialAddress"
+        name="residentialAddress"
+        maxlength="500" autocomplete="street-address"
+        required></textarea>
+
+      <div class="grid">
+        <div>
+          <label for="country">Country of residence *</label>
+          <input id="country" name="country"
+            maxlength="100" autocomplete="country-name" required>
+        </div>
+
+        <div>
+          <label for="state">State or province *</label>
+          <input id="state" name="state"
+            maxlength="100" required>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- IDENTITY DOCUMENTS -->
+
+    <section class="card">
+      <h2>2. Identity Documents</h2>
+
+      <div class="document-box">
+        <h3>Passport photograph *</h3>
+        <p class="help">
+          Select a recent passport photograph. Secure upload is
+          not enabled yet.
+        </p>
+        <input id="passportPhoto" type="file"
+          accept="image/jpeg,image/png">
+      </div>
+
+      <label for="idType">Type of identification *</label>
+      <select id="idType" name="idType" required>
+        <option value="">Select identification type</option>
+        <option value="National ID">National ID card</option>
+        <option value="International Passport">International passport</option>
+        <option value="Drivers Licence">Driver's licence</option>
+        <option value="Other Approved ID">Other approved ID</option>
+      </select>
+
+      <label for="idNumber">Identification number *</label>
+      <input id="idNumber" name="idNumber"
+        maxlength="100" autocomplete="off" required>
+
+      <div class="document-box">
+        <h3>Identification document *</h3>
+        <p class="help">
+          Choose a clear image or PDF. This file stays on your device;
+          it is not uploaded by this version of the form.
+        </p>
+        <input id="idDocument" type="file"
+          accept="image/jpeg,image/png,application/pdf">
+      </div>
+    </section>
+
+
+    <!-- EDUCATION -->
+
+    <section class="card">
+      <h2>3. Educational Qualifications</h2>
+
+      <label for="highestQualification">
+        Highest educational qualification *
       </label>
-      <input
-        id="fullName"
-        name="fullName"
-        type="text"
-        maxlength="120"
-        autocomplete="name"
-        required
-      >
+      <select id="highestQualification"
+        name="highestQualification" required>
+        <option value="">Select qualification</option>
+        <option value="Secondary School">Secondary school certificate</option>
+        <option value="OND">OND</option>
+        <option value="NCE">NCE</option>
+        <option value="HND">HND</option>
+        <option value="Bachelor Degree">Bachelor's degree</option>
+        <option value="Postgraduate Diploma">Postgraduate diploma</option>
+        <option value="Masters Degree">Master's degree</option>
+        <option value="Doctorate">Doctorate</option>
+        <option value="Other">Other qualification</option>
+      </select>
 
-      <label for="email">
-        Email Address <span class="required">*</span>
+      <label for="otherQualification">
+        If other, specify the qualification
       </label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        maxlength="254"
-        autocomplete="email"
-        required
-      >
+      <input id="otherQualification"
+        name="otherQualification" maxlength="150">
 
-      <label for="phone">
-        Phone Number <span class="required">*</span>
+      <label for="institution">Institution attended *</label>
+      <input id="institution" name="institution"
+        maxlength="200" required>
+
+      <div class="grid">
+        <div>
+          <label for="course">Course or field of study *</label>
+          <input id="course" name="course"
+            maxlength="200" required>
+        </div>
+
+        <div>
+          <label for="graduationYear">Graduation year *</label>
+          <input id="graduationYear" name="graduationYear"
+            type="number" min="1950" max="2100" required>
+        </div>
+      </div>
+
+      <div class="document-box">
+        <h3>Highest educational certificate *</h3>
+        <p class="help">
+          Select your certificate. Secure upload will be enabled later.
+        </p>
+        <input id="educationCertificate" type="file"
+          accept="image/jpeg,image/png,application/pdf">
+      </div>
+
+      <div class="document-box">
+        <h3>Academic transcript</h3>
+        <p class="help">Optional at this preparation stage.</p>
+        <input id="transcript" type="file"
+          accept="image/jpeg,image/png,application/pdf">
+      </div>
+    </section>
+
+
+    <!-- MANAGEMENT EXPERIENCE -->
+
+    <section class="card">
+      <h2>4. Management Experience</h2>
+
+      <label for="yearsExperience">
+        Years of management experience *
       </label>
-      <input
-        id="phone"
-        name="phone"
-        type="tel"
-        maxlength="30"
-        autocomplete="tel"
-        placeholder="+234..."
-        required
-      >
+      <select id="yearsExperience"
+        name="yearsExperience" required>
+        <option value="">Select experience</option>
+        <option value="Less than 1 year">Less than 1 year</option>
+        <option value="1-2 years">1–2 years</option>
+        <option value="3-5 years">3–5 years</option>
+        <option value="6-10 years">6–10 years</option>
+        <option value="More than 10 years">More than 10 years</option>
+      </select>
 
-      <h2 style="margin-top:30px">2. Branch Information</h2>
+      <label for="previousEmployer">Previous employer or organisation</label>
+      <input id="previousEmployer" name="previousEmployer"
+        maxlength="200">
 
-      <label for="country">
-        Country <span class="required">*</span>
+      <label for="previousPosition">Previous position held *</label>
+      <input id="previousPosition" name="previousPosition"
+        maxlength="150" required>
+
+      <label for="experience">Describe your management experience *</label>
+      <textarea id="experience" name="experience"
+        maxlength="5000" required></textarea>
+
+      <div class="document-box">
+        <h3>CV or résumé *</h3>
+        <p class="help">
+          Select your CV. It will not be uploaded until secure storage
+          has been configured.
+        </p>
+        <input id="cv" type="file"
+          accept=".pdf,.doc,.docx,application/pdf">
+      </div>
+
+      <div class="document-box">
+        <h3>Employment reference or experience evidence</h3>
+        <input id="experienceEvidence" type="file"
+          accept="image/jpeg,image/png,application/pdf">
+      </div>
+    </section>
+
+
+    <!-- BRANCH PREFERENCE -->
+
+    <section class="card">
+      <h2>5. Preferred Branch</h2>
+
+      <label for="branchCountry">Country of preferred branch *</label>
+      <input id="branchCountry" name="branchCountry"
+        maxlength="100" required>
+
+      <label for="branch">Preferred branch or location *</label>
+      <input id="branch" name="branch"
+        maxlength="150" required>
+
+      <label for="branchAddress">Preferred branch address, if known</label>
+      <textarea id="branchAddress" name="branchAddress"
+        maxlength="500"></textarea>
+
+      <p class="help">
+        Your preferred location is not a confirmed appointment.
+        Final branch assignment rests with the CEO.
+      </p>
+    </section>
+
+
+    <!-- GUARANTOR -->
+
+    <section class="card">
+      <h2>6. Guarantor Information</h2>
+
+      <p>
+        Provide details of a person who has agreed to act as your
+        guarantor or reference. Do not submit another person's
+        identification documents without their knowledge and consent.
+      </p>
+
+      <label for="guarantorName">Guarantor's full name *</label>
+      <input id="guarantorName" name="guarantorName"
+        maxlength="150" required>
+
+      <div class="grid">
+        <div>
+          <label for="guarantorPhone">Guarantor's phone number *</label>
+          <input id="guarantorPhone" name="guarantorPhone"
+            type="tel" maxlength="30" required>
+        </div>
+
+        <div>
+          <label for="guarantorEmail">Guarantor's email</label>
+          <input id="guarantorEmail" name="guarantorEmail"
+            type="email" maxlength="254">
+        </div>
+      </div>
+
+      <label for="guarantorOccupation">Guarantor's occupation *</label>
+      <input id="guarantorOccupation" name="guarantorOccupation"
+        maxlength="150" required>
+
+      <label for="guarantorRelationship">
+        Relationship to applicant *
       </label>
-      <input
-        id="country"
-        name="country"
-        type="text"
-        maxlength="100"
-        required
-      >
+      <input id="guarantorRelationship"
+        name="guarantorRelationship"
+        maxlength="100" required>
 
-      <label for="state">
-        State, Province or Region <span class="required">*</span>
+      <label for="guarantorAddress">Guarantor's residential address *</label>
+      <textarea id="guarantorAddress"
+        name="guarantorAddress"
+        maxlength="500" required></textarea>
+
+      <label for="guarantorConsent">
+        <input id="guarantorConsent" type="checkbox" required>
+        The guarantor has agreed to be contacted about this application.
       </label>
-      <input
-        id="state"
-        name="state"
-        type="text"
-        maxlength="100"
-        required
-      >
 
-      <label for="branch">
-        Preferred Branch Name <span class="required">*</span>
-      </label>
-      <input
-        id="branch"
-        name="branch"
-        type="text"
-        maxlength="120"
-        placeholder="Enter the branch you wish to manage"
-        required
-      >
+      <p class="help">
+        This declaration does not, by itself, make the guarantor
+        financially liable for the applicant.
+      </p>
 
-      <label for="branchAddress">
-        Proposed Branch Address
-      </label>
-      <textarea
-        id="branchAddress"
-        name="branchAddress"
-        maxlength="500"
-        placeholder="Enter the branch address, if known"
-      ></textarea>
+      <div class="document-box">
+        <h3>Guarantor's signed declaration</h3>
+        <p class="help">
+          This document can be provided securely when the upload system
+          is enabled. The company may request additional evidence.
+        </p>
+        <input id="guarantorDeclaration" type="file"
+          accept="image/jpeg,image/png,application/pdf">
+      </div>
+    </section>
 
-      <h2 style="margin-top:30px">3. Management Experience</h2>
 
-      <label for="experience">
-        Previous Management Experience
-        <span class="required">*</span>
-      </label>
-      <textarea
-        id="experience"
-        name="experience"
-        maxlength="2500"
-        placeholder="Describe your previous management or supervisory experience"
-        required
-      ></textarea>
+    <!-- APPLICANT DECLARATION -->
 
-      <label for="reason">
-        Why Are You Applying?
-        <span class="required">*</span>
-      </label>
-      <textarea
-        id="reason"
-        name="reason"
-        maxlength="2500"
-        placeholder="Explain why you wish to become a Director Manager"
-        required
-      ></textarea>
+    <section class="card">
+      <h2>7. Applicant Declaration</h2>
 
-      <label for="availability">
-        Availability to Manage the Branch
-        <span class="required">*</span>
-      </label>
+      <label for="reason">Why do you want to become a Director Manager? *</label>
+      <textarea id="reason" name="reason"
+        maxlength="5000" required></textarea>
+
+      <label for="availability">When can you start? *</label>
       <select id="availability" name="availability" required>
         <option value="">Select availability</option>
-        <option value="Full-time">Full-time</option>
-        <option value="Part-time">Part-time</option>
+        <option value="Immediately">Immediately</option>
+        <option value="Within 2 weeks">Within 2 weeks</option>
+        <option value="Within 1 month">Within 1 month</option>
         <option value="To be discussed">To be discussed</option>
       </select>
 
-      <h2 style="margin-top:30px">4. Declaration</h2>
-
-      <label for="declaration">
-        <input
-          id="declaration"
-          name="declaration"
-          type="checkbox"
-          required
-        >
-        I confirm that the information provided is accurate and
-        understand that appointment requires CEO approval.
+      <label>
+        <input id="truthDeclaration" type="checkbox" required>
+        I confirm that the information I provide is accurate to the
+        best of my knowledge and understand that ARNAUD may check
+        my qualifications and references.
       </label>
 
-      <button id="submitButton" class="primary" type="submit">
-        Submit Director Manager Application
+      <label>
+        <input id="privacyConsent" type="checkbox" required>
+        I consent to ARNAUD using my application information for
+        recruitment review, subject to its privacy and retention policies.
+      </label>
+
+      <div id="message" class="status" role="status"
+        aria-live="polite"></div>
+
+      <button type="submit" id="submitButton">
+        Submit Application
       </button>
 
-      <p class="small">
-        Please check your information before submitting.
-        Do not submit passwords, bank details or other sensitive
-        financial information through this form.
+      <p class="help">
+        This preparation version does not upload documents or submit
+        an application to the company database. It is not yet ready
+        for real applicants.
       </p>
+    </section>
 
-    </form>
-  </section>
-
-  <section class="card">
-    <h2>What Happens After Submission?</h2>
-
-    <ol>
-      <li>Your application is submitted for review.</li>
-      <li>The CEO reviews your application.</li>
-      <li>The CEO may approve or reject your application.</li>
-      <li>If approved, the CEO confirms your branch and role.</li>
-      <li>Access to staff management tools is granted only after
-          the necessary account and permission setup.</li>
-    </ol>
-  </section>
-
+  </form>
 </main>
 
 <footer>
-  &copy; <span id="year"></span>
-  ARNAUD AFROCHAINE TRUST SYSTEMS LTD
+  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong><br>
+  African Roots, Global Vision.<br>
+  arnaudafrochain@gmail.com<br>
+  +2349132851465
 </footer>
 
-<script type="module">
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+<script>
+/*
+  PREPARATION VERSION
 
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
-  authDomain: "arnaud-document-trust.firebaseapp.com",
-  projectId: "arnaud-document-trust",
-  storageBucket: "arnaud-document-trust.firebasestorage.app",
-  messagingSenderId: "96008667746",
-  appId: "1:96008667746:web:63a6badb04fb996219873b",
-  measurementId: "G-NYPH2RB851"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  This page provides the form and document-selection interface.
+  It deliberately does not upload files or submit sensitive personal
+  information to Firestore until secure storage, privacy controls,
+  and matching security rules have been configured and tested.
+*/
 
 const form = document.getElementById("applicationForm");
 const message = document.getElementById("message");
 const submitButton = document.getElementById("submitButton");
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-
-function showMessage(text, type = "") {
-  message.textContent = text;
-  message.className = "notice" + (type ? " " + type : "");
-  message.classList.remove("hidden");
-}
-
-function getValue(id) {
-  return document.getElementById(id).value.trim();
-}
-
-form.addEventListener("submit", async event => {
+form.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  if (!form.reportValidity()) {
-    return;
-  }
-
-  if (!document.getElementById("declaration").checked) {
-    showMessage(
-      "Please confirm the declaration before submitting.",
-      "error"
-    );
-    return;
-  }
-
-  const application = {
-    fullName: getValue("fullName"),
-    email: getValue("email").toLowerCase(),
-    phone: getValue("phone"),
-    country: getValue("country"),
-    state: getValue("state"),
-    branch: getValue("branch"),
-    branchAddress: getValue("branchAddress"),
-    requestedRole: "directorManager",
-    experience: getValue("experience"),
-    reason: getValue("reason"),
-    availability: getValue("availability"),
-    status: "Pending Approval",
-    submittedAt: serverTimestamp(),
-    createdAt: serverTimestamp()
-  };
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(application.email)) {
-    showMessage("Please enter a valid email address.", "error");
-    return;
-  }
-
-  if (!confirm(
-    "Submit your Director Manager application for CEO review?"
-  )) {
-    return;
-  }
+  message.className = "status error";
+  message.textContent =
+    "The application system is still being prepared. " +
+    "Your information and selected files have not been sent to ARNAUD. " +
+    "Secure document storage and database permissions must be configured " +
+    "before applications can be accepted.";
 
   submitButton.disabled = true;
-  submitButton.textContent = "Submitting Application...";
-  message.classList.add("hidden");
-
-  try {
-    const result = await addDoc(
-      collection(db, "staffRequests"),
-      application
-    );
-
-    form.reset();
-
-    showMessage(
-      "Your application was submitted successfully. " +
-      "Your application reference is: " + result.id +
-      ". Your status is Pending Approval. This is not an appointment.",
-      "success"
-    );
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-  } catch (error) {
-    console.error("Director Manager application error:", error);
-
-    if (error.code === "permission-denied") {
-      showMessage(
-        "Firebase rejected this submission because the current " +
-        "Firestore security rules do not permit it. The rules must " +
-        "be checked and updated safely before the form can accept applications.",
-        "error"
-      );
-    } else {
-      showMessage(
-        "The application could not be submitted. Please try again. " +
-        "Error: " + (error.code || error.message || "Unknown error"),
-        "error"
-      );
-    }
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent =
-      "Submit Director Manager Application";
-  }
+  submitButton.textContent = "Application System Not Yet Activated";
 });
 </script>
 
