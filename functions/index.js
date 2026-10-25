@@ -27,7 +27,6 @@ const REQUIRED_FIELDS = [
 "yearsExperience",
 "branchCountry",
 "branch",
-"branchAddress",
 "guarantorName",
 "guarantorPhone",
 "guarantorOccupation",
@@ -87,7 +86,7 @@ const application = {
   ),
   institution: cleanText(data.institution, 200),
   course: cleanText(data.course, 150),
-  graduationYear: cleanText(data.graduationYear, 20),
+  graduationYear: cleanText(data.graduationYear, 4),
 
   yearsExperience: cleanText(data.yearsExperience, 30),
   previousEmployer: cleanText(data.previousEmployer, 200),
@@ -100,7 +99,7 @@ const application = {
 
   guarantorName: cleanText(data.guarantorName, 150),
   guarantorPhone: cleanText(data.guarantorPhone, 40),
-  guarantorEmail: cleanText(data.guarantorEmail, 254),
+  guarantorEmail: cleanText(data.guarantorEmail, 254).toLowerCase(),
   guarantorOccupation: cleanText(
     data.guarantorOccupation, 150
   ),
@@ -111,6 +110,10 @@ const application = {
 
   reason: cleanText(data.reason, 3000),
   availability: cleanText(data.availability, 150),
+
+  guarantorConsent: data.guarantorConsent === true,
+  accuracyConsent: data.accuracyConsent === true,
+  privacyConsent: data.privacyConsent === true,
 
   requestedRole: "directorManager",
   status: "Pending Approval",
@@ -146,6 +149,24 @@ if (
   throw new HttpsError(
     "invalid-argument",
     "Please check the application details and try again."
+  );
+}
+
+if (!/^\d{4}$/.test(application.graduationYear)) {
+  throw new HttpsError(
+    "invalid-argument",
+    "Please enter a valid four-digit graduation year."
+  );
+}
+
+if (
+  !application.guarantorConsent ||
+  !application.accuracyConsent ||
+  !application.privacyConsent
+) {
+  throw new HttpsError(
+    "failed-precondition",
+    "Please accept all required declarations before submitting."
   );
 }
 
