@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-        content="Director Manager operational dashboard for ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
-
+  <meta name="description" content="ARNAUD AFROCHAINE TRUST SYSTEMS LTD Director Manager operational dashboard.">
   <meta name="theme-color" content="#08783e">
 
   <title>Director Manager Dashboard | ARNAUD</title>
@@ -14,13 +12,13 @@
   <style>
     :root {
       --green: #08783e;
-      --green-dark: #04552c;
-      --gold: #d7ad36;
-      --background: #f4f7f5;
+      --dark-green: #04552c;
+      --gold: #d4a72c;
+      --light: #f4f8f5;
       --white: #ffffff;
-      --text: #202820;
-      --muted: #647067;
-      --border: #dfe7e1;
+      --text: #1c2b22;
+      --muted: #66736b;
+      --border: #dce6de;
       --red: #b42318;
       --blue: #175cd3;
     }
@@ -31,43 +29,38 @@
 
     body {
       margin: 0;
-      background: var(--background);
-      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
     }
 
     header {
-      background: var(--green-dark);
+      background: linear-gradient(120deg, var(--dark-green), var(--green));
       color: white;
-      padding: 20px;
+      padding: 22px 16px;
       border-bottom: 4px solid var(--gold);
     }
 
     .header-inner {
       max-width: 1200px;
       margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
     }
 
     header h1 {
-      margin: 0 0 6px;
-      font-size: 22px;
+      margin: 0 0 8px;
+      font-size: 23px;
+      line-height: 1.35;
     }
 
     header p {
-      margin: 0;
-      color: #e0eee5;
-      font-size: 13px;
+      margin: 5px 0;
+      line-height: 1.5;
     }
 
-    main {
+    .container {
       max-width: 1200px;
-      padding: 20px;
-      margin: auto;
+      margin: 22px auto;
+      padding: 0 14px;
     }
 
     .card {
@@ -76,23 +69,50 @@
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 18px;
-      box-shadow: 0 3px 12px rgba(20, 50, 30, 0.04);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.035);
     }
 
     h2 {
-      font-size: 20px;
-      margin: 0 0 15px;
+      margin-top: 0;
+      color: var(--dark-green);
+      font-size: 21px;
     }
 
     h3 {
-      font-size: 16px;
-      margin: 0 0 12px;
+      margin-top: 0;
+      font-size: 17px;
+    }
+
+    p {
+      line-height: 1.6;
     }
 
     .muted {
       color: var(--muted);
       font-size: 13px;
+    }
+
+    .notice {
+      background: #fff8e5;
+      border-left: 5px solid var(--gold);
+      padding: 14px;
+      border-radius: 7px;
       line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .success {
+      color: #067647;
+      background: #ecfdf3;
+      padding: 11px;
+      border-radius: 7px;
+    }
+
+    .error {
+      color: var(--red);
+      background: #fef3f2;
+      padding: 11px;
+      border-radius: 7px;
     }
 
     .hidden {
@@ -101,9 +121,9 @@
 
     label {
       display: block;
-      font-weight: 700;
-      font-size: 13px;
-      margin: 12px 0 6px;
+      font-weight: 600;
+      margin: 13px 0 6px;
+      font-size: 14px;
     }
 
     input,
@@ -113,75 +133,54 @@
       padding: 12px;
       border: 1px solid #cbd5ce;
       border-radius: 7px;
-      background: white;
       font-size: 15px;
+      background: white;
+      color: var(--text);
     }
 
     textarea {
-      min-height: 85px;
+      min-height: 90px;
       resize: vertical;
     }
 
-    button {
-      border: 0;
+    button,
+    .button {
+      display: inline-block;
+      border: none;
       border-radius: 7px;
       padding: 11px 15px;
-      font-size: 14px;
-      font-weight: 700;
+      margin: 5px 4px 5px 0;
       cursor: pointer;
-      margin: 4px 4px 4px 0;
-    }
-
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .primary {
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
       background: var(--green);
       color: white;
     }
 
+    button:hover,
+    .button:hover {
+      opacity: 0.9;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     .secondary {
-      background: #e7eee9;
-      color: var(--green-dark);
+      background: #e8efe9;
+      color: var(--dark-green);
     }
 
     .danger {
-      background: #fee4e2;
-      color: var(--red);
+      background: var(--red);
+      color: white;
     }
 
-    .blue {
-      background: #eaf2ff;
-      color: var(--blue);
-    }
-
-    .top-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .stat {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 17px;
-    }
-
-    .stat .number {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--green);
-      margin-top: 7px;
+    .gold {
+      background: var(--gold);
+      color: #1b241d;
     }
 
     .tabs {
@@ -191,33 +190,53 @@
       margin-bottom: 18px;
     }
 
-    .tab-button {
-      background: white;
-      border: 1px solid var(--border);
-      color: var(--text);
+    .tabs button {
+      margin: 0;
     }
 
-    .tab-button.active {
-      background: var(--green);
-      color: white;
-      border-color: var(--green);
+    .tabs button.active {
+      background: var(--gold);
+      color: #1b241d;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      color: var(--green);
+      margin-top: 8px;
+      overflow-wrap: anywhere;
     }
 
     .table-wrap {
-      overflow-x: auto;
       width: 100%;
+      overflow-x: auto;
     }
 
     table {
       border-collapse: collapse;
       width: 100%;
-      min-width: 700px;
+      min-width: 650px;
+      background: white;
     }
 
     th,
     td {
-      padding: 12px;
       border-bottom: 1px solid var(--border);
+      padding: 11px;
       text-align: left;
       vertical-align: top;
       font-size: 13px;
@@ -225,89 +244,70 @@
     }
 
     th {
-      background: #f0f5f1;
-      color: var(--green-dark);
+      background: #edf5ef;
+      color: var(--dark-green);
     }
 
     .badge {
       display: inline-block;
       padding: 5px 8px;
       border-radius: 20px;
-      background: #e7eee9;
-      font-size: 11px;
+      background: #e8efe9;
+      font-size: 12px;
       font-weight: 700;
     }
 
     .badge.pending {
-      background: #fff0c2;
-      color: #775400;
+      background: #fff2cc;
+      color: #7a4d00;
     }
 
-    .badge.verified {
-      background: #d9fbe4;
-      color: #116329;
-    }
-
-    .badge.rejected {
-      background: #fee4e2;
-      color: #912018;
-    }
-
-    .message {
-      padding: 12px;
-      border-radius: 7px;
-      margin: 12px 0;
-      font-size: 14px;
-      line-height: 1.5;
-      overflow-wrap: anywhere;
-    }
-
-    .message.info {
-      background: #eaf2ff;
-      color: #1849a9;
-    }
-
-    .message.success {
+    .badge.verified,
+    .badge.active {
       background: #dcfae6;
-      color: #116329;
+      color: #05603a;
     }
 
-    .message.error {
+    .badge.rejected,
+    .badge.inactive {
       background: #fee4e2;
       color: #912018;
     }
 
-    .request-details {
-      max-width: 320px;
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .field-grid > div {
+      min-width: 0;
+    }
+
+    .status-message {
+      margin-top: 12px;
       overflow-wrap: anywhere;
+      line-height: 1.5;
     }
 
     footer {
       text-align: center;
-      padding: 25px 15px;
+      padding: 24px 12px;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 13px;
     }
 
     @media (max-width: 600px) {
-      main {
-        padding: 12px;
+      header h1 {
+        font-size: 19px;
       }
 
       .card {
         padding: 15px;
       }
 
-      header {
-        padding: 16px;
-      }
-
-      header h1 {
-        font-size: 19px;
-      }
-
-      .stat .number {
-        font-size: 24px;
+      .tabs button {
+        flex: 1 1 44%;
       }
     }
   </style>
@@ -317,41 +317,32 @@
 
 <header>
   <div class="header-inner">
-    <div>
-      <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
-      <p>African Roots, Global Vision.</p>
-      <p>Director Manager Operational Dashboard</p>
-    </div>
-
-    <div id="headerActions" class="top-actions hidden">
-      <button id="refreshButton" class="secondary">
-        Refresh Data
-      </button>
-
-      <button id="logoutButton" class="danger">
-        Sign Out
-      </button>
-    </div>
+    <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+    <p><strong>Director Manager Operational Dashboard</strong></p>
+    <p>African Roots, Global Vision.</p>
+    <p class="muted" style="color:#e1eee5">
+      Secure operational management for authorised staff.
+    </p>
   </div>
 </header>
 
-<main>
+<main class="container">
 
-  <!-- LOGIN -->
+  <div id="loadingCard" class="card">
+    <h2>Checking dashboard access</h2>
+    <p id="loadingMessage">Please wait while your account is checked.</p>
+  </div>
 
-  <section id="loginSection" class="card">
+  <section id="loginSection" class="card hidden">
     <h2>Director Manager Login</h2>
 
-    <p class="muted">
-      Sign in using the email and password associated with your
-      authorised ARNAUD staff account. This page does not create
-      staff accounts or grant staff permissions.
+    <p>
+      Sign in using the email address and password associated with your
+      authorised ARNAUD account.
     </p>
 
-    <div id="loginMessage" class="message hidden"></div>
-
     <form id="loginForm">
-      <label for="loginEmail">Email Address</label>
+      <label for="loginEmail">Email address</label>
       <input
         id="loginEmail"
         type="email"
@@ -367,95 +358,128 @@
         required
       >
 
-      <button class="primary" type="submit">
-        Sign In
-      </button>
+      <button type="submit" id="loginButton">Sign In</button>
     </form>
+
+    <button type="button" class="secondary" id="resetPasswordButton">
+      Reset Password
+    </button>
+
+    <div id="loginMessage" class="status-message"></div>
   </section>
 
-  <!-- DASHBOARD -->
+  <section id="accessDeniedSection" class="card hidden">
+    <h2>Dashboard Access Not Authorised</h2>
+
+    <p id="accessDeniedMessage">
+      Your account does not currently have the required active Director
+      Manager permissions.
+    </p>
+
+    <p>
+      An account with a verified email is not automatically authorised
+      to use this dashboard. Your staff profile must also have the
+      correct role and active status.
+    </p>
+
+    <button type="button" id="deniedSignOutButton" class="secondary">
+      Sign Out
+    </button>
+  </section>
 
   <section id="dashboardSection" class="hidden">
 
     <div class="card">
-      <h2 id="welcomeTitle">Welcome</h2>
+      <h2>Welcome to the Director Manager Dashboard</h2>
 
-      <p id="accountInfo" class="muted"></p>
+      <p id="signedInDetails"></p>
 
-      <div class="message info">
+      <div class="notice">
         <strong>Authority notice:</strong>
         Director Manager access is for operational management.
         CEO-only permissions, senior appointments, staff activation,
-        company settings, and publication of public verification
-        records remain restricted.
+        company settings, and publication of public verification records
+        remain restricted.
       </div>
 
-      <div id="dashboardMessage" class="message hidden"></div>
-    </div>
+      <button type="button" id="refreshButton">Refresh Dashboard</button>
 
-    <!-- STATISTICS -->
+      <button type="button" id="signOutButton" class="danger">
+        Sign Out
+      </button>
+
+      <div id="dashboardMessage" class="status-message"></div>
+    </div>
 
     <div class="stats">
       <div class="stat">
-        <div class="muted">Total Documents</div>
-        <div id="totalDocuments" class="number">0</div>
+        <span>Document Requests</span>
+        <strong id="statDocuments">0</strong>
       </div>
 
       <div class="stat">
-        <div class="muted">Awaiting Review</div>
-        <div id="pendingDocuments" class="number">0</div>
+        <span>Pending Reviews</span>
+        <strong id="statPending">0</strong>
       </div>
 
       <div class="stat">
-        <div class="muted">Verified</div>
-        <div id="verifiedDocuments" class="number">0</div>
+        <span>Verified Requests</span>
+        <strong id="statVerified">0</strong>
       </div>
 
       <div class="stat">
-        <div class="muted">Rejected</div>
-        <div id="rejectedDocuments" class="number">0</div>
+        <span>Rejected Requests</span>
+        <strong id="statRejected">0</strong>
       </div>
 
       <div class="stat">
-        <div class="muted">Staff Profiles</div>
-        <div id="totalStaff" class="number">0</div>
+        <span>Staff Profiles</span>
+        <strong id="statStaff">0</strong>
       </div>
 
       <div class="stat">
-        <div class="muted">Staff Requests</div>
-        <div id="totalStaffRequests" class="number">0</div>
+        <span>Recruitment Requests</span>
+        <strong id="statRecruitment">0</strong>
       </div>
     </div>
 
-    <!-- TABS -->
-
-    <div class="tabs">
-      <button class="tab-button active" data-tab="documentsTab">
+    <nav class="tabs" aria-label="Dashboard sections">
+      <button type="button" class="active" data-tab="documentsTab">
         Document Verification
       </button>
 
-      <button class="tab-button" data-tab="staffTab">
+      <button type="button" data-tab="staffTab">
         Staff Directory
       </button>
 
-      <button class="tab-button" data-tab="recruitmentTab">
+      <button type="button" data-tab="recruitmentTab">
         Recruitment Requests
       </button>
 
-      <button class="tab-button" data-tab="reportsTab">
+      <button type="button" data-tab="reportsTab">
         Reports
       </button>
-    </div>
+    </nav>
 
-    <!-- DOCUMENTS -->
+    <!-- DOCUMENT VERIFICATION -->
 
-    <section id="documentsTab" class="card tab-panel">
-      <h2>Document Verification</h2>
+    <section id="documentsTab" class="tab-panel card">
+      <h2>Document Verification Requests</h2>
+
+      <p>
+        Review document requests that are awaiting review. You may mark a
+        pending request as Verified or Rejected.
+      </p>
 
       <p class="muted">
-        Review submitted document requests. Only requests with
-        status Pending Review can be approved or rejected here.
+        Reviewing a document request does not automatically publish a
+        public verification record or create a public QR verification
+        result. Those publication permissions remain CEO-controlled.
       </p>
+
+      <button type="button" id="loadDocumentsButton">
+        Load Document Requests
+      </button>
 
       <div class="table-wrap">
         <table>
@@ -464,15 +488,15 @@
               <th>Reference</th>
               <th>Document</th>
               <th>Issued To</th>
-              <th>Company</th>
               <th>Status</th>
-              <th>Action</th>
+              <th>Submitted By</th>
+              <th>Review Action</th>
             </tr>
           </thead>
 
-          <tbody id="documentsTable">
+          <tbody id="documentsTableBody">
             <tr>
-              <td colspan="6">Loading documents...</td>
+              <td colspan="6">Select Load Document Requests.</td>
             </tr>
           </tbody>
         </table>
@@ -481,13 +505,18 @@
 
     <!-- STAFF DIRECTORY -->
 
-    <section id="staffTab" class="card tab-panel hidden">
+    <section id="staffTab" class="tab-panel card hidden">
       <h2>Staff Directory</h2>
 
-      <p class="muted">
-        View authorised staff profiles. This section does not allow
-        you to activate staff, deactivate staff, or change staff roles.
+      <p>
+        View staff profiles for operational coordination.
+        This dashboard does not provide permission to activate staff,
+        change roles, or edit staff profiles.
       </p>
+
+      <button type="button" id="loadStaffButton">
+        Load Staff Directory
+      </button>
 
       <div class="table-wrap">
         <table>
@@ -501,59 +530,69 @@
             </tr>
           </thead>
 
-          <tbody id="staffTable">
+          <tbody id="staffTableBody">
             <tr>
-              <td colspan="5">Loading staff...</td>
+              <td colspan="5">Select Load Staff Directory.</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- RECRUITMENT REQUESTS -->
+    <!-- RECRUITMENT -->
 
-    <section id="recruitmentTab" class="card tab-panel hidden">
-      <h2>Operational Staff Recruitment</h2>
+    <section id="recruitmentTab" class="tab-panel card hidden">
+      <h2>Staff Recruitment Requests</h2>
 
-      <p class="muted">
-        Submit a request to recruit a verification officer or
-        customer support officer. Submission does not create an
-        account or activate the proposed staff member. The CEO
-        must review the request.
+      <p>
+        Submit an internal request for recruitment approval.
+        Only the CEO can approve recruitment requests or activate
+        appointed staff.
       </p>
-
-      <div id="recruitmentMessage" class="message hidden"></div>
 
       <form id="recruitmentForm">
 
-        <label for="candidateName">Candidate Full Name</label>
-        <input id="candidateName" required maxlength="120">
+        <div class="field-grid">
+          <div>
+            <label for="recruitFullName">Candidate Full Name</label>
+            <input id="recruitFullName" type="text" maxlength="120" required>
+          </div>
 
-        <label for="candidateEmail">Candidate Email</label>
-        <input id="candidateEmail" type="email" required maxlength="150">
+          <div>
+            <label for="recruitEmail">Candidate Email</label>
+            <input id="recruitEmail" type="email" maxlength="150" required>
+          </div>
 
-        <label for="candidateRole">Requested Role</label>
-        <select id="candidateRole" required>
-          <option value="verificationOfficer">
-            Verification Officer
-          </option>
+          <div>
+            <label for="recruitRole">Requested Position</label>
+            <select id="recruitRole" required>
+              <option value="">Select a position</option>
+              <option value="verificationOfficer">Verification Officer</option>
+              <option value="customerSupport">Customer Support</option>
+            </select>
+          </div>
 
-          <option value="customerSupport">
-            Customer Support
-          </option>
-        </select>
+          <div>
+            <label for="recruitCountry">Country</label>
+            <input id="recruitCountry" type="text" maxlength="100" required>
+          </div>
+        </div>
 
-        <label for="candidateCountry">Country</label>
-        <input id="candidateCountry" required maxlength="100">
-
-        <button class="primary" type="submit">
+        <button type="submit" id="submitRecruitmentButton">
           Submit Recruitment Request
         </button>
+
       </form>
 
-      <hr style="border:0;border-top:1px solid #dfe7e1;margin:24px 0;">
+      <div id="recruitmentMessage" class="status-message"></div>
 
-      <h3>Submitted Staff Requests</h3>
+      <hr style="border:0;border-top:1px solid var(--border);margin:24px 0">
+
+      <h3>Submitted Recruitment Requests</h3>
+
+      <button type="button" id="loadRecruitmentButton">
+        Load Recruitment Requests
+      </button>
 
       <div class="table-wrap">
         <table>
@@ -561,15 +600,16 @@
             <tr>
               <th>Candidate</th>
               <th>Email</th>
-              <th>Requested Role</th>
+              <th>Position</th>
               <th>Country</th>
               <th>Status</th>
+              <th>Requested By</th>
             </tr>
           </thead>
 
-          <tbody id="staffRequestsTable">
+          <tbody id="recruitmentTableBody">
             <tr>
-              <td colspan="5">Loading requests...</td>
+              <td colspan="6">Select Load Recruitment Requests.</td>
             </tr>
           </tbody>
         </table>
@@ -578,61 +618,84 @@
 
     <!-- REPORTS -->
 
-    <section id="reportsTab" class="card tab-panel hidden">
+    <section id="reportsTab" class="tab-panel card hidden">
       <h2>Operational Reports</h2>
 
-      <p class="muted">
-        These reports summarise records visible to this account.
-        They are operational summaries, not independently audited
-        financial or legal reports.
+      <p>
+        Generate a basic CSV report from the document requests and
+        recruitment requests that this dashboard is permitted to read.
       </p>
 
-      <div id="reportSummary"></div>
-
-      <button id="downloadReportButton" class="primary">
-        Download CSV Report
+      <button type="button" id="downloadDocumentsButton">
+        Download Document Report
       </button>
+
+      <button type="button" id="downloadRecruitmentButton">
+        Download Recruitment Report
+      </button>
+
+      <button type="button" id="downloadSummaryButton" class="gold">
+        Download Summary Report
+      </button>
+
+      <div id="reportMessage" class="status-message"></div>
+
+      <p class="muted">
+        Reports include information returned by Firestore under the
+        current security rules. They do not include private documents
+        or records the signed-in account is not authorised to access.
+      </p>
     </section>
 
   </section>
+
 </main>
 
 <footer>
-  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong><br>
-  arnaudafrochain@gmail.com | +2349132851465<br>
+  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong>
+  <br>
   African Roots, Global Vision.
+  <br>
+  Email: arnaudafrochain@gmail.com
+  <br>
+  Phone: +2349132851465
+  <br>
+  © <span id="currentYear"></span> ARNAUD. All rights reserved.
 </footer>
 
 <script type="module">
 
-  import {
-    initializeApp
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
   import {
     getAuth,
     onAuthStateChanged,
     signInWithEmailAndPassword,
+    sendPasswordResetEmail,
     signOut
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
   import {
     getFirestore,
     doc,
     getDoc,
-    getDocs,
     collection,
-    query,
-    where,
-    serverTimestamp,
+    getDocs,
     addDoc,
+    query,
+    orderBy,
+    limit,
+    serverTimestamp,
     updateDoc
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-  // ==========================================
+  // --------------------------------------------------
   // FIREBASE CONFIGURATION
-  // ==========================================
+  // --------------------------------------------------
 
   const firebaseConfig = {
     apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
@@ -644,46 +707,54 @@
     measurementId: "G-NYPH2RB851"
   };
 
-
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-
-  // ==========================================
-  // ELEMENTS
-  // ==========================================
-
-  const loginSection = document.getElementById("loginSection");
-  const dashboardSection = document.getElementById("dashboardSection");
-  const loginForm = document.getElementById("loginForm");
-  const loginMessage = document.getElementById("loginMessage");
-  const dashboardMessage = document.getElementById("dashboardMessage");
-  const recruitmentMessage = document.getElementById("recruitmentMessage");
-
-  const documentsTable = document.getElementById("documentsTable");
-  const staffTable = document.getElementById("staffTable");
-  const staffRequestsTable = document.getElementById("staffRequestsTable");
+  const COMPANY_NAME = "ARNAUD AFROCHAINE TRUST SYSTEMS LTD";
+  const COMPANY_EMAIL = "arnaudafrochain@gmail.com";
 
   let currentUser = null;
-  let documentsData = [];
-  let staffData = [];
-  let staffRequestsData = [];
+  let accessGranted = false;
+
+  let documentRows = [];
+  let staffRows = [];
+  let recruitmentRows = [];
 
 
-  // ==========================================
-  // HELPERS
-  // ==========================================
+  // --------------------------------------------------
+  // ELEMENT HELPERS
+  // --------------------------------------------------
 
-  function showMessage(element, message, type = "info") {
+  const $ = id => document.getElementById(id);
+
+  $("currentYear").textContent = new Date().getFullYear();
+
+  function showMessage(elementId, message, type = "success") {
+    const element = $(elementId);
+
     element.textContent = message;
-    element.className = "message " + type;
-    element.classList.remove("hidden");
+    element.className = "status-message " + type;
   }
 
-  function hideMessage(element) {
+  function clearMessage(elementId) {
+    const element = $(elementId);
+
     element.textContent = "";
-    element.classList.add("hidden");
+    element.className = "status-message";
+  }
+
+  function showSection(sectionId) {
+    [
+      "loadingCard",
+      "loginSection",
+      "accessDeniedSection",
+      "dashboardSection"
+    ].forEach(id => {
+      $(id).classList.add("hidden");
+    });
+
+    $(sectionId).classList.remove("hidden");
   }
 
   function safeText(value) {
@@ -694,28 +765,48 @@
     return String(value);
   }
 
-  function escapeHtml(value) {
-    return String(value ?? "").replace(/[&<>"']/g, character => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    })[character]);
+  function makeCell(row, value) {
+    const cell = document.createElement("td");
+    cell.textContent = safeText(value);
+    row.appendChild(cell);
+    return cell;
   }
 
-  function statusBadge(status) {
-    const normalized = String(status || "").toLowerCase();
+  function makeBadge(value) {
+    const badge = document.createElement("span");
+    const text = safeText(value);
 
-    let type = "pending";
+    badge.textContent = text;
+    badge.className = "badge";
 
-    if (normalized === "verified" || normalized === "approved") {
-      type = "verified";
-    } else if (normalized === "rejected") {
-      type = "rejected";
+    if (text === "Verified" || text === "Active") {
+      badge.classList.add(
+        text === "Active" ? "active" : "verified"
+      );
+    } else if (
+      text === "Rejected" ||
+      text === "Inactive" ||
+      text === "Suspended"
+    ) {
+      badge.classList.add(
+        text === "Inactive" ? "inactive" : "rejected"
+      );
+    } else if (
+      text === "Pending Review" ||
+      text === "Pending Approval" ||
+      text === "Pending CEO Review" ||
+      text === "Under Review"
+    ) {
+      badge.classList.add("pending");
     }
 
-    return `<span class="badge ${type}">${escapeHtml(safeText(status))}</span>`;
+    return badge;
+  }
+
+  function addBadgeCell(row, value) {
+    const cell = document.createElement("td");
+    cell.appendChild(makeBadge(value));
+    row.appendChild(cell);
   }
 
   function formatDate(value) {
@@ -725,720 +816,930 @@
       return value.toDate().toLocaleString();
     }
 
-    return safeText(value);
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return "—";
+    }
+
+    return date.toLocaleString();
   }
 
-  function showLogin() {
-    loginSection.classList.remove("hidden");
-    dashboardSection.classList.add("hidden");
-    document.getElementById("headerActions").classList.add("hidden");
+  function showErrorMessage(elementId, error, action) {
+    console.error(action, error);
+
+    let message = action + " failed.";
+
+    if (error && error.code === "permission-denied") {
+      message +=
+        " Firestore denied access. Check your security rules and staff permissions.";
+    } else if (error && error.code === "unavailable") {
+      message +=
+        " The service is temporarily unavailable. Check your internet connection.";
+    } else if (error && error.code === "auth/network-request-failed") {
+      message += " Check your internet connection.";
+    } else if (error && error.message) {
+      message += " " + error.message;
+    }
+
+    showMessage(elementId, message, "error");
   }
 
-  function showDashboard() {
-    loginSection.classList.add("hidden");
-    dashboardSection.classList.remove("hidden");
-    document.getElementById("headerActions").classList.remove("hidden");
-  }
 
+  // --------------------------------------------------
+  // AUTHENTICATION AND ACCESS CONTROL
+  // --------------------------------------------------
 
-  // ==========================================
-  // LOGIN
-  // ==========================================
-
-  loginForm.addEventListener("submit", async event => {
+  $("loginForm").addEventListener("submit", async event => {
     event.preventDefault();
 
-    hideMessage(loginMessage);
+    const email = $("loginEmail").value.trim();
+    const password = $("loginPassword").value;
 
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
+    $("loginButton").disabled = true;
+    clearMessage("loginMessage");
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      // onAuthStateChanged checks the account and staff profile.
     } catch (error) {
-      console.error(error);
-
-      showMessage(
-        loginMessage,
-        "Sign-in failed. Check your email, password, and Firebase Authentication settings.",
-        "error"
-      );
+      showErrorMessage("loginMessage", error, "Sign in");
+    } finally {
+      $("loginButton").disabled = false;
     }
   });
 
 
-  document.getElementById("logoutButton").addEventListener("click", async () => {
-    await signOut(auth);
-  });
+  $("resetPasswordButton").addEventListener("click", async () => {
+    const email = $("loginEmail").value.trim();
 
-
-  // ==========================================
-  // AUTHORIZATION CHECK
-  // ==========================================
-
-  onAuthStateChanged(auth, async user => {
-    currentUser = user;
-
-    if (!user) {
-      showLogin();
-      return;
-    }
-
-    if (!user.emailVerified) {
+    if (!email) {
       showMessage(
-        loginMessage,
-        "Your email is not verified. Verify your email before accessing the dashboard.",
+        "loginMessage",
+        "Enter your email address first.",
         "error"
       );
-
-      await signOut(auth);
       return;
     }
 
     try {
-      const profileRef = doc(db, "staffProfiles", user.uid);
-      const profileSnapshot = await getDoc(profileRef);
-
-      if (!profileSnapshot.exists()) {
-        await signOut(auth);
-
-        showLogin();
-
-        showMessage(
-          loginMessage,
-          "No authorised staff profile was found. Ask the CEO to activate your staff access.",
-          "error"
-        );
-
-        return;
-      }
-
-      const profile = profileSnapshot.data();
-
-      if (
-        profile.role !== "directorManager" ||
-        profile.status !== "Active"
-      ) {
-        await signOut(auth);
-
-        showLogin();
-
-        showMessage(
-          loginMessage,
-          "Access denied. This account is not an active Director Manager account.",
-          "error"
-        );
-
-        return;
-      }
-
-      showDashboard();
-
-      document.getElementById("welcomeTitle").textContent =
-        "Welcome, " + safeText(profile.fullName || profile.name || user.email);
-
-      document.getElementById("accountInfo").textContent =
-        "Signed in as " + user.email +
-        " | Role: Director Manager | Status: Active";
-
-      await loadAllData();
-
-    } catch (error) {
-      console.error(error);
-
-      await signOut(auth);
-
-      showLogin();
+      await sendPasswordResetEmail(auth, email);
 
       showMessage(
-        loginMessage,
-        "The staff access check failed. Check the Firestore security rules and staff profile.",
-        "error"
+        "loginMessage",
+        "If the email is registered, a password reset email will be sent.",
+        "success"
+      );
+    } catch (error) {
+      showErrorMessage(
+        "loginMessage",
+        error,
+        "Password reset"
       );
     }
   });
 
 
-  // ==========================================
-  // LOAD ALL DASHBOARD DATA
-  // ==========================================
+  async function checkDirectorManagerAccess(user) {
+    if (!user) {
+      return {
+        allowed: false,
+        message: "Please sign in."
+      };
+    }
 
-  async function loadAllData() {
-    if (!currentUser) return;
+    await user.reload();
 
-    hideMessage(dashboardMessage);
+    if (!user.emailVerified) {
+      return {
+        allowed: false,
+        message:
+          "Your email address is not verified. Verify your email, then sign in again."
+      };
+    }
 
-    await Promise.all([
-      loadDocuments(),
-      loadStaff(),
-      loadStaffRequests()
-    ]);
+    const profileRef = doc(db, "staffProfiles", user.uid);
+    const profileSnap = await getDoc(profileRef);
 
-    updateStatistics();
-    updateReports();
+    if (!profileSnap.exists()) {
+      return {
+        allowed: false,
+        message:
+          "No staff profile was found for this account. Contact the CEO."
+      };
+    }
+
+    const profile = profileSnap.data();
+
+    if (profile.role !== "directorManager") {
+      return {
+        allowed: false,
+        message:
+          "This account is not assigned the Director Manager role."
+      };
+    }
+
+    if (profile.status !== "Active") {
+      return {
+        allowed: false,
+        message:
+          "Your Director Manager staff profile is not Active. Contact the CEO."
+      };
+    }
+
+    return {
+      allowed: true,
+      profile
+    };
   }
 
 
-  // ==========================================
-  // DOCUMENT REQUESTS
-  // ==========================================
+  onAuthStateChanged(auth, async user => {
+    currentUser = user;
+    accessGranted = false;
 
-  async function loadDocuments() {
-    documentsTable.innerHTML =
-      `<tr><td colspan="6">Loading documents...</td></tr>`;
+    if (!user) {
+      showSection("loginSection");
+      return;
+    }
+
+    showSection("loadingCard");
+    $("loadingMessage").textContent =
+      "Checking email verification and Director Manager permissions...";
 
     try {
-      const snapshot = await getDocs(
-        collection(db, "documentRequests")
+      const result = await checkDirectorManagerAccess(user);
+
+      if (!result.allowed) {
+        $("accessDeniedMessage").textContent = result.message;
+        showSection("accessDeniedSection");
+        return;
+      }
+
+      accessGranted = true;
+
+      const profile = result.profile;
+
+      $("signedInDetails").textContent =
+        "Signed in as " +
+        (profile.fullName || user.displayName || "Director Manager") +
+        " (" + user.email + ").";
+
+      showSection("dashboardSection");
+
+      await refreshDashboard();
+
+    } catch (error) {
+      showErrorMessage(
+        "dashboardMessage",
+        error,
+        "Checking dashboard access"
       );
 
-      documentsData = snapshot.docs.map(item => ({
+      $("accessDeniedMessage").textContent =
+        "Access could not be confirmed. Please try again. If the problem continues, contact the CEO.";
+
+      showSection("accessDeniedSection");
+    }
+  });
+
+
+  async function requireAuthorisedUser() {
+    if (!currentUser || !accessGranted) {
+      throw new Error(
+        "You do not have active Director Manager dashboard access."
+      );
+    }
+
+    const result = await checkDirectorManagerAccess(currentUser);
+
+    if (!result.allowed) {
+      accessGranted = false;
+      throw new Error(result.message);
+    }
+
+    return currentUser;
+  }
+
+
+  async function logout() {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      alert("Sign out failed. Please try again.");
+      console.error(error);
+    }
+  }
+
+  $("signOutButton").addEventListener("click", logout);
+  $("deniedSignOutButton").addEventListener("click", logout);
+
+
+  // --------------------------------------------------
+  // DASHBOARD NAVIGATION
+  // --------------------------------------------------
+
+  document.querySelectorAll("[data-tab]").forEach(button => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.tab;
+
+      document.querySelectorAll(".tab-panel").forEach(panel => {
+        panel.classList.add("hidden");
+      });
+
+      document.querySelectorAll("[data-tab]").forEach(tab => {
+        tab.classList.remove("active");
+      });
+
+      $(target).classList.remove("hidden");
+      button.classList.add("active");
+    });
+  });
+
+
+  // --------------------------------------------------
+  // DOCUMENT REQUESTS
+  // --------------------------------------------------
+
+  $("loadDocumentsButton").addEventListener(
+    "click",
+    loadDocuments
+  );
+
+
+  async function loadDocuments() {
+    const body = $("documentsTableBody");
+
+    body.replaceChildren();
+
+    const loadingRow = body.insertRow();
+    makeCell(loadingRow, "Loading document requests...");
+
+    try {
+      await requireAuthorisedUser();
+
+      const q = query(
+        collection(db, "documentRequests"),
+        limit(200)
+      );
+
+      const snapshot = await getDocs(q);
+
+      documentRows = snapshot.docs.map(item => ({
         id: item.id,
         ...item.data()
       }));
 
-      documentsData.sort((a, b) => {
-        const aDate = a.createdAt?.toMillis?.() || 0;
-        const bDate = b.createdAt?.toMillis?.() || 0;
-
-        return bDate - aDate;
-      });
-
       renderDocuments();
 
-    } catch (error) {
-      console.error(error);
-
-      documentsTable.innerHTML =
-        `<tr><td colspan="6">Unable to load documents. Check Firestore permissions.</td></tr>`;
+      updateStats();
 
       showMessage(
-        dashboardMessage,
-        "Document requests could not be loaded. Check your published Firestore rules.",
-        "error"
+        "dashboardMessage",
+        "Document requests loaded.",
+        "success"
+      );
+
+    } catch (error) {
+      body.replaceChildren();
+
+      const row = body.insertRow();
+      const cell = row.insertCell();
+
+      cell.colSpan = 6;
+      cell.textContent = "Could not load document requests.";
+
+      showErrorMessage(
+        "dashboardMessage",
+        error,
+        "Loading document requests"
       );
     }
   }
 
 
   function renderDocuments() {
-    if (!documentsData.length) {
-      documentsTable.innerHTML =
-        `<tr><td colspan="6">No document requests were found.</td></tr>`;
+    const body = $("documentsTableBody");
+    body.replaceChildren();
 
+    if (!documentRows.length) {
+      const row = body.insertRow();
+      const cell = row.insertCell();
+
+      cell.colSpan = 6;
+      cell.textContent = "No document requests were found.";
       return;
     }
 
-    documentsTable.innerHTML = documentsData.map(item => {
-      const pending = item.status === "Pending Review";
+    documentRows.forEach(item => {
+      const row = body.insertRow();
 
-      const actions = pending
-        ? `
-          <button
-            class="primary"
-            data-review="Verified"
-            data-id="${escapeHtml(item.id)}">
-            Verify
-          </button>
+      makeCell(
+        row,
+        item.referenceNumber || item.id
+      );
 
-          <button
-            class="danger"
-            data-review="Rejected"
-            data-id="${escapeHtml(item.id)}">
-            Reject
-          </button>
-        `
-        : `
-          <span class="muted">
-            No action available
-          </span>
-        `;
+      makeCell(
+        row,
+        item.documentTitle || item.documentType || item.documentName
+      );
 
-      return `
-        <tr>
-          <td>
-            <strong>${escapeHtml(safeText(item.referenceNumber))}</strong>
-            <div class="muted">${escapeHtml(safeText(item.originalDocumentNumber))}</div>
-          </td>
+      makeCell(
+        row,
+        item.issuedTo || item.fullName
+      );
 
-          <td class="request-details">
-            <strong>${escapeHtml(safeText(item.documentTitle))}</strong>
-            <div>${escapeHtml(safeText(item.documentCategory))}</div>
-            <div class="muted">${escapeHtml(safeText(item.description))}</div>
-          </td>
+      addBadgeCell(row, item.status);
 
-          <td>${escapeHtml(safeText(item.issuedTo))}</td>
+      makeCell(
+        row,
+        item.createdByEmail || item.createdByUid
+      );
 
-          <td class="request-details">
-            <strong>${escapeHtml(safeText(item.companyName))}</strong>
-            <div>${escapeHtml(safeText(item.companyEmail))}</div>
-            <div class="muted">${escapeHtml(safeText(item.companyNumber))}</div>
-          </td>
+      const actionCell = row.insertCell();
 
-          <td>
-            ${statusBadge(item.status)}
-            <div class="muted">
-              ${escapeHtml(formatDate(item.reviewedAt))}
-            </div>
-          </td>
+      if (item.status === "Pending Review") {
+        const verifyButton = document.createElement("button");
+        verifyButton.textContent = "Mark Verified";
 
-          <td>${actions}</td>
-        </tr>
-      `;
-    }).join("");
+        verifyButton.addEventListener("click", () => {
+          reviewDocument(item, "Verified", verifyButton);
+        });
+
+        const rejectButton = document.createElement("button");
+        rejectButton.textContent = "Reject";
+        rejectButton.className = "danger";
+
+        rejectButton.addEventListener("click", () => {
+          reviewDocument(item, "Rejected", rejectButton);
+        });
+
+        actionCell.append(
+          verifyButton,
+          rejectButton
+        );
+
+      } else {
+        actionCell.textContent =
+          "No action available. Current status: " +
+          safeText(item.status);
+      }
+    });
   }
 
 
-  // ==========================================
-  // REVIEW DOCUMENT
-  // ==========================================
-
-  documentsTable.addEventListener("click", async event => {
-    const button = event.target.closest("button[data-review]");
-
-    if (!button) return;
-
-    const status = button.dataset.review;
-    const requestId = button.dataset.id;
-
-    const documentItem = documentsData.find(
-      item => item.id === requestId
-    );
-
-    if (!documentItem) {
-      showMessage(
-        dashboardMessage,
-        "The selected document could not be found. Refresh and try again.",
-        "error"
+  async function reviewDocument(item, newStatus, button) {
+    if (item.status !== "Pending Review") {
+      alert(
+        "Only requests with Pending Review status can be reviewed here."
       );
-
       return;
     }
 
-    if (documentItem.status !== "Pending Review") {
-      showMessage(
-        dashboardMessage,
-        "This document is no longer pending review. Refresh the dashboard.",
-        "error"
-      );
-
-      return;
-    }
-
-    const confirmation = confirm(
-      `Are you sure you want to change the document status to ${status}?`
+    const confirmed = confirm(
+      "Are you sure you want to mark " +
+      (item.referenceNumber || item.id) +
+      " as " + newStatus + "?"
     );
 
-    if (!confirmation) return;
+    if (!confirmed) return;
 
     button.disabled = true;
 
     try {
-      await updateDoc(
-        doc(db, "documentRequests", requestId),
-        {
-          status: status,
-          reviewedAt: serverTimestamp(),
-          reviewedByUid: currentUser.uid,
-          reviewedByEmail: currentUser.email
-        }
+      await requireAuthorisedUser();
+
+      const recordRef = doc(
+        db,
+        "documentRequests",
+        item.id
       );
 
+      await updateDoc(recordRef, {
+        status: newStatus,
+        reviewedAt: serverTimestamp(),
+        reviewedByUid: currentUser.uid,
+        reviewedByEmail: currentUser.email
+      });
+
+      item.status = newStatus;
+      item.reviewedByUid = currentUser.uid;
+      item.reviewedByEmail = currentUser.email;
+
+      renderDocuments();
+      updateStats();
+
       showMessage(
-        dashboardMessage,
-        `Document ${safeText(documentItem.referenceNumber)} updated to ${status}.`,
+        "dashboardMessage",
+        "Document request updated to " + newStatus +
+        ". This action did not publish a public verification record.",
         "success"
       );
 
-      await loadAllData();
-
     } catch (error) {
-      console.error(error);
-
-      showMessage(
-        dashboardMessage,
-        "The document could not be updated. Check your Firestore rules and ensure the document is still Pending Review.",
-        "error"
+      showErrorMessage(
+        "dashboardMessage",
+        error,
+        "Reviewing document request"
       );
 
       button.disabled = false;
     }
-  });
+  }
 
 
-  // ==========================================
+  // --------------------------------------------------
   // STAFF DIRECTORY
-  // ==========================================
+  // --------------------------------------------------
+
+  $("loadStaffButton").addEventListener(
+    "click",
+    loadStaff
+  );
+
 
   async function loadStaff() {
-    staffTable.innerHTML =
-      `<tr><td colspan="5">Loading staff...</td></tr>`;
+    const body = $("staffTableBody");
+    body.replaceChildren();
 
     try {
+      await requireAuthorisedUser();
+
       const snapshot = await getDocs(
-        collection(db, "staffProfiles")
-      );
-
-      staffData = snapshot.docs.map(item => ({
-        id: item.id,
-        ...item.data()
-      }));
-
-      staffData.sort((a, b) =>
-        String(a.fullName || a.name || "").localeCompare(
-          String(b.fullName || b.name || "")
+        query(
+          collection(db, "staffProfiles"),
+          limit(200)
         )
       );
 
-      if (!staffData.length) {
-        staffTable.innerHTML =
-          `<tr><td colspan="5">No staff profiles found.</td></tr>`;
-
-        return;
-      }
-
-      staffTable.innerHTML = staffData.map(person => `
-        <tr>
-          <td>${escapeHtml(safeText(person.fullName || person.name))}</td>
-          <td>${escapeHtml(safeText(person.email))}</td>
-          <td>${escapeHtml(safeText(person.role))}</td>
-          <td>${statusBadge(person.status)}</td>
-          <td>${escapeHtml(safeText(person.country))}</td>
-        </tr>
-      `).join("");
-
-    } catch (error) {
-      console.error(error);
-
-      staffTable.innerHTML =
-        `<tr><td colspan="5">Unable to load staff profiles.</td></tr>`;
-    }
-  }
-
-
-  // ==========================================
-  // STAFF RECRUITMENT REQUESTS
-  // ==========================================
-
-  async function loadStaffRequests() {
-    staffRequestsTable.innerHTML =
-      `<tr><td colspan="5">Loading requests...</td></tr>`;
-
-    try {
-      const snapshot = await getDocs(
-        collection(db, "staffRequests")
-      );
-
-      staffRequestsData = snapshot.docs.map(item => ({
+      staffRows = snapshot.docs.map(item => ({
         id: item.id,
         ...item.data()
       }));
 
-      renderStaffRequests();
+      renderStaff();
+      updateStats();
 
     } catch (error) {
-      console.error(error);
+      const row = body.insertRow();
+      const cell = row.insertCell();
 
-      staffRequestsTable.innerHTML =
-        `<tr><td colspan="5">Unable to load staff requests.</td></tr>`;
+      cell.colSpan = 5;
+      cell.textContent = "Could not load the staff directory.";
+
+      showErrorMessage(
+        "dashboardMessage",
+        error,
+        "Loading staff directory"
+      );
     }
   }
 
 
-  function renderStaffRequests() {
-    if (!staffRequestsData.length) {
-      staffRequestsTable.innerHTML =
-        `<tr><td colspan="5">No staff requests found.</td></tr>`;
+  function renderStaff() {
+    const body = $("staffTableBody");
+    body.replaceChildren();
 
+    if (!staffRows.length) {
+      const row = body.insertRow();
+      const cell = row.insertCell();
+
+      cell.colSpan = 5;
+      cell.textContent = "No staff profiles were found.";
       return;
     }
 
-    staffRequestsTable.innerHTML = staffRequestsData.map(item => `
-      <tr>
-        <td>${escapeHtml(safeText(item.fullName))}</td>
-        <td>${escapeHtml(safeText(item.email))}</td>
-        <td>${escapeHtml(safeText(item.requestedRole))}</td>
-        <td>${escapeHtml(safeText(item.country))}</td>
-        <td>${statusBadge(item.status)}</td>
-      </tr>
-    `).join("");
+    staffRows.forEach(item => {
+      const row = body.insertRow();
+
+      makeCell(
+        row,
+        item.fullName || item.name
+      );
+
+      makeCell(
+        row,
+        item.email
+      );
+
+      makeCell(
+        row,
+        item.role
+      );
+
+      addBadgeCell(row, item.status);
+
+      makeCell(
+        row,
+        item.country
+      );
+    });
   }
 
 
-  // ==========================================
-  // SUBMIT RECRUITMENT REQUEST
-  // ==========================================
+  // --------------------------------------------------
+  // STAFF RECRUITMENT REQUESTS
+  // --------------------------------------------------
 
-  document.getElementById("recruitmentForm").addEventListener(
+  $("recruitmentForm").addEventListener(
     "submit",
-    async event => {
-      event.preventDefault();
+    submitRecruitmentRequest
+  );
 
-      if (!currentUser) return;
+  $("loadRecruitmentButton").addEventListener(
+    "click",
+    loadRecruitment
+  );
 
-      hideMessage(recruitmentMessage);
 
-      const fullName =
-        document.getElementById("candidateName").value.trim();
+  async function submitRecruitmentRequest(event) {
+    event.preventDefault();
 
-      const email =
-        document.getElementById("candidateEmail").value.trim();
+    const button = $("submitRecruitmentButton");
+    button.disabled = true;
 
-      const requestedRole =
-        document.getElementById("candidateRole").value;
+    clearMessage("recruitmentMessage");
 
-      const country =
-        document.getElementById("candidateCountry").value.trim();
+    try {
+      await requireAuthorisedUser();
 
-      if (!fullName || !email || !country) {
-        showMessage(
-          recruitmentMessage,
-          "Please complete all fields.",
-          "error"
-        );
+      const fullName = $("recruitFullName").value.trim();
+      const email = $("recruitEmail").value.trim();
+      const requestedRole = $("recruitRole").value;
+      const country = $("recruitCountry").value.trim();
 
-        return;
+      if (!fullName || !email || !requestedRole || !country) {
+        throw new Error("Complete all recruitment request fields.");
       }
 
+      if (![
+        "verificationOfficer",
+        "customerSupport"
+      ].includes(requestedRole)) {
+        throw new Error("The selected position is not permitted.");
+      }
+
+      await addDoc(collection(db, "staffRequests"), {
+        fullName,
+        email,
+        requestedRole,
+        country,
+
+        requestedByUid: currentUser.uid,
+        requestedByEmail: currentUser.email,
+
+        status: "Pending Approval",
+
+        reviewedByUid: "",
+        reviewedByEmail: "",
+        reviewedAt: null,
+
+        createdAt: serverTimestamp()
+      });
+
+      $("recruitmentForm").reset();
+
+      showMessage(
+        "recruitmentMessage",
+        "Recruitment request submitted for CEO approval. This does not appoint or activate the candidate.",
+        "success"
+      );
+
+      await loadRecruitment();
+
+    } catch (error) {
+      showErrorMessage(
+        "recruitmentMessage",
+        error,
+        "Submitting recruitment request"
+      );
+    } finally {
+      button.disabled = false;
+    }
+  }
+
+
+  async function loadRecruitment() {
+    const body = $("recruitmentTableBody");
+    body.replaceChildren();
+
+    try {
+      await requireAuthorisedUser();
+
+      const snapshot = await getDocs(
+        query(
+          collection(db, "staffRequests"),
+          limit(200)
+        )
+      );
+
+      recruitmentRows = snapshot.docs.map(item => ({
+        id: item.id,
+        ...item.data()
+      }));
+
+      renderRecruitment();
+      updateStats();
+
+    } catch (error) {
+      const row = body.insertRow();
+      const cell = row.insertCell();
+
+      cell.colSpan = 6;
+      cell.textContent = "Could not load recruitment requests.";
+
+      showErrorMessage(
+        "dashboardMessage",
+        error,
+        "Loading recruitment requests"
+      );
+    }
+  }
+
+
+  function renderRecruitment() {
+    const body = $("recruitmentTableBody");
+    body.replaceChildren();
+
+    if (!recruitmentRows.length) {
+      const row = body.insertRow();
+      const cell = row.insertCell();
+
+      cell.colSpan = 6;
+      cell.textContent = "No recruitment requests were found.";
+      return;
+    }
+
+    recruitmentRows.forEach(item => {
+      const row = body.insertRow();
+
+      makeCell(row, item.fullName);
+      makeCell(row, item.email);
+      makeCell(row, item.requestedRole);
+      makeCell(row, item.country);
+
+      addBadgeCell(row, item.status);
+
+      makeCell(
+        row,
+        item.requestedByEmail || item.requestedByUid
+      );
+    });
+  }
+
+
+  // --------------------------------------------------
+  // DASHBOARD STATISTICS
+  // --------------------------------------------------
+
+  function updateStats() {
+    $("statDocuments").textContent =
+      documentRows.length;
+
+    $("statPending").textContent =
+      documentRows.filter(
+        item => item.status === "Pending Review"
+      ).length;
+
+    $("statVerified").textContent =
+      documentRows.filter(
+        item => item.status === "Verified"
+      ).length;
+
+    $("statRejected").textContent =
+      documentRows.filter(
+        item => item.status === "Rejected"
+      ).length;
+
+    $("statStaff").textContent =
+      staffRows.length;
+
+    $("statRecruitment").textContent =
+      recruitmentRows.length;
+  }
+
+
+  async function refreshDashboard() {
+    if (!currentUser || !accessGranted) return;
+
+    clearMessage("dashboardMessage");
+
+    await Promise.allSettled([
+      loadDocuments(),
+      loadStaff(),
+      loadRecruitment()
+    ]);
+
+    updateStats();
+  }
+
+
+  $("refreshButton").addEventListener(
+    "click",
+    refreshDashboard
+  );
+
+
+  // --------------------------------------------------
+  // CSV REPORT DOWNLOADS
+  // --------------------------------------------------
+
+  function csvEscape(value) {
+    if (value === null || value === undefined) {
+      return '""';
+    }
+
+    const text = String(value).replace(/"/g, '""');
+
+    return '"' + text + '"';
+  }
+
+
+  function downloadCSV(filename, headers, rows) {
+    const csv = [
+      headers.map(csvEscape).join(","),
+      ...rows.map(row =>
+        row.map(csvEscape).join(",")
+      )
+    ].join("\r\n");
+
+    const blob = new Blob(
+      ["\uFEFF" + csv],
+      { type: "text/csv;charset=utf-8;" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = filename;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+  }
+
+
+  $("downloadDocumentsButton").addEventListener(
+    "click",
+    async () => {
       try {
-        await addDoc(collection(db, "staffRequests"), {
-          fullName,
-          email,
-          requestedRole,
-          country,
+        await requireAuthorisedUser();
 
-          requestedByUid: currentUser.uid,
-          requestedByEmail: currentUser.email,
+        if (!documentRows.length) {
+          await loadDocuments();
+        }
 
-          status: "Pending Approval",
-
-          reviewedByUid: "",
-          reviewedByEmail: "",
-          reviewedAt: null,
-
-          createdAt: serverTimestamp()
-        });
-
-        document.getElementById("recruitmentForm").reset();
+        downloadCSV(
+          "arnaud-document-requests.csv",
+          [
+            "Reference Number",
+            "Document Title",
+            "Issued To",
+            "Status",
+            "Created By",
+            "Created At"
+          ],
+          documentRows.map(item => [
+            item.referenceNumber || item.id,
+            item.documentTitle || item.documentType || "",
+            item.issuedTo || item.fullName || "",
+            item.status || "",
+            item.createdByEmail || item.createdByUid || "",
+            formatDate(item.createdAt)
+          ])
+        );
 
         showMessage(
-          recruitmentMessage,
-          "Recruitment request submitted. It must be reviewed by the CEO before any staff account is activated.",
+          "reportMessage",
+          "Document report downloaded.",
           "success"
         );
 
-        await loadAllData();
-
       } catch (error) {
-        console.error(error);
-
-        showMessage(
-          recruitmentMessage,
-          "The request could not be submitted. Check the Firestore rules and the staffRequests collection.",
-          "error"
+        showErrorMessage(
+          "reportMessage",
+          error,
+          "Downloading document report"
         );
       }
     }
   );
 
 
-  // ==========================================
-  // STATISTICS
-  // ==========================================
-
-  function updateStatistics() {
-    const pending = documentsData.filter(
-      item => item.status === "Pending Review"
-    ).length;
-
-    const verified = documentsData.filter(
-      item => item.status === "Verified"
-    ).length;
-
-    const rejected = documentsData.filter(
-      item => item.status === "Rejected"
-    ).length;
-
-    document.getElementById("totalDocuments").textContent =
-      documentsData.length;
-
-    document.getElementById("pendingDocuments").textContent =
-      pending;
-
-    document.getElementById("verifiedDocuments").textContent =
-      verified;
-
-    document.getElementById("rejectedDocuments").textContent =
-      rejected;
-
-    document.getElementById("totalStaff").textContent =
-      staffData.length;
-
-    document.getElementById("totalStaffRequests").textContent =
-      staffRequestsData.length;
-  }
-
-
-  // ==========================================
-  // REPORTS
-  // ==========================================
-
-  function updateReports() {
-    const pending = documentsData.filter(
-      item => item.status === "Pending Review"
-    ).length;
-
-    const verified = documentsData.filter(
-      item => item.status === "Verified"
-    ).length;
-
-    const rejected = documentsData.filter(
-      item => item.status === "Rejected"
-    ).length;
-
-    const other = documentsData.length - pending - verified - rejected;
-
-    document.getElementById("reportSummary").innerHTML = `
-      <div class="stats">
-
-        <div class="stat">
-          <div class="muted">Total Documents</div>
-          <div class="number">${documentsData.length}</div>
-        </div>
-
-        <div class="stat">
-          <div class="muted">Pending Review</div>
-          <div class="number">${pending}</div>
-        </div>
-
-        <div class="stat">
-          <div class="muted">Verified</div>
-          <div class="number">${verified}</div>
-        </div>
-
-        <div class="stat">
-          <div class="muted">Rejected</div>
-          <div class="number">${rejected}</div>
-        </div>
-
-      </div>
-
-      <p class="muted">
-        Other document statuses: ${other}<br>
-        Staff profiles visible: ${staffData.length}<br>
-        Recruitment requests visible: ${staffRequestsData.length}
-      </p>
-    `;
-  }
-
-
-  // ==========================================
-  // DOWNLOAD CSV
-  // ==========================================
-
-  document.getElementById("downloadReportButton").addEventListener(
+  $("downloadRecruitmentButton").addEventListener(
     "click",
-    () => {
-      const headers = [
-        "Reference Number",
-        "Document Title",
-        "Document Category",
-        "Issued To",
-        "Company Name",
-        "Company Email",
-        "Company Number",
-        "Status",
-        "Created At",
-        "Reviewed At",
-        "Reviewed By"
-      ];
+    async () => {
+      try {
+        await requireAuthorisedUser();
 
-      const rows = documentsData.map(item => [
-        item.referenceNumber,
-        item.documentTitle,
-        item.documentCategory,
-        item.issuedTo,
-        item.companyName,
-        item.companyEmail,
-        item.companyNumber,
-        item.status,
-        formatDate(item.createdAt),
-        formatDate(item.reviewedAt),
-        item.reviewedByEmail
-      ]);
-
-      const csvEscape = value => {
-        let text = String(value ?? "");
-
-        // Prevent spreadsheet formulas from executing when
-        // a CSV field begins with a formula marker.
-        if (/^[=+\-@\t\r]/.test(text)) {
-          text = "'" + text;
+        if (!recruitmentRows.length) {
+          await loadRecruitment();
         }
 
-        return '"' + text.replace(/"/g, '""') + '"';
-      };
+        downloadCSV(
+          "arnaud-recruitment-requests.csv",
+          [
+            "Candidate",
+            "Email",
+            "Requested Role",
+            "Country",
+            "Status",
+            "Requested By",
+            "Created At"
+          ],
+          recruitmentRows.map(item => [
+            item.fullName || "",
+            item.email || "",
+            item.requestedRole || "",
+            item.country || "",
+            item.status || "",
+            item.requestedByEmail || item.requestedByUid || "",
+            formatDate(item.createdAt)
+          ])
+        );
 
-      const csv = [headers, ...rows]
-        .map(row => row.map(csvEscape).join(","))
-        .join("\r\n");
+        showMessage(
+          "reportMessage",
+          "Recruitment report downloaded.",
+          "success"
+        );
 
-      const blob = new Blob(
-        ["\uFEFF" + csv],
-        { type: "text/csv;charset=utf-8;" }
-      );
-
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-
-      link.href = url;
-      link.download = "ARNAUD-Document-Operations-Report.csv";
-
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-
-      URL.revokeObjectURL(url);
+      } catch (error) {
+        showErrorMessage(
+          "reportMessage",
+          error,
+          "Downloading recruitment report"
+        );
+      }
     }
   );
 
 
-  // ==========================================
-  // TABS
-  // ==========================================
-
-  document.querySelectorAll(".tab-button").forEach(button => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".tab-button").forEach(item => {
-        item.classList.remove("active");
-      });
-
-      document.querySelectorAll(".tab-panel").forEach(panel => {
-        panel.classList.add("hidden");
-      });
-
-      button.classList.add("active");
-
-      document.getElementById(button.dataset.tab)
-        .classList.remove("hidden");
-    });
-  });
-
-
-  // ==========================================
-  // REFRESH
-  // ==========================================
-
-  document.getElementById("refreshButton").addEventListener(
+  $("downloadSummaryButton").addEventListener(
     "click",
     async () => {
-      await loadAllData();
+      try {
+        await requireAuthorisedUser();
 
-      showMessage(
-        dashboardMessage,
-        "Dashboard data refreshed.",
-        "success"
-      );
+        if (!documentRows.length) {
+          await loadDocuments();
+        }
+
+        if (!staffRows.length) {
+          await loadStaff();
+        }
+
+        if (!recruitmentRows.length) {
+          await loadRecruitment();
+        }
+
+        downloadCSV(
+          "arnaud-operational-summary.csv",
+          ["Metric", "Count"],
+          [
+            ["Company", COMPANY_NAME],
+            ["Company Email", COMPANY_EMAIL],
+            ["Document Requests", documentRows.length],
+            [
+              "Pending Reviews",
+              documentRows.filter(
+                item => item.status === "Pending Review"
+              ).length
+            ],
+            [
+              "Verified Requests",
+              documentRows.filter(
+                item => item.status === "Verified"
+              ).length
+            ],
+            [
+              "Rejected Requests",
+              documentRows.filter(
+                item => item.status === "Rejected"
+              ).length
+            ],
+            ["Staff Profiles", staffRows.length],
+            ["Recruitment Requests", recruitmentRows.length],
+            ["Report Generated At", new Date().toISOString()]
+          ]
+        );
+
+        showMessage(
+          "reportMessage",
+          "Operational summary downloaded.",
+          "success"
+        );
+
+      } catch (error) {
+        showErrorMessage(
+          "reportMessage",
+          error,
+          "Downloading summary report"
+        );
+      }
     }
   );
 
