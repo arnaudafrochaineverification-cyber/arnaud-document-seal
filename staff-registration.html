@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Staff Registration | ARNAUD</title>
+
+<style>
+:root {
+  --green: #08783e;
+  --dark: #075b30;
+  --gold: #d4af37;
+  --light: #f4f7f5;
+  --border: #dce5de;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: #17231b;
+}
+
+header {
+  background: var(--green);
+  color: white;
+  padding: 24px 16px;
+  border-bottom: 4px solid var(--gold);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+header p {
+  margin: 4px 0;
+}
+
+main {
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 0 14px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.04);
+}
+
+h2 {
+  color: var(--dark);
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 15px 0 6px;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #bdc9c0;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--green);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #42564a;
+}
+
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.notice {
+  padding: 13px;
+  border-radius: 7px;
+  background: #e8f5ec;
+  color: #14532d;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+.error {
+  background: #fdecec;
+  color: #8a1717;
+}
+
+.warning {
+  background: #fff4d6;
+  color: #6c5100;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.small {
+  color: #66736b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 12px;
+  color: #66736b;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+  <p>Staff Registration Portal</p>
+  <p>African Roots, Global Vision.</p>
+</header>
+
+<main>
+
+  <section class="card">
+    <h2>Register as Staff</h2>
+
+    <div class="notice warning">
+      Registration is for candidates authorised by ARNAUD management.
+      Creating an account does not automatically approve employment
+      or grant access to staff operations.
+    </div>
+
+    <p class="small">
+      Use the same email address associated with your approved
+      recruitment invitation. You will need to verify that email.
+    </p>
+
+    <div id="message" class="notice hidden" role="status"></div>
+
+    <form id="registrationForm">
+
+      <label for="fullName">Full Name</label>
+      <input
+        id="fullName"
+        type="text"
+        autocomplete="name"
+        maxlength="120"
+        required
+      >
+
+      <label for="email">Invited Email Address</label>
+      <input
+        id="email"
+        type="email"
+        autocomplete="email"
+        maxlength="254"
+        required
+      >
+
+      <label for="confirmEmail">Confirm Email Address</label>
+      <input
+        id="confirmEmail"
+        type="email"
+        autocomplete="email"
+        maxlength="254"
+        required
+      >
+
+      <label for="password">Create Password</label>
+      <input
+        id="password"
+        type="password"
+        autocomplete="new-password"
+        minlength="8"
+        required
+      >
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        id="confirmPassword"
+        type="password"
+        autocomplete="new-password"
+        minlength="8"
+        required
+      >
+
+      <button id="registerButton" type="submit">
+        Create Staff Account
+      </button>
+
+    </form>
+
+    <hr>
+
+    <h2>Already Registered?</h2>
+
+    <p class="small">
+      If you have already created your account, use the button below
+      to sign in and check your email-verification status.
+    </p>
+
+    <button id="showLoginButton" type="button" class="secondary">
+      Sign In
+    </button>
+  </section>
+
+  <section id="loginSection" class="card hidden">
+    <h2>Staff Account Login</h2>
+
+    <form id="loginForm">
+
+      <label for="loginEmail">Email Address</label>
+      <input
+        id="loginEmail"
+        type="email"
+        autocomplete="username"
+        required
+      >
+
+      <label for="loginPassword">Password</label>
+      <input
+        id="loginPassword"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button id="loginButton" type="submit">
+        Sign In
+      </button>
+
+    </form>
+
+    <button id="resendButton" type="button" class="secondary">
+      Resend Verification Email
+    </button>
+
+    <button id="checkButton" type="button" class="secondary">
+      Check Email Verification
+    </button>
+
+    <button id="signOutButton" type="button" class="secondary">
+      Sign Out
+    </button>
+  </section>
+
+  <section class="card">
+    <h2>What Happens Next?</h2>
+
+    <ol>
+      <li>Create your account using your invited email address.</li>
+      <li>Open your email and follow the Firebase verification link.</li>
+      <li>Return to this page and check your verification status.</li>
+      <li>Wait for the CEO to approve and activate your staff profile.</li>
+    </ol>
+
+    <div class="notice warning">
+      Email verification proves control of the email address.
+      It does not prove employment approval. Only authorised
+      management can activate a staff profile.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  ARNAUD AFROCHAINE TRUST SYSTEMS LTD<br>
+  arnaudafrochain@gmail.com | +2349132851465
+</footer>
+
+<script type="module">
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendEmailVerification,
+  reload,
+  signOut
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+  authDomain: "arnaud-document-trust.firebaseapp.com",
+  projectId: "arnaud-document-trust",
+  storageBucket: "arnaud-document-trust.firebasestorage.app",
+  messagingSenderId: "96008667746",
+  appId: "1:96008667746:web:63a6badb04fb996219873b",
+  measurementId: "G-NYPH2RB851"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = id => document.getElementById(id);
+
+function message(text, isError = false) {
+  const box = $("message");
+  box.textContent = text;
+  box.classList.remove("hidden", "error");
+
+  if (isError) {
+    box.classList.add("error");
+  }
+}
+
+function clearMessage() {
+  $("message").classList.add("hidden");
+}
+
+function validEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function busy(button, state, text) {
+  button.disabled = state;
+
+  if (state) {
+    button.dataset.originalText = button.textContent;
+    button.textContent = text;
+  } else {
+    button.textContent =
+      button.dataset.originalText || text;
+  }
+}
+
+async function showAccountStatus(user) {
+  if (!user) {
+    message("Please sign in to check your account.");
+    return;
+  }
+
+  await reload(user);
+
+  if (!auth.currentUser.emailVerified) {
+    message(
+      "Your email is not verified yet. Open the verification email " +
+      "sent by Firebase, click its link, return here, and tap " +
+      "'Check Email Verification'.",
+      true
+    );
+    return;
+  }
+
+  try {
+    const profileRef = doc(db, "staffProfiles", user.uid);
+    const profileSnap = await getDoc(profileRef);
+
+    if (profileSnap.exists()) {
+      const profile = profileSnap.data();
+
+      if (
+        profile.email &&
+        profile.email.toLowerCase() !== user.email.toLowerCase()
+      ) {
+        message(
+          "Your email does not match the email on the staff profile. " +
+          "Contact ARNAUD management for assistance.",
+          true
+        );
+        return;
+      }
+
+      if (profile.status === "Active") {
+        message(
+          "Your email is verified and your staff profile is Active. " +
+          "Use the staff portal assigned to your role."
+        );
+        return;
+      }
+
+      message(
+        "Your email is verified, but your staff profile is not Active. " +
+        "Please wait for CEO activation."
+      );
+      return;
+    }
+
+    message(
+      "Your email is verified. We could not find an active staff profile " +
+      "for this account. Your registration must be matched to an approved " +
+      "recruitment invitation by ARNAUD management."
+    );
+
+  } catch (error) {
+    message(
+      "Your email verification could not be checked against the staff " +
+      "directory. Contact ARNAUD management. Details: " + error.message,
+      true
+    );
+  }
+}
+
+
+/* ACCOUNT REGISTRATION */
+
+$("registrationForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  clearMessage();
+
+  const fullName = $("fullName").value.trim();
+  const email = $("email").value.trim().toLowerCase();
+  const confirmEmail = $("confirmEmail").value.trim().toLowerCase();
+  const password = $("password").value;
+  const confirmPassword = $("confirmPassword").value;
+  const button = $("registerButton");
+
+  if (!fullName) {
+    message("Enter your full name.", true);
+    return;
+  }
+
+  if (!validEmail(email)) {
+    message("Enter a valid email address.", true);
+    return;
+  }
+
+  if (email !== confirmEmail) {
+    message("The email addresses do not match.", true);
+    return;
+  }
+
+  if (password.length < 8) {
+    message("Your password must contain at least 8 characters.", true);
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    message("The passwords do not match.", true);
+    return;
+  }
+
+  /*
+    Important:
+    This page creates and verifies a Firebase Authentication account.
+    It does not create staffProfiles or grant employment privileges.
+    The invitation must be checked and matched by the protected
+    CEO approval workflow.
+  */
+
+  busy(button, true, "Creating account...");
+
+  try {
+    if (auth.currentUser) {
+      await signOut(auth);
+    }
+
+    const credential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    try {
+      await sendEmailVerification(credential.user);
+    } catch (verificationError) {
+      message(
+        "Your account was created, but Firebase could not send the " +
+        "verification email. Sign in and use 'Resend Verification Email'. " +
+        verificationError.message,
+        true
+      );
+      return;
+    }
+
+    $("registrationForm").reset();
+
+    message(
+      "Your account was created. Firebase has sent a verification link " +
+      "to " + email + ". Open that email and click the link. " +
+      "Your staff access remains pending until the CEO approves and " +
+      "activates your profile."
+    );
+
+  } catch (error) {
+    let text = "Registration failed: " + error.message;
+
+    if (error.code === "auth/email-already-in-use") {
+      text =
+        "An account already exists for this email. Use Sign In instead.";
+    } else if (error.code === "auth/weak-password") {
+      text =
+        "Choose a stronger password with at least 8 characters.";
+    } else if (error.code === "auth/operation-not-allowed") {
+      text =
+        "Email/password sign-in is not enabled in Firebase Authentication.";
+    }
+
+    message(text, true);
+
+  } finally {
+    busy(button, false, "Create Staff Account");
+  }
+});
+
+
+/* LOGIN */
+
+$("showLoginButton").addEventListener("click", () => {
+  $("loginSection").classList.toggle("hidden");
+  clearMessage();
+});
+
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  clearMessage();
+
+  const button = $("loginButton");
+
+  busy(button, true, "Signing in...");
+
+  try {
+    const email = $("loginEmail").value.trim().toLowerCase();
+    const password = $("loginPassword").value;
+
+    const credential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    await showAccountStatus(credential.user);
+
+  } catch (error) {
+    message("Sign-in failed: " + error.message, true);
+  } finally {
+    busy(button, false, "Sign In");
+  }
+});
+
+
+/* RESEND VERIFICATION EMAIL */
+
+$("resendButton").addEventListener("click", async () => {
+  clearMessage();
+
+  const user = auth.currentUser;
+
+  if (!user) {
+    message("Sign in first to resend your verification email.", true);
+    return;
+  }
+
+  try {
+    await reload(user);
+
+    if (auth.currentUser.emailVerified) {
+      message("Your email is already verified.");
+      return;
+    }
+
+    await sendEmailVerification(auth.currentUser);
+
+    message(
+      "A new verification email has been sent to " +
+      auth.currentUser.email + "."
+    );
+
+  } catch (error) {
+    message(
+      "Could not resend verification email: " + error.message,
+      true
+    );
+  }
+});
+
+
+/* CHECK VERIFICATION */
+
+$("checkButton").addEventListener("click", async () => {
+  clearMessage();
+
+  try {
+    await showAccountStatus(auth.currentUser);
+  } catch (error) {
+    message("Could not check verification: " + error.message, true);
+  }
+});
+
+
+/* SIGN OUT */
+
+$("signOutButton").addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    message("You have signed out successfully.");
+  } catch (error) {
+    message("Sign-out failed: " + error.message, true);
+  }
+});
+
+</script>
+
+</body>
+</html>
