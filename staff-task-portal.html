@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#08783e">
+<meta name="description" content="Secure staff task management portal for ARNAUD AFROCHAINE TRUST SYSTEMS LTD.">
+
+<title>Staff Task Portal | ARNAUD</title>
+
+<style>
+:root {
+  --green: #08783e;
+  --dark-green: #05552c;
+  --gold: #d5a62e;
+  --background: #f3f7f4;
+  --text: #17231b;
+  --muted: #66736a;
+  --border: #dce5de;
+  --white: #ffffff;
+  --red: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+header {
+  background: linear-gradient(120deg, var(--dark-green), var(--green));
+  color: white;
+  padding: 24px 16px;
+  border-bottom: 4px solid var(--gold);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.tagline {
+  color: #f4e6b6;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+header h1 {
+  font-size: 25px;
+  margin: 20px 0 5px;
+}
+
+header p {
+  margin: 0;
+  font-size: 14px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 14px 40px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(20, 50, 30, 0.04);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 17px;
+  margin: 0 0 10px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 13px 0 5px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd7ce;
+  border-radius: 8px;
+  font: inherit;
+  background: white;
+  color: var(--text);
+}
+
+textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  background: var(--green);
+  color: white;
+}
+
+button:hover {
+  background: var(--dark-green);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: #e6eee8;
+  color: var(--dark-green);
+}
+
+button.danger {
+  background: var(--red);
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.notice {
+  padding: 12px;
+  border-radius: 8px;
+  background: #eef6ef;
+  border: 1px solid #d2e5d6;
+  margin-bottom: 15px;
+  overflow-wrap: anywhere;
+}
+
+.error {
+  background: #fff0ef;
+  border-color: #f2c4c0;
+  color: #8d1b13;
+}
+
+.success {
+  background: #eaf7ed;
+  border-color: #b6dfbf;
+  color: #145c2c;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.stat {
+  padding: 14px;
+  background: #f3f8f4;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 24px;
+  color: var(--green);
+}
+
+.task {
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--green);
+  padding: 17px;
+  margin: 14px 0;
+  border-radius: 10px;
+  background: white;
+  overflow-wrap: anywhere;
+}
+
+.task.overdue {
+  border-left-color: var(--red);
+}
+
+.task p {
+  margin: 7px 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e8eee9;
+  color: #34463a;
+  margin: 3px 3px 3px 0;
+}
+
+.badge.assigned {
+  background: #fff1cb;
+  color: #795300;
+}
+
+.badge.progress {
+  background: #e0efff;
+  color: #124e86;
+}
+
+.badge.submitted {
+  background: #e8e0ff;
+  color: #543b8d;
+}
+
+.badge.correction {
+  background: #ffebe7;
+  color: #a32b1c;
+}
+
+.badge.completed {
+  background: #dff5e4;
+  color: #17652d;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 18px 0;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px 12px;
+  font-size: 12px;
+}
+
+@media (max-width: 650px) {
+  .grid,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">ARNAUD AFROCHAINE</div>
+    <div class="tagline">AFRICAN ROOTS, GLOBAL VISION</div>
+    <h1>Staff Task Portal</h1>
+    <p>Assigned work, progress tracking and task submission.</p>
+  </div>
+</header>
+
+<main>
+
+  <div id="message" class="notice hidden" role="status"></div>
+
+  <!-- LOGIN -->
+  <section id="loginSection" class="card">
+    <h2>Staff Login</h2>
+
+    <p class="small">
+      Sign in using the email address and password associated with your
+      authorised ARNAUD staff account.
+    </p>
+
+    <form id="loginForm">
+      <label for="email">Staff Email</label>
+      <input
+        id="email"
+        type="email"
+        autocomplete="username"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button id="loginButton" type="submit">Sign In</button>
+    </form>
+
+    <p class="small">
+      This page does not create or activate staff accounts.
+      Your staff profile must already be activated by the CEO.
+    </p>
+  </section>
+
+  <!-- ACCOUNT INFORMATION -->
+  <section id="accountSection" class="card hidden">
+    <div class="actions" style="justify-content:space-between">
+      <div>
+        <h2 style="margin-bottom:4px">My Work</h2>
+        <div id="staffIdentity" class="small"></div>
+      </div>
+
+      <button id="logoutButton" type="button" class="secondary">
+        Sign Out
+      </button>
+    </div>
+
+    <hr>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="small">Assigned / Active</span>
+        <strong id="activeCount">0</strong>
+      </div>
+
+      <div class="stat">
+        <span class="small">Submitted for Review</span>
+        <strong id="submittedCount">0</strong>
+      </div>
+
+      <div class="stat">
+        <span class="small">Completed</span>
+        <strong id="completedCount">0</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- TASK LIST -->
+  <section id="tasksSection" class="card hidden">
+    <div class="actions" style="justify-content:space-between">
+      <h2>My Assigned Tasks</h2>
+      <button id="refreshButton" type="button" class="secondary">
+        Refresh Tasks
+      </button>
+    </div>
+
+    <p class="small">
+      Work only on tasks assigned to your account. Record your progress,
+      provide evidence notes, and submit completed work for review.
+    </p>
+
+    <div id="taskList">
+      Loading tasks...
+    </div>
+  </section>
+
+  <!-- TASK EDITOR -->
+  <section id="editorSection" class="card hidden">
+    <h2 id="editorTitle">Update Task</h2>
+
+    <div id="editorMessage" class="notice hidden"></div>
+
+    <form id="taskForm">
+      <input id="taskId" type="hidden">
+
+      <label for="taskStatus">Task Status</label>
+      <select id="taskStatus" required>
+        <option value="In Progress">In Progress</option>
+        <option value="Submitted">Submit for Review</option>
+      </select>
+
+      <label for="progressNote">Work Completed / Progress Notes</label>
+      <textarea
+        id="progressNote"
+        maxlength="3000"
+        placeholder="Explain the checks performed and the work completed."
+        required
+      ></textarea>
+
+      <label for="evidenceNotes">Evidence Notes</label>
+      <textarea
+        id="evidenceNotes"
+        maxlength="5000"
+        placeholder="Describe the evidence examined, source of confirmation, findings, or outstanding issues."
+        required
+      ></textarea>
+
+      <p class="small">
+        Do not enter passwords, private authentication codes, or unnecessary
+        sensitive personal information. Record only information required
+        for the assigned task.
+      </p>
+
+      <div class="actions">
+        <button id="saveButton" type="submit">Save Update</button>
+
+        <button id="cancelEditButton" type="button" class="secondary">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h3>Company Authority</h3>
+    <p class="small">
+      Staff task submission does not publish or approve a public verification
+      record. The Director Manager reviews submitted tasks. Official public
+      verification records remain under CEO control.
+    </p>
+    <p class="small">
+      Contact: arnaudafrochain@gmail.com |
+      +2349132851465
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; <span id="year"></span>
+  ARNAUD AFROCHAINE TRUST SYSTEMS LTD.
+  All rights reserved.
+</footer>
+
+<script type="module">
+import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  serverTimestamp
+} from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+  authDomain: "arnaud-document-trust.firebaseapp.com",
+  projectId: "arnaud-document-trust",
+  storageBucket: "arnaud-document-trust.firebasestorage.app",
+  messagingSenderId: "96008667746",
+  appId: "1:96008667746:web:63a6badb04fb996219873b",
+  measurementId: "G-NYPH2RB851"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = id => document.getElementById(id);
+
+let currentUser = null;
+let currentProfile = null;
+let taskCache = [];
+let submitting = false;
+
+$("year").textContent = new Date().getFullYear();
+
+function showMessage(text, type = "info") {
+  const el = $("message");
+
+  el.textContent = text;
+  el.className = "notice";
+
+  if (type === "error") {
+    el.classList.add("error");
+  }
+
+  if (type === "success") {
+    el.classList.add("success");
+  }
+
+  el.classList.remove("hidden");
+  el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function showEditorMessage(text, type = "info") {
+  const el = $("editorMessage");
+
+  el.textContent = text;
+  el.className = "notice";
+
+  if (type === "error") {
+    el.classList.add("error");
+  }
+
+  if (type === "success") {
+    el.classList.add("success");
+  }
+
+  el.classList.remove("hidden");
+}
+
+function hideEditorMessage() {
+  $("editorMessage").classList.add("hidden");
+}
+
+function hideMessage() {
+  $("message").classList.add("hidden");
+}
+
+function setSignedOutView() {
+  $("loginSection").classList.remove("hidden");
+  $("accountSection").classList.add("hidden");
+  $("tasksSection").classList.add("hidden");
+  $("editorSection").classList.add("hidden");
+}
+
+function setSignedInView() {
+  $("loginSection").classList.add("hidden");
+  $("accountSection").classList.remove("hidden");
+  $("tasksSection").classList.remove("hidden");
+}
+
+function safeText(value) {
+  return String(value ?? "");
+}
+
+function makeElement(tag, className, text) {
+  const el = document.createElement(tag);
+
+  if (className) {
+    el.className = className;
+  }
+
+  if (text !== undefined) {
+    el.textContent = text;
+  }
+
+  return el;
+}
+
+function formatDate(value) {
+  if (!value) return "Not recorded";
+
+  let date;
+
+  if (typeof value.toDate === "function") {
+    date = value.toDate();
+  } else if (value instanceof Date) {
+    date = value;
+  } else {
+    date = new Date(value);
+  }
+
+  if (Number.isNaN(date.getTime())) {
+    return "Not available";
+  }
+
+  return date.toLocaleString();
+}
+
+function statusClass(status) {
+  const map = {
+    "Assigned": "assigned",
+    "In Progress": "progress",
+    "Submitted": "submitted",
+    "Needs Correction": "correction",
+    "Completed": "completed",
+    "Escalated": "correction"
+  };
+
+  return map[status] || "";
+}
+
+function isOverdue(task) {
+  if (!task.deadline || task.status === "Completed") {
+    return false;
+  }
+
+  const deadline = typeof task.deadline.toDate === "function"
+    ? task.deadline.toDate()
+    : new Date(task.deadline);
+
+  return !Number.isNaN(deadline.getTime())
+    && deadline.getTime() < Date.now()
+    && task.status !== "Submitted";
+}
+
+function resetEditor() {
+  $("editorSection").classList.add("hidden");
+  $("taskForm").reset();
+  $("taskId").value = "";
+  hideEditorMessage();
+  $("saveButton").disabled = false;
+  $("saveButton").textContent = "Save Update";
+  submitting = false;
+}
+
+async function handleLogin(event) {
+  event.preventDefault();
+  hideMessage();
+
+  $("loginButton").disabled = true;
+  $("loginButton").textContent = "Signing in...";
+
+  try {
+    await signInWithEmailAndPassword(
+      auth,
+      $("email").value.trim(),
+      $("password").value
+    );
+
+    // Authentication state handler verifies staff permissions.
+  } catch (error) {
+    console.error("Login error:", error);
+
+    showMessage(
+      "Sign-in failed. Check your email and password. If the problem continues, check Firebase Authentication settings.",
+      "error"
+    );
+  } finally {
+    $("loginButton").disabled = false;
+    $("loginButton").textContent = "Sign In";
+  }
+}
+
+async function verifyStaffProfile(user) {
+  if (!user.emailVerified) {
+    throw new Error(
+      "Your email is not verified. Verify your email before using the staff portal."
+    );
+  }
+
+  const profileRef = doc(db, "staffProfiles", user.uid);
+  const profileSnap = await getDoc(profileRef);
+
+  if (!profileSnap.exists()) {
+    throw new Error(
+      "No staff profile was found for this account. Contact the company CEO."
+    );
+  }
+
+  const profile = profileSnap.data();
+
+  if (profile.status !== "Active") {
+    throw new Error(
+      "Your staff profile is not active. Contact the company CEO."
+    );
+  }
+
+  const permittedRoles = [
+    "verificationOfficer",
+    "customerSupport",
+    "customerCareOfficer"
+  ];
+
+  if (!permittedRoles.includes(profile.role)) {
+    throw new Error(
+      "This portal is for active Verification Officers and Customer Care Officers only."
+    );
+  }
+
+  return profile;
+}
+
+function displayIdentity(user, profile) {
+  const name = profile.fullName || user.email || "Staff Member";
+
+  $("staffIdentity").textContent =
+    name + " | " +
+    safeText(profile.role) + " | " +
+    user.email;
+}
+
+async function loadTasks() {
+  if (!currentUser) return;
+
+  $("refreshButton").disabled = true;
+  $("taskList").textContent = "Loading your tasks...";
+
+  try {
+    // The query includes assignedToUid because Firestore rules
+    // are not filters. Staff must query only their own task records.
+    const tasksQuery = query(
+      collection(db, "staffTasks"),
+      where("assignedToUid", "==", currentUser.uid)
+    );
+
+    const snapshot = await getDocs(tasksQuery);
+
+    taskCache = snapshot.docs.map(documentSnapshot => ({
+      id: documentSnapshot.id,
+      ...documentSnapshot.data()
+    }));
+
+    taskCache.sort((a, b) => {
+      const dateA = a.deadline?.toDate
+        ? a.deadline.toDate().getTime()
+        : 0;
+
+      const dateB = b.deadline?.toDate
+        ? b.deadline.toDate().getTime()
+        : 0;
+
+      return dateA - dateB;
+    });
+
+    renderTasks();
+  } catch (error) {
+    console.error("Task loading error:", error);
+
+    $("taskList").textContent =
+      "Unable to load tasks. Check your internet connection and Firestore permissions.";
+
+    showMessage(
+      "Task loading failed. If the problem persists, send the exact error message to the system administrator.",
+      "error"
+    );
+  } finally {
+    $("refreshButton").disabled = false;
+  }
+}
+
+function renderTasks() {
+  const container = $("taskList");
+  container.replaceChildren();
+
+  const active = taskCache.filter(task =>
+    ["Assigned", "In Progress", "Needs Correction"].includes(task.status)
+  ).length;
+
+  const submitted = taskCache.filter(
+    task => task.status === "Submitted"
+  ).length;
+
+  const completed = taskCache.filter(
+    task => task.status === "Completed"
+  ).length;
+
+  $("activeCount").textContent = active;
+  $("submittedCount").textContent = submitted;
+  $("completedCount").textContent = completed;
+
+  if (taskCache.length === 0) {
+    container.appendChild(
+      makeElement(
+        "p",
+        "small",
+        "No tasks have been assigned to your account yet."
+      )
+    );
+    return;
+  }
+
+  for (const task of taskCache) {
+    const card = makeElement(
+      "article",
+      "task" + (isOverdue(task) ? " overdue" : "")
+    );
+
+    card.appendChild(
+      makeElement("h3", "", task.taskTitle || "Untitled Task")
+    );
+
+    card.appendChild(
+      makeElement("p", "small", "Reference: " + safeText(task.taskReference))
+    );
+
+    const status = makeElement(
+      "span",
+      "badge " + statusClass(task.status),
+      task.status || "Unknown"
+    );
+
+    card.appendChild(status);
+
+    card.appendChild(
+      makeElement(
+        "span",
+        "badge",
+        "Priority: " + safeText(task.priority || "Normal")
+      )
+    );
+
+    if (isOverdue(task)) {
+      card.appendChild(
+        makeElement("span", "badge correction", "OVERDUE")
+      );
+    }
+
+    card.appendChild(
+      makeElement("p", "", task.taskDescription || "No description provided.")
+    );
+
+    card.appendChild(
+      makeElement(
+        "p",
+        "small",
+        "Deadline: " + formatDate(task.deadline)
+      )
+    );
+
+    card.appendChild(
+      makeElement(
+        "p",
+        "small",
+        "Last updated: " + formatDate(task.updatedAt)
+      )
+    );
+
+    if (task.progressNote) {
+      card.appendChild(makeElement("hr"));
+
+      card.appendChild(makeElement("strong", "", "Progress Notes"));
+
+      card.appendChild(
+        makeElement("p", "", task.progressNote)
+      );
+    }
+
+    if (task.evidenceNotes) {
+      card.appendChild(makeElement("strong", "", "Evidence Notes"));
+
+      card.appendChild(
+        makeElement("p", "", task.evidenceNotes)
+      );
+    }
+
+    if (task.reviewNote) {
+      card.appendChild(makeElement("hr"));
+
+      card.appendChild(
+        makeElement("strong", "", "Director Manager Feedback")
+      );
+
+      card.appendChild(
+        makeElement("p", "", task.reviewNote)
+      );
+    }
+
+    const editableStatuses = [
+      "Assigned",
+      "In Progress",
+      "Needs Correction"
+    ];
+
+    if (editableStatuses.includes(task.status)) {
+      const editButton = makeElement(
+        "button",
+        "",
+        task.status === "Needs Correction"
+          ? "Correct and Resubmit"
+          : "Update Task"
+      );
+
+      editButton.type = "button";
+
+      editButton.addEventListener("click", () => {
+        openTaskEditor(task);
+      });
+
+      card.appendChild(editButton);
+    }
+
+    container.appendChild(card);
+  }
+}
+
+function openTaskEditor(task) {
+  hideMessage();
+  hideEditorMessage();
+
+  $("taskId").value = task.id;
+  $("editorTitle").textContent =
+    "Update: " + (task.taskTitle || "Task");
+
+  $("progressNote").value = task.progressNote || "";
+  $("evidenceNotes").value = task.evidenceNotes || "";
+
+  $("taskStatus").value =
+    task.status === "Assigned"
+      ? "In Progress"
+      : "In Progress";
+
+  $("editorSection").classList.remove("hidden");
+
+  $("editorSection").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+async function saveTaskUpdate(event) {
+  event.preventDefault();
+
+  if (submitting || !currentUser) return;
+
+  const taskId = $("taskId").value;
+  const task = taskCache.find(item => item.id === taskId);
+
+  if (!task) {
+    showEditorMessage(
+      "This task could not be found. Refresh your task list.",
+      "error"
+    );
+    return;
+  }
+
+  if (!["Assigned", "In Progress", "Needs Correction"].includes(task.status)) {
+    showEditorMessage(
+      "This task can no longer be edited in its current status.",
+      "error"
+    );
+    return;
+  }
+
+  const status = $("taskStatus").value;
+  const progressNote = $("progressNote").value.trim();
+  const evidenceNotes = $("evidenceNotes").value.trim();
+
+  if (!progressNote) {
+    showEditorMessage(
+      "Please explain the work completed or progress made.",
+      "error"
+    );
+    return;
+  }
+
+  if (!evidenceNotes) {
+    showEditorMessage(
+      "Please enter evidence notes before saving or submitting.",
+      "error"
+    );
+    return;
+  }
+
+  if (status === "Submitted") {
+    const confirmed = window.confirm(
+      "Submit this task for Director Manager review? Ensure your progress and evidence notes are complete."
+    );
+
+    if (!confirmed) return;
+  }
+
+  submitting = true;
+  $("saveButton").disabled = true;
+  $("saveButton").textContent = "Saving...";
+
+  try {
+    const update = {
+      status,
+      progressNote,
+      evidenceNotes,
+      updatedAt: serverTimestamp()
+    };
+
+    if (status === "Submitted") {
+      update.submittedAt = serverTimestamp();
+    }
+
+    await updateDoc(
+      doc(db, "staffTasks", taskId),
+      update
+    );
+
+    showMessage(
+      status === "Submitted"
+        ? "Your task has been submitted for review."
+        : "Your progress has been saved.",
+      "success"
+    );
+
+    resetEditor();
+    await loadTasks();
+
+  } catch (error) {
+    console.error("Task update error:", error);
+
+    showEditorMessage(
+      "The update was not saved. Check your internet connection and confirm that your staff profile is active and the Firestore rules are published. If it continues, send the exact error message to the administrator.",
+      "error"
+    );
+  } finally {
+    submitting = false;
+    $("saveButton").disabled = false;
+    $("saveButton").textContent = "Save Update";
+  }
+}
+
+async function handleLogout() {
+  resetEditor();
+
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("Sign-out error:", error);
+    showMessage("Unable to sign out. Please try again.", "error");
+  }
+}
+
+$("loginForm").addEventListener("submit", handleLogin);
+$("taskForm").addEventListener("submit", saveTaskUpdate);
+$("logoutButton").addEventListener("click", handleLogout);
+$("refreshButton").addEventListener("click", loadTasks);
+
+$("cancelEditButton").addEventListener("click", resetEditor);
+
+onAuthStateChanged(auth, async user => {
+  currentUser = user;
+  currentProfile = null;
+  taskCache = [];
+  resetEditor();
+  hideMessage();
+
+  if (!user) {
+    setSignedOutView();
+    return;
+  }
+
+  try {
+    showMessage("Checking your staff authorisation...");
+
+    currentProfile = await verifyStaffProfile(user);
+
+    displayIdentity(user, currentProfile);
+    setSignedInView();
+
+    hideMessage();
+
+    await loadTasks();
+
+  } catch (error) {
+    console.error("Staff authorisation error:", error);
+
+    setSignedOutView();
+
+    showMessage(
+      error.message || "Your account is not authorised to use this portal.",
+      "error"
+    );
+
+    try {
+      await signOut(auth);
+    } catch (signOutError) {
+      console.error("Sign-out error:", signOutError);
+    }
+  }
+});
+</script>
+
+</body>
+</html>
