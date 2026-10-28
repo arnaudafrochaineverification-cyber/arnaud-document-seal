@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08783e">
+
+<title>Document Submission | ARNAUD</title>
+
+<style>
+:root {
+  --green: #08783e;
+  --gold: #d4a62a;
+  --light: #f4f8f5;
+  --dark: #173b29;
+  --border: #dce5df;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: #24332a;
+  line-height: 1.6;
+}
+
+header {
+  background: var(--green);
+  color: white;
+  padding: 25px 16px;
+  text-align: center;
+  border-bottom: 5px solid var(--gold);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header p {
+  margin: 8px 0 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 760px;
+  margin: 25px auto;
+  padding: 0 14px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 3px 15px rgba(0,0,0,.06);
+  border: 1px solid var(--border);
+}
+
+h2 {
+  color: var(--green);
+  margin-top: 0;
+}
+
+.notice {
+  background: #fff8e5;
+  border-left: 4px solid var(--gold);
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 15px 0 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd7ce;
+  border-radius: 7px;
+  font-size: 16px;
+  background: white;
+}
+
+textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--green);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+#message {
+  display: none;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 7px;
+  overflow-wrap: anywhere;
+}
+
+.success {
+  display: block !important;
+  background: #e7f7eb;
+  color: #14532d;
+}
+
+.error {
+  display: block !important;
+  background: #fdecec;
+  color: #991b1b;
+}
+
+.small {
+  color: #59665d;
+  font-size: 13px;
+}
+
+footer {
+  text-align: center;
+  padding: 22px 12px;
+  color: #526258;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+  <p>African Roots, Global Vision.</p>
+  <p>Academic Document Verification Request Portal</p>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h2>Submit a Verification Request</h2>
+
+    <div class="notice">
+      <strong>Important:</strong>
+      Submitting this form creates a request for review. It does not
+      mean that your document has already been verified.
+      Management will review the information before proceeding.
+    </div>
+
+    <form id="submissionForm">
+
+      <label for="requesterType">Who are you submitting this request for?</label>
+      <select id="requesterType" required>
+        <option value="">Select requester type</option>
+        <option value="Individual">Individual</option>
+        <option value="School">School or educational institution</option>
+        <option value="Company">Company or employer</option>
+        <option value="Government">Government agency</option>
+        <option value="NGO">NGO or organisation</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="requesterName">Full name or organisation name</label>
+      <input id="requesterName" maxlength="150" required
+             autocomplete="name"
+             placeholder="Enter your name or organisation">
+
+      <label for="email">Contact email</label>
+      <input id="email" type="email" maxlength="200" required
+             autocomplete="email"
+             placeholder="Enter your email address">
+
+      <label for="phone">Phone number</label>
+      <input id="phone" type="tel" maxlength="30" required
+             autocomplete="tel"
+             placeholder="Include your country code">
+
+      <label for="country">Country</label>
+      <input id="country" maxlength="100" required
+             placeholder="Enter country">
+
+      <label for="documentType">Document type</label>
+      <select id="documentType" required>
+        <option value="">Select document type</option>
+        <option value="University Degree">University degree</option>
+        <option value="Diploma">Diploma</option>
+        <option value="Transcript">Academic transcript</option>
+        <option value="WAEC">WAEC certificate or result</option>
+        <option value="NECO">NECO certificate or result</option>
+        <option value="NABTEB">NABTEB certificate or result</option>
+        <option value="NYSC">NYSC document</option>
+        <option value="Professional Certificate">Professional certificate</option>
+        <option value="Other Academic Document">Other academic document</option>
+      </select>
+
+      <label for="certificateNumber">
+        Certificate or document number (if available)
+      </label>
+      <input id="certificateNumber" maxlength="150"
+             placeholder="Enter the document reference, if available">
+
+      <label for="holderName">Name of person named on the document</label>
+      <input id="holderName" maxlength="150" required
+             placeholder="Enter the document holder's name">
+
+      <label for="institution">Issuing school or institution</label>
+      <input id="institution" maxlength="200" required
+             placeholder="Enter the issuing institution">
+
+      <label for="graduationYear">Year issued or graduation year</label>
+      <input id="graduationYear" type="number"
+             min="1900" max="2100"
+             placeholder="e.g. 2024">
+
+      <label for="purpose">Purpose of verification</label>
+      <select id="purpose" required>
+        <option value="">Select purpose</option>
+        <option value="Employment">Employment</option>
+        <option value="Further Studies">Further studies or admission</option>
+        <option value="Immigration">Immigration or credential assessment</option>
+        <option value="Professional Registration">Professional registration</option>
+        <option value="Institutional Check">Institutional verification</option>
+        <option value="Personal Record">Personal record</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="details">Additional information</label>
+      <textarea id="details" maxlength="2000"
+        placeholder="Explain what needs to be checked. Do not enter passwords or unnecessary sensitive information."></textarea>
+
+      <div class="notice">
+        <strong>Document attachment:</strong>
+        Secure document upload will be connected after Firebase Storage
+        has been enabled and its security rules have been configured.
+        This form does not upload or store document files yet.
+        Please do not enter private document contents in the additional
+        information field.
+      </div>
+
+      <label>
+        <input id="consent" type="checkbox"
+               required style="width:auto; margin-right:8px;">
+        I confirm that I am authorised to submit this request and agree
+        that ARNAUD may use these details to process the verification request.
+      </label>
+
+      <p class="small">
+        Only submit information you are authorised to share. Do not submit
+        another person's document without appropriate permission.
+      </p>
+
+      <button id="submitButton" type="submit">
+        Submit Verification Request
+      </button>
+    </form>
+
+    <div id="message" role="status" aria-live="polite"></div>
+  </section>
+</main>
+
+<footer>
+  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong><br>
+  Email: arnaudafrochain@gmail.com<br>
+  Phone: +2349132851465<br>
+  African Roots, Global Vision.
+</footer>
+
+<script type="module">
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
+  authDomain: "arnaud-document-trust.firebaseapp.com",
+  projectId: "arnaud-document-trust",
+  storageBucket: "arnaud-document-trust.firebasestorage.app",
+  messagingSenderId: "96008667746",
+  appId: "1:96008667746:web:63a6badb04fb996219873b",
+  measurementId: "G-NYPH2RB851"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const form = document.getElementById("submissionForm");
+const button = document.getElementById("submitButton");
+const message = document.getElementById("message");
+
+function showMessage(text, type) {
+  message.textContent = text;
+  message.className = type;
+}
+
+function value(id) {
+  return document.getElementById(id).value.trim();
+}
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!form.reportValidity()) return;
+
+  button.disabled = true;
+  button.textContent = "Submitting request...";
+  message.className = "";
+  message.style.display = "none";
+
+  try {
+    const yearText = value("graduationYear");
+    const year = yearText ? Number(yearText) : null;
+
+    if (year !== null && (!Number.isInteger(year) || year < 1900 || year > 2100)) {
+      throw new Error("Please enter a valid document year.");
+    }
+
+    const submission = {
+      requesterType: value("requesterType"),
+      requesterName: value("requesterName"),
+      email: value("email").toLowerCase(),
+      phone: value("phone"),
+      country: value("country"),
+      documentType: value("documentType"),
+      certificateNumber: value("certificateNumber"),
+      holderName: value("holderName"),
+      institution: value("institution"),
+      graduationYear: year,
+      purpose: value("purpose"),
+      details: value("details"),
+
+      status: "Pending Review",
+      paymentStatus: "Not Assessed",
+      documentUploaded: false,
+      documentPath: "",
+      documentName: "",
+
+      source: "Public Website",
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
+    };
+
+    const result = await addDoc(
+      collection(db, "documentSubmissions"),
+      submission
+    );
+
+    showMessage(
+      "Your request has been submitted successfully. " +
+      "Your request reference is: " + result.id +
+      ". Please keep this reference for your records. " +
+      "The request is awaiting management review; no verification " +
+      "decision has been made yet.",
+      "success"
+    );
+
+    form.reset();
+
+  } catch (error) {
+    console.error("Submission error:", error);
+
+    let text = "The request could not be submitted. Please try again later.";
+
+    if (error.code === "permission-denied") {
+      text = "Submission was blocked by Firebase security rules. " +
+             "The documentSubmissions rules must be configured before this form can work.";
+    } else if (error.message && error.message.startsWith("Please enter")) {
+      text = error.message;
+    }
+
+    showMessage(text, "error");
+
+  } finally {
+    button.disabled = false;
+    button.textContent = "Submit Verification Request";
+  }
+});
+</script>
+
+</body>
+</html>
