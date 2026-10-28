@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08783e">
-
-  <title>Task Management | ARNAUD AFROCHAINE TRUST SYSTEMS LTD</title>
-
-  <style>
+  <title>Task Management | ARNAUD AFROCHAINE TRUST SYSTEMS LTD</title>  <style>
     :root {
       --green: #08783e;
       --dark-green: #075a30;
@@ -19,9 +15,7 @@
       --red: #b42318;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -38,26 +32,14 @@
       border-bottom: 4px solid var(--gold);
     }
 
-    .header-inner,
-    main,
-    footer {
+    .header-inner, main, footer {
       width: min(1100px, 94%);
       margin: auto;
     }
 
-    header h1 {
-      margin: 0 0 5px;
-      font-size: 22px;
-    }
-
-    header p {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    main {
-      padding: 20px 0 35px;
-    }
+    header h1 { margin: 0 0 5px; font-size: 22px; }
+    header p { margin: 0; font-size: 14px; }
+    main { padding: 20px 0 35px; }
 
     .panel {
       background: white;
@@ -68,20 +50,9 @@
       box-shadow: 0 3px 12px rgba(0,0,0,.035);
     }
 
-    h2 {
-      margin-top: 0;
-      font-size: 19px;
-    }
-
-    h3 {
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 13px;
-    }
+    h2 { margin-top: 0; font-size: 19px; }
+    h3 { margin-bottom: 8px; font-size: 16px; }
+    .muted { color: var(--muted); font-size: 13px; }
 
     .grid {
       display: grid;
@@ -89,9 +60,7 @@
       gap: 14px;
     }
 
-    .field {
-      margin-bottom: 14px;
-    }
+    .field { margin-bottom: 14px; }
 
     label {
       display: block;
@@ -100,9 +69,7 @@
       margin-bottom: 6px;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 11px;
       border: 1px solid #cbd7ce;
@@ -111,13 +78,9 @@
       background: white;
     }
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+    textarea { min-height: 100px; resize: vertical; }
 
-    button,
-    .button {
+    button {
       display: inline-block;
       padding: 11px 15px;
       border: 0;
@@ -127,32 +90,15 @@
       font-weight: bold;
       font-size: 14px;
       cursor: pointer;
-      text-decoration: none;
     }
 
-    button:hover,
-    .button:hover {
-      background: var(--dark-green);
-    }
+    button:hover { background: var(--dark-green); }
 
-    button.secondary {
-      background: #e8efe9;
-      color: var(--text);
-    }
+    button.secondary { background: #e8efe9; color: var(--text); }
+    button.gold { background: #b88b16; color: white; }
+    button.danger { background: var(--red); }
 
-    button.gold {
-      background: #b88b16;
-      color: white;
-    }
-
-    button.danger {
-      background: var(--red);
-    }
-
-    button:disabled {
-      opacity: .55;
-      cursor: not-allowed;
-    }
+    button:disabled { opacity: .55; cursor: not-allowed; }
 
     .actions {
       display: flex;
@@ -169,23 +115,9 @@
       overflow-wrap: anywhere;
     }
 
-    .message.info {
-      display: block;
-      background: #edf4ff;
-      color: #174ea6;
-    }
-
-    .message.success {
-      display: block;
-      background: #e8f7ed;
-      color: #146c35;
-    }
-
-    .message.error {
-      display: block;
-      background: #fff0ee;
-      color: #a61b12;
-    }
+    .message.info { display: block; background: #edf4ff; color: #174ea6; }
+    .message.success { display: block; background: #e8f7ed; color: #146c35; }
+    .message.error { display: block; background: #fff0ee; color: #a61b12; }
 
     .stats {
       display: grid;
@@ -202,29 +134,19 @@
       text-align: center;
     }
 
-    .stat strong {
-      display: block;
-      font-size: 25px;
-      color: var(--green);
-    }
-
-    .stat span {
-      font-size: 12px;
-      color: var(--muted);
-    }
+    .stat strong { display: block; font-size: 25px; color: var(--green); }
+    .stat span { font-size: 12px; color: var(--muted); }
 
     .task {
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 15px;
       margin: 12px 0;
-      background: #fff;
+      background: white;
       overflow-wrap: anywhere;
     }
 
-    .task p {
-      margin: 7px 0;
-    }
+    .task p { margin: 7px 0; }
 
     .badge {
       display: inline-block;
@@ -235,28 +157,10 @@
       font-weight: bold;
     }
 
-    .status-submitted {
-      background: #e5efff;
-      color: #174ea6;
-    }
-
-    .status-completed {
-      background: #e4f6e9;
-      color: #146c35;
-    }
-
-    .status-correction {
-      background: #fff1d7;
-      color: #8a5200;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .task textarea {
-      margin-top: 5px;
-    }
+    .status-submitted { background: #e5efff; color: #174ea6; }
+    .status-completed { background: #e4f6e9; color: #146c35; }
+    .status-correction { background: #fff1d7; color: #8a5200; }
+    .hidden { display: none !important; }
 
     footer {
       padding: 10px 0 25px;
@@ -266,185 +170,139 @@
     }
 
     @media (max-width: 650px) {
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .panel {
-        padding: 14px;
-      }
-
-      header h1 {
-        font-size: 19px;
-      }
+      .grid { grid-template-columns: 1fr; gap: 0; }
+      .stats { grid-template-columns: 1fr; }
+      .panel { padding: 14px; }
+      header h1 { font-size: 19px; }
     }
-  </style>
-</head>
-
-<body>
-
-<header>
+  </style></head><body><header>
   <div class="header-inner">
     <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
     <p>Staff Task Management | African Roots, Global Vision.</p>
   </div>
-</header>
-
-<main>
-
-  <section class="panel" id="loginPanel">
+</header><main>  <section class="panel" id="loginPanel">
     <h2>Management Login</h2>
     <p class="muted">
       Sign in with your authorised company management account.
-      Your account must have a verified email and an active management profile.
-    </p>
+      Your email must be verified and your management profile active.
+    </p><div class="field">
+  <label for="email">Company Email</label>
+  <input id="email" type="email" autocomplete="username"
+         placeholder="Enter your company email">
+</div>
+
+<div class="field">
+  <label for="password">Password</label>
+  <input id="password" type="password" autocomplete="current-password"
+         placeholder="Enter your password">
+</div>
+
+<div class="actions">
+  <button id="loginBtn" type="button">Sign In</button>
+  <button id="resendBtn" type="button" class="secondary">
+    Resend Verification Email
+  </button>
+</div>
+
+<div id="loginMessage" class="message"></div>
+
+  </section>  <section id="managementPanel" class="hidden"><div class="panel">
+  <h2>Management Control Centre</h2>
+  <p id="managerInfo" class="muted"></p>
+  <p class="muted">
+    Assign work to active staff and review their submissions.
+  </p>
+
+  <div class="actions">
+    <button id="refreshBtn" type="button" class="secondary">Refresh Tasks</button>
+    <button id="logoutBtn" type="button" class="danger">Sign Out</button>
+  </div>
+
+  <div id="managementMessage" class="message"></div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <strong id="assignedCount">0</strong>
+    <span>Assigned / In Progress</span>
+  </div>
+  <div class="stat">
+    <strong id="submittedCount">0</strong>
+    <span>Submitted for Review</span>
+  </div>
+  <div class="stat">
+    <strong id="completedCount">0</strong>
+    <span>Completed</span>
+  </div>
+</div>
+
+<section class="panel" id="assignmentPanel">
+  <h2>Assign a New Task</h2>
+  <p class="muted">
+    Select an active Verification Officer or Customer Support staff member.
+  </p>
+
+  <form id="taskForm">
 
     <div class="field">
-      <label for="email">Company Email</label>
-      <input id="email" type="email" autocomplete="username"
-             placeholder="Enter your company email">
+      <label for="staffSelect">Assign To Staff Member</label>
+      <select id="staffSelect" required>
+        <option value="">Loading active staff...</option>
+      </select>
+    </div>
+
+    <div class="grid">
+      <div class="field">
+        <label for="taskTitle">Task Title</label>
+        <input id="taskTitle" required maxlength="120"
+               placeholder="Example: Review academic certificate">
+      </div>
+
+      <div class="field">
+        <label for="taskReference">Task Reference</label>
+        <input id="taskReference" required maxlength="100"
+               placeholder="Example: ARNAUD-TASK-001">
+      </div>
+
+      <div class="field">
+        <label for="priority">Priority</label>
+        <select id="priority" required>
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="deadline">Deadline</label>
+        <input id="deadline" type="date" required>
+      </div>
     </div>
 
     <div class="field">
-      <label for="password">Password</label>
-      <input id="password" type="password"
-             autocomplete="current-password"
-             placeholder="Enter your password">
+      <label for="taskDescription">Task Instructions</label>
+      <textarea id="taskDescription" required maxlength="5000"
+        placeholder="Explain what the staff member must do. Avoid unnecessary sensitive information."></textarea>
     </div>
 
-    <div class="actions">
-      <button id="loginBtn" type="button">Sign In</button>
-      <button id="resendBtn" type="button" class="secondary">
-        Resend Verification Email
-      </button>
-    </div>
+    <button id="assignBtn" type="submit">Assign Task</button>
+  </form>
 
-    <div id="loginMessage" class="message"></div>
-  </section>
+  <div id="assignmentMessage" class="message"></div>
+</section>
 
-  <section id="managementPanel" class="hidden">
+<section class="panel">
+  <h2>Company Tasks</h2>
+  <p class="muted">
+    Review submitted work and explain any corrections required.
+  </p>
+  <div id="taskList"><p class="muted">Loading tasks...</p></div>
+</section>
 
-    <div class="panel">
-      <h2>Management Control Centre</h2>
-      <p id="managerInfo" class="muted"></p>
-      <p class="muted">
-        Use this page to assign work to staff and review their submissions.
-      </p>
-
-      <div class="actions">
-        <button id="refreshBtn" type="button" class="secondary">
-          Refresh Tasks
-        </button>
-        <button id="logoutBtn" type="button" class="danger">
-          Sign Out
-        </button>
-      </div>
-
-      <div id="managementMessage" class="message"></div>
-    </div>
-
-    <div class="stats">
-      <div class="stat">
-        <strong id="assignedCount">0</strong>
-        <span>Assigned / In Progress</span>
-      </div>
-
-      <div class="stat">
-        <strong id="submittedCount">0</strong>
-        <span>Submitted for Review</span>
-      </div>
-
-      <div class="stat">
-        <strong id="completedCount">0</strong>
-        <span>Completed</span>
-      </div>
-    </div>
-
-    <section class="panel" id="assignmentPanel">
-      <h2>Assign a New Task</h2>
-
-      <p class="muted">
-        Select an active Verification Officer or Customer Support staff member.
-        Only eligible active staff profiles will be listed.
-      </p>
-
-      <form id="taskForm">
-
-        <div class="field">
-          <label for="staffSelect">Assign To Staff Member</label>
-          <select id="staffSelect" required>
-            <option value="">Loading active staff...</option>
-          </select>
-        </div>
-
-        <div class="grid">
-          <div class="field">
-            <label for="taskTitle">Task Title</label>
-            <input id="taskTitle" required maxlength="120"
-                   placeholder="Example: Review academic certificate">
-          </div>
-
-          <div class="field">
-            <label for="taskReference">Task Reference</label>
-            <input id="taskReference" required maxlength="100"
-                   placeholder="Example: ARNAUD-TASK-001">
-          </div>
-
-          <div class="field">
-            <label for="priority">Priority</label>
-            <select id="priority" required>
-              <option value="Normal">Normal</option>
-              <option value="High">High</option>
-              <option value="Urgent">Urgent</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="deadline">Deadline</label>
-            <input id="deadline" type="date" required>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="taskDescription">Task Instructions</label>
-          <textarea id="taskDescription" required maxlength="5000"
-                    placeholder="Explain what the staff member must do. Do not include passwords or unnecessary sensitive personal information."></textarea>
-        </div>
-
-        <button id="assignBtn" type="submit">Assign Task</button>
-
-      </form>
-
-      <div id="assignmentMessage" class="message"></div>
-    </section>
-
-    <section class="panel">
-      <h2>Company Tasks</h2>
-      <p class="muted">
-        Review submitted work here. Use the review note to explain any corrections
-        required before staff resubmit their work.
-      </p>
-
-      <div id="taskList">
-        <p class="muted">Loading tasks...</p>
-      </div>
-    </section>
-
-  </section>
-
-</main>
-
-<footer>
+  </section></main><footer>
   ARNAUD AFROCHAINE TRUST SYSTEMS LTD<br>
   Email: arnaudafrochain@gmail.com | Phone: +2349132851465
-</footer>
-
-<script type="module">
+</footer><script type="module">
   import { initializeApp }
     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
@@ -467,7 +325,8 @@
     query,
     where,
     orderBy,
-    serverTimestamp
+    serverTimestamp,
+    Timestamp
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -497,6 +356,7 @@
   let currentProfile = null;
   let activeStaff = [];
   let companyTasks = [];
+  let authCheckInProgress = false;
 
   const $ = id => document.getElementById(id);
 
@@ -507,9 +367,8 @@
   }
 
   function clearMessage(id) {
-    const element = $(id);
-    element.textContent = "";
-    element.className = "message";
+    $(id).textContent = "";
+    $(id).className = "message";
   }
 
   function escapeHtml(value) {
@@ -523,12 +382,11 @@
   }
 
   function isCEO(user) {
-    return user && user.uid === CEO_UID;
+    return Boolean(user && user.uid === CEO_UID);
   }
 
   function isAuthorisedManager(user, profile) {
     if (!user || !profile) return false;
-
     if (isCEO(user)) return true;
 
     return user.uid === DIRECTOR_MANAGER_UID
@@ -537,9 +395,11 @@
   }
 
   function isEligibleStaff(profile) {
-    return profile
+    return Boolean(
+      profile
       && profile.status === "Active"
-      && allowedAssignmentRoles.includes(profile.role);
+      && allowedAssignmentRoles.includes(profile.role)
+    );
   }
 
   async function loadManagementProfile(user) {
@@ -552,8 +412,7 @@
       };
     }
 
-    const profileRef = doc(db, "staffProfiles", user.uid);
-    const profileSnap = await getDoc(profileRef);
+    const profileSnap = await getDoc(doc(db, "staffProfiles", user.uid));
 
     if (!profileSnap.exists()) {
       throw new Error("Your staff profile was not found.");
@@ -562,12 +421,12 @@
     const profile = profileSnap.data();
 
     if (
-      user.uid !== DIRECTOR_MANAGER_UID ||
-      profile.role !== "directorManager" ||
-      profile.status !== "Active"
+      user.uid !== DIRECTOR_MANAGER_UID
+      || profile.role !== "directorManager"
+      || profile.status !== "Active"
     ) {
       throw new Error(
-        "Access denied. This page is restricted to the CEO and the authorised active Director Manager."
+        "Access denied. This page is restricted to the CEO and authorised active Director Manager."
       );
     }
 
@@ -595,9 +454,7 @@
           uid: staffDoc.id,
           name: profile.fullName || profile.name || "Staff Member",
           email: profile.email || "",
-          role: profile.role || "",
-          country: profile.country || "",
-          branch: profile.branch || ""
+          role: profile.role || ""
         });
       }
     });
@@ -609,11 +466,9 @@
     activeStaff.forEach(staff => {
       const option = document.createElement("option");
       option.value = staff.uid;
-
       option.textContent =
         `${staff.name} — ${staff.role}` +
         (staff.email ? ` (${staff.email})` : "");
-
       staffSelect.appendChild(option);
     });
 
@@ -623,14 +478,29 @@
     }
   }
 
+  function formatDeadline(value) {
+    if (!value) return "Not set";
+
+    let date;
+
+    if (value && typeof value.toDate === "function") {
+      date = value.toDate();
+    } else if (value instanceof Date) {
+      date = value;
+    } else {
+      date = new Date(value);
+    }
+
+    if (Number.isNaN(date.getTime())) {
+      return "Invalid deadline";
+    }
+
+    return date.toLocaleDateString();
+  }
+
   async function loadTasks() {
     $("taskList").innerHTML = '<p class="muted">Loading tasks...</p>';
 
-    /*
-      This page reads the staffTasks collection.
-      Firestore security rules must permit this authorised manager
-      to read the task records.
-    */
     const tasksSnap = await getDocs(
       query(
         collection(db, "staffTasks"),
@@ -652,21 +522,17 @@
   }
 
   function renderCounters() {
-    const assigned = companyTasks.filter(task =>
+    $("assignedCount").textContent = companyTasks.filter(task =>
       ["Assigned", "In Progress", "Needs Correction"].includes(task.status)
     ).length;
 
-    const submitted = companyTasks.filter(task =>
+    $("submittedCount").textContent = companyTasks.filter(task =>
       task.status === "Submitted"
     ).length;
 
-    const completed = companyTasks.filter(task =>
+    $("completedCount").textContent = companyTasks.filter(task =>
       task.status === "Completed"
     ).length;
-
-    $("assignedCount").textContent = assigned;
-    $("submittedCount").textContent = submitted;
-    $("completedCount").textContent = completed;
   }
 
   function statusClass(status) {
@@ -681,459 +547,411 @@
 
     if (companyTasks.length === 0) {
       taskList.innerHTML =
-        '<p class="muted">No tasks have been created yet. Use the form above to assign the first task.</p>';
+        '<p class="muted">No tasks have been created yet. Assign your first task above.</p>';
       return;
     }
 
     taskList.innerHTML = "";
 
     companyTasks.forEach(task => {
-      const assignedStaff = activeStaff.find(
-        staff => staff.uid === task.assignedToUid
-      );
-
-      const staffName =
-        task.assignedToName ||
-        (assignedStaff ? assignedStaff.name : "Assigned staff member");
+      const staff = activeStaff.find(item => item.uid === task.assignedToUid);
+      const staffName = staff
+        ? staff.name
+        : (task.assignedToName || task.assignedToEmail || "Assigned staff member");
 
       const status = task.status || "Assigned";
-      const submitted = status === "Submitted";
       const taskElement = document.createElement("article");
-
       taskElement.className = "task";
 
       taskElement.innerHTML = `
         <h3>${escapeHtml(task.taskTitle || "Untitled Task")}</h3>
-
-        <p>
-          <strong>Reference:</strong>
-          ${escapeHtml(task.taskReference || "Not provided")}
+        <p><strong>Reference:</strong> ${escapeHtml(task.taskReference || "Not provided")}</p>
+        <p><strong>Assigned to:</strong> ${escapeHtml(staffName)}</p>
+        <p><strong>Priority:</strong> ${escapeHtml(task.priority || "Normal")}</p>
+        <p><strong>Deadline:</strong> ${escapeHtml(formatDeadline(task.deadline))}</p>
+        <p><strong>Status:</strong>
+          <span class="badge ${statusClass(status)}">${escapeHtml(status)}</span>
         </p>
-
-        <p>
-          <strong>Assigned to:</strong>
-          ${escapeHtml(staffName)}
-        </p>
-
-        <p>
-          <strong>Priority:</strong>
-          ${escapeHtml(task.priority || "Normal")}
-        </p>
-
-        <p>
-          <strong>Deadline:</strong>
-          ${escapeHtml(task.deadline || "Not set")}
-        </p>
-
-        <p>
-          <strong>Status:</strong>
-          <span class="badge ${statusClass(status)}">
-            ${escapeHtml(status)}
-          </span>
-        </p>
-
-        <p>
-          <strong>Instructions:</strong><br>
+        <p><strong>Instructions:</strong><br>
           ${escapeHtml(task.taskDescription || "No instructions supplied")}
         </p>
 
-        ${
-          task.progressNote
-            ? `<p><strong>Staff progress:</strong><br>${escapeHtml(task.progressNote)}</p>`
-            : ""
-        }
+        ${task.progressNote
+          ? `<p><strong>Staff progress:</strong><br>${escapeHtml(task.progressNote)}</p>`
+          : ""}
 
-        ${
-          task.evidenceNotes
-            ? `<p><strong>Staff evidence notes:</strong><br>${escapeHtml(task.evidenceNotes)}</p>`
-            : ""
-        }
+        ${task.evidenceNotes
+          ? `<p><strong>Staff evidence notes:</strong><br>${escapeHtml(task.evidenceNotes)}</p>`
+          : ""}
 
-        ${
-          task.reviewNote
-            ? `<p><strong>Previous review note:</strong><br>${escapeHtml(task.reviewNote)}</p>`
-            : ""
-        }
+        ${task.reviewNote
+          ? `<p><strong>Review note:</strong><br>${escapeHtml(task.reviewNote)}</p>`
+          : ""}
 
-        ${
-          submitted
-            ? `
-              <div class="field">
-                <label for="review-${escapeHtml(task.id)}">
-                  Review Note
-                </label>
-                <textarea
-                  id="review-${escapeHtml(task.id)}"
-                  maxlength="3000"
-                  placeholder="Explain the result or any corrections required."
-                ></textarea>
-              </div>
+        ${status === "Submitted" ? `
+          <div class="field">
+            <label for="review-${escapeHtml(task.id)}">Review Note</label>
+            <textarea id="review-${escapeHtml(task.id)}" maxlength="2000"
+              placeholder="Explain the outcome or required corrections."></textarea>      </div>
+      <div class="actions">
+        <button type="button" data-action="complete"
+          data-id="${escapeHtml(task.id)}">Approve as Completed</button>
+        <button type="button" class="gold" data-action="correction"
+          data-id="${escapeHtml(task.id)}">Return for Correction</button>
+      </div>
+    ` : ""}
+  `;
 
-              <div class="actions">
-                <button
-                  type="button"
-                  data-action="complete"
-                  data-id="${escapeHtml(task.id)}">
-                  Approve as Completed
-                </button>
+  taskList.appendChild(taskElement);
+});
 
-                <button
-                  type="button"
-                  class="gold"
-                  data-action="correction"
-                  data-id="${escapeHtml(task.id)}">
-                  Return for Correction
-                </button>
-              </div>
-            `
-            : ""
-        }
-      `;
+taskList.querySelectorAll("button[data-action]").forEach(button => {
+  button.addEventListener("click", async () => {
+    await reviewTask(button.dataset.id, button.dataset.action, button);
+  });
+});
 
-      taskList.appendChild(taskElement);
-    });
+}
 
-    taskList.querySelectorAll("button[data-action]").forEach(button => {
-      button.addEventListener("click", async () => {
-        const taskId = button.dataset.id;
-        const action = button.dataset.action;
+async function assignTask(event) {
+event.preventDefault();
+clearMessage("assignmentMessage");
 
-        await reviewTask(taskId, action, button);
-      });
-    });
-  }
+if (!currentUser || !isAuthorisedManager(currentUser, currentProfile)) {
+  showMessage("assignmentMessage", "You are not authorised to assign tasks.", "error");
+  return;
+}
 
-  async function assignTask(event) {
-    event.preventDefault();
-    clearMessage("assignmentMessage");
+const staff = activeStaff.find(item => item.uid === $("staffSelect").value);
 
-    if (!currentUser || !isAuthorisedManager(currentUser, currentProfile)) {
-      showMessage(
-        "assignmentMessage",
-        "You are not authorised to assign tasks.",
-        "error"
-      );
-      return;
-    }
+if (!staff) {
+  showMessage("assignmentMessage", "Please select an eligible active staff member.", "error");
+  return;
+}
 
-    const staffUid = $("staffSelect").value;
-    const staff = activeStaff.find(item => item.uid === staffUid);
+const taskTitle = $("taskTitle").value.trim();
+const taskReference = $("taskReference").value.trim();
+const taskDescription = $("taskDescription").value.trim();
+const priority = $("priority").value;
+const deadlineInput = $("deadline").value;
 
-    if (!staff) {
-      showMessage(
-        "assignmentMessage",
-        "Please select an eligible active staff member.",
-        "error"
-      );
-      return;
-    }
+if (!taskTitle || !taskReference || !taskDescription || !deadlineInput) {
+  showMessage("assignmentMessage", "Please complete all required fields.", "error");
+  return;
+}
 
-    const taskTitle = $("taskTitle").value.trim();
-    const taskReference = $("taskReference").value.trim();
-    const taskDescription = $("taskDescription").value.trim();
-    const priority = $("priority").value;
-    const deadline = $("deadline").value;
+if (taskTitle.length > 120 || taskReference.length > 100 ||
+    taskDescription.length > 5000) {
+  showMessage("assignmentMessage", "One or more fields exceed the permitted length.", "error");
+  return;
+}
 
-    if (!taskTitle || !taskReference || !taskDescription || !deadline) {
-      showMessage(
-        "assignmentMessage",
-        "Please complete all required fields.",
-        "error"
-      );
-      return;
-    }
+/*
+  Convert the selected calendar date to the end of that local day,
+  then store it as a Firestore Timestamp.
+*/
+const parts = deadlineInput.split("-").map(Number);
 
-    $("assignBtn").disabled = true;
+if (parts.length !== 3 || parts.some(part => !Number.isFinite(part))) {
+  showMessage("assignmentMessage", "Please select a valid deadline.", "error");
+  return;
+}
 
-    try {
-      await addDoc(collection(db, "staffTasks"), {
-        taskTitle,
-        taskReference,
-        taskDescription,
-        priority,
-        deadline,
+const deadlineDate = new Date(parts[0], parts[1] - 1, parts[2], 23, 59, 59, 999);
 
-        assignedToUid: staff.uid,
-        assignedToName: staff.name,
-        assignedToEmail: staff.email,
-        assignedToRole: staff.role,
+if (
+  deadlineDate.getFullYear() !== parts[0] ||
+  deadlineDate.getMonth() !== parts[1] - 1 ||
+  deadlineDate.getDate() !== parts[2]
+) {
+  showMessage("assignmentMessage", "Please select a valid calendar date.", "error");
+  return;
+}
 
-        status: "Assigned",
+if (deadlineDate.getTime() <= Date.now()) {
+  showMessage("assignmentMessage", "The deadline must be a future date.", "error");
+  return;
+}
 
-        createdByUid: currentUser.uid,
-        createdByEmail: currentUser.email || "",
-        createdByRole: currentProfile.role || "",
+$("assignBtn").disabled = true;
 
-        createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp(),
+try {
+  /*
+    IMPORTANT:
+    The keys below match the Firestore staffTasks creation rules.
+    Do not add extra fields without updating the rules as well.
+  */
+  const taskData = {
+    taskTitle: taskTitle,
+    taskReference: taskReference,
+    taskDescription: taskDescription,
 
-        progressNote: "",
-        evidenceNotes: "",
-        reviewNote: ""
-      });
+    assignedToUid: staff.uid,
+    assignedToEmail: staff.email || "",
 
-      $("taskForm").reset();
+    assignedByUid: currentUser.uid,
+    assignedByEmail: currentUser.email || "",
 
-      showMessage(
-        "assignmentMessage",
-        "Task assigned successfully. The staff member can now check the Staff Task Portal.",
-        "success"
-      );
+    priority: priority,
+    deadline: Timestamp.fromDate(deadlineDate),
 
-      await loadTasks();
+    status: "Assigned",
 
-    } catch (error) {
-      console.error("Task assignment error:", error);
+    progressNote: "",
+    evidenceNotes: "",
+    reviewNote: "",
 
-      showMessage(
-        "assignmentMessage",
-        "The task could not be saved. This may be caused by Firestore security rules. Do not loosen the rules publicly. Check the rules for the staffTasks collection. Details: " +
-          error.message,
-        "error"
-      );
-    } finally {
-      $("assignBtn").disabled = false;
-    }
-  }
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp(),
 
-  async function reviewTask(taskId, action, button) {
-    const task = companyTasks.find(item => item.id === taskId);
+    submittedAt: null,
+    reviewedAt: null,
+    reviewedByUid: "",
+    reviewedByEmail: ""
+  };
 
-    if (!task || task.status !== "Submitted") {
-      showMessage(
-        "managementMessage",
-        "Only submitted tasks can be reviewed.",
-        "error"
-      );
-      return;
-    }
+  await addDoc(collection(db, "staffTasks"), taskData);
 
-    if (!currentUser || !isAuthorisedManager(currentUser, currentProfile)) {
-      showMessage(
-        "managementMessage",
-        "You are not authorised to review tasks.",
-        "error"
-      );
-      return;
-    }
+  $("taskForm").reset();
 
-    const reviewNote = $(`review-${taskId}`).value.trim();
+  showMessage(
+    "assignmentMessage",
+    "Task assigned successfully. The staff member can now open the Staff Task Portal.",
+    "success"
+  );
 
-    if (action === "correction" && !reviewNote) {
-      showMessage(
-        "managementMessage",
-        "Please explain what needs correction before returning the task.",
-        "error"
-      );
-      return;
-    }
+  await loadTasks();
 
-    const newStatus =
-      action === "complete" ? "Completed" : "Needs Correction";
+} catch (error) {
+  console.error("Task assignment error:", error);
 
-    if (
-      action === "complete" &&
-      !confirm("Confirm that this task has been reviewed and completed?")
-    ) {
-      return;
-    }
+  showMessage(
+    "assignmentMessage",
+    "Task saving failed. Check the details below: " + error.message,
+    "error"
+  );
+} finally {
+  $("assignBtn").disabled = false;
+}
 
-    button.disabled = true;
+}
 
-    try {
-      await updateDoc(doc(db, "staffTasks", taskId), {
-        status: newStatus,
-        reviewNote,
-        reviewedByUid: currentUser.uid,
-        reviewedByEmail: currentUser.email || "",
-        reviewedAt: serverTimestamp(),
-        updatedAt: serverTimestamp()
-      });
+async function reviewTask(taskId, action, button) {
+const task = companyTasks.find(item => item.id === taskId);
 
-      showMessage(
-        "managementMessage",
-        `Task updated successfully: ${newStatus}.`,
-        "success"
-      );
+if (!task || task.status !== "Submitted") {
+  showMessage("managementMessage", "Only submitted tasks can be reviewed.", "error");
+  return;
+}
 
-      await loadTasks();
+if (!currentUser || !isAuthorisedManager(currentUser, currentProfile)) {
+  showMessage("managementMessage", "You are not authorised to review tasks.", "error");
+  return;
+}
 
-    } catch (error) {
-      console.error("Task review error:", error);
+const reviewElement = $(`review-${taskId}`);
+const reviewNote = reviewElement ? reviewElement.value.trim() : "";
 
-      showMessage(
-        "managementMessage",
-        "The review could not be saved. Check the Firestore rules for authorised task updates. Details: " +
-          error.message,
-        "error"
-      );
+if (!reviewNote) {
+  showMessage(
+    "managementMessage",
+    "Enter a review note before approving or returning a submitted task.",
+    "error"
+  );
+  return;
+}
 
-      button.disabled = false;
-    }
-  }
+if (reviewNote.length > 2000) {
+  showMessage("managementMessage", "The review note cannot exceed 2,000 characters.", "error");
+  return;
+}
 
-  async function openManagement(user) {
-    currentUser = user;
+const newStatus = action === "complete" ? "Completed" : "Needs Correction";
 
-    if (!user.emailVerified) {
-      $("managementPanel").classList.add("hidden");
-      $("loginPanel").classList.remove("hidden");
+if (
+  action === "complete" &&
+  !confirm("Confirm that this task has been reviewed and completed?")
+) {
+  return;
+}
 
-      showMessage(
-        "loginMessage",
-        "Please verify your email before using management tools. Sign in after verifying your email.",
-        "error"
-      );
-      return;
-    }
+button.disabled = true;
 
-    try {
-      currentProfile = await loadManagementProfile(user);
-
-      $("managerInfo").textContent =
-        `Signed in: ${user.email} | Role: ${currentProfile.role}`;
-
-      $("loginPanel").classList.add("hidden");
-      $("managementPanel").classList.remove("hidden");
-
-      await loadActiveStaff();
-      await loadTasks();
-
-    } catch (error) {
-      console.error("Management access error:", error);
-
-      $("managementPanel").classList.add("hidden");
-      $("loginPanel").classList.remove("hidden");
-
-      showMessage(
-        "loginMessage",
-        error.message || "Unable to open the management portal.",
-        "error"
-      );
-    }
-  }
-
-  $("loginBtn").addEventListener("click", async () => {
-    clearMessage("loginMessage");
-
-    const email = $("email").value.trim();
-    const password = $("password").value;
-
-    if (!email || !password) {
-      showMessage(
-        "loginMessage",
-        "Enter your email and password.",
-        "error"
-      );
-      return;
-    }
-
-    $("loginBtn").disabled = true;
-
-    try {
-      const result = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      if (!result.user.emailVerified) {
-        showMessage(
-          "loginMessage",
-          "Your email is not verified yet. Check your inbox and verify it before continuing.",
-          "error"
-        );
-        return;
-      }
-
-      await openManagement(result.user);
-
-    } catch (error) {
-      showMessage(
-        "loginMessage",
-        "Sign-in failed: " + error.message,
-        "error"
-      );
-    } finally {
-      $("loginBtn").disabled = false;
-    }
+try {
+  await updateDoc(doc(db, "staffTasks", taskId), {
+    status: newStatus,
+    reviewNote: reviewNote,
+    reviewedByUid: currentUser.uid,
+    reviewedByEmail: currentUser.email || "",
+    reviewedAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
   });
 
-  $("resendBtn").addEventListener("click", async () => {
-    const user = auth.currentUser;
+  showMessage("managementMessage", `Task updated successfully: ${newStatus}.`, "success");
+  await loadTasks();
 
-    if (!user) {
-      showMessage(
-        "loginMessage",
-        "Sign in first, then use this button to resend the verification email.",
-        "info"
-      );
-      return;
-    }
+} catch (error) {
+  console.error("Task review error:", error);
 
-    try {
-      await sendEmailVerification(user);
+  showMessage(
+    "managementMessage",
+    "Task review failed: " + error.message,
+    "error"
+  );
 
-      showMessage(
-        "loginMessage",
-        "Verification email sent. Check your inbox and spam folder.",
-        "success"
-      );
-    } catch (error) {
-      showMessage(
-        "loginMessage",
-        "Could not send verification email: " + error.message,
-        "error"
-      );
-    }
-  });
+  button.disabled = false;
+}
 
-  $("taskForm").addEventListener("submit", assignTask);
+}
 
-  $("refreshBtn").addEventListener("click", async () => {
-    try {
-      await loadActiveStaff();
-      await loadTasks();
+async function openManagement(user) {
+currentUser = user;
 
-      showMessage(
-        "managementMessage",
-        "Staff list and tasks refreshed.",
-        "success"
-      );
-    } catch (error) {
-      showMessage(
-        "managementMessage",
-        "Could not refresh the data: " + error.message,
-        "error"
-      );
-    }
-  });
+if (!user.emailVerified) {
+  $("managementPanel").classList.add("hidden");
+  $("loginPanel").classList.remove("hidden");
 
-  $("logoutBtn").addEventListener("click", async () => {
-    await signOut(auth);
+  showMessage(
+    "loginMessage",
+    "Your email is not verified. Verify it, then sign in again.",
+    "error"
+  );
+  return;
+}
+
+try {
+  currentProfile = await loadManagementProfile(user);
+
+  $("managerInfo").textContent =
+    `Signed in: ${user.email} | Role: ${currentProfile.role}`;
+
+  $("loginPanel").classList.add("hidden");
+  $("managementPanel").classList.remove("hidden");
+
+  await loadActiveStaff();
+  await loadTasks();
+
+} catch (error) {
+  console.error("Management access error:", error);
+
+  $("managementPanel").classList.add("hidden");
+  $("loginPanel").classList.remove("hidden");
+
+  showMessage(
+    "loginMessage",
+    error.message || "Unable to open the management portal.",
+    "error"
+  );
+}
+
+}
+
+$("loginBtn").addEventListener("click", async () => {
+clearMessage("loginMessage");
+
+const email = $("email").value.trim();
+const password = $("password").value;
+
+if (!email || !password) {
+  showMessage("loginMessage", "Enter your email and password.", "error");
+  return;
+}
+
+$("loginBtn").disabled = true;
+
+try {
+  const result = await signInWithEmailAndPassword(auth, email, password);
+
+  if (!result.user.emailVerified) {
+    showMessage(
+      "loginMessage",
+      "Your email is not verified. Check your inbox and verify it before continuing.",
+      "error"
+    );
+    return;
+  }
+
+  await openManagement(result.user);
+
+} catch (error) {
+  showMessage("loginMessage", "Sign-in failed: " + error.message, "error");
+} finally {
+  $("loginBtn").disabled = false;
+}
+
+});
+
+$("resendBtn").addEventListener("click", async () => {
+const user = auth.currentUser;
+
+if (!user) {
+  showMessage(
+    "loginMessage",
+    "Sign in first. If your account needs verification, use this button after signing in.",
+    "info"
+  );
+  return;
+}
+
+try {
+  await sendEmailVerification(user);
+  showMessage("loginMessage", "Verification email sent. Check your inbox and spam folder.", "success");
+} catch (error) {
+  showMessage("loginMessage", "Could not send verification email: " + error.message, "error");
+}
+
+});
+
+$("taskForm").addEventListener("submit", assignTask);
+
+$("refreshBtn").addEventListener("click", async () => {
+try {
+await loadActiveStaff();
+await loadTasks();
+showMessage("managementMessage", "Staff list and tasks refreshed.", "success");
+} catch (error) {
+console.error("Refresh error:", error);
+showMessage("managementMessage", "Could not refresh: " + error.message, "error");
+}
+});
+
+$("logoutBtn").addEventListener("click", async () => {
+await signOut(auth);
+
+currentUser = null;
+currentProfile = null;
+activeStaff = [];
+companyTasks = [];
+
+$("managementPanel").classList.add("hidden");
+$("loginPanel").classList.remove("hidden");
+$("email").value = "";
+$("password").value = "";
+
+clearMessage("loginMessage");
+clearMessage("managementMessage");
+
+});
+
+onAuthStateChanged(auth, async user => {
+if (authCheckInProgress) return;
+authCheckInProgress = true;
+
+try {
+  if (!user) {
     currentUser = null;
     currentProfile = null;
-
     $("managementPanel").classList.add("hidden");
     $("loginPanel").classList.remove("hidden");
+    return;
+  }
 
-    $("email").value = "";
-    $("password").value = "";
+  await openManagement(user);
+} finally {
+  authCheckInProgress = false;
+}
 
-    clearMessage("loginMessage");
-  });
-
-  onAuthStateChanged(auth, async user => {
-    if (!user) {
-      currentUser = null;
-      currentProfile = null;
-      $("managementPanel").classList.add("hidden");
-      $("loginPanel").classList.remove("hidden");
-      return;
-    }
-
-    await openManagement(user);
-  });
+});
 </script>
 
 </body>
