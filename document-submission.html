@@ -3,17 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08783e">
 
-<title>Document Submission | ARNAUD</title>
+<title>Submit a Document | ARNAUD AFROCHAINE TRUST SYSTEMS LTD</title>
+
+<meta name="description" content="Submit academic certificates, transcripts, diplomas and other approved documents to ARNAUD AFROCHAINE TRUST SYSTEMS LTD for verification.">
+
+<meta name="theme-color" content="#08783e">
 
 <style>
 :root {
   --green: #08783e;
-  --gold: #d4a62a;
-  --light: #f4f8f5;
-  --dark: #173b29;
-  --border: #dce5df;
+  --dark-green: #075b30;
+  --gold: #d4a72c;
+  --background: #f3f7f4;
+  --text: #202a24;
+  --muted: #647067;
+  --border: #dce5de;
+  --white: #ffffff;
 }
 
 * {
@@ -22,9 +28,9 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--light);
-  color: #24332a;
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
 }
 
@@ -32,116 +38,293 @@ header {
   background: var(--green);
   color: white;
   padding: 25px 16px;
-  text-align: center;
   border-bottom: 5px solid var(--gold);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 24px;
+.header-inner {
+  max-width: 1000px;
+  margin: auto;
 }
 
-header p {
-  margin: 8px 0 0;
+.brand {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
-.container {
-  width: 100%;
-  max-width: 760px;
+.tagline {
+  margin-top: 5px;
+  color: #f5e4a8;
+  font-size: 14px;
+}
+
+.contact {
+  font-size: 13px;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
+
+.contact a {
+  color: white;
+}
+
+main {
+  max-width: 900px;
   margin: 25px auto;
   padding: 0 14px;
 }
 
 .card {
   background: white;
-  border-radius: 12px;
-  padding: 22px;
-  box-shadow: 0 3px 15px rgba(0,0,0,.06);
-  border: 1px solid var(--border);
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: var(--green);
+  font-size: 27px;
+  margin: 0 0 8px;
 }
 
 h2 {
-  color: var(--green);
+  font-size: 19px;
+  margin: 0 0 16px;
+  color: var(--dark-green);
+}
+
+.intro {
+  color: var(--muted);
   margin-top: 0;
 }
 
 .notice {
   background: #fff8e5;
   border-left: 4px solid var(--gold);
-  padding: 12px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  padding: 13px;
+  border-radius: 6px;
   font-size: 14px;
+  margin: 18px 0;
+}
+
+.security-notice {
+  background: #eaf6ee;
+  border-left: 4px solid var(--green);
+  padding: 13px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.full {
+  grid-column: 1 / -1;
 }
 
 label {
   display: block;
-  font-weight: bold;
-  margin: 15px 0 6px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
+  border: 1px solid #cbd6ce;
+  border-radius: 8px;
   padding: 12px;
-  border: 1px solid #cbd7ce;
-  border-radius: 7px;
-  font-size: 16px;
   background: white;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #9ad3ad;
+  border-color: var(--green);
 }
 
 textarea {
-  min-height: 105px;
+  min-height: 110px;
   resize: vertical;
 }
 
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 20px;
-  border: 0;
-  border-radius: 7px;
+.help {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.upload-box {
+  background: #f7faf7;
+  border: 2px dashed #9ab8a1;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.upload-box input {
+  background: white;
+  text-align: left;
+}
+
+.file-name {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  margin-top: 12px;
+}
+
+.file-details {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.checkbox-row input {
+  width: auto;
+  margin-top: 5px;
+}
+
+.checkbox-row label {
+  font-weight: 400;
+}
+
+button,
+.button {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 20px;
   background: var(--green);
   color: white;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
+}
+
+button:hover,
+.button:hover {
+  background: var(--dark-green);
 }
 
 button:disabled {
-  opacity: .6;
-  cursor: wait;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-#message {
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.secondary {
+  background: #e9efeb;
+  color: var(--text);
+}
+
+.secondary:hover {
+  background: #dce6df;
+}
+
+.status {
   display: none;
-  margin-top: 18px;
-  padding: 14px;
-  border-radius: 7px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
   overflow-wrap: anywhere;
 }
 
-.success {
-  display: block !important;
-  background: #e7f7eb;
-  color: #14532d;
+.status.success {
+  display: block;
+  background: #e6f6eb;
+  border: 1px solid #91c9a2;
 }
 
-.error {
-  display: block !important;
-  background: #fdecec;
-  color: #991b1b;
+.status.error {
+  display: block;
+  background: #fff0ef;
+  border: 1px solid #e4a5a0;
 }
 
-.small {
-  color: #59665d;
-  font-size: 13px;
+.status.info {
+  display: block;
+  background: #edf4ff;
+  border: 1px solid #aac6f3;
+}
+
+.progress-wrap {
+  display: none;
+  margin-top: 16px;
+}
+
+progress {
+  width: 100%;
+  height: 18px;
+  accent-color: var(--green);
+}
+
+.reference {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--green);
+  overflow-wrap: anywhere;
 }
 
 footer {
   text-align: center;
-  padding: 22px 12px;
-  color: #526258;
+  padding: 25px 15px;
+  color: var(--muted);
   font-size: 13px;
+}
+
+footer a {
+  color: var(--green);
+}
+
+@media (max-width: 620px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  .brand {
+    font-size: 19px;
+  }
+
+  .actions button,
+  .actions a {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>
 </head>
@@ -149,150 +332,282 @@ footer {
 <body>
 
 <header>
-  <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
-  <p>African Roots, Global Vision.</p>
-  <p>Academic Document Verification Request Portal</p>
+  <div class="header-inner">
+    <div class="brand">ARNAUD AFROCHAINE TRUST SYSTEMS LTD</div>
+    <div class="tagline">African Roots, Global Vision.</div>
+
+    <div class="contact">
+      Email:
+      <a href="mailto:arnaudafrochain@gmail.com">
+        arnaudafrochain@gmail.com
+      </a>
+      <br>
+      Phone:
+      <a href="tel:+2349132851465">+2349132851465</a>
+    </div>
+  </div>
 </header>
 
-<main class="container">
+<main>
+
   <section class="card">
-    <h2>Submit a Verification Request</h2>
+    <h1>Submit a Document for Verification</h1>
+
+    <p class="intro">
+      Submit your academic or professional document for review by
+      ARNAUD AFROCHAINE TRUST SYSTEMS LTD. Complete the form carefully
+      and attach the document you want us to examine.
+    </p>
 
     <div class="notice">
       <strong>Important:</strong>
-      Submitting this form creates a request for review. It does not
-      mean that your document has already been verified.
-      Management will review the information before proceeding.
+      Submitting a document does not mean that it has been verified.
+      Our team must review the information and conduct the appropriate
+      checks before making a verification decision.
     </div>
 
-    <form id="submissionForm">
+    <div class="security-notice">
+      Your document is intended for authorised review. Do not upload
+      passwords, bank PINs, payment-card details, or unrelated sensitive
+      information. Uploading is available only when Firebase Storage
+      and the required security configuration are active.
+    </div>
+  </section>
 
-      <label for="requesterType">Who are you submitting this request for?</label>
-      <select id="requesterType" required>
-        <option value="">Select requester type</option>
-        <option value="Individual">Individual</option>
-        <option value="School">School or educational institution</option>
-        <option value="Company">Company or employer</option>
-        <option value="Government">Government agency</option>
-        <option value="NGO">NGO or organisation</option>
-        <option value="Other">Other</option>
-      </select>
+  <form id="submissionForm">
 
-      <label for="requesterName">Full name or organisation name</label>
-      <input id="requesterName" maxlength="150" required
-             autocomplete="name"
-             placeholder="Enter your name or organisation">
+    <section class="card">
+      <h2>1. Requester Information</h2>
 
-      <label for="email">Contact email</label>
-      <input id="email" type="email" maxlength="200" required
-             autocomplete="email"
-             placeholder="Enter your email address">
+      <div class="grid">
 
-      <label for="phone">Phone number</label>
-      <input id="phone" type="tel" maxlength="30" required
-             autocomplete="tel"
-             placeholder="Include your country code">
+        <div class="field">
+          <label for="requesterType">Requester Type *</label>
+          <select id="requesterType" required>
+            <option value="">Select requester type</option>
+            <option>Individual</option>
+            <option>School</option>
+            <option>Company</option>
+            <option>Government</option>
+            <option>NGO</option>
+            <option>Other</option>
+          </select>
+        </div>
 
-      <label for="country">Country</label>
-      <input id="country" maxlength="100" required
-             placeholder="Enter country">
+        <div class="field">
+          <label for="requesterName">Full Name / Organisation *</label>
+          <input id="requesterName" type="text"
+                 maxlength="150" autocomplete="name" required>
+        </div>
 
-      <label for="documentType">Document type</label>
-      <select id="documentType" required>
-        <option value="">Select document type</option>
-        <option value="University Degree">University degree</option>
-        <option value="Diploma">Diploma</option>
-        <option value="Transcript">Academic transcript</option>
-        <option value="WAEC">WAEC certificate or result</option>
-        <option value="NECO">NECO certificate or result</option>
-        <option value="NABTEB">NABTEB certificate or result</option>
-        <option value="NYSC">NYSC document</option>
-        <option value="Professional Certificate">Professional certificate</option>
-        <option value="Other Academic Document">Other academic document</option>
-      </select>
+        <div class="field">
+          <label for="email">Email Address *</label>
+          <input id="email" type="email"
+                 maxlength="254" autocomplete="email" required>
+        </div>
 
-      <label for="certificateNumber">
-        Certificate or document number (if available)
-      </label>
-      <input id="certificateNumber" maxlength="150"
-             placeholder="Enter the document reference, if available">
+        <div class="field">
+          <label for="phone">Phone Number *</label>
+          <input id="phone" type="tel"
+                 maxlength="30" autocomplete="tel" required>
+        </div>
 
-      <label for="holderName">Name of person named on the document</label>
-      <input id="holderName" maxlength="150" required
-             placeholder="Enter the document holder's name">
+        <div class="field full">
+          <label for="country">Country *</label>
+          <input id="country" type="text"
+                 maxlength="100" value="Nigeria" required>
+        </div>
 
-      <label for="institution">Issuing school or institution</label>
-      <input id="institution" maxlength="200" required
-             placeholder="Enter the issuing institution">
-
-      <label for="graduationYear">Year issued or graduation year</label>
-      <input id="graduationYear" type="number"
-             min="1900" max="2100"
-             placeholder="e.g. 2024">
-
-      <label for="purpose">Purpose of verification</label>
-      <select id="purpose" required>
-        <option value="">Select purpose</option>
-        <option value="Employment">Employment</option>
-        <option value="Further Studies">Further studies or admission</option>
-        <option value="Immigration">Immigration or credential assessment</option>
-        <option value="Professional Registration">Professional registration</option>
-        <option value="Institutional Check">Institutional verification</option>
-        <option value="Personal Record">Personal record</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <label for="details">Additional information</label>
-      <textarea id="details" maxlength="2000"
-        placeholder="Explain what needs to be checked. Do not enter passwords or unnecessary sensitive information."></textarea>
-
-      <div class="notice">
-        <strong>Document attachment:</strong>
-        Secure document upload will be connected after Firebase Storage
-        has been enabled and its security rules have been configured.
-        This form does not upload or store document files yet.
-        Please do not enter private document contents in the additional
-        information field.
       </div>
+    </section>
 
-      <label>
-        <input id="consent" type="checkbox"
-               required style="width:auto; margin-right:8px;">
-        I confirm that I am authorised to submit this request and agree
-        that ARNAUD may use these details to process the verification request.
-      </label>
+    <section class="card">
+      <h2>2. Document Information</h2>
 
-      <p class="small">
-        Only submit information you are authorised to share. Do not submit
-        another person's document without appropriate permission.
+      <div class="grid">
+
+        <div class="field">
+          <label for="documentType">Document Type *</label>
+          <select id="documentType" required>
+            <option value="">Select document type</option>
+            <option>University Degree</option>
+            <option>Diploma</option>
+            <option>Transcript</option>
+            <option>WAEC</option>
+            <option>NECO</option>
+            <option>NABTEB</option>
+            <option>NYSC</option>
+            <option>Professional Certificate</option>
+            <option>Other Academic Document</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="certificateNumber">
+            Certificate / Document Number
+          </label>
+          <input id="certificateNumber" type="text" maxlength="150">
+        </div>
+
+        <div class="field">
+          <label for="holderName">Document Holder's Name *</label>
+          <input id="holderName" type="text" maxlength="150" required>
+        </div>
+
+        <div class="field">
+          <label for="institution">Issuing Institution *</label>
+          <input id="institution" type="text"
+                 maxlength="200" required>
+        </div>
+
+        <div class="field">
+          <label for="graduationYear">Year Issued / Graduated</label>
+          <input id="graduationYear" type="number"
+                 min="1900" max="2100" inputmode="numeric">
+        </div>
+
+        <div class="field">
+          <label for="purpose">Purpose of Verification *</label>
+          <select id="purpose" required>
+            <option value="">Select purpose</option>
+            <option>Employment</option>
+            <option>Further Education</option>
+            <option>Immigration</option>
+            <option>Professional Registration</option>
+            <option>Personal Record</option>
+            <option>Institutional Check</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="details">Additional Information</label>
+          <textarea id="details" maxlength="3000"
+            placeholder="Enter any information that may help our team review the request."></textarea>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3. Upload Your Document</h2>
+
+      <p>
+        Select the document you want our team to review.
+        Check that the file is readable and belongs to this submission.
       </p>
 
-      <button id="submitButton" type="submit">
-        Submit Verification Request
-      </button>
-    </form>
+      <div class="upload-box">
+        <label for="documentFile">Choose Document *</label>
 
-    <div id="message" role="status" aria-live="polite"></div>
-  </section>
+        <input
+          id="documentFile"
+          type="file"
+          accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+          required
+        >
+
+        <div class="help">
+          Accepted formats: PDF, JPG, JPEG and PNG.
+          Maximum file size: 10 MB per file.
+        </div>
+
+        <div id="fileName" class="file-name">
+          No document selected.
+        </div>
+
+        <div id="fileDetails" class="file-details"></div>
+      </div>
+
+      <div class="security-notice">
+        Only upload documents you are authorised to submit.
+        Documents may contain personal information and must be handled
+        under appropriate privacy and access controls.
+      </div>
+
+      <div id="progressWrap" class="progress-wrap">
+        <label for="uploadProgress">Upload Progress</label>
+        <progress id="uploadProgress" max="100" value="0"></progress>
+        <div id="progressText" class="help">Preparing upload...</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4. Declaration and Submission</h2>
+
+      <div class="checkbox-row">
+        <input id="consent" type="checkbox" required>
+        <label for="consent">
+          I confirm that the information supplied is accurate to the
+          best of my knowledge, and I am authorised to submit this
+          document for review. I understand that submission is not
+          confirmation of authenticity. *
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="submitButton" type="submit">
+          Submit Document for Review
+        </button>
+
+        <button class="secondary" type="reset" id="resetButton">
+          Clear Form
+        </button>
+      </div>
+
+      <div id="statusMessage" class="status" role="status"
+           aria-live="polite"></div>
+    </section>
+
+  </form>
+
 </main>
 
 <footer>
-  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong><br>
-  Email: arnaudafrochain@gmail.com<br>
-  Phone: +2349132851465<br>
+  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong>
+  <br>
   African Roots, Global Vision.
+  <br>
+  <a href="mailto:arnaudafrochain@gmail.com">
+    arnaudafrochain@gmail.com
+  </a>
+  |
+  <a href="tel:+2349132851465">+2349132851465</a>
+  <br>
+  Document authenticity is determined only after appropriate review.
 </footer>
 
 <script type="module">
-import { initializeApp }
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
   getFirestore,
   collection,
   addDoc,
   serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable
+} from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+/*
+  ARNAUD AFROCHAINE TRUST SYSTEMS LTD
+
+  Firebase project: arnaud-document-trust
+
+  This page requires:
+  1. Firebase Storage to be activated.
+  2. Storage rules permitting safe incoming document uploads.
+  3. Firestore rules accepting the submission fields written below.
+
+  Do not make the uploaded files publicly readable.
+*/
 
 const firebaseConfig = {
   apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
@@ -306,97 +621,388 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 const form = document.getElementById("submissionForm");
-const button = document.getElementById("submitButton");
-const message = document.getElementById("message");
+const fileInput = document.getElementById("documentFile");
+const fileName = document.getElementById("fileName");
+const fileDetails = document.getElementById("fileDetails");
+const statusMessage = document.getElementById("statusMessage");
+const submitButton = document.getElementById("submitButton");
+const resetButton = document.getElementById("resetButton");
+const progressWrap = document.getElementById("progressWrap");
+const uploadProgress = document.getElementById("uploadProgress");
+const progressText = document.getElementById("progressText");
 
-function showMessage(text, type) {
-  message.textContent = text;
-  message.className = type;
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+const allowedTypes = {
+  "application/pdf": ["pdf"],
+  "image/jpeg": ["jpg", "jpeg"],
+  "image/png": ["png"]
+};
+
+let selectedFile = null;
+let uploadInProgress = false;
+
+function showStatus(message, type = "info") {
+  statusMessage.className = "status " + type;
+  statusMessage.textContent = message;
+  statusMessage.style.display = "block";
 }
 
-function value(id) {
+function clearStatus() {
+  statusMessage.className = "status";
+  statusMessage.textContent = "";
+  statusMessage.style.display = "none";
+}
+
+function getExtension(filename) {
+  const parts = filename.toLowerCase().split(".");
+  return parts.length > 1 ? parts.pop() : "";
+}
+
+function validateFile(file) {
+  if (!file) {
+    return "Please choose a document to upload.";
+  }
+
+  if (file.size <= 0) {
+    return "The selected file is empty. Please choose another file.";
+  }
+
+  if (file.size > MAX_FILE_SIZE) {
+    return "The file exceeds the 10 MB limit. Please choose a smaller file.";
+  }
+
+  const extension = getExtension(file.name);
+  const allowedExtensions = allowedTypes[file.type];
+
+  if (
+    !allowedExtensions ||
+    !allowedExtensions.includes(extension)
+  ) {
+    return "Unsupported file type. Choose a PDF, JPG, JPEG or PNG file.";
+  }
+
+  return "";
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024 * 1024) {
+    return (bytes / 1024).toFixed(1) + " KB";
+  }
+
+  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+fileInput.addEventListener("change", () => {
+  clearStatus();
+
+  selectedFile =
+    fileInput.files && fileInput.files.length
+      ? fileInput.files[0]
+      : null;
+
+  if (!selectedFile) {
+    fileName.textContent = "No document selected.";
+    fileDetails.textContent = "";
+    return;
+  }
+
+  const error = validateFile(selectedFile);
+
+  if (error) {
+    fileName.textContent = "Invalid file.";
+    fileDetails.textContent = "";
+    showStatus(error, "error");
+    selectedFile = null;
+    fileInput.value = "";
+    return;
+  }
+
+  fileName.textContent = "Selected: " + selectedFile.name;
+  fileDetails.textContent =
+    formatFileSize(selectedFile.size) +
+    " • " + selectedFile.type;
+});
+
+function makeReference() {
+  const randomPart = crypto.randomUUID()
+    .replaceAll("-", "")
+    .substring(0, 12)
+    .toUpperCase();
+
+  return "AATS-" + randomPart;
+}
+
+function cleanText(id) {
   return document.getElementById(id).value.trim();
+}
+
+function setBusy(busy) {
+  uploadInProgress = busy;
+  submitButton.disabled = busy;
+  resetButton.disabled = busy;
+  fileInput.disabled = busy;
+
+  submitButton.textContent = busy
+    ? "Submitting Document..."
+    : "Submit Document for Review";
+}
+
+function uploadFile(file, referenceCode) {
+  return new Promise((resolve, reject) => {
+    /*
+      Files are stored under a unique incoming-submission path.
+      The object is not made public by this code.
+    */
+
+    const safeExtension = getExtension(file.name);
+    const storagePath =
+      "incomingDocumentSubmissions/" +
+      referenceCode + "/" +
+      "document." + safeExtension;
+
+    const storageReference = ref(storage, storagePath);
+
+    const uploadTask = uploadBytesResumable(
+      storageReference,
+      file,
+      {
+        contentType: file.type,
+        customMetadata: {
+          submissionReference: referenceCode,
+          company: "ARNAUD AFROCHAINE TRUST SYSTEMS LTD"
+        }
+      }
+    );
+
+    uploadTask.on(
+      "state_changed",
+
+      (snapshot) => {
+        const percentage = snapshot.totalBytes
+          ? Math.round(
+              snapshot.bytesTransferred /
+              snapshot.totalBytes * 100
+            )
+          : 0;
+
+        uploadProgress.value = percentage;
+        progressText.textContent =
+          "Uploading document: " + percentage + "%";
+      },
+
+      (error) => {
+        reject(error);
+      },
+
+      () => {
+        resolve({
+          storagePath: storagePath,
+          fileName: file.name,
+          contentType: file.type,
+          fileSize: file.size
+        });
+      }
+    );
+  });
 }
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  clearStatus();
 
-  if (!form.reportValidity()) return;
+  if (uploadInProgress) {
+    return;
+  }
 
-  button.disabled = true;
-  button.textContent = "Submitting request...";
-  message.className = "";
-  message.style.display = "none";
+  selectedFile =
+    fileInput.files && fileInput.files.length
+      ? fileInput.files[0]
+      : null;
+
+  const fileError = validateFile(selectedFile);
+
+  if (fileError) {
+    showStatus(fileError, "error");
+    return;
+  }
+
+  if (!form.reportValidity()) {
+    return;
+  }
+
+  const yearText = cleanText("graduationYear");
+  const year = yearText ? Number(yearText) : null;
+
+  if (
+    year !== null &&
+    (!Number.isInteger(year) || year < 1900 || year > 2100)
+  ) {
+    showStatus(
+      "Enter a valid year between 1900 and 2100.",
+      "error"
+    );
+    return;
+  }
+
+  setBusy(true);
+  progressWrap.style.display = "block";
+  uploadProgress.value = 0;
+  progressText.textContent = "Preparing secure document upload...";
+
+  let uploadedFile = null;
+
+  const referenceCode = makeReference();
 
   try {
-    const yearText = value("graduationYear");
-    const year = yearText ? Number(yearText) : null;
+    showStatus(
+      "Uploading your document. Please keep this page open until the process finishes.",
+      "info"
+    );
 
-    if (year !== null && (!Number.isInteger(year) || year < 1900 || year > 2100)) {
-      throw new Error("Please enter a valid document year.");
-    }
+    uploadedFile = await uploadFile(
+      selectedFile,
+      referenceCode
+    );
+
+    progressText.textContent =
+      "Upload complete. Saving submission details...";
+
+    /*
+      Store metadata and the private Storage path.
+      Never store a public download URL in the submission record.
+    */
 
     const submission = {
-      requesterType: value("requesterType"),
-      requesterName: value("requesterName"),
-      email: value("email").toLowerCase(),
-      phone: value("phone"),
-      country: value("country"),
-      documentType: value("documentType"),
-      certificateNumber: value("certificateNumber"),
-      holderName: value("holderName"),
-      institution: value("institution"),
+      reference: referenceCode,
+
+      requesterType: cleanText("requesterType"),
+      requesterName: cleanText("requesterName"),
+      email: cleanText("email").toLowerCase(),
+      phone: cleanText("phone"),
+      country: cleanText("country"),
+
+      documentType: cleanText("documentType"),
+      certificateNumber: cleanText("certificateNumber"),
+      holderName: cleanText("holderName"),
+      institution: cleanText("institution"),
       graduationYear: year,
-      purpose: value("purpose"),
-      details: value("details"),
+      purpose: cleanText("purpose"),
+      details: cleanText("details"),
 
       status: "Pending Review",
       paymentStatus: "Not Assessed",
-      documentUploaded: false,
-      documentPath: "",
-      documentName: "",
+
+      documentUploaded: true,
+      documentPath: uploadedFile.storagePath,
+      documentName: uploadedFile.fileName,
+      documentContentType: uploadedFile.contentType,
+      documentSize: uploadedFile.fileSize,
 
       source: "Public Website",
+      consentGiven: true,
+
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp()
     };
 
-    const result = await addDoc(
+    await addDoc(
       collection(db, "documentSubmissions"),
       submission
     );
 
-    showMessage(
-      "Your request has been submitted successfully. " +
-      "Your request reference is: " + result.id +
-      ". Please keep this reference for your records. " +
-      "The request is awaiting management review; no verification " +
-      "decision has been made yet.",
+    form.reset();
+
+    selectedFile = null;
+    fileName.textContent = "No document selected.";
+    fileDetails.textContent = "";
+
+    uploadProgress.value = 100;
+    progressText.textContent = "Submission completed.";
+
+    showStatus(
+      "Your document has been submitted successfully.\n\n" +
+      "Your reference number is: " + referenceCode +
+      "\n\nPlease save this reference number for future enquiries. " +
+      "Your request is awaiting management review. Submission does not mean the document has been verified.",
       "success"
     );
 
-    form.reset();
-
   } catch (error) {
-    console.error("Submission error:", error);
+    console.error("Document submission error:", error);
 
-    let text = "The request could not be submitted. Please try again later.";
+    let message =
+      "We could not complete your submission.";
 
-    if (error.code === "permission-denied") {
-      text = "Submission was blocked by Firebase security rules. " +
-             "The documentSubmissions rules must be configured before this form can work.";
-    } else if (error.message && error.message.startsWith("Please enter")) {
-      text = error.message;
+    if (
+      error.code === "storage/unauthorized" ||
+      error.code === "permission-denied"
+    ) {
+      message =
+        "Firebase security rules blocked the upload or submission. " +
+        "The Storage and Firestore rules must be configured for this workflow.";
+    } else if (
+      error.code === "storage/bucket-not-found" ||
+      error.code === "storage/project-not-found"
+    ) {
+      message =
+        "Firebase Storage could not find the configured bucket. " +
+        "Check that Storage is activated and the bucket matches the Firebase project.";
+    } else if (
+      error.code === "storage/retry-limit-exceeded" ||
+      error.code === "storage/network-request-failed"
+    ) {
+      message =
+        "The upload could not finish because of a network or retry problem. " +
+        "Check your connection and try again.";
+    } else if (
+      error.code === "storage/quota-exceeded"
+    ) {
+      message =
+        "Firebase Storage has reached its available quota. " +
+        "Check the project's billing and Storage usage.";
+    } else if (
+      error.code === "unavailable"
+    ) {
+      message =
+        "Firebase is temporarily unavailable. Please try again later.";
+    } else if (
+      error.code === "invalid-argument"
+    ) {
+      message =
+        "Firebase rejected part of the submission data. " +
+        "The Firestore rules and form fields need to be checked.";
     }
 
-    showMessage(text, "error");
+    if (uploadedFile) {
+      message +=
+        "\n\nThe file may already have reached Storage, but the submission record was not confirmed. " +
+        "Do not repeatedly upload the same file without checking with management.";
+    }
+
+    showStatus(message, "error");
 
   } finally {
-    button.disabled = false;
-    button.textContent = "Submit Verification Request";
+    setBusy(false);
   }
+});
+
+form.addEventListener("reset", () => {
+  if (uploadInProgress) {
+    return;
+  }
+
+  selectedFile = null;
+
+  setTimeout(() => {
+    fileName.textContent = "No document selected.";
+    fileDetails.textContent = "";
+    progressWrap.style.display = "none";
+    clearStatus();
+  }, 0);
 });
 </script>
 
