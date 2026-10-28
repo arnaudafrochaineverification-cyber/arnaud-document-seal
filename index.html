@@ -3,79 +3,498 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#075b32">
-<meta name="description" content="ARNAUD AFROCHAINE TRUST SYSTEMS LTD — company document registration, private client tracking, student services, and public document verification.">
+<meta name="description" content="ARNAUD AFROCHAINE TRUST SYSTEMS LTD — company document registration, academic document verification, student services and private client tracking.">
 <title>ARNAUD AFROCHAINE TRUST SYSTEMS LTD | Official Portal</title><style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#19362a;background:#f5f8f5;line-height:1.6}
-a{transition:opacity .2s}
-header{background:#075b32;color:#fff;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:48px;height:48px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;flex-shrink:0}
-.brand-name{font-weight:bold;font-size:15px;line-height:1.4}
-.motto{font-size:11px;opacity:.9;margin-top:3px}
-nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;padding:9px 10px;font-size:13px;border-radius:5px}
-nav a:hover{background:#ffffff20}
-.hero{padding:60px 6% 48px;text-align:center;background:linear-gradient(145deg,#e7f4eb,#fff)}
-.hero-badge{display:inline-block;padding:6px 13px;border:1px solid #b6d7c1;border-radius:25px;background:#fff;color:#075b32;font-size:12px;font-weight:bold}
-.hero h1{color:#075b32;font-size:clamp(28px,5vw,45px);line-height:1.2;max-width:850px;margin:22px auto 15px}
-.hero p{max-width:720px;margin:0 auto;color:#50645a;font-size:16px}
-.hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:27px}
-.button{display:inline-block;text-decoration:none;padding:12px 18px;border-radius:7px;font-size:14px;font-weight:bold;text-align:center;border:1px solid #08783e}
-.button-primary{background:#08783e;color:#fff}
-.button-secondary{color:#075b32;background:#fff}
-.button:hover,.card a:hover{opacity:.8}
-.trust-note{font-size:12px!important;margin-top:20px!important}
-main{width:min(1100px,92%);margin:0 auto}
-.section{padding:43px 0}
-.section-heading{text-align:center;margin-bottom:27px}
-.section-heading h2{color:#075b32;font-size:27px;margin:0 0 8px}
-.section-heading p{max-width:680px;margin:0 auto;color:#63746a;font-size:14px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.card{padding:23px;border:1px solid #e0e9e2;border-radius:11px;background:#fff;box-shadow:0 3px 12px #00000007;display:flex;flex-direction:column}
-.card-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#e4f3e8;color:#075b32;font-size:23px;margin-bottom:15px}
-.card h3{margin:0 0 9px;color:#075b32;font-size:18px}
-.card p{color:#63746a;font-size:14px;margin:0 0 17px;flex:1}
-.card a{color:#08783e;text-decoration:none;font-weight:bold;font-size:14px;margin-top:6px}
-.card .button{color:#fff;margin-top:8px}
-.card .button-secondary{color:#075b32}
-.verify-panel{background:#075b32;color:#fff;padding:32px;border-radius:12px;text-align:center}
-.verify-panel h2{margin-top:0;font-size:25px}
-.verify-panel p{font-size:14px;color:#e1f0e5}
-.verify-form{max-width:620px;margin:22px auto 0;display:flex;gap:10px}
-.verify-form input{min-width:0;flex:1;padding:14px;border-radius:7px;border:1px solid #d4e5d9;font-size:15px}
-.verify-form button{padding:14px 17px;border:0;border-radius:7px;background:#fff;color:#075b32;font-weight:bold;cursor:pointer}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-.step{background:#fff;border:1px solid #e0e9e2;border-radius:10px;padding:20px}
-.step-number{display:inline-flex;width:35px;height:35px;align-items:center;justify-content:center;border-radius:50%;background:#08783e;color:#fff;font-weight:bold;margin-bottom:12px}
-.step h3{font-size:16px;margin:0 0 7px}
-.step p{font-size:13px;color:#63746a;margin:0}
-.about{background:#fff;border:1px solid #e0e9e2;padding:25px;border-radius:11px}
-.about h2{color:#075b32;margin-top:0}
-.about p{color:#53675b;font-size:14px}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.contact-item{padding:18px;border-radius:9px;background:#fff;border:1px solid #e0e9e2;overflow-wrap:anywhere}
-.contact-item strong{display:block;color:#075b32;margin-bottom:6px}
-.contact-item a{color:#08783e;text-decoration:none}
-footer{background:#063f25;color:#fff;text-align:center;padding:28px 15px;margin-top:35px}
-footer p{font-size:12px;margin:6px 0;color:#e0eee4}
-footer a{color:#fff;text-decoration:none}
-@media(max-width:600px){
- header{justify-content:center}
- .brand{width:100%;justify-content:center;text-align:left}
- nav{justify-content:center}
- .hero{padding:42px 5% 35px}
- .hero p{font-size:14px}
- .verify-panel{padding:23px 16px}
- .verify-form{flex-direction:column}
- .verify-form button{width:100%}
- .button{padding:12px 14px}
+:root {
+  --green: #075b32;
+  --green-light: #08783e;
+  --green-dark: #063f25;
+  --gold: #d6a52a;
+  --gold-light: #fff5d7;
+  --text: #19362a;
+  --muted: #63746a;
+  --background: #f5f8f5;
+  --white: #fff;
 }
-</style></head><body>
-<header>
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--background);
+  line-height: 1.6;
+}
+
+a { transition: .2s ease; }
+
+header {
+  background: var(--green);
+  color: white;
+  padding: 13px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  border-bottom: 3px solid var(--gold);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.logo {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.motto {
+  font-size: 12px;
+  color: #ffe6a0;
+  margin-top: 4px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 9px 10px;
+  font-size: 13px;
+  border-radius: 5px;
+}
+
+nav a:hover { background: #ffffff20; }
+
+.hero {
+  padding: 55px 6% 45px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 15% 20%, #e0f1e5 0, transparent 35%),
+    radial-gradient(circle at 85% 75%, #fff0c5 0, transparent 32%),
+    linear-gradient(145deg, #f1f8f2, #fff);
+  border-bottom: 1px solid #e3eae4;
+}
+
+.hero-logo {
+  width: 175px;
+  height: 175px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 8px 28px #075b3218;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 13px;
+  border: 1px solid #b6d7c1;
+  border-radius: 25px;
+  background: white;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  color: var(--green);
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.2;
+  max-width: 850px;
+  margin: 20px auto 15px;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #50645a;
+  font-size: 16px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 27px;
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid var(--green-light);
+  cursor: pointer;
+}
+
+.button-primary {
+  background: var(--green-light);
+  color: white;
+}
+
+.button-secondary {
+  color: var(--green);
+  background: white;
+}
+
+.button:hover,
+.card a:hover {
+  opacity: .82;
+  transform: translateY(-1px);
+}
+
+.trust-note {
+  font-size: 12px !important;
+  margin-top: 20px !important;
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.section { padding: 43px 0; }
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 27px;
+}
+
+.section-heading h2 {
+  color: var(--green);
+  font-size: 27px;
+  margin: 0 0 8px;
+}
+
+.section-heading p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  padding: 23px;
+  border: 1px solid #e0e9e2;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 5px 18px #00000007;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px #075b3210;
+}
+
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4f3e8;
+  color: var(--green);
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin: 0 0 9px;
+  color: var(--green);
+  font-size: 18px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 17px;
+  flex: 1;
+}
+
+.card a {
+  color: var(--green-light);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 7px;
+}
+
+.card .button-primary { color: white; }
+.card .button-secondary { color: var(--green); }
+
+.feature-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  align-items: center;
+  background: white;
+  border: 1px solid #e0e9e2;
+  border-radius: 13px;
+  padding: 26px;
+}
+
+.feature-visual {
+  min-height: 210px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--green), #0b8146);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border: 3px solid var(--gold);
+}
+
+.feature-visual .globe {
+  font-size: 65px;
+  line-height: 1.2;
+}
+
+.feature-visual strong {
+  font-size: 18px;
+  margin-top: 12px;
+}
+
+.feature-visual span {
+  color: #ffe6a0;
+  font-size: 12px;
+}
+
+.feature-copy h2 {
+  color: var(--green);
+  margin-top: 0;
+}
+
+.feature-copy p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.verify-panel {
+  background: linear-gradient(135deg, var(--green), #08783e);
+  color: white;
+  padding: 32px;
+  border: 2px solid var(--gold);
+  border-radius: 13px;
+  text-align: center;
+}
+
+.verify-panel h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+.verify-panel p {
+  font-size: 14px;
+  color: #e1f0e5;
+}
+
+.verify-form {
+  max-width: 620px;
+  margin: 22px auto 0;
+  display: flex;
+  gap: 10px;
+}
+
+.verify-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 14px;
+  border-radius: 7px;
+  border: 1px solid #d4e5d9;
+  font-size: 15px;
+}
+
+.verify-form button {
+  padding: 14px 17px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--gold-light);
+  color: var(--green);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+.step {
+  background: white;
+  border: 1px solid #e0e9e2;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.step-number {
+  display: inline-flex;
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--green-light);
+  color: white;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.step h3 { font-size: 16px; margin: 0 0 7px; }
+
+.step p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.about {
+  background: white;
+  border: 1px solid #e0e9e2;
+  padding: 25px;
+  border-radius: 11px;
+}
+
+.about h2 { color: var(--green); margin-top: 0; }
+
+.about p {
+  color: #53675b;
+  font-size: 14px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.contact-item {
+  padding: 18px;
+  border-radius: 9px;
+  background: white;
+  border: 1px solid #e0e9e2;
+  overflow-wrap: anywhere;
+}
+
+.contact-item strong {
+  display: block;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+
+.contact-item a {
+  color: var(--green-light);
+  text-decoration: none;
+}
+
+footer {
+  background: var(--green-dark);
+  border-top: 3px solid var(--gold);
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+  margin-top: 35px;
+}
+
+footer p {
+  font-size: 12px;
+  margin: 6px 0;
+  color: #e0eee4;
+}
+
+footer a { color: #ffe6a0; text-decoration: none; }
+
+/* Floating WhatsApp contact button */
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 17px;
+  border-radius: 40px;
+  background: #25d366;
+  color: #073b20;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 5px 20px #00000030;
+  border: 2px solid white;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px #00000035;
+}
+
+.whatsapp-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+@media(max-width:600px) {
+  header { justify-content: center; }
+  .brand { width: 100%; justify-content: center; }
+  .brand-name { font-size: 13px; }
+  .logo { width: 57px; height: 57px; }
+  nav { justify-content: center; }
+  nav a { padding: 8px 7px; font-size: 12px; }
+  .hero { padding: 38px 5% 33px; }
+  .hero-logo { width: 140px; height: 140px; }
+  .hero p { font-size: 14px; }
+  .verify-panel { padding: 23px 16px; }
+  .verify-form { flex-direction: column; }
+  .verify-form button { width: 100%; }
+  .button { padding: 12px 14px; }
+  .whatsapp-float { right: 12px; bottom: 12px; padding: 12px 14px; }
+}
+</style></head><body><header>
   <div class="brand">
-    <div class="logo" aria-hidden="true">A</div>
+    <img class="logo" src="arnaud-logo.png" alt="ARNAUD AFROCHAINE TRUST SYSTEMS LTD logo">
     <div>
       <div class="brand-name">ARNAUD AFROCHAINE TRUST SYSTEMS LTD</div>
       <div class="motto">African Roots, Global Vision.</div>
@@ -88,10 +507,12 @@ footer a{color:#fff;text-decoration:none}
     <a href="#contact">Contact</a>
   </nav>
 </header><section class="hero" id="home">
-  <span class="hero-badge">OFFICIAL DOCUMENT & STUDENT SERVICES PORTAL</span>  <h1>Welcome to ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>  <p>
-    Choose the service you need. Companies can register documents and track
-    review progress, students can access the student portal, and the public
-    can check existing document verification records.
+  <img class="hero-logo" src="arnaud-logo.png" alt="Official ARNAUD company logo"><span class="hero-badge">OFFICIAL DOCUMENT & STUDENT SERVICES PORTAL</span>
+
+  <h1>Trust, Transparency and Document Verification</h1>  <p>
+    Welcome to ARNAUD AFROCHAINE TRUST SYSTEMS LTD.
+    Access company document services, student services and public document
+    verification through one professional portal.
   </p>  <div class="hero-actions">
     <a class="button button-primary" href="#company-services">Company Document Services</a>
     <a class="button button-secondary" href="#students">Student Portal</a>
@@ -100,17 +521,17 @@ footer a{color:#fff;text-decoration:none}
     Public verification displays records available in our system.
     A matching record alone is not independent proof of authenticity.
   </p>
-</section><main>
-  <section class="section" id="services">
+</section><main>  <section class="section" id="services">
     <div class="section-heading">
       <h2>Choose Your Service</h2>
       <p>Select the option that matches what you want to do.</p>
     </div><div class="cards">
+
   <article class="card" id="company-services">
     <div class="card-icon" aria-hidden="true">&#127970;</div>
     <h3>Company Document Services</h3>
     <p>
-      For companies, directors, managers, and authorised representatives
+      For companies, directors, managers and authorised representatives
       who need to submit documents for administrative review.
     </p>
     <a class="button button-primary" href="client-register.html">Create Company Account</a>
@@ -122,7 +543,7 @@ footer a{color:#fff;text-decoration:none}
     <div class="card-icon" aria-hidden="true">&#128203;</div>
     <h3>Track Your Documents</h3>
     <p>
-      Sign in to your company account to see your submitted requests
+      Sign in to your company account to see submitted requests
       and their latest review status.
     </p>
     <a class="button button-primary" href="client-login.html">Login to Track Documents</a>
@@ -132,7 +553,7 @@ footer a{color:#fff;text-decoration:none}
     <div class="card-icon" aria-hidden="true">&#128269;</div>
     <h3>Public Document Verification</h3>
     <p>
-      Employers, institutions, and other visitors can check whether
+      Employers, institutions and other visitors can check whether
       a matching public verification record exists.
     </p>
     <a class="button button-primary" href="verify-document.html">Open Verification Portal</a>
@@ -142,13 +563,35 @@ footer a{color:#fff;text-decoration:none}
     <div class="card-icon" aria-hidden="true">&#127891;</div>
     <h3>Student Services</h3>
     <p>
-      Visit the existing student portal to access its available
-      registration, application tracking, and verification services.
+      Access the existing student portal for its available
+      registration, application tracking and verification services.
     </p>
-    <a class="button button-primary" href="https://arnaudafrochaineverification-cyber.github.io/arnaud-student-verification/">
+    <a class="button button-primary"
+       href="https://arnaudafrochaineverification-cyber.github.io/arnaud-student-verification/">
       Open Student Portal
     </a>
   </article>
+
+</div>
+
+  </section>  <section class="section" aria-label="Our mission">
+    <div class="feature-banner">
+      <div class="feature-visual">
+        <div class="globe" aria-hidden="true">&#127760;</div>
+        <strong>African Roots, Global Vision.</strong>
+        <span>Connecting documents, people and institutions</span>
+      </div>  <div class="feature-copy">
+    <h2>Building Confidence Through Clear Processes</h2>
+    <p>
+      Our portal brings document registration, request tracking,
+      student services and public record lookups together in one place.
+    </p>
+    <p>
+      Each verification request must be reviewed using appropriate
+      evidence and, where necessary, confirmation from the issuing institution.
+    </p>
+    <a class="button button-primary" href="#about">Learn About Us</a>
+  </div>
 </div>
 
   </section>  <section class="section" id="verify">
@@ -170,7 +613,7 @@ footer a{color:#fff;text-decoration:none}
   </section>  <section class="section" id="how-it-works">
     <div class="section-heading">
       <h2>How Our Services Work</h2>
-      <p>Choose the relevant process below.</p>
+      <p>Follow the relevant process for your service.</p>
     </div><div class="steps">
   <article class="step">
     <div class="step-number">1</div>
@@ -181,19 +624,19 @@ footer a{color:#fff;text-decoration:none}
   <article class="step">
     <div class="step-number">2</div>
     <h3>Submit a Document</h3>
-    <p>Submit the required document details through the registration page.</p>
+    <p>Submit the required document details through the relevant registration page.</p>
   </article>
 
   <article class="step">
     <div class="step-number">3</div>
     <h3>Administrative Review</h3>
-    <p>The authorised administrator reviews the request and records a decision.</p>
+    <p>Authorised personnel review the request and record the outcome.</p>
   </article>
 
   <article class="step">
     <div class="step-number">4</div>
     <h3>Track or Verify</h3>
-    <p>Clients track their requests privately. Public visitors can look up published verification records.</p>
+    <p>Clients track requests privately. Public visitors can look up published verification records.</p>
   </article>
 </div>
 
@@ -201,7 +644,7 @@ footer a{color:#fff;text-decoration:none}
     <div class="about">
       <h2>About Our Company</h2>  <p>
     <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong> provides
-    digital portals for document registration, public record verification,
+    digital portals for document registration, public record verification
     and student services.
   </p>
 
@@ -243,10 +686,17 @@ footer a{color:#fff;text-decoration:none}
     <strong>Telephone</strong>
     <a href="tel:+2349132851465">+234 913 285 1465</a>
   </div>
+
+  <div class="contact-item">
+    <strong>WhatsApp Support</strong>
+    <a href="https://wa.me/2349132851465"
+       target="_blank" rel="noopener noreferrer">
+      Chat with our company
+    </a>
+  </div>
 </div>
 
-  </section>
-</main><footer>
+  </section></main><footer>
   <p><strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong></p>
   <p>African Roots, Global Vision.</p>
   <p>&copy; <span id="year"></span> All rights reserved.</p>  <p>
@@ -260,7 +710,20 @@ footer a{color:#fff;text-decoration:none}
       Student Portal
     </a>
   </p>
-</footer><script>
+</footer><!-- Floating WhatsApp button: opens a direct conversation with the company --><a
+class="whatsapp-float"
+href="https://wa.me/2349132851465?text=Hello%20ARNAUD%20AFROCHAINE%20TRUST%20SYSTEMS%20LTD.%20I%20need%20assistance."
+target="_blank"
+rel="noopener noreferrer"
+aria-label="Chat with ARNAUD AFROCHAINE TRUST SYSTEMS LTD on WhatsApp"
+
+«»
+
+<span class="whatsapp-icon" aria-hidden="true">💬</span>
+<span>Chat with us</span>
+</a>
+
+<script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
 document.getElementById("verifyForm").addEventListener("submit", function(event) {
@@ -278,4 +741,4 @@ document.getElementById("verifyForm").addEventListener("submit", function(event)
   window.location.href = destination.href;
 });
 </script></body>
-                                                                                </html>
+</html>
