@@ -3,446 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#08783e">
-
-<title>Administrator Dashboard | ARNAUD</title>
+<title>ARNAUD | Central Admin Control Panel</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f2f6f3;
-  color:#183329;
+:root {
+  --green: #08783e;
+  --dark: #064c2c;
+  --gold: #d6a72c;
+  --bg: #f3f7f4;
+  --white: #fff;
+  --text: #183126;
+  --muted: #65756b;
+  --border: #dce6df;
+  --red: #a51f19;
 }
-
-header{
-  background:#075b32;
-  color:#fff;
-  padding:22px 16px;
-  text-align:center;
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--bg);
 }
-
-header h1{
-  font-size:22px;
-  margin:0 0 8px;
+header {
+  background: var(--green);
+  color: white;
+  border-bottom: 4px solid var(--gold);
+  padding: 20px 16px;
 }
-
-header p{
-  margin:5px 0;
-  font-size:13px;
+.header-inner, main {
+  width: min(1200px, 100%);
+  margin: auto;
 }
-
-nav{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  padding:14px;
-  background:#fff;
-  border-bottom:1px solid #dbe5de;
+header h1 { margin: 0 0 7px; font-size: 23px; }
+header p { margin: 0; line-height: 1.5; }
+main { padding: 18px 14px 40px; }
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 17px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 12px #00000006;
 }
-
-nav a,nav button,.primary,.secondary,.danger{
-  display:inline-block;
-  padding:11px 14px;
-  border:0;
-  border-radius:6px;
-  background:#08783e;
-  color:#fff;
-  text-decoration:none;
-  cursor:pointer;
-  font-size:14px;
-  font-weight:bold;
+h2 { margin-top: 0; font-size: 20px; }
+h3 { font-size: 17px; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; line-height: 1.5; }
+.hidden { display: none !important; }
+label { display: block; margin: 12px 0 6px; font-weight: bold; }
+input, select, textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #cbd8ce;
+  border-radius: 7px;
+  background: white;
+  font: inherit;
 }
-
-nav button,.danger{
-  background:#a52525;
+textarea { min-height: 90px; resize: vertical; }
+button, .button {
+  border: 0;
+  border-radius: 7px;
+  padding: 11px 13px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
 }
-
-.secondary{
-  background:#e6eee8;
-  color:#164b2e;
+button:disabled { opacity: .5; cursor: not-allowed; }
+.primary { background: var(--green); color: white; }
+.secondary { background: #e7efe9; color: var(--dark); }
+.gold { background: var(--gold); color: #29220e; }
+.danger { background: #fde8e6; color: var(--red); }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 17px;
 }
-
-button:disabled{
-  opacity:.6;
-  cursor:not-allowed;
+nav button { background: #ffffff18; color: white; border: 1px solid #ffffff65; }
+nav button.active { background: var(--gold); color: #29220e; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 11px;
 }
-
-main{
-  width:min(1100px,94%);
-  margin:24px auto;
+.stat {
+  border: 1px solid var(--border);
+  background: #f8fbf8;
+  padding: 14px;
+  border-radius: 9px;
 }
-
-.panel{
-  background:#fff;
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 2px 10px #0000000d;
-  margin-bottom:20px;
+.stat span { display: block; color: var(--muted); font-size: 13px; }
+.stat strong { display: block; font-size: 26px; color: var(--green); margin-top: 8px; }
+.toolbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
 }
-
-h2{
-  margin-top:0;
-  color:#075b32;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 13px;
 }
-
-.login-box{
-  max-width:440px;
-  margin:35px auto;
+.item {
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 9px;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
-
-label{
-  display:block;
-  margin:13px 0 6px;
-  font-weight:bold;
-  font-size:14px;
+.item p { font-size: 13px; line-height: 1.5; }
+.item h3 { margin-top: 0; }
+.badge {
+  display: inline-block;
+  background: #e6eee8;
+  color: var(--dark);
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
 }
-
-input,select,textarea{
-  width:100%;
-  padding:12px;
-  border:1px solid #cbd7ce;
-  border-radius:6px;
-  font-size:15px;
-  background:#fff;
-  font-family:Arial,sans-serif;
+.notice {
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 7px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
-
-textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-.notice{
-  background:#fff8df;
-  border:1px solid #ead58b;
-  padding:12px;
-  border-radius:7px;
-  line-height:1.6;
-  font-size:14px;
-}
-
-.message{
-  margin:12px 0;
-  padding:11px;
-  border-radius:6px;
-  line-height:1.5;
-  overflow-wrap:anywhere;
-}
-
-.success{
-  background:#e4f7e9;
-  color:#145c2d;
-}
-
-.error{
-  background:#ffebeb;
-  color:#8a1717;
-}
-
-.muted{
-  color:#617168;
-  font-size:13px;
-  line-height:1.5;
-  overflow-wrap:anywhere;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:12px;
-  margin-bottom:20px;
-}
-
-.stat{
-  padding:17px;
-  border-radius:9px;
-  background:#fff;
-  border-left:4px solid #08783e;
-  box-shadow:0 2px 8px #00000009;
-}
-
-.stat strong{
-  display:block;
-  font-size:26px;
-  margin-top:7px;
-}
-
-.request{
-  border:1px solid #dce6df;
-  border-radius:9px;
-  padding:16px;
-  margin:14px 0;
-  overflow-wrap:anywhere;
-}
-
-.request h3{
-  margin:0 0 12px;
-  color:#075b32;
-}
-
-.detail{
-  margin:8px 0;
-  line-height:1.5;
-  overflow-wrap:anywhere;
-}
-
-.detail b{
-  color:#344d40;
-}
-
-.badge{
-  display:inline-block;
-  border-radius:20px;
-  padding:5px 10px;
-  font-size:12px;
-  font-weight:bold;
-  background:#fff1cb;
-  color:#755300;
-}
-
-.badge.approved{
-  background:#dcf7e3;
-  color:#17602d;
-}
-
-.badge.rejected,.badge.withdrawn{
-  background:#ffe2e2;
-  color:#8a1717;
-}
-
-.fingerprint-box{
-  background:#f0f7f2;
-  border:1px solid #cfe3d4;
-  padding:12px;
-  border-radius:7px;
-  margin-top:12px;
-}
-
-.fingerprint-value{
-  display:block;
-  font-family:monospace;
-  font-size:12px;
-  line-height:1.7;
-  overflow-wrap:anywhere;
-  word-break:break-word;
-  margin-top:6px;
-}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:15px;
-}
-
-.actions button{
-  min-height:40px;
-}
-
-.empty{
-  text-align:center;
-  padding:25px 10px;
-  color:#617168;
-}
-
-footer{
-  text-align:center;
-  padding:25px 12px;
-  color:#617168;
-  font-size:12px;
-}
-
-[hidden]{
-  display:none!important;
-}
-
-@media(max-width:600px){
-  header h1{font-size:19px}
-  .panel{padding:15px}
+.info { background: #eaf3ff; color: #174578; }
+.success { background: #e5f6e9; color: #075b2d; }
+.error { background: #fff0ef; color: #8f1d16; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+footer { text-align: center; color: var(--muted); padding: 20px; font-size: 13px; }
+a { color: var(--green); }
+@media(max-width: 480px) {
+  header h1 { font-size: 20px; }
+  .card { padding: 13px; }
 }
 </style>
 </head>
 
 <body>
-
 <header>
-  <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
-  <p>Administrator Dashboard</p>
-  <p>African Roots, Global Vision.</p>
+  <div class="header-inner">
+    <h1>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</h1>
+    <p>Central Administrator Control Panel</p>
+    <p class="small">African Roots, Global Vision.</p>
+
+    <nav id="navigation" class="hidden">
+      <button class="active" data-page="overview">Overview</button>
+      <button data-page="documents">Documents</button>
+      <button data-page="students">Students</button>
+      <button data-page="verification">Verification</button>
+      <button data-page="staff">Staff</button>
+      <button data-page="tasks">Tasks</button>
+      <button data-page="clients">Clients</button>
+      <button data-page="reports">Reports</button>
+      <button data-page="settings">System Links</button>
+    </nav>
+  </div>
 </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="seal-document.html">Register Document</a>
-  <a href="verify-document.html">Verify Document</a>
-  <button id="logoutButton" type="button" hidden>Sign Out</button>
-</nav>
-
 <main>
+  <section class="card" id="loginPanel">
+    <h2>Administrator Login</h2>
+    <p class="muted">Sign in with your authorised administrator account.</p>
 
-<section id="loginSection" class="panel login-box">
-  <h2>Administrator Login</h2>
+    <form id="loginForm">
+      <label for="email">Administrator email</label>
+      <input id="email" type="email" autocomplete="username" required>
 
-  <p class="muted">
-    Sign in with your authorized Firebase administrator account.
-  </p>
+      <label for="password">Password</label>
+      <input id="password" type="password"
+             autocomplete="current-password" required>
 
-  <form id="loginForm">
-    <label for="email">Administrator Email</label>
-    <input
-      id="email"
-      type="email"
-      autocomplete="username"
-      required
-      placeholder="Enter administrator email"
-    >
-
-    <label for="password">Password</label>
-    <input
-      id="password"
-      type="password"
-      autocomplete="current-password"
-      required
-      placeholder="Enter password"
-    >
-
-    <br><br>
-
-    <button id="loginButton" class="primary" type="submit">
-      Sign In
-    </button>
-  </form>
-
-  <div id="loginMessage" aria-live="polite"></div>
-</section>
-
-<section id="dashboardSection" hidden>
-
-  <div class="panel">
-    <h2>Document Administration</h2>
-
-    <p id="signedInAs" class="muted"></p>
-
-    <div class="notice">
-      <strong>Approval:</strong>
-      Review each document carefully before approval. Approval publishes
-      verification details publicly. Do not approve a document unless
-      you have independently checked it.
-
-      <br><br>
-
-      <strong>Fingerprint:</strong>
-      This dashboard displays fingerprint information supplied with a
-      request. A fingerprint alone does not establish that a document
-      is genuine.
-
-      <br><br>
-
-      <strong>Withdrawal:</strong>
-      Withdraw an approved verification when it should no longer be
-      publicly marked as verified.
-
-      <br><br>
-
-      <strong>Restoration:</strong>
-      Restore a withdrawn verification only after reviewing the reason
-      for withdrawal and confirming that restoration is appropriate.
-      The restoration reason is recorded separately.
-    </div>
-  </div>
-
-  <div class="stats">
-    <div class="stat">
-      Total Requests
-      <strong id="totalCount">0</strong>
-    </div>
-
-    <div class="stat">
-      Pending Review
-      <strong id="pendingCount">0</strong>
-    </div>
-
-    <div class="stat">
-      Approved
-      <strong id="approvedCount">0</strong>
-    </div>
-
-    <div class="stat">
-      Rejected
-      <strong id="rejectedCount">0</strong>
-    </div>
-
-    <div class="stat">
-      Withdrawn
-      <strong id="withdrawnCount">0</strong>
-    </div>
-  </div>
-
-  <section class="panel">
-    <h2>Document Requests</h2>
-
-    <label for="statusFilter">Filter by status</label>
-
-    <select id="statusFilter">
-      <option value="all">All Requests</option>
-      <option value="Pending Review">Pending Review</option>
-      <option value="Verified">Approved / Verified</option>
-      <option value="Rejected">Rejected</option>
-      <option value="Verification Withdrawn">
-        Verification Withdrawn
-      </option>
-    </select>
-
-    <div class="actions">
-      <button id="refreshButton" class="secondary" type="button">
-        Refresh Requests
-      </button>
-    </div>
-
-    <div id="dashboardMessage" aria-live="polite"></div>
-    <div id="requestsList"></div>
+      <div class="actions">
+        <button class="primary" type="submit">Sign In</button>
+      </div>
+    </form>
+    <div id="loginMessage" aria-live="polite"></div>
   </section>
 
-</section>
+  <section id="controlPanel" class="hidden">
+    <div class="card">
+      <strong id="identity"></strong>
+      <div class="actions">
+        <button class="primary" id="refresh">Refresh Dashboard</button>
+        <button class="secondary" id="logout">Sign Out</button>
+      </div>
+      <div id="message" aria-live="polite"></div>
+    </div>
+
+    <section class="page" id="page-overview">
+      <div class="card">
+        <h2>System Overview</h2>
+        <div class="stats">
+          <div class="stat"><span>Document records</span><strong id="docTotal">—</strong></div>
+          <div class="stat"><span>Pending review</span><strong id="pendingTotal">—</strong></div>
+          <div class="stat"><span>Verified documents</span><strong id="verifiedTotal">—</strong></div>
+          <div class="stat"><span>Rejected documents</span><strong id="rejectedTotal">—</strong></div>
+          <div class="stat"><span>Student applications</span><strong id="studentTotal">—</strong></div>
+          <div class="stat"><span>Staff tasks</span><strong id="taskTotal">—</strong></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Administrator Responsibilities</h2>
+        <p>Review submitted records, verify authenticity with the issuing institution, manage authorised tasks, and check the public verification result after approval.</p>
+        <p class="muted small">Counts are shown only when the relevant Firebase collection can be read. A failed read is not the same as zero records.</p>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-documents">
+      <div class="card">
+        <h2>Document Management</h2>
+        <p class="muted">Records from both existing collections are displayed together.</p>
+        <div class="toolbar">
+          <div>
+            <label for="docSearch">Search documents</label>
+            <input id="docSearch" placeholder="Reference, holder, email or school">
+          </div>
+          <div>
+            <label for="docSource">Collection</label>
+            <select id="docSource">
+              <option value="ALL">Both collections</option>
+              <option value="documentRequests">documentRequests</option>
+              <option value="documentSubmissions">documentSubmissions</option>
+            </select>
+          </div>
+          <div>
+            <label for="docStatus">Status</label>
+            <select id="docStatus">
+              <option value="ALL">All statuses</option>
+              <option>Pending Review</option>
+              <option>Verified</option>
+              <option>Rejected</option>
+              <option>Verification Withdrawn</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Submitted Documents</h2>
+        <div id="documentRecords" class="grid"></div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-students">
+      <div class="card">
+        <h2>Student Applications</h2>
+        <p>This section reads the existing <code>applications</code> collection when administrator permissions allow it.</p>
+        <div id="studentRecords" class="grid"></div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-verification">
+      <div class="card">
+        <h2>Public Verification Records</h2>
+        <p>Search records published to <code>publicVerifications</code>.</p>
+        <label for="verifySearch">Certificate or verification reference</label>
+        <input id="verifySearch" placeholder="Enter reference number">
+        <div class="actions">
+          <button class="primary" id="searchVerification">Search</button>
+          <a class="button secondary" href="verify-document.html">Open Public Verification</a>
+        </div>
+        <div id="verificationRecords" class="grid"></div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-staff">
+      <div class="card">
+        <h2>Staff Management</h2>
+        <p>View staff profiles that your account is permitted to access.</p>
+        <div class="actions">
+          <a class="button primary" href="ceo-staff-management.html">Open Staff Management</a>
+          <a class="button secondary" href="staff-registration.html">Staff Registration</a>
+        </div>
+        <div id="staffRecords" class="grid"></div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-tasks">
+      <div class="card">
+        <h2>Task Management</h2>
+        <p>Open the existing task management system to assign tasks and review staff progress.</p>
+        <div class="actions">
+          <a class="button primary" href="task-management.html">Open Task Management</a>
+        </div>
+        <div id="taskRecords" class="grid"></div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-clients">
+      <div class="card">
+        <h2>Client Management</h2>
+        <p>Open the existing client services and registration pages.</p>
+        <div class="actions">
+          <a class="button primary" href="client-register.html">Client Registration</a>
+          <a class="button secondary" href="client-login.html">Client Login</a>
+          <a class="button secondary" href="document-submission.html">Document Submission</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-reports">
+      <div class="card">
+        <h2>Reports</h2>
+        <p>Current counts are based on records accessible to this administrator account.</p>
+        <div id="reportSummary"></div>
+        <div class="actions">
+          <button class="primary" id="exportReport">Download Document Report (CSV)</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="page-settings">
+      <div class="card">
+        <h2>System Navigation</h2>
+        <div class="grid">
+          <div class="item"><h3>Main Website</h3><a href="index.html">Open homepage</a></div>
+          <div class="item"><h3>Register a Document</h3><a href="seal-document.html">Open registration</a></div>
+          <div class="item"><h3>Document Submission</h3><a href="document-submission.html">Open submission form</a></div>
+          <div class="item"><h3>Public Verification</h3><a href="verify-document.html">Open verification</a></div>
+          <div class="item"><h3>Student Portal</h3><a href="https://arnaudafrochaineverification-cyber.github.io/arnaud-student-verification/">Open student portal</a></div>
+        </div>
+        <p class="notice info">This panel does not change Firebase security rules, billing settings, passwords, or staff permissions automatically. Those settings must be configured securely in Firebase or the relevant existing management workflow.</p>
+      </div>
+    </section>
+  </section>
 </main>
 
 <footer>
-  &copy; <span id="year"></span>
-  ARNAUD AFROCHAINE TRUST SYSTEMS LTD. All rights reserved.
+  <strong>ARNAUD AFROCHAINE TRUST SYSTEMS LTD</strong><br>
+  arnaudafrochain@gmail.com · +234 913 285 1465
 </footer>
 
 <script type="module">
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
+  getAuth, signInWithEmailAndPassword,
+  onAuthStateChanged, signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
-  getFirestore,
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  updateDoc,
-  setDoc,
-  serverTimestamp,
-  writeBatch
+  getFirestore, collection, getDocs, doc, getDoc,
+  updateDoc, setDoc, serverTimestamp, writeBatch
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-
-/* Existing Firebase configuration */
 
 const firebaseConfig = {
   apiKey: "AIzaSyCLMfQDqre6dKiMX1YIbFMeCkK20RLsXfQ",
@@ -455,9 +363,9 @@ const firebaseConfig = {
 };
 
 const ADMIN_UID = "Zdi9MZk5uffixwVcJv9i576jmrS2";
-
 const COMPANY_NAME = "ARNAUD AFROCHAINE TRUST SYSTEMS LTD";
 const COMPANY_EMAIL = "arnaudafrochain@gmail.com";
+const COMPANY_NUMBER = "179223482696";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -465,1036 +373,603 @@ const db = getFirestore(app);
 
 const $ = id => document.getElementById(id);
 
-$("year").textContent = new Date().getFullYear();
+let documents = [];
+let students = [];
+let tasks = [];
+let publicRecords = [];
+let staff = [];
+let loading = false;
 
-
-/* Message helpers */
-
-function showMessage(element, message, type = "error") {
-  element.replaceChildren();
-
+function message(id, text, kind = "info") {
   const box = document.createElement("div");
-  box.className = "message " + type;
-  box.textContent = message;
-
-  element.appendChild(box);
+  box.className = "notice " + kind;
+  box.textContent = text;
+  $(id).replaceChildren(box);
 }
 
-function clearMessage(element) {
-  element.replaceChildren();
-}
-
-function safeText(value) {
-  return value === undefined || value === null || value === ""
-    ? "Not provided"
-    : String(value);
-}
-
-function addDetail(container, label, value) {
-  const line = document.createElement("p");
-  line.className = "detail";
-
-  const strong = document.createElement("b");
-  strong.textContent = label + ": ";
-
-  const span = document.createElement("span");
-  span.textContent = safeText(value);
-
-  line.append(strong, span);
-  container.appendChild(line);
-}
-
-function normalizedStatus(value) {
-  const s = String(value || "Pending Review")
-    .trim()
-    .toLowerCase();
-
-  if (
-    s === "verification withdrawn" ||
-    s === "withdrawn"
-  ) {
+function statusOf(value) {
+  const s = String(value || "Pending Review").toLowerCase();
+  if (["verified", "approved"].includes(s)) return "Verified";
+  if (["rejected", "declined"].includes(s)) return "Rejected";
+  if (["withdrawn", "verification withdrawn", "revoked"].includes(s))
     return "Verification Withdrawn";
-  }
-
-  if (s === "verified" || s === "approved") {
-    return "Verified";
-  }
-
-  if (s === "rejected") {
-    return "Rejected";
-  }
-
-  if (
-    s === "pending review" ||
-    s === "pending" ||
-    s === "submitted"
-  ) {
-    return "Pending Review";
-  }
-
-  return value || "Pending Review";
+  return "Pending Review";
 }
 
-function formatDate(value) {
-  if (!value) return "Not available";
-
-  if (typeof value.toDate === "function") {
-    return value.toDate().toLocaleString();
+function first(data, keys, fallback = "Not provided") {
+  for (const key of keys) {
+    if (data[key] !== undefined && data[key] !== null &&
+        String(data[key]).trim() !== "") return data[key];
   }
+  return fallback;
+}
 
+function text(value) {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "string" || typeof value === "number") return String(value);
+  return "";
+}
+
+function dateOf(value) {
+  if (!value) return "Not provided";
+  if (value.toDate) return value.toDate().toLocaleString();
   const d = new Date(value);
-
-  return Number.isNaN(d.getTime())
-    ? "Not available"
-    : d.toLocaleString();
+  return Number.isNaN(d.getTime()) ? "Not provided" : d.toLocaleString();
 }
 
-function currentAdmin() {
-  const user = auth.currentUser;
-  return Boolean(user && user.uid === ADMIN_UID);
+function normalise(collectionName, id, data) {
+  return {
+    collectionName, id, data,
+    reference: text(first(data, [
+      "referenceNumber", "reference", "certificateNumber", "ref"
+    ], id)),
+    title: text(first(data, [
+      "documentTitle", "documentType", "certificateType", "title"
+    ], "Academic Document")),
+    holder: text(first(data, [
+      "issuedTo", "holderName", "fullName", "name", "requesterName"
+    ])),
+    email: text(first(data, ["createdByEmail", "email", "requesterEmail"])),
+    school: text(first(data, [
+      "institution", "school", "issuingInstitution", "university"
+    ])),
+    status: statusOf(data.status),
+    createdAt: dateOf(data.createdAt)
+  };
 }
 
-
-/* Authentication */
-
-function updateDiagnostics(user) {
-  $("signedInAs").textContent =
-    "Signed in as: " +
-    (user.email || "Authenticated user") +
-    " | UID: " +
-    user.uid +
-    " | Firebase project: " +
-    app.options.projectId;
+async function readCollection(name) {
+  try {
+    const snapshot = await getDocs(collection(db, name));
+    return {
+      ok: true,
+      records: snapshot.docs.map(d => ({ id: d.id, data: d.data() }))
+    };
+  } catch (error) {
+    return { ok: false, error };
+  }
 }
 
-onAuthStateChanged(auth, async user => {
-  if (!user) {
-    $("loginSection").hidden = false;
-    $("dashboardSection").hidden = true;
-    $("logoutButton").hidden = true;
-    $("requestsList").replaceChildren();
-    $("signedInAs").textContent = "";
+async function loadAll() {
+  if (loading) return;
+  loading = true;
+  $("refresh").disabled = true;
+  message("message", "Loading accessible records…");
+
+  try {
+    const names = [
+      "documentRequests",
+      "documentSubmissions",
+      "applications",
+      "publicVerifications",
+      "staffProfiles",
+      "staffTasks"
+    ];
+
+    const results = await Promise.all(names.map(readCollection));
+    const byName = Object.fromEntries(names.map((n, i) => [n, results[i]]));
+
+    documents = [
+      ...(byName.documentRequests.ok
+        ? byName.documentRequests.records.map(r =>
+            normalise("documentRequests", r.id, r.data)) : []),
+      ...(byName.documentSubmissions.ok
+        ? byName.documentSubmissions.records.map(r =>
+            normalise("documentSubmissions", r.id, r.data)) : [])
+    ];
+
+    students = byName.applications.ok ? byName.applications.records : [];
+    publicRecords = byName.publicVerifications.ok
+      ? byName.publicVerifications.records : [];
+    staff = byName.staffProfiles.ok ? byName.staffProfiles.records : [];
+    tasks = byName.staffTasks.ok ? byName.staffTasks.records : [];
+
+    $("docTotal").textContent =
+      byName.documentRequests.ok && byName.documentSubmissions.ok
+        ? documents.length : "Partial";
+
+    $("pendingTotal").textContent =
+      documents.filter(d => d.status === "Pending Review").length;
+
+    $("verifiedTotal").textContent =
+      documents.filter(d => d.status === "Verified").length;
+
+    $("rejectedTotal").textContent =
+      documents.filter(d => d.status === "Rejected").length;
+
+    $("studentTotal").textContent =
+      byName.applications.ok ? students.length : "Unavailable";
+
+    $("taskTotal").textContent =
+      byName.staffTasks.ok ? tasks.length : "Unavailable";
+
+    renderDocuments();
+    renderStudents();
+    renderPublic();
+    renderStaff();
+    renderTasks();
+    renderReport();
+
+    const failed = names.filter(n => !byName[n].ok);
+
+    if (failed.length) {
+      message("message",
+        "Some collections could not be read: " + failed.join(", ") +
+        ". Check Firebase rules. Their missing data has not been treated as zero.",
+        "error");
+    } else {
+      message("message", "Dashboard refreshed successfully.", "success");
+    }
+  } catch (error) {
+    message("message", "Unable to refresh: " + error.message, "error");
+  } finally {
+    loading = false;
+    $("refresh").disabled = false;
+  }
+}
+
+function field(parent, label, value) {
+  const p = document.createElement("p");
+  const strong = document.createElement("strong");
+  strong.textContent = label + ": ";
+  p.append(strong, document.createTextNode(text(value) || "Not provided"));
+  parent.appendChild(p);
+}
+
+function button(label, cls, callback) {
+  const b = document.createElement("button");
+  b.className = cls;
+  b.textContent = label;
+  b.addEventListener("click", callback);
+  return b;
+}
+
+function renderDocuments() {
+  const root = $("documentRecords");
+  root.replaceChildren();
+
+  const search = $("docSearch").value.trim().toLowerCase();
+  const source = $("docSource").value;
+  const status = $("docStatus").value;
+
+  const filtered = documents.filter(d => {
+    if (source !== "ALL" && source !== d.collectionName) return false;
+    if (status !== "ALL" && status !== d.status) return false;
+    return [
+      d.reference, d.title, d.holder, d.email, d.school, d.collectionName
+    ].join(" ").toLowerCase().includes(search);
+  });
+
+  if (!filtered.length) {
+    root.textContent = "No matching records, or the permitted collections are empty.";
     return;
   }
 
-  if (user.uid !== ADMIN_UID) {
-    $("loginSection").hidden = false;
-    $("dashboardSection").hidden = true;
-    $("logoutButton").hidden = true;
+  for (const d of filtered) {
+    const card = document.createElement("article");
+    card.className = "item";
+    const h = document.createElement("h3");
+    h.textContent = d.title;
+    card.appendChild(h);
+    const badge = document.createElement("span");
+    badge.className = "badge";
+    badge.textContent = d.status;
+    card.appendChild(badge);
 
-    await signOut(auth);
+    field(card, "Reference", d.reference);
+    field(card, "Holder", d.holder);
+    field(card, "Email", d.email);
+    field(card, "Institution", d.school);
+    field(card, "Collection", d.collectionName);
+    field(card, "Record ID", d.id);
+    field(card, "Submitted", d.createdAt);
 
-    showMessage(
-      $("loginMessage"),
-      "This account is not authorized to administer documents."
-    );
+    if (d.status === "Pending Review") {
+      card.append(
+        button("Approve & Publish", "primary", () => approve(d)),
+        button("Reject", "danger", () => reject(d))
+      );
+    }
 
+    if (d.status === "Verified") {
+      card.appendChild(button(
+        "Withdraw Verification", "danger", () => withdraw(d)
+      ));
+    }
+
+    root.appendChild(card);
+  }
+}
+
+async function approve(d) {
+  if (loading) return;
+
+  if (!d.reference || d.reference === d.id) {
+    alert("This record needs a valid reference number before approval.");
     return;
   }
 
-  $("loginSection").hidden = true;
-  $("dashboardSection").hidden = false;
-  $("logoutButton").hidden = false;
+  if (!confirm(
+    "Approve and publish " + d.reference +
+    "?\nConfirm authenticity with the issuing institution first."
+  )) return;
 
-  updateDiagnostics(user);
+  loading = true;
+  try {
+    const sourceRef = doc(db, d.collectionName, d.id);
+    const publicRef = doc(db, "publicVerifications", d.reference);
+    const existing = await getDoc(publicRef);
 
-  await loadRequests();
+    if (existing.exists()) {
+      const old = existing.data();
+      if (old.sourceCollection &&
+          (old.sourceCollection !== d.collectionName ||
+           old.sourceRecordId !== d.id)) {
+        throw new Error("This reference belongs to a different record.");
+      }
+    }
+
+    const batch = writeBatch(db);
+    batch.update(sourceRef, {
+      status: "Verified",
+      reviewedAt: serverTimestamp(),
+      reviewedByUid: auth.currentUser.uid,
+      reviewedByEmail: auth.currentUser.email || "",
+      updatedAt: serverTimestamp()
+    });
+
+    batch.set(publicRef, {
+      reference: d.reference,
+      referenceNumber: d.reference,
+      certificateNumber: d.reference,
+      documentTitle: d.title,
+      documentType: d.title,
+      issuedTo: d.holder,
+      institution: d.school,
+      status: "Verified",
+      companyName: COMPANY_NAME,
+      companyEmail: COMPANY_EMAIL,
+      companyNumber: text(first(d.data, ["companyNumber"], COMPANY_NUMBER)),
+      sourceCollection: d.collectionName,
+      sourceRecordId: d.id,
+      updatedAt: serverTimestamp(),
+      createdAt: existing.exists()
+        ? (existing.data().createdAt || serverTimestamp())
+        : serverTimestamp()
+    }, { merge: true });
+
+    await batch.commit();
+    message("message", "Document approved and published: " + d.reference, "success");
+    await loadAll();
+  } catch (error) {
+    message("message", "Approval failed: " + error.message, "error");
+  } finally {
+    loading = false;
+  }
+}
+
+async function reject(d) {
+  if (loading) return;
+  const reason = prompt("Enter the rejection reason:");
+  if (reason === null) return;
+  if (!reason.trim()) return alert("A rejection reason is required.");
+  if (!confirm("Reject this record?")) return;
+
+  loading = true;
+  try {
+    await updateDoc(doc(db, d.collectionName, d.id), {
+      status: "Rejected",
+      rejectionReason: reason.trim(),
+      reviewedAt: serverTimestamp(),
+      reviewedByUid: auth.currentUser.uid,
+      reviewedByEmail: auth.currentUser.email || "",
+      updatedAt: serverTimestamp()
+    });
+    message("message", "Record rejected.", "success");
+    await loadAll();
+  } catch (error) {
+    message("message", "Rejection failed: " + error.message, "error");
+  } finally {
+    loading = false;
+  }
+}
+
+async function withdraw(d) {
+  if (loading) return;
+  const reason = prompt("Enter the reason for withdrawal:");
+  if (reason === null) return;
+  if (!reason.trim()) return alert("A reason is required.");
+  if (!confirm("Withdraw verification for " + d.reference + "?")) return;
+
+  loading = true;
+  try {
+    const sourceRef = doc(db, d.collectionName, d.id);
+    const publicRef = doc(db, "publicVerifications", d.reference);
+    const auditRef = doc(collection(db, "verificationWithdrawalAudit"));
+
+    const batch = writeBatch(db);
+    batch.update(sourceRef, {
+      status: "Verification Withdrawn",
+      withdrawalReason: reason.trim(),
+      withdrawnAt: serverTimestamp(),
+      withdrawnByUid: auth.currentUser.uid,
+      updatedAt: serverTimestamp()
+    });
+    batch.update(publicRef, {
+      status: "Verification Withdrawn",
+      withdrawalReason: reason.trim(),
+      withdrawnAt: serverTimestamp(),
+      withdrawnByUid: auth.currentUser.uid,
+      updatedAt: serverTimestamp()
+    });
+    batch.set(auditRef, {
+      reference: d.reference,
+      sourceCollection: d.collectionName,
+      sourceRecordId: d.id,
+      reason: reason.trim(),
+      action: "withdraw",
+      performedByUid: auth.currentUser.uid,
+      createdAt: serverTimestamp()
+    });
+
+    await batch.commit();
+    message("message", "Verification withdrawn and audit recorded.", "success");
+    await loadAll();
+  } catch (error) {
+    message("message", "Withdrawal failed: " + error.message, "error");
+  } finally {
+    loading = false;
+  }
+}
+
+function renderStudents() {
+  const root = $("studentRecords");
+  root.replaceChildren();
+
+  if (!students.length) {
+    root.textContent = "No accessible student records, or no applications were found.";
+    return;
+  }
+
+  for (const s of students) {
+    const d = s.data;
+    const card = document.createElement("article");
+    card.className = "item";
+    const h = document.createElement("h3");
+    h.textContent = text(first(d, ["fullName", "name", "studentName"], "Student Application"));
+    card.appendChild(h);
+    field(card, "Reference", first(d, ["ref", "reference", "applicationRef", "certificateNumber"], s.id));
+    field(card, "Email", first(d, ["email"]));
+    field(card, "School", first(d, ["school", "institution"]));
+    field(card, "Status", first(d, ["status"]));
+    field(card, "Created", dateOf(d.createdAt));
+    root.appendChild(card);
+  }
+}
+
+function renderPublic() {
+  const root = $("verificationRecords");
+  root.replaceChildren();
+
+  if (!publicRecords.length) {
+    root.textContent = "No accessible public verification records.";
+    return;
+  }
+
+  for (const r of publicRecords) {
+    const d = r.data;
+    const card = document.createElement("article");
+    card.className = "item";
+    const h = document.createElement("h3");
+    h.textContent = text(first(d, ["documentTitle", "documentType"], "Verification Record"));
+    card.appendChild(h);
+    field(card, "Reference", first(d, ["reference", "referenceNumber", "certificateNumber"], r.id));
+    field(card, "Holder", first(d, ["issuedTo", "holderName", "fullName"]));
+    field(card, "Status", d.status);
+    field(card, "Company", first(d, ["companyName"], COMPANY_NAME));
+    field(card, "Company email", first(d, ["companyEmail"], COMPANY_EMAIL));
+    root.appendChild(card);
+  }
+}
+
+function renderStaff() {
+  const root = $("staffRecords");
+  root.replaceChildren();
+
+  if (!staff.length) {
+    root.textContent = "No accessible staff profiles. Use the existing staff management page to manage staff.";
+    return;
+  }
+
+  for (const s of staff) {
+    const d = s.data;
+    const card = document.createElement("article");
+    card.className = "item";
+    const h = document.createElement("h3");
+    h.textContent = text(first(d, ["fullName", "name", "displayName"], "Staff Profile"));
+    card.appendChild(h);
+    field(card, "Email", first(d, ["email"]));
+    field(card, "Role", first(d, ["role"]));
+    field(card, "Status", first(d, ["status"]));
+    root.appendChild(card);
+  }
+}
+
+function renderTasks() {
+  const root = $("taskRecords");
+  root.replaceChildren();
+
+  if (!tasks.length) {
+    root.textContent = "No accessible staff tasks. Use the existing task management page.";
+    return;
+  }
+
+  for (const t of tasks) {
+    const d = t.data;
+    const card = document.createElement("article");
+    card.className = "item";
+    const h = document.createElement("h3");
+    h.textContent = text(first(d, ["taskTitle", "title"], "Staff Task"));
+    card.appendChild(h);
+    field(card, "Reference", first(d, ["taskReference"], t.id));
+    field(card, "Assigned to", first(d, ["assignedToEmail"]));
+    field(card, "Status", first(d, ["status"]));
+    field(card, "Deadline", dateOf(d.deadline));
+    root.appendChild(card);
+  }
+}
+
+function renderReport() {
+  $("reportSummary").textContent =
+    "Document records loaded: " + documents.length +
+    ". Student applications loaded: " + students.length +
+    ". Public verification records loaded: " + publicRecords.length +
+    ". Staff profiles loaded: " + staff.length +
+    ". Staff tasks loaded: " + tasks.length + ".";
+}
+
+$("searchVerification").addEventListener("click", () => {
+  const query = $("verifySearch").value.trim().toLowerCase();
+  const root = $("verificationRecords");
+  root.replaceChildren();
+
+  const matches = publicRecords.filter(r => {
+    const d = r.data;
+    return [
+      r.id, d.reference, d.referenceNumber, d.certificateNumber,
+      d.issuedTo, d.documentTitle
+    ].some(v => text(v).toLowerCase().includes(query));
+  });
+
+  if (!query) {
+    root.textContent = "Enter a reference number first.";
+    return;
+  }
+
+  if (!matches.length) {
+    root.textContent = "No matching public verification record.";
+    return;
+  }
+
+  for (const r of matches) {
+    const card = document.createElement("article");
+    card.className = "item";
+    field(card, "Reference", r.id);
+    field(card, "Holder", first(r.data, ["issuedTo", "holderName"]));
+    field(card, "Status", r.data.status);
+    root.appendChild(card);
+  }
+});
+
+$("exportReport").addEventListener("click", () => {
+  const rows = [
+    ["Collection", "Record ID", "Reference", "Document", "Holder", "Email", "Institution", "Status"],
+    ...documents.map(d => [
+      d.collectionName, d.id, d.reference, d.title,
+      d.holder, d.email, d.school, d.status
+    ])
+  ];
+
+  const csv = rows.map(row =>
+    row.map(value => {
+      const safe = text(value).replaceAll('"', '""');
+      return '"' + safe + '"';
+    }).join(",")
+  ).join("\r\n");
+
+  const url = URL.createObjectURL(
+    new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" })
+  );
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "arnaud-document-report.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+$("docSearch").addEventListener("input", renderDocuments);
+$("docSource").addEventListener("change", renderDocuments);
+$("docStatus").addEventListener("change", renderDocuments);
+
+$("navigation").addEventListener("click", event => {
+  const button = event.target.closest("button[data-page]");
+  if (!button) return;
+
+  document.querySelectorAll("#navigation button").forEach(b =>
+    b.classList.toggle("active", b === button)
+  );
+
+  document.querySelectorAll(".page").forEach(p =>
+    p.classList.toggle("hidden", p.id !== "page-" + button.dataset.page)
+  );
 });
 
 $("loginForm").addEventListener("submit", async event => {
   event.preventDefault();
-
-  clearMessage($("loginMessage"));
-
-  $("loginButton").disabled = true;
-  $("loginButton").textContent = "Signing in...";
-
   try {
-    const credential = await signInWithEmailAndPassword(
-      auth,
-      $("email").value.trim(),
-      $("password").value
+    message("loginMessage", "Signing in…");
+    await signInWithEmailAndPassword(
+      auth, $("email").value.trim(), $("password").value
     );
-
-    if (credential.user.uid !== ADMIN_UID) {
-      await signOut(auth);
-
-      throw new Error(
-        "This account is not the authorized administrator account."
-      );
-    }
-
-    showMessage(
-      $("loginMessage"),
-      "Administrator sign-in successful.",
-      "success"
-    );
-
   } catch (error) {
-    console.error("Sign-in failed:", error);
-
-    showMessage(
-      $("loginMessage"),
-      "Sign-in failed: " + error.message
-    );
-
-  } finally {
-    $("loginButton").disabled = false;
-    $("loginButton").textContent = "Sign In";
+    message("loginMessage", "Login failed: " + error.message, "error");
   }
 });
 
-$("logoutButton").addEventListener("click", async () => {
+onAuthStateChanged(auth, async user => {
+  if (!user) {
+    $("loginPanel").classList.remove("hidden");
+    $("controlPanel").classList.add("hidden");
+    $("navigation").classList.add("hidden");
+    return;
+  }
+
+  if (user.uid !== ADMIN_UID) {
+    await signOut(auth);
+    $("loginPanel").classList.remove("hidden");
+    $("controlPanel").classList.add("hidden");
+    message("loginMessage", "Access denied. This account is not authorised.", "error");
+    return;
+  }
+
+  $("loginPanel").classList.add("hidden");
+  $("controlPanel").classList.remove("hidden");
+  $("navigation").classList.remove("hidden");
+  $("identity").textContent =
+    "Authorised administrator: " + (user.email || user.uid);
+
+  await loadAll();
+});
+
+$("refresh").addEventListener("click", loadAll);
+
+$("logout").addEventListener("click", async () => {
   try {
     await signOut(auth);
-
-    clearMessage($("loginMessage"));
-    clearMessage($("dashboardMessage"));
-
   } catch (error) {
-    showMessage(
-      $("dashboardMessage"),
-      "Could not sign out: " + error.message
-    );
+    message("message", "Sign-out failed: " + error.message, "error");
   }
 });
-
-
-/* Refresh and filtering */
-
-$("refreshButton").addEventListener("click", loadRequests);
-
-$("statusFilter").addEventListener("change", loadRequests);
-
-async function loadRequests() {
-  if (!currentAdmin()) return;
-
-  clearMessage($("dashboardMessage"));
-
-  $("requestsList").replaceChildren();
-  $("refreshButton").disabled = true;
-
-  const loading = document.createElement("p");
-  loading.className = "empty";
-  loading.textContent = "Loading document requests...";
-
-  $("requestsList").appendChild(loading);
-
-  try {
-    const snapshot = await getDocs(
-      collection(db, "documentRequests")
-    );
-
-    const requests = snapshot.docs.map(item => ({
-      id: item.id,
-      ...item.data()
-    }));
-
-    const getStatus = request =>
-      normalizedStatus(request.status);
-
-    $("totalCount").textContent =
-      String(requests.length);
-
-    $("pendingCount").textContent =
-      String(requests.filter(
-        r => getStatus(r) === "Pending Review"
-      ).length);
-
-    $("approvedCount").textContent =
-      String(requests.filter(
-        r => getStatus(r) === "Verified"
-      ).length);
-
-    $("rejectedCount").textContent =
-      String(requests.filter(
-        r => getStatus(r) === "Rejected"
-      ).length);
-
-    $("withdrawnCount").textContent =
-      String(requests.filter(
-        r => getStatus(r) === "Verification Withdrawn"
-      ).length);
-
-    requests.sort((a, b) =>
-      (b.createdAt?.toMillis?.() || 0) -
-      (a.createdAt?.toMillis?.() || 0)
-    );
-
-    const filter = $("statusFilter").value;
-
-    const filtered = requests.filter(request =>
-      filter === "all" || getStatus(request) === filter
-    );
-
-    $("requestsList").replaceChildren();
-
-    if (!filtered.length) {
-      const empty = document.createElement("p");
-      empty.className = "empty";
-
-      empty.textContent = requests.length === 0
-        ? "No document requests have been registered yet."
-        : "No requests match this filter.";
-
-      $("requestsList").appendChild(empty);
-      return;
-    }
-
-    filtered.forEach(request => {
-      $("requestsList").appendChild(
-        createRequestCard(request)
-      );
-    });
-
-  } catch (error) {
-    console.error("Loading requests failed:", error);
-
-    $("requestsList").replaceChildren();
-
-    showMessage(
-      $("dashboardMessage"),
-      "Could not load requests. Check administrator access and Firestore rules. Details: " +
-      error.message
-    );
-
-  } finally {
-    $("refreshButton").disabled = false;
-  }
-}
-
-
-/* Request cards */
-
-function createRequestCard(request) {
-  const card = document.createElement("article");
-  card.className = "request";
-
-  const title = document.createElement("h3");
-  title.textContent = safeText(request.documentTitle);
-
-  card.appendChild(title);
-
-  const status = normalizedStatus(request.status);
-
-  const badge = document.createElement("span");
-  badge.className = "badge";
-
-  if (status === "Verified") {
-    badge.classList.add("approved");
-  }
-
-  if (status === "Rejected") {
-    badge.classList.add("rejected");
-  }
-
-  if (status === "Verification Withdrawn") {
-    badge.classList.add("withdrawn");
-  }
-
-  badge.textContent = status;
-
-  card.appendChild(badge);
-
-  addDetail(card, "Reference Number", request.referenceNumber);
-  addDetail(card, "Issued To", request.issuedTo);
-  addDetail(card, "Original Document Number", request.originalDocumentNumber);
-  addDetail(card, "Category", request.documentCategory);
-  addDetail(card, "Description", request.description);
-  addDetail(card, "Submitted By", request.createdByEmail);
-  addDetail(card, "Submitted On", formatDate(request.createdAt));
-
-  if (status === "Verification Withdrawn") {
-    addDetail(card, "Withdrawal Date", formatDate(request.withdrawnAt));
-    addDetail(card, "Withdrawal Reason", request.withdrawalReason);
-  }
-
-  if (status === "Verified" && request.restoredAt) {
-    addDetail(card, "Restored On", formatDate(request.restoredAt));
-    addDetail(card, "Restoration Reason", request.restorationReason);
-  }
-
-  const fingerprintBox = document.createElement("div");
-  fingerprintBox.className = "fingerprint-box";
-
-  addDetail(
-    fingerprintBox,
-    "Fingerprint Status",
-    request.fingerprintStatus ||
-      "Unavailable - No fingerprint recorded"
-  );
-
-  addDetail(
-    fingerprintBox,
-    "Fingerprint Algorithm",
-    request.fingerprintAlgorithm || "Not available"
-  );
-
-  const hashLine = document.createElement("div");
-  hashLine.className = "detail";
-
-  const hashLabel = document.createElement("b");
-  hashLabel.textContent = "SHA-256 Fingerprint: ";
-
-  const hashValue = document.createElement("span");
-  hashValue.className = "fingerprint-value";
-  hashValue.textContent =
-    request.sha256Fingerprint || "No fingerprint supplied";
-
-  hashLine.append(hashLabel, hashValue);
-  fingerprintBox.appendChild(hashLine);
-
-  addDetail(
-    fingerprintBox,
-    "Original PDF Filename",
-    request.fingerprintFileName || "Not supplied"
-  );
-
-  const note = document.createElement("p");
-  note.className = "muted";
-
-  note.textContent =
-    "This fingerprint was supplied by the registration page. It has not been independently verified.";
-
-  fingerprintBox.appendChild(note);
-  card.appendChild(fingerprintBox);
-
-  addDetail(card, "Request ID", request.id);
-
-  const actions = document.createElement("div");
-  actions.className = "actions";
-
-  if (status === "Pending Review") {
-    const approve = document.createElement("button");
-
-    approve.type = "button";
-    approve.className = "primary";
-    approve.textContent = "Approve & Publish";
-
-    approve.addEventListener("click", () =>
-      approveRequest(request, approve)
-    );
-
-    const reject = document.createElement("button");
-
-    reject.type = "button";
-    reject.className = "danger";
-    reject.textContent = "Reject Request";
-
-    reject.addEventListener("click", () =>
-      rejectRequest(request, reject)
-    );
-
-    actions.append(approve, reject);
-  }
-
-  if (status === "Verified") {
-    const copy = document.createElement("button");
-
-    copy.type = "button";
-    copy.className = "secondary";
-    copy.textContent = "Copy Verification Link";
-
-    copy.addEventListener("click", async () => {
-      const reference = String(
-        request.referenceNumber || ""
-      ).trim();
-
-      if (!reference) {
-        showMessage(
-          $("dashboardMessage"),
-          "This request has no reference number."
-        );
-        return;
-      }
-
-      const link = new URL(
-        "verify-document.html",
-        window.location.href
-      );
-
-      link.searchParams.set("certificate", reference);
-
-      try {
-        await navigator.clipboard.writeText(link.href);
-
-        showMessage(
-          $("dashboardMessage"),
-          "Verification link copied: " + link.href,
-          "success"
-        );
-
-      } catch {
-        showMessage(
-          $("dashboardMessage"),
-          "Verification link: " + link.href,
-          "success"
-        );
-      }
-    });
-
-    const withdraw = document.createElement("button");
-
-    withdraw.type = "button";
-    withdraw.className = "danger";
-    withdraw.textContent = "Withdraw Verification";
-
-    withdraw.addEventListener("click", () =>
-      withdrawVerification(request, withdraw)
-    );
-
-    actions.append(copy, withdraw);
-  }
-
-  if (status === "Verification Withdrawn") {
-    const restore = document.createElement("button");
-
-    restore.type = "button";
-    restore.className = "primary";
-    restore.textContent = "Restore Verification";
-
-    restore.addEventListener("click", () =>
-      restoreVerification(request, restore)
-    );
-
-    actions.appendChild(restore);
-  }
-
-  if (actions.childElementCount) {
-    card.appendChild(actions);
-  }
-
-  return card;
-}
-
-
-/* Approve and publish */
-
-async function approveRequest(request, button) {
-  if (!currentAdmin()) {
-    showMessage(
-      $("dashboardMessage"),
-      "You are not authorized to approve documents."
-    );
-    return;
-  }
-
-  const reference = String(
-    request.referenceNumber || ""
-  ).trim();
-
-  if (!reference) {
-    showMessage(
-      $("dashboardMessage"),
-      "Cannot approve this request because its reference number is missing."
-    );
-    return;
-  }
-
-  if (!confirm(
-    "Have you independently checked this document?\n\n" +
-    "Approval publishes its verification details publicly.\n\n" +
-    "Reference: " + reference
-  )) {
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "Publishing...";
-
-  try {
-    const requestRef = doc(
-      db,
-      "documentRequests",
-      request.id
-    );
-
-    const publicRef = doc(
-      db,
-      "publicVerifications",
-      reference
-    );
-
-    const currentRequest = await getDoc(requestRef);
-
-    if (!currentRequest.exists()) {
-      throw new Error("Document request no longer exists.");
-    }
-
-    if (
-      normalizedStatus(currentRequest.data().status) !==
-      "Pending Review"
-    ) {
-      throw new Error(
-        "This request is no longer pending. Refresh the dashboard."
-      );
-    }
-
-    const existingPublic = await getDoc(publicRef);
-
-    if (existingPublic.exists()) {
-      throw new Error(
-        "A public record with this reference already exists. Review it before proceeding."
-      );
-    }
-
-    const record = {
-      certificateNumber: reference,
-      referenceNumber: reference,
-      documentTitle: request.documentTitle || "",
-      issuedTo: request.issuedTo || "",
-      status: "Verified",
-      companyName: COMPANY_NAME,
-      companyEmail: COMPANY_EMAIL,
-      companyNumber: request.companyNumber || "",
-      originalDocumentNumber: request.originalDocumentNumber || "",
-      sha256Fingerprint: request.sha256Fingerprint || null,
-
-      fingerprintAlgorithm: request.sha256Fingerprint
-        ? (request.fingerprintAlgorithm || "SHA-256")
-        : null,
-
-      fingerprintStatus: request.sha256Fingerprint
-        ? "Submitted fingerprint - not independently verified"
-        : "Unavailable - No fingerprint recorded",
-
-      fingerprintFileName: request.fingerprintFileName || null,
-
-      issuedAt: serverTimestamp(),
-      createdAt: serverTimestamp()
-    };
-
-    const batch = writeBatch(db);
-
-    batch.set(publicRef, record);
-
-    batch.update(requestRef, {
-      status: "Verified",
-      reviewedByUid: auth.currentUser.uid,
-      reviewedByEmail: auth.currentUser.email || "",
-      reviewedAt: serverTimestamp()
-    });
-
-    await batch.commit();
-
-    showMessage(
-      $("dashboardMessage"),
-      "Request approved and public verification published. Reference: " +
-      reference,
-      "success"
-    );
-
-    await loadRequests();
-
-  } catch (error) {
-    console.error("Approval failed:", error);
-
-    showMessage(
-      $("dashboardMessage"),
-      "Approval failed. Check the records before retrying. Details: " +
-      error.message
-    );
-
-    button.disabled = false;
-    button.textContent = "Approve & Publish";
-  }
-}
-
-
-/* Reject request */
-
-async function rejectRequest(request, button) {
-  if (!currentAdmin()) {
-    showMessage(
-      $("dashboardMessage"),
-      "You are not authorized to reject documents."
-    );
-    return;
-  }
-
-  if (!confirm(
-    "Are you sure you want to reject this document request?\n\n" +
-    "Reference: " + safeText(request.referenceNumber)
-  )) {
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "Rejecting...";
-
-  try {
-    const requestRef = doc(
-      db,
-      "documentRequests",
-      request.id
-    );
-
-    const snapshot = await getDoc(requestRef);
-
-    if (!snapshot.exists()) {
-      throw new Error("Document request no longer exists.");
-    }
-
-    if (
-      normalizedStatus(snapshot.data().status) !==
-      "Pending Review"
-    ) {
-      throw new Error(
-        "This request is no longer pending. Refresh the dashboard."
-      );
-    }
-
-    await updateDoc(requestRef, {
-      status: "Rejected",
-      reviewedByUid: auth.currentUser.uid,
-      reviewedByEmail: auth.currentUser.email || "",
-      reviewedAt: serverTimestamp()
-    });
-
-    showMessage(
-      $("dashboardMessage"),
-      "Request rejected. It has not been published.",
-      "success"
-    );
-
-    await loadRequests();
-
-  } catch (error) {
-    console.error("Rejection failed:", error);
-
-    showMessage(
-      $("dashboardMessage"),
-      "Could not reject this request. Details: " + error.message
-    );
-
-    button.disabled = false;
-    button.textContent = "Reject Request";
-  }
-}
-
-
-/* Withdraw verification */
-
-async function withdrawVerification(request, button) {
-  if (!currentAdmin()) {
-    showMessage(
-      $("dashboardMessage"),
-      "You are not authorized to withdraw verification."
-    );
-    return;
-  }
-
-  const reference = String(
-    request.referenceNumber || ""
-  ).trim();
-
-  if (!reference) {
-    showMessage(
-      $("dashboardMessage"),
-      "Withdrawal stopped because the reference number is missing."
-    );
-    return;
-  }
-
-  const reason = prompt(
-    "Enter the reason for withdrawing verification.\n\n" +
-    "Reference: " + reference
-  );
-
-  if (reason === null) return;
-
-  const cleanReason = reason.trim();
-
-  if (cleanReason.length < 5) {
-    showMessage(
-      $("dashboardMessage"),
-      "Please provide a reason of at least 5 characters."
-    );
-    return;
-  }
-
-  if (!confirm(
-    "FINAL CONFIRMATION\n\n" +
-    "Reference: " + reference +
-    "\n\nReason: " + cleanReason +
-    "\n\nThe public record will be marked Withdrawn.\n\nContinue?"
-  )) {
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "Withdrawing...";
-
-  try {
-    const requestRef = doc(
-      db,
-      "documentRequests",
-      request.id
-    );
-
-    const publicRef = doc(
-      db,
-      "publicVerifications",
-      reference
-    );
-
-    const [requestSnapshot, publicSnapshot] =
-      await Promise.all([
-        getDoc(requestRef),
-        getDoc(publicRef)
-      ]);
-
-    if (
-      !requestSnapshot.exists() ||
-      !publicSnapshot.exists()
-    ) {
-      throw new Error(
-        "The request or public verification record was not found."
-      );
-    }
-
-    if (
-      normalizedStatus(requestSnapshot.data().status) !==
-      "Verified"
-    ) {
-      throw new Error(
-        "This request is not currently verified."
-      );
-    }
-
-    const publicStatus = String(
-      publicSnapshot.data().status || ""
-    ).trim().toLowerCase();
-
-    if (publicStatus !== "verified" && publicStatus !== "approved") {
-      throw new Error(
-        "The public record is not currently verified."
-      );
-    }
-
-    const user = auth.currentUser;
-    const batch = writeBatch(db);
-
-    batch.update(requestRef, {
-      status: "Verification Withdrawn",
-      withdrawalReason: cleanReason,
-      withdrawnByUid: user.uid,
-      withdrawnByEmail: user.email || "",
-      withdrawnAt: serverTimestamp()
-    });
-
-    batch.update(publicRef, {
-      status: "Withdrawn",
-      withdrawalMessage:
-        "Verification of this document has been withdrawn by the issuing verification administrator.",
-      withdrawnAt: serverTimestamp(),
-      withdrawnByUid: user.uid
-    });
-
-    const auditRef = doc(
-      collection(db, "verificationWithdrawalAudit")
-    );
-
-    batch.set(auditRef, {
-      requestId: request.id,
-      referenceNumber: reference,
-      documentTitle: request.documentTitle || "",
-      issuedTo: request.issuedTo || "",
-      reason: cleanReason,
-      withdrawnByUid: user.uid,
-      withdrawnByEmail: user.email || "",
-      withdrawnAt: serverTimestamp()
-    });
-
-    await batch.commit();
-
-    showMessage(
-      $("dashboardMessage"),
-      "Verification withdrawn successfully. The withdrawal audit record has been saved.",
-      "success"
-    );
-
-    await loadRequests();
-
-  } catch (error) {
-    console.error("Withdrawal failed:", error);
-
-    showMessage(
-      $("dashboardMessage"),
-      "Withdrawal failed. Check Firestore rules and record status. Details: " +
-      error.message
-    );
-
-    button.disabled = false;
-    button.textContent = "Withdraw Verification";
-  }
-}
-
-
-/* Restore verification */
-
-async function restoreVerification(request, button) {
-  if (!currentAdmin()) {
-    showMessage(
-      $("dashboardMessage"),
-      "You are not authorized to restore verification."
-    );
-    return;
-  }
-
-  const reference = String(
-    request.referenceNumber || ""
-  ).trim();
-
-  if (!reference) {
-    showMessage(
-      $("dashboardMessage"),
-      "Cannot restore this request because its reference number is missing."
-    );
-    return;
-  }
-
-  const reason = prompt(
-    "Enter the reason for restoring this verification.\n\n" +
-    "Reference: " + reference
-  );
-
-  if (reason === null) return;
-
-  const cleanReason = reason.trim();
-
-  if (cleanReason.length < 5) {
-    showMessage(
-      $("dashboardMessage"),
-      "Please provide a restoration reason of at least 5 characters."
-    );
-    return;
-  }
-
-  if (!confirm(
-    "RESTORE VERIFICATION?\n\n" +
-    "Reference: " + reference +
-    "\n\nReason: " + cleanReason +
-    "\n\nThe public status will return to Verified.\n" +
-    "A separate restoration audit record will be saved.\n\nContinue?"
-  )) {
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "Restoring...";
-
-  try {
-    const requestRef = doc(
-      db,
-      "documentRequests",
-      request.id
-    );
-
-    const publicRef = doc(
-      db,
-      "publicVerifications",
-      reference
-    );
-
-    const [requestSnapshot, publicSnapshot] =
-      await Promise.all([
-        getDoc(requestRef),
-        getDoc(publicRef)
-      ]);
-
-    if (
-      !requestSnapshot.exists() ||
-      !publicSnapshot.exists()
-    ) {
-      throw new Error(
-        "The request or public verification record could not be found."
-      );
-    }
-
-    const requestData = requestSnapshot.data();
-    const publicData = publicSnapshot.data();
-
-    if (
-      normalizedStatus(requestData.status) !==
-      "Verification Withdrawn"
-    ) {
-      throw new Error(
-        "This request is not currently withdrawn. Refresh the dashboard."
-      );
-    }
-
-    const publicStatus = String(
-      publicData.status || ""
-    ).trim().toLowerCase();
-
-    if (
-      publicStatus !== "withdrawn" &&
-      publicStatus !== "verification withdrawn"
-    ) {
-      throw new Error(
-        "The public record is not marked Withdrawn. Review it before restoring."
-      );
-    }
-
-    const user = auth.currentUser;
-    const batch = writeBatch(db);
-
-    batch.update(requestRef, {
-      status: "Verified",
-      restorationReason: cleanReason,
-      restoredByUid: user.uid,
-      restoredByEmail: user.email || "",
-      restoredAt: serverTimestamp()
-    });
-
-    batch.update(publicRef, {
-      status: "Verified",
-      restorationMessage:
-        "Verification has been restored by the authorized administrator.",
-      restoredAt: serverTimestamp(),
-      restoredByUid: user.uid
-    });
-
-    const auditRef = doc(
-      collection(db, "verificationRestorationAudit")
-    );
-
-    batch.set(auditRef, {
-      requestId: request.id,
-      referenceNumber: reference,
-      documentTitle: request.documentTitle || "",
-      issuedTo: request.issuedTo || "",
-      restorationReason: cleanReason,
-      restoredByUid: user.uid,
-      restoredByEmail: user.email || "",
-      restoredAt: serverTimestamp()
-    });
-
-    await batch.commit();
-
-    showMessage(
-      $("dashboardMessage"),
-      "Verification restored successfully. The public record is now marked Verified.",
-      "success"
-    );
-
-    await loadRequests();
-
-  } catch (error) {
-    console.error("Restoration failed:", error);
-
-    showMessage(
-      $("dashboardMessage"),
-      "Restoration failed. Check Firestore rules and record status. Details: " +
-      error.message
-    );
-
-    button.disabled = false;
-    button.textContent = "Restore Verification";
-  }
-}
-
 </script>
 </body>
-        </html>
+</html>
